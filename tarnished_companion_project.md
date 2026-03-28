@@ -208,5 +208,47 @@ tail -3 app.html
 
 ---
 
+## BACKLOG
+
+### BUGS (broken behavior)
+- **B1:** Level calc hardcodes 79 as base stat total. [DONE v3.2 — WRETCH_BASE_TOTAL/WRETCH_LEVEL constants]
+- **B2:** Compare tab hooks violation — renderCompare calls useState outside App component. [OPEN]
+- **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
+- **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [OPEN]
+- **B5:** Optimizer header shows stale "3,216 weapons" count. [OPEN]
+- **B6:** Header shows "COMPANION" with no version number. [OPEN]
+- **B7:** engDmgVsBoss applied negation/defense in wrong order. [DONE v3.3 — defense curve on raw AR first, then negation]
+- **B8:** Boss data single `df` value vs per-type defense. [CLOSED — verified via Fextralife, PureEldenRing, tarnished.dev that Elden Ring bosses use single scalar defense. Per-type differentiation is handled entirely by negation, which we already have correct.]
+- **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). Boss negation data already contains per-subtype values in `ng` field but `engDmgVsBoss` maps all physical to "standard". Weapon type determines subtype but the mapping is not implemented. [OPEN]
+
+### FEATURES (new capability)
+- **F1:** Character creation screen — Wretch default, keepsake rec, first purchases. [PLANNED]
+- **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [PLANNED]
+- **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [PLANNED]
+- **F4:** Replace renderBuilds with archetype-computed recommendations. [PLANNED]
+- **F5:** Ranged utility system — bows as separate category, arrow/bolt data, contextual recommendations. [PLANNED]
+- **F6:** Curated weapon pool — optimizer uses 66 engine-verified weapons instead of 2,764. [PLANNED]
+- **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [PLANNED]
+
+### ENHANCEMENTS (improve existing capability)
+- **E1:** Step numbers on walkthrough cards. [PLANNED]
+- **E2:** Version display in header. [PLANNED]
+- **E3:** Stat advisor accounts for weapon requirement breakpoints. [PLANNED]
+- **E4:** Enemy resistance awareness in routing. [PLANNED]
+
+### FUTURE (not yet scoped)
+- Kill the checklist, build the journey — walkthrough steps become backing data queried by engine
+
+---
+
+## COMPLETED DELIVERIES (this session)
+
+- **v3.2:** DD37 Wretch-only optimization. globalOptimize 10x faster (single class). bestWeaponForBoss: meetsRequirements pre-filter + single-level decode. Derived stat keys pre-computed. All UI locked to Wretch. B1 fixed.
+- **v3.3:** engDmgVsBoss defense/negation order corrected (COA 2). 18% error eliminated on high-negation bosses.
+- **Curated weapon pool:** 152 weapons from 2,764 (engine cross-referenced with community research). 66 engine-verified for optimizer hot loop.
+- **B8 investigation:** Per-type boss defense confirmed as single scalar. Not a real issue. Closed.
+
+---
+
 *Single project document | March 28, 2026*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
