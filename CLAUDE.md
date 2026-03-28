@@ -60,5 +60,5 @@ The delivery is not complete until the checklist is complete.
 **Version:** v3.2
 **Baseline file:** `Tarnished_Companion_v3.2.html`
 **Lines:** 4,616
-**Last completed task:** v3.2 delivery — E1, E2, B3, B4, B5 + all engine work (B1, B7, B9, DD37)
+**Last completed task:** Talisman Pouch walkthrough coverage — Enia step reclassified M1, missability warning added
 **Next task:** Awaiting instruction from command authority
