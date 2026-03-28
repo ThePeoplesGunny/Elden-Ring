@@ -2197,7 +2197,7 @@ function getPlayerBossDmg(bossName,charState){
   var engStats={str:stats.str||10,dex:stats.dex||10,int:stats.int||10,fai:stats.fai||10,arc:stats.arc||10};
   var arResult=engCalcAR(decoded,engStats,decoded.maxUpgrade,false);
   if(!arResult)return null;
-  var dmg=engDmgVsBoss(arResult,boss);
+  var dmg=engDmgVsBoss(arResult,boss,wData.t);
   var totalAR=0;[0,1,2,3,4].forEach(function(dt){totalAR+=(arResult.attackPower[dt]||0);});
   return{hitsToKill:dmg.hitsToKill,dmgPerHit:dmg.total,totalAR:Math.floor(totalAR),bossHP:boss.hp,bossName:boss.n};
 }
@@ -2251,6 +2251,7 @@ function globalOptimize(targetLevel,includeDLC,options){
         wpns.push({
           name:wEnc.w,
           affinityId:wEnc.a,
+          wType:wEnc.t,
           ar1H:m1H?engCalcAR(dec,stats,0,false):null,
           ar2H:m2H?engCalcAR(dec,stats,0,true):null
         });
@@ -2276,8 +2277,8 @@ function globalOptimize(targetLevel,includeDLC,options){
         for(var wi=0;wi<wCount;wi++){
           var w=wpns[wi];
           var dmg=0,grip='1H';
-          if(w.ar1H){dmg=engDmgVsBoss(w.ar1H,boss).total;}
-          if(w.ar2H){var d2=engDmgVsBoss(w.ar2H,boss).total;if(d2>dmg){dmg=d2;grip='2H';}}
+          if(w.ar1H){dmg=engDmgVsBoss(w.ar1H,boss,w.wType).total;}
+          if(w.ar2H){var d2=engDmgVsBoss(w.ar2H,boss,w.wType).total;if(d2>dmg){dmg=d2;grip='2H';}}
           var htk=Math.ceil(bHP/Math.max(dmg,1));
           wTotalHTK[wi]+=htk;
           if(htk>wWorstHTK[wi]){wWorstHTK[wi]=htk;wWorstBossName[wi]=bObj.entry.name;}
@@ -2304,8 +2305,8 @@ function globalOptimize(targetLevel,includeDLC,options){
       for(var bi=0;bi<resolvedBossCount;bi++){
         var bObj=bossObjs[bi];var boss=bObj.boss;var bHP=boss.hp||1;
         var dmg=0,grip='1H';
-        if(sw.ar1H){dmg=engDmgVsBoss(sw.ar1H,boss).total;}
-        if(sw.ar2H){var d2=engDmgVsBoss(sw.ar2H,boss).total;if(d2>dmg){dmg=d2;grip='2H';}}
+        if(sw.ar1H){dmg=engDmgVsBoss(sw.ar1H,boss,sw.wType).total;}
+        if(sw.ar2H){var d2=engDmgVsBoss(sw.ar2H,boss,sw.wType).total;if(d2>dmg){dmg=d2;grip='2H';}}
         var sHTK=Math.ceil(bHP/Math.max(dmg,1));
         var pHTK=portBosses[bi].htk;
         if(pHTK>0&&(sHTK-pHTK)/pHTK>=0.20){
@@ -2354,7 +2355,7 @@ function bestWeaponForBoss(bossName,stats,gateState,regionName,twoHand){
     var upg=Math.min((wEnc.a===-1)?maxSom:maxReg,maxUp);
     var decoded=engDecodeWAtLevel(wEnc,upg);if(!decoded)return; // Single-level decode
     var ar=engCalcAR(decoded,engStats,0,twoHand);
-    var dmg=engDmgVsBoss(ar,boss);
+    var dmg=engDmgVsBoss(ar,boss,wEnc.t);
     var totalAR=0;[0,1,2,3,4].forEach(function(dt){totalAR+=(ar.attackPower[dt]||0);});
     results.push({name:wEnc.w,affinity:wEnc.a,affinityName:ENG_AFFINITY_NAMES[wEnc.a]||"Unique",upgrade:upg,totalAR:Math.floor(totalAR),dmgPerHit:dmg.total,hitsToKill:dmg.hitsToKill,breakdown:dmg.breakdown});
   });
@@ -2375,10 +2376,18 @@ function engFP(m){return _dsLookup(ENG_DATA.derivedStats.fp.values,_dsKeys.fp,m)
 function engStam(e){return _dsLookup(ENG_DATA.derivedStats.stamina.values,_dsKeys.stam,e);}
 function engEquip(e){var t=ENG_DATA.derivedStats.equipLoad.values;var keys=_dsKeys.equip;if(e<=keys[0])return t[keys[0]];if(e>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(e>=keys[i]&&e<=keys[i+1]){var r=(e-keys[i])/(keys[i+1]-keys[i]);return Math.round((t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r)*10)/10;}}return t[keys[keys.length-1]];}
 
+// B9: Physical damage subtype by weapon type — slash/strike/pierce use different boss negation
+var PHYS_SUBTYPE={9:"slash",11:"slash",13:"slash",31:"slash",37:"slash",39:"slash",92:"slash",94:"slash",
+  21:"strike",23:"strike",24:"strike",35:"strike",41:"strike",88:"strike",
+  15:"pierce",16:"pierce",25:"pierce",28:"pierce",90:"pierce"};
+// All other weapon types (1,3,5,7,14,17,19,29,87,89,91,93,95) default to "standard"
+
 // Damage vs boss — correct order: defense (non-linear) THEN negation (percentage)
-// Per community-validated formula: AR → piecewise defense curve → negation reduction
-function engDmgVsBoss(arResult,boss){
-  var ph=boss.ph[0];var negMap={0:"standard",1:"magic",2:"fire",3:"lightning",4:"holy"};
+// weaponType param enables physical subtype negation lookup (B9)
+function engDmgVsBoss(arResult,boss,weaponType){
+  var ph=boss.ph[0];
+  var physNeg=PHYS_SUBTYPE[weaponType]||"standard";
+  var negMap={0:physNeg,1:"magic",2:"fire",3:"lightning",4:"holy"};
   var total=0,bd={};
   [0,1,2,3,4].forEach(function(dt){
     var ar=arResult.attackPower[dt]||0;if(ar<=0)return;
@@ -2392,7 +2401,7 @@ function engDmgVsBoss(arResult,boss){
     else if(ratio<=8.0){mult=1.00+0.10*((ratio-2.5)/5.5);}
     else{mult=1.10+0.05*((ratio-8.0)/12.0);if(mult>1.20)mult=1.20;}
     var afterDef=ar*mult;
-    // Stage 2: Negation — percentage reduction on post-defense damage
+    // Stage 2: Negation — percentage reduction using correct physical subtype
     var neg=ph.ng[negMap[dt]]||0;
     var dmg=afterDef*(1-neg/100);
     bd[ENG_DMG_NAMES[dt]]=Math.floor(dmg);total+=dmg;
@@ -2480,7 +2489,7 @@ function renderCompare(){
     
     return{level:level,hp:engHP(b.stats.vig),fp:engFP(b.stats.mnd),stam:engStam(b.stats.end),
       equip:equipLoad,totalAR:totalAR,spellBuff:spellBuff,arResult:arResult,maxUp:maxUp,
-      weapon:b.weapon,affinity:ENG_AFFINITY_NAMES[b.affinity]||"Standard",
+      weapon:b.weapon,wType:wData?wData.t:0,affinity:ENG_AFFINITY_NAMES[b.affinity]||"Standard",
       className:"Wretch",
       armor:armor,rollType:rollType,loadRatio:Math.round(loadRatio*1000)/10};
   }
@@ -2493,8 +2502,8 @@ function renderCompare(){
   if(cmpData.bossIdx!==null&&cmpData.bossIdx!==undefined){
     var boss=ENG_DATA.bosses[cmpData.bossIdx];
     if(boss){
-      var dmgA=resultA.arResult?engDmgVsBoss(resultA.arResult,boss):null;
-      var dmgB=resultB.arResult?engDmgVsBoss(resultB.arResult,boss):null;
+      var dmgA=resultA.arResult?engDmgVsBoss(resultA.arResult,boss,resultA.wType):null;
+      var dmgB=resultB.arResult?engDmgVsBoss(resultB.arResult,boss,resultB.wType):null;
       bossResult={boss:boss,a:dmgA,b:dmgB};
     }
   }
@@ -3632,7 +3641,7 @@ function renderCharacter(){
             var effDmg=0;var hitsToKill=999;
             if(nextBoss){
               var bestAr=total2h>=total1h?ar2h:ar1h;
-              var dmgResult=engDmgVsBoss(bestAr,nextBoss);
+              var dmgResult=engDmgVsBoss(bestAr,nextBoss,wEnc.t);
               if(dmgResult&&typeof dmgResult==="object"){
                 Object.keys(dmgResult).forEach(function(k){var v=dmgResult[k];if(typeof v==="number"&&!isNaN(v))effDmg+=v;});
               }
@@ -3720,7 +3729,7 @@ function renderCharacter(){
           var useLvl=bestAtCap.level;
           var baseAR2=engCalcAR(bDec,stats,useLvl,true);
           var baseT=0;Object.keys(baseAR2.attackPower).forEach(function(k){if(parseInt(k)<=4)baseT+=baseAR2.attackPower[k];});
-          var baseBD=0;if(nextBoss){var bdr=engDmgVsBoss(baseAR2,nextBoss);Object.keys(bdr).forEach(function(k){var v=bdr[k];if(typeof v==="number"&&!isNaN(v))baseBD+=v;});}
+          var baseBD=0;if(nextBoss){var bdr=engDmgVsBoss(baseAR2,nextBoss,bestWEnc.t);Object.keys(bdr).forEach(function(k){var v=bdr[k];if(typeof v==="number"&&!isNaN(v))baseBD+=v;});}
           var baseHits2=baseBD>0?Math.ceil(nextBoss.hp/baseBD):999;
           var baseHP2=0;try{baseHP2=engHP(stats.vig);}catch(e){}
           
@@ -3729,7 +3738,7 @@ function renderCharacter(){
             var ts=Object.assign({},stats);ts[st]++;
             var tAR=engCalcAR(bDec,ts,useLvl,true);
             var tT=0;Object.keys(tAR.attackPower).forEach(function(k){if(parseInt(k)<=4)tT+=tAR.attackPower[k];});
-            var tDmg=0;if(nextBoss){var tdr=engDmgVsBoss(tAR,nextBoss);Object.keys(tdr).forEach(function(k){var v=tdr[k];if(typeof v==="number"&&!isNaN(v))tDmg+=v;});}
+            var tDmg=0;if(nextBoss){var tdr=engDmgVsBoss(tAR,nextBoss,bestWEnc.t);Object.keys(tdr).forEach(function(k){var v=tdr[k];if(typeof v==="number"&&!isNaN(v))tDmg+=v;});}
             var arGain=Math.round(tT)-Math.round(baseT);
             var dmgGain=Math.round(tDmg)-Math.round(baseBD);
             var hpGain=0;if(st==="vig"){try{hpGain=Math.round(engHP(ts.vig)-baseHP2);}catch(e){}}

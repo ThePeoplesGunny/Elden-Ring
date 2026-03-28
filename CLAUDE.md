@@ -57,8 +57,8 @@ The delivery is not complete until the checklist is complete.
 
 ## Current State
 
-**Version:** v3.3
+**Version:** v3.4
 **Baseline file:** `Tarnished_Companion_v3.1.html`
-**Lines:** 4,606
-**Last completed task:** COA 2 — engDmgVsBoss defense/negation order fix
-**Next task:** COA 3 — per-type defense data (pending Chat research)
+**Lines:** 4,615
+**Last completed task:** B9 — physical damage subtype (slash/strike/pierce) in engDmgVsBoss
+**Next task:** Awaiting instruction from command authority

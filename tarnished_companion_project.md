@@ -219,7 +219,7 @@ tail -3 app.html
 - **B6:** Header shows "COMPANION" with no version number. [OPEN]
 - **B7:** engDmgVsBoss applied negation/defense in wrong order. [DONE v3.3 — defense curve on raw AR first, then negation]
 - **B8:** Boss data single `df` value vs per-type defense. [CLOSED — verified via Fextralife, PureEldenRing, tarnished.dev that Elden Ring bosses use single scalar defense. Per-type differentiation is handled entirely by negation, which we already have correct.]
-- **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). Boss negation data already contains per-subtype values in `ng` field but `engDmgVsBoss` maps all physical to "standard". Weapon type determines subtype but the mapping is not implemented. [OPEN]
+- **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). [DONE v3.4 — PHYS_SUBTYPE map added, engDmgVsBoss accepts weaponType param, all 11 call sites updated. Strike vs standard: 39-55% damage difference on resistant bosses now computable.]
 
 ### FEATURES (new capability)
 - **F1:** Character creation screen — Wretch default, keepsake rec, first purchases. [PLANNED]
@@ -247,6 +247,7 @@ tail -3 app.html
 - **v3.3:** engDmgVsBoss defense/negation order corrected (COA 2). 18% error eliminated on high-negation bosses.
 - **Curated weapon pool:** 152 weapons from 2,764 (engine cross-referenced with community research). 66 engine-verified for optimizer hot loop.
 - **B8 investigation:** Per-type boss defense confirmed as single scalar. Not a real issue. Closed.
+- **v3.4:** B9 — physical subtype negation (slash/strike/pierce). PHYS_SUBTYPE map, engDmgVsBoss weaponType param, all 11 call sites updated. 39-55% damage differentiation now visible.
 
 ---
 
