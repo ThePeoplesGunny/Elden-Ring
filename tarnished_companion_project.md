@@ -173,12 +173,15 @@ Everything from v2.0 plus:
 ## BACKLOG
 
 ### BUGS (broken behavior)
-- **B1:** Level calc hardcodes 79 as base stat total — Wretch has 80 (10×8). [DONE v3.2 — uses WRETCH_BASE_TOTAL/WRETCH_LEVEL constants in both renderCharacter and calcBuild]
-- **B2:** Compare tab hooks violation — renderCompare (2393) calls useState outside App component. 312-line standalone component orphaned from main UI block (3334+). [OPEN]
+- **B1:** Level calc hardcodes 79 as base stat total. [DONE v3.2 — WRETCH_BASE_TOTAL/WRETCH_LEVEL constants]
+- **B2:** Compare tab hooks violation — renderCompare calls useState outside App component. [OPEN]
 - **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
-- **B4:** renderSettings About section (line 4348) hardcodes "Tarnished's Companion v1.0" — should show current version. Also shows "3,216 weapons" (stale, actual: 2,764) and "172 bosses" (actual: 173). [OPEN]
-- **B5:** Optimizer header (line 4380) shows "3,216 weapons" — same stale count as B4. [OPEN]
-- **B6:** Header (line 4586) shows "COMPANION" with no version number. E2 should address this. [OPEN]
+- **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [OPEN]
+- **B5:** Optimizer header shows stale "3,216 weapons" count. [OPEN]
+- **B6:** Header shows "COMPANION" with no version number. [OPEN]
+- **B7:** engDmgVsBoss applied negation/defense in wrong order (negation first, defense second). Correct order: defense curve on raw AR, then negation percentage. [DONE v3.3]
+- **B8:** Boss data stores single `df` value — real game has per-damage-type defense (phys/magic/fire/lightning/holy). Requires data sourcing. [OPEN — COA 3]
+- **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). Weapon type determines subtype but engDmgVsBoss treats all physical as "standard" negation. [OPEN — COA 1]
 
 ### FEATURES (new capability)
 - **F1:** Character creation screen — class optimizer per archetype, keepsake rec, first purchases. [PLANNED]

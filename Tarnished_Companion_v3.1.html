@@ -2375,24 +2375,26 @@ function engFP(m){return _dsLookup(ENG_DATA.derivedStats.fp.values,_dsKeys.fp,m)
 function engStam(e){return _dsLookup(ENG_DATA.derivedStats.stamina.values,_dsKeys.stam,e);}
 function engEquip(e){var t=ENG_DATA.derivedStats.equipLoad.values;var keys=_dsKeys.equip;if(e<=keys[0])return t[keys[0]];if(e>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(e>=keys[i]&&e<=keys[i+1]){var r=(e-keys[i])/(keys[i+1]-keys[i]);return Math.round((t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r)*10)/10;}}return t[keys[keys.length-1]];}
 
-// Damage vs boss — full piecewise defense curve
+// Damage vs boss — correct order: defense (non-linear) THEN negation (percentage)
+// Per community-validated formula: AR → piecewise defense curve → negation reduction
 function engDmgVsBoss(arResult,boss){
   var ph=boss.ph[0];var negMap={0:"standard",1:"magic",2:"fire",3:"lightning",4:"holy"};
   var total=0,bd={};
   [0,1,2,3,4].forEach(function(dt){
     var ar=arResult.attackPower[dt]||0;if(ar<=0)return;
-    var neg=ph.ng[negMap[dt]]||0;var afterNeg=ar*(1-neg/100);
-    // Full piecewise defense formula
-    // Defense reduces damage via a ratio curve with 4 segments
+    // Stage 1: Defense — piecewise non-linear curve on raw AR
     var def=ph.df||100;
-    var ratio=afterNeg/def;
+    var ratio=ar/def;
     var mult;
     if(ratio<=0.125){mult=0.10*(ratio/0.125);}
     else if(ratio<=1.0){mult=0.10+0.80*((ratio-0.125)/0.875);}
     else if(ratio<=2.5){mult=0.90+0.10*((ratio-1.0)/1.5);}
     else if(ratio<=8.0){mult=1.00+0.10*((ratio-2.5)/5.5);}
     else{mult=1.10+0.05*((ratio-8.0)/12.0);if(mult>1.20)mult=1.20;}
-    var dmg=afterNeg*mult;
+    var afterDef=ar*mult;
+    // Stage 2: Negation — percentage reduction on post-defense damage
+    var neg=ph.ng[negMap[dt]]||0;
+    var dmg=afterDef*(1-neg/100);
     bd[ENG_DMG_NAMES[dt]]=Math.floor(dmg);total+=dmg;
   });
   return{total:Math.floor(total),breakdown:bd,hitsToKill:Math.ceil((boss.hp||1)/Math.max(total,1))};

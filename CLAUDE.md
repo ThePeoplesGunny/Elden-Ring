@@ -57,8 +57,8 @@ The delivery is not complete until the checklist is complete.
 
 ## Current State
 
-**Version:** v3.2
+**Version:** v3.3
 **Baseline file:** `Tarnished_Companion_v3.1.html`
-**Lines:** 4,604
-**Last completed task:** DD37 Wretch-only optimization — engine, UI, data layer
-**Next task:** Awaiting instruction from command authority
+**Lines:** 4,606
+**Last completed task:** COA 2 — engDmgVsBoss defense/negation order fix
+**Next task:** COA 3 — per-type defense data (pending Chat research)
