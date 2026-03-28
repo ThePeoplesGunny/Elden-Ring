@@ -1,5 +1,5 @@
 # Tarnished's Companion — Project Document
-## March 27, 2026
+## March 28, 2026
 
 ---
 
@@ -70,7 +70,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | `engDmgVsBoss(arResult, boss)` | 2367 | AR through boss resistance profile → effective damage |
 | `resolveStats(cls, tmpl, lvl)` | 2155 | Class + archetype + level → effective stats |
 | `meetsRequirements(wEnc, stats, 2h)` | 2201 | Pre-decode stat requirement filter |
-| `globalOptimize(targetLevel, includeDLC, options)` | 2216 | Exhaustive class × template × weapon search → top 10 |
+| `globalOptimize(lvl, bosses, tmpls, opts)` | 2216 | Exhaustive class × template × weapon search → top 10 |
 | `bestWeaponForBoss(boss, stats, gate, region, 2h)` | 2335 | Top 10 weapons for a single boss given player state |
 | `getPlayerBossDmg(bossName, charState)` | 2179 | Single-weapon damage against a specific boss |
 | `deriveGateState(ci)` | 2765 | Journey checkoffs → unlocked affinities + upgrade caps |
@@ -83,36 +83,26 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,604 | **Size:** ~1.35 MB
+**File:** `Tarnished_Companion_v2.html` | **Lines:** 4,392 | **Size:** 1.35 MB
 
 | Section | Lines | Notes |
 |---|---|---|
 | HTML shell + CSS | 1–66 | |
 | Script open | 68 | |
 | **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA, ENG_GRAPHS (~69% of file) |
-| Engine functions | 2004–2366 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss, derived stat curves |
-| engDmgVsBoss | 2367–2387 | AR through boss resistance profile |
-| **renderCompare (HOOKS VIOLATION)** | **2393–2705** | ~312 lines, standalone. Own useState, calcBuild, calcArmorFromSet, buildPanel, comparisonRow, boss matchup. Orphaned from main UI block. |
-| Character system data | 2707–2763 | REGION_CAPS, BOSS_READY (17 bosses), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
-| Gate + archetype functions | 2765–2857 | deriveGateState, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
-| Step classification data | 2853–2855 | STEP_CLASS (1,679 entries), CLASS_LABELS, STEP_ITEMS (69 tags) |
-| Class/stat constants | 2858–2877 | CLASS_COLORS, CLASSES (from ENG_DATA), STAT_NAMES/LABELS/DESC, SOFT_CAPS |
-| Stat calc wrappers | 2880–2897 | calcHP/FP/Stam/Equip (wrap engine), SCALE_MULT, calcScaleAR |
-| **BUILDS (static — replace with F4)** | **2899–2924** | 8 hardcoded Fextralife builds, not engine-computed |
-| App core | 2926–2953 | STORAGE_KEY, storage{}, color palette C{} |
-| Achievements + Endings | 2954–3113 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
-| Categories | 3115–3141 | CATEGORIES array (collectible tracking) |
-| Quests + Boss lists | 3142–3222 | 28 quests, BOSSES_BASE (31), BOSSES_DLC (14) |
-| UI constants + helpers | 3224–3232 | DASH_CATS, tier/prio colors, catClass, stepClass, h(), btnS() |
-| UI primitives | 3234–3238 | ProgressRing, ProgressBar, Chk |
-| **App component** | **3241–4604** | 24 useState hooks. State helpers, save/load, export/import. |
-| renderCharacter (+ nested) | 3334–4232 | Contains renderBuilds (3454), renderLoadout (3488) |
-| renderDashboard | 4233–4293 | |
-| renderAchievements | 4294–4343 | |
-| renderQuests / Collectibles | 4344–4347 | |
-| **renderSettings (stale version)** | **4348–4349** | Hardcodes "v1.0" and wrong data counts — BUG |
-| Main render + tab routing | 4350–4564 | renderOptimizer (4353), runOptimizer (4356), TABS, renderers |
-| Mount + close | 4606–4608 | ReactDOM.render |
+| Engine functions | 2004–2392 | Safe to load in full |
+| UI helpers | 2401–2706 | |
+| Character system + gates | 2707–2857 | REGION_CAPS, BOSS_READY, whetstones, bells, tactical, archetypes |
+| Stat calc helpers | 2880–2925 | |
+| App core | 2926–3141 | Achievements, endings, categories |
+| Quests | 3142–3227 | |
+| UI primitives | 3228–3240 | |
+| **App component** | **3241** | All useState hooks live here |
+| State helpers + export/import | 3283–3330 | |
+| React UI components | 3334–4135 | 16 render functions |
+| Optimizer UI | 4134–4149 | renderOptimizer, runOptimizer |
+| Mount | 4389 | ReactDOM.render |
+| Close | 4390–4392 | |
 
 ---
 
@@ -120,7 +110,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ### What's built and working (v3.1 — current baseline)
 
-**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,604
+**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,608
 
 Everything from v2.0 plus:
 
@@ -146,73 +136,77 @@ Everything from v2.0 plus:
 
 **UI:** 18+ React components. Tabs: Character, Journey, Dashboard, Optimizer, Compare, plus sub-views.
 
-### Design Decisions (locked)
+### v3.2 build scope (next delivery)
+
+From v3.1 baseline, apply these changes:
+
+1. **Level calc fix** — `totalPts-79+cls.lv` hardcodes 79 as base stat total. Wretch has 80 (10×8). Fix: compute from actual class base stats.
+2. **Step numbers on walkthrough cards** — display `#stepnumber` in upper right corner of each card for reference during playtesting.
+3. **Version display in header** — "COMPANION v3.2" displayed visually in the tool header after the word COMPANION. Minor version numbers 1–99.
+4. **Stormfoot Catacombs ranged weapon issue** — walkthrough step requires shooting fire pillars but player may have no ranged weapon. Flag requirement or ensure ranged weapon acquisition is addressed in prior steps.
+
+### Design decisions confirmed by playthrough (DD35–DD40)
 
 | DD | Decision | Status |
 |---|---|---|
-| DD22 | Cookbooks not gates | Locked |
-| DD34 | No claims without computation | Locked |
-| DD35 | Golden Seed is universal optimal keepsake | Confirmed, locked |
-| DD36 | Crafting Kit + Torch mandatory first purchases ALL classes | Confirmed, locked |
-| DD37 | Wretch IS universally optimal class (zero stat waste: 10×8=80) | Confirmed, locked |
-| DD38 | Weapon upgrade level dominates stat investment early game | Confirmed, locked |
+| DD35 | Golden Seed is universal optimal keepsake | Confirmed |
+| DD36 | Crafting Kit + Torch are mandatory first purchases for ALL classes | Confirmed |
+| DD37 | Wretch IS universally optimal class (zero stat waste: 10×8=80, every point at minimum) | Confirmed |
+| DD38 | Weapon upgrade level dominates stat investment in early game | Confirmed |
 | DD39 | Walkthrough steps need power-gate filtering | Confirmed, not yet implemented |
 | DD40 | Single recommendation over comparison tables | Confirmed, implemented in v3.1 |
 
-### Known Limitations
+### v3.x future roadmap (after v3.2)
+
+- Replace renderBuilds (Fextralife copy-paste content) with archetype-computed recommendations
+- Power-gated walkthrough filtering (suppress/flag steps unviable at current power level)
+- Character creation screen: Wretch optimal, Golden Seed universal, Crafting Kit + Torch mandatory, class optimizer per archetype
+- "Where to go next" — highest-value destination computed from current state and next boss gate
+- Enemy resistance awareness in routing (e.g., miners resist slash, bring Club)
+- Stat point advisor: account for weapon requirement breakpoints (e.g., "1 STR unlocks two-handing LGS")
+- Fix Compare tab (React hooks violation in renderCompare — pre-existing)
+- Kill the checklist, build the journey — walkthrough steps become backing data queried by engine, not a scrollable list
+
+### Known limitations
 
 - Upgrade level not tracked per weapon — uses regional cap
 - Obtained items not tracked — weapon availability modeled by constraints
 - Static HTML shell flashes before React hydrates
 - Build-aware filtering covers 69 of 214 P3 steps
 - Optimizer is endgame-only
-- Compare tab broken (hooks violation in renderCompare — pre-existing)
-
----
-
-## BACKLOG
-
-### BUGS (broken behavior)
-- **B1:** Level calc hardcodes 79 as base stat total. [DONE v3.2 — WRETCH_BASE_TOTAL/WRETCH_LEVEL constants]
-- **B2:** Compare tab hooks violation — renderCompare calls useState outside App component. [OPEN]
-- **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
-- **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [OPEN]
-- **B5:** Optimizer header shows stale "3,216 weapons" count. [OPEN]
-- **B6:** Header shows "COMPANION" with no version number. [OPEN]
-- **B7:** engDmgVsBoss applied negation/defense in wrong order (negation first, defense second). Correct order: defense curve on raw AR, then negation percentage. [DONE v3.3]
-- **B8:** Boss data stores single `df` value — real game has per-damage-type defense (phys/magic/fire/lightning/holy). Requires data sourcing. [OPEN — COA 3]
-- **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). Weapon type determines subtype but engDmgVsBoss treats all physical as "standard" negation. [OPEN — COA 1]
-
-### FEATURES (new capability)
-- **F1:** Character creation screen — class optimizer per archetype, keepsake rec, first purchases. [PLANNED]
-- **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [PLANNED]
-- **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [PLANNED]
-- **F4:** Replace renderBuilds with archetype-computed recommendations. [PLANNED]
-
-### ENHANCEMENTS (improve existing capability)
-- **E1:** Step numbers on walkthrough cards — display #stepnumber for reference. [PLANNED]
-- **E2:** Version display in header — "COMPANION v[X.Y]" in tool header. [PLANNED]
-- **E3:** Stat advisor accounts for weapon requirement breakpoints (e.g., "1 STR unlocks two-handing LGS"). [PLANNED]
-- **E4:** Enemy resistance awareness in routing (e.g., miners resist slash, bring Club). [PLANNED]
-
-### FUTURE (not yet scoped)
-- Kill the checklist, build the journey — walkthrough steps become backing data queried by engine, not a scrollable list
+- Compare tab broken (hooks violation, pre-existing)
 
 ---
 
 ## DEVELOPMENT PROTOCOL
 
-**Version numbering:** Minor versions 1–99 (v3.1, v3.2, ... v3.99). Version displayed in tool header as "COMPANION v[X.Y]". Hardcoded string — find and replace on each delivery. Major version at defined milestone.
+**Context constraint:** The HTML file (~1.35 MB) cannot be uploaded to conversations. Use `split_for_claude.js` to split into data block (~900KB, stays local) + code block (~400KB, uploadable). After edits, `merge_from_claude.js` reassembles the complete file. Fallback: `extract_manifest.js` for structural recon (~4KB JSON output).
 
-**Context constraint:** The HTML file (~1.35 MB) cannot be loaded in full. Lines 69–2003 are inline JSON data (~69% of file). All code edits target line 2004+. Use targeted reads only.
+**Version numbering:** Minor versions 1–99 (v3.1, v3.2, ... v3.99). Version is displayed visually in the tool header as "COMPANION v[X.Y]". Hardcoded in the header string — find and replace on each delivery.
 
-**Line numbers shift after every edit.** Reference the file structure table above. Re-verify with grep when needed. Update this document after every delivery with new line count and shifted ranges.
+**Line map is memorized.** Do not rediscover structure each session. Reference the file structure table above. Line numbers shift after each delivery — update this document.
 
-**React hooks live in App component only.** Compare tab has a pre-existing violation — do not add more.
+**Never load lines 69–2003.** That's inline JSON data — 69% of the file. All code edits target line 2004+.
 
-**Update this document after every delivery.** New line count, shifted ranges, what was added, new version number, backlog status.
+**Batch edits into single scripts.** Python heredoc for multiple edits, create-then-inject for new functions. Target: 4–6 tool calls per feature.
+
+**One feature per conversation.** State the target, draft in context, execute in one batch, verify in one bash call, deliver.
+
+**Technical Authority inquiries.** All verification requests from Operational to Technical Authority follow: context + why it matters → authoritative basis cited → WHAT needs verification and WHY (never HOW — no diagnostic steps, line numbers, or tool choices) → scope boundary.
+
+**Verify minimally:**
+```bash
+echo "LINES: $(wc -l < app.html)" && \
+grep -c 'featureIdentifier' app.html && \
+sed -n 'START,ENDp' app.html | node --check 2>&1 && \
+tail -3 app.html
+```
+
+**Update this document after every delivery.** New line count, shifted ranges, what was added, new version number.
+
+**React hooks live in App component only.** Do not add hooks elsewhere. (Compare tab has a pre-existing violation — fix is on the roadmap.)
 
 ---
 
-*Single project document | March 27, 2026*
+*Single project document | March 28, 2026*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
