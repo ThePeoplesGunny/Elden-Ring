@@ -236,7 +236,7 @@ tail -3 app.html
 - **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). [DONE v3.4 — PHYS_SUBTYPE map added, engDmgVsBoss accepts weaponType param, all 11 call sites updated. Strike vs standard: 39-55% damage difference on resistant bosses now computable.]
 
 ### FEATURES (new capability)
-- **F1:** Character creation screen — Wretch default, keepsake rec, first purchases. [PLANNED]
+- **F1:** Character creation screen. [CLOSED — not needed. Wretch locked (DD37), walkthrough guides first purchases (Step 16), keepsake guidance is implicit. No added value as separate UI.]
 - **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [PLANNED]
 - **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [PLANNED]
 - **F4:** Replace renderBuilds with archetype-computed recommendations. [PLANNED]
