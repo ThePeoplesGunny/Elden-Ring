@@ -90,20 +90,29 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | HTML shell + CSS | 1–66 | |
 | Script open | 68 | |
 | **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA, ENG_GRAPHS (~69% of file) |
-| Engine functions | 2004–2366 | AR calc, damage model, optimizer, stat resolution |
-| Derived stat curves | 2361–2366 | engHP, engFP, engStam, engEquip |
-| engDmgVsBoss | 2367 | AR through boss resistance |
-| renderCompare (HOOKS VIOLATION) | 2393 | Pre-existing — hooks inside nested function |
-| Character system + gates | 2765–2856 | deriveGateState, resolveTacticalNeeds, detectBuildArchetype |
-| App core | 2954–3141 | ACHIEVEMENTS, endings, categories |
-| Quests | 3142–3227 | |
-| **App component** | **3241** | All useState hooks — nowhere else |
-| React UI components | 3334–4352 | renderCharacter, renderBuilds (nested), renderLoadout, renderDashboard, renderAchievements, renderSettings |
-| Optimizer UI | 4353 | renderOptimizer, runOptimizer |
-| Mount | 4606 | ReactDOM.render |
-| Close | 4607–4608 | |
-
-**Note:** renderCompare at line 2393 is isolated from the main UI component block (3334+) due to its pre-existing hooks violation. Lines between sections (2367–2764, 2857–2953, 3228–3240) contain UI helpers, stat calc helpers, and UI primitives — verify with grep when targeting.
+| Engine functions | 2004–2366 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss, derived stat curves |
+| engDmgVsBoss | 2367–2387 | AR through boss resistance profile |
+| **renderCompare (HOOKS VIOLATION)** | **2393–2705** | ~312 lines, standalone. Own useState, calcBuild, calcArmorFromSet, buildPanel, comparisonRow, boss matchup. Orphaned from main UI block. |
+| Character system data | 2707–2763 | REGION_CAPS, BOSS_READY (17 bosses), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
+| Gate + archetype functions | 2765–2857 | deriveGateState, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
+| Step classification data | 2853–2855 | STEP_CLASS (1,679 entries), CLASS_LABELS, STEP_ITEMS (69 tags) |
+| Class/stat constants | 2858–2877 | CLASS_COLORS, CLASSES (from ENG_DATA), STAT_NAMES/LABELS/DESC, SOFT_CAPS |
+| Stat calc wrappers | 2880–2897 | calcHP/FP/Stam/Equip (wrap engine), SCALE_MULT, calcScaleAR |
+| **BUILDS (static — replace with F4)** | **2899–2924** | 8 hardcoded Fextralife builds, not engine-computed |
+| App core | 2926–2953 | STORAGE_KEY, storage{}, color palette C{} |
+| Achievements + Endings | 2954–3113 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
+| Categories | 3115–3141 | CATEGORIES array (collectible tracking) |
+| Quests + Boss lists | 3142–3222 | 28 quests, BOSSES_BASE (31), BOSSES_DLC (14) |
+| UI constants + helpers | 3224–3232 | DASH_CATS, tier/prio colors, catClass, stepClass, h(), btnS() |
+| UI primitives | 3234–3238 | ProgressRing, ProgressBar, Chk |
+| **App component** | **3241–4604** | 24 useState hooks. State helpers, save/load, export/import. |
+| renderCharacter (+ nested) | 3334–4232 | Contains renderBuilds (3454), renderLoadout (3488) |
+| renderDashboard | 4233–4293 | |
+| renderAchievements | 4294–4343 | |
+| renderQuests / Collectibles | 4344–4347 | |
+| **renderSettings (stale version)** | **4348–4349** | Hardcodes "v1.0" and wrong data counts — BUG |
+| Main render + tab routing | 4350–4564 | renderOptimizer (4353), runOptimizer (4356), TABS, renderers |
+| Mount + close | 4606–4608 | ReactDOM.render |
 
 ---
 
@@ -164,9 +173,12 @@ Everything from v2.0 plus:
 ## BACKLOG
 
 ### BUGS (broken behavior)
-- **B1:** Level calc hardcodes 79 as base stat total — Wretch has 80 (10×8). Fix: compute from actual class base stats. [OPEN]
-- **B2:** Compare tab blank screen — hooks violation in renderCompare. [OPEN]
+- **B1:** Level calc hardcodes 79 as base stat total — Wretch has 80 (10×8). Fix: compute from actual class base stats. Exists in renderCharacter (line 3339) AND renderCompare calcBuild (line 2444, already fixed there). [OPEN]
+- **B2:** Compare tab hooks violation — renderCompare (2393) calls useState outside App component. 312-line standalone component orphaned from main UI block (3334+). [OPEN]
 - **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
+- **B4:** renderSettings About section (line 4348) hardcodes "Tarnished's Companion v1.0" — should show current version. Also shows "3,216 weapons" (stale, actual: 2,764) and "172 bosses" (actual: 173). [OPEN]
+- **B5:** Optimizer header (line 4380) shows "3,216 weapons" — same stale count as B4. [OPEN]
+- **B6:** Header (line 4586) shows "COMPANION" with no version number. E2 should address this. [OPEN]
 
 ### FEATURES (new capability)
 - **F1:** Character creation screen — class optimizer per archetype, keepsake rec, first purchases. [PLANNED]
