@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.2
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,616
-**Last completed task:** Talisman Pouch walkthrough coverage — Enia step reclassified M1, missability warning added
+**Lines:** 4,749
+**Last completed task:** Loadout system overhaul — per-weapon affinity/upgrade tracking, live AR/Scaling header, arrow/bolt slots, save migration
 **Next task:** Awaiting instruction from command authority

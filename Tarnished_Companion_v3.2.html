@@ -2382,6 +2382,31 @@ var PHYS_SUBTYPE={9:"slash",11:"slash",13:"slash",31:"slash",37:"slash",39:"slas
   15:"pierce",16:"pierce",25:"pierce",28:"pierce",90:"pierce"};
 // All other weapon types (1,3,5,7,14,17,19,29,87,89,91,93,95) default to "standard"
 
+// Arrow/bolt data for ranged utility display
+var AMMO_DATA=[
+{n:"Arrow",d:{0:45},t:"arrow"},{n:"Fire Arrow",d:{0:10,2:90},t:"arrow"},{n:"Poison Arrow",d:{0:30},st:{poison:78},t:"arrow"},
+{n:"Serpent Arrow",d:{0:40},st:{poison:78},t:"arrow"},{n:"Dwelling Arrow",d:{0:10,1:90},t:"arrow"},
+{n:"Bloodbone Arrow (Fletched)",d:{0:20},st:{bleed:85},t:"arrow"},{n:"Sleepbone Arrow",d:{0:15},st:{sleep:78},t:"arrow"},
+{n:"Coldbone Arrow",d:{0:15},st:{frost:100},t:"arrow"},{n:"Rotbone Arrow",d:{0:15},st:{rot:50},t:"arrow"},
+{n:"Golden Arrow",d:{0:10,4:65},t:"arrow"},{n:"Lightning Arrow",d:{0:10,3:90},t:"arrow"},
+{n:"Bone Arrow (Fletched)",d:{0:30},t:"arrow"},{n:"Stormhawk Arrow",d:{0:55},t:"arrow"},
+{n:"Bolt",d:{0:50},t:"bolt"},{n:"Burred Bolt",d:{0:40},st:{bleed:65},t:"bolt"},
+{n:"Sleepbone Bolt",d:{0:15},st:{sleep:78},t:"bolt"},{n:"Bloodbone Bolt",d:{0:15},st:{bleed:65},t:"bolt"},
+{n:"Poisonbone Bolt",d:{0:15},st:{poison:78},t:"bolt"},{n:"Coldbone Bolt",d:{0:15},st:{frost:100},t:"bolt"},
+{n:"Rotbone Bolt",d:{0:15},st:{rot:50},t:"bolt"},{n:"Explosive Bolt",d:{2:100},t:"bolt"},
+{n:"Perfumer's Bolt",d:{0:45,2:45},t:"bolt"},{n:"Lightning Bolt",d:{0:10,3:90},t:"bolt"},
+{n:"Great Arrow",d:{0:60},t:"greatarrow"},{n:"Golem's Great Arrow",d:{0:90},t:"greatarrow"},
+{n:"Radahn's Spear",d:{0:80,1:80},t:"greatarrow"},{n:"Golden Great Arrow",d:{0:40,4:65},t:"greatarrow"},
+{n:"Great Bolt",d:{0:100},t:"greatbolt"},{n:"Explosive Greatbolt",d:{2:150},t:"greatbolt"},
+{n:"Lightning Great Bolt",d:{3:165},t:"greatbolt"}
+];
+var AMMO_ARROWS=AMMO_DATA.filter(function(a){return a.t==="arrow"});
+var AMMO_BOLTS=AMMO_DATA.filter(function(a){return a.t==="bolt"});
+var AMMO_GREAT_ARROWS=AMMO_DATA.filter(function(a){return a.t==="greatarrow"});
+var AMMO_GREAT_BOLTS=AMMO_DATA.filter(function(a){return a.t==="greatbolt"});
+// Ammo type compatibility: Light Bow/Bow use arrows, Greatbow uses great arrows, Crossbow uses bolts, Ballista uses great bolts
+var AMMO_FOR_WEAPON={50:AMMO_ARROWS,51:AMMO_ARROWS,53:AMMO_GREAT_ARROWS,55:AMMO_BOLTS,56:AMMO_GREAT_BOLTS};
+
 // Damage vs boss — correct order: defense (non-linear) THEN negation (percentage)
 // weaponType param enables physical subtype negation lookup (B9)
 function engDmgVsBoss(arResult,boss,weaponType){
@@ -3290,7 +3315,15 @@ var _otm=us(null),optTime=_otm[0],setOptTime=_otm[1];
 React.useEffect(function(){
   var d=storage.load();
   if(d){setCi(d.checkedItems||{});setQp(d.questProgress||{});
-    if(d.character)setCharData(d.character);
+    if(d.character){
+      // Migrate old string-based weapon slots to {name, affinity, upgrade} objects
+      if(d.character.loadout){["rh1","rh2","lh1","lh2"].forEach(function(k){
+        var v=d.character.loadout[k];
+        if(typeof v==="string")d.character.loadout[k]={name:v,affinity:-1,upgrade:0};
+        else if(!v)d.character.loadout[k]={name:"",affinity:-1,upgrade:0};
+      });if(!d.character.loadout.arrow1)d.character.loadout.arrow1="";if(!d.character.loadout.arrow2)d.character.loadout.arrow2="";}
+      setCharData(d.character);
+    }
     if(d.respec)setRespecData(d.respec);
   }
 },[]);
@@ -3323,6 +3356,12 @@ function importSave(file){
     try{
       var d=JSON.parse(e.target.result);
       if(!d.version||typeof d.checkedItems!=="object"){setSav("Invalid save file");return;}
+      // Migrate old weapon slots on import
+      if(d.character&&d.character.loadout){["rh1","rh2","lh1","lh2"].forEach(function(k){
+        var v=d.character.loadout[k];
+        if(typeof v==="string")d.character.loadout[k]={name:v,affinity:-1,upgrade:0};
+        else if(!v)d.character.loadout[k]={name:"",affinity:-1,upgrade:0};
+      });if(!d.character.loadout.arrow1)d.character.loadout.arrow1="";if(!d.character.loadout.arrow2)d.character.loadout.arrow2="";}
       setCi(d.checkedItems||{});
       setQp(d.questProgress||{});
       setCharData(d.character||null);
@@ -3348,7 +3387,12 @@ function pct(s){return s.total?Math.round(s.done/s.total*100):0}
 // ══════ CHARACTER TAB ══════
 function renderCharacter(){
   // DD37: Wretch is universally optimal class — all stats start at 10
-  var ch=charData||{classId:"wretch",stats:{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10},loadout:{rh1:"",rh2:"",lh1:"",lh2:"",head:"",chest:"",arms:"",legs:"",t1:"",t2:"",t3:"",t4:"",spell1:"",spell2:"",spell3:"",spell4:"",spell5:"",spell6:"",greatRune:"",physick1:"",physick2:""}};
+  // Weapon slots: {name, affinity, upgrade} objects. Arrow slots: string names.
+  function migrateSlot(v){if(!v)return{name:"",affinity:-1,upgrade:0};if(typeof v==="string")return{name:v,affinity:-1,upgrade:0};return v;}
+  var defaultLoadout={rh1:{name:"",affinity:-1,upgrade:0},rh2:{name:"",affinity:-1,upgrade:0},lh1:{name:"",affinity:-1,upgrade:0},lh2:{name:"",affinity:-1,upgrade:0},arrow1:"",arrow2:"",head:"",chest:"",arms:"",legs:"",t1:"",t2:"",t3:"",t4:"",spell1:"",spell2:"",spell3:"",spell4:"",spell5:"",spell6:"",greatRune:"",physick1:"",physick2:""};
+  var ch=charData||{classId:"wretch",stats:{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10},loadout:Object.assign({},defaultLoadout)};
+  // Migrate old string-based weapon slots
+  if(ch.loadout){["rh1","rh2","lh1","lh2"].forEach(function(k){ch.loadout[k]=migrateSlot(ch.loadout[k]);});if(!ch.loadout.arrow1)ch.loadout.arrow1="";if(!ch.loadout.arrow2)ch.loadout.arrow2="";};
   var stats=ch.stats||{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10};
   var totalPts=0;STAT_NAMES.forEach(function(s){totalPts+=stats[s]});
   var level=totalPts-WRETCH_BASE_TOTAL+WRETCH_LEVEL; // B1 fix: computed from Wretch base
@@ -3361,6 +3405,20 @@ function renderCharacter(){
   }
   function setLoadout(key,val){
     var nl=Object.assign({},ch.loadout||{});nl[key]=val;
+    saveChar(Object.assign({},ch,{loadout:nl}));
+  }
+  // Update a single field within a weapon slot object
+  function setWeaponSlot(slotKey,field,val){
+    var nl=Object.assign({},ch.loadout||{});
+    var slot=Object.assign({},nl[slotKey]||{name:"",affinity:-1,upgrade:0});
+    slot[field]=val;
+    // When weapon name changes, reset affinity to first available and upgrade to 0
+    if(field==="name"){
+      var wEntry=ENG_WEAPON_NAMES.find(function(w){return w.name===val;});
+      slot.affinity=wEntry&&wEntry.affinities.length?wEntry.affinities[0]:-1;
+      slot.upgrade=0;
+    }
+    nl[slotKey]=slot;
     saveChar(Object.assign({},ch,{loadout:nl}));
   }
 
@@ -3575,10 +3633,47 @@ function renderCharacter(){
     function sectionHeader(title,accentColor){
       return h("div",{style:{fontSize:13,fontWeight:700,color:accentColor||C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:8,marginTop:16,paddingBottom:6,borderBottom:"1px solid "+C.border+"40"}},title);
     }
+
+    // Weapon slot with name + affinity + upgrade controls
+    function weaponSlotRow(slotKey,label,weaponList){
+      var slot=lo[slotKey]||{name:"",affinity:-1,upgrade:0};
+      var wEntry=slot.name?ENG_WEAPON_NAMES.find(function(w){return w.name===slot.name;}):null;
+      var affinities=wEntry?wEntry.affinities:[];
+      var maxUpgrade=10;
+      if(slot.name){var wEnc=ENG_DATA.reg.w.find(function(w){return w.w===slot.name&&w.a===slot.affinity;})||ENG_DATA.reg.w.find(function(w){return w.w===slot.name;});if(wEnc)maxUpgrade=(ENG_DATA.reg.rt[wEnc.ri]||[]).length-1;}
+      // Compute AR for this slot
+      var slotAR=0,slotScaling=0,isCatalyst=false;
+      if(slot.name&&wEntry){
+        var wEnc2=ENG_DATA.reg.w.find(function(w){return w.w===slot.name&&w.a===slot.affinity;})||ENG_DATA.reg.w.find(function(w){return w.w===slot.name;});
+        if(wEnc2){var dec=engDecodeWAtLevel(wEnc2,Math.min(slot.upgrade,(ENG_DATA.reg.rt[wEnc2.ri]||[]).length-1));
+          if(dec){var ar=engCalcAR(dec,stats,0,false);
+            [0,1,2,3,4].forEach(function(dt){slotAR+=(ar.attackPower[dt]||0);});slotAR=Math.floor(slotAR);
+            if(dec.sorceryTool||dec.incantationTool){isCatalyst=true;slotScaling=ar.spellScaling[0]?Math.floor(ar.spellScaling[0]):0;}
+          }
+        }
+      }
+      return h("div",{key:slotKey,style:{marginBottom:8,padding:"8px 10px",border:"1px solid "+C.border+"60",borderRadius:6}},
+        h("div",{style:{display:"flex",alignItems:"center",gap:8,marginBottom:slot.name?6:0}},
+          h("span",{style:{fontSize:13,color:C.textDim,minWidth:85,letterSpacing:0.5}},label),
+          h("select",{value:slot.name,onChange:function(e){setWeaponSlot(slotKey,"name",e.target.value);},style:Object.assign({},selectStyle,{flex:1})},
+            h("option",{value:""},"— Empty —"),
+            weaponList.map(function(w){return h("option",{key:w,value:w},w);}))
+        ),
+        slot.name?h("div",{style:{display:"flex",alignItems:"center",gap:6,marginLeft:93}},
+          affinities.length>1?h("select",{value:slot.affinity,onChange:function(e){setWeaponSlot(slotKey,"affinity",parseInt(e.target.value));},style:{padding:"3px 6px",background:"#080806",border:"1px solid "+C.border,borderRadius:4,color:"#a080c0",fontSize:12,fontFamily:"inherit"}},
+            affinities.map(function(a){return h("option",{key:a,value:a},ENG_AFFINITY_NAMES[a]||"Unique");})):h("span",{style:{fontSize:12,color:"#a080c0"}},ENG_AFFINITY_NAMES[slot.affinity]||"Unique"),
+          h("span",{style:{fontSize:12,color:C.textDim}},"+"),
+          h("select",{value:slot.upgrade,onChange:function(e){setWeaponSlot(slotKey,"upgrade",parseInt(e.target.value));},style:{padding:"3px 6px",background:"#080806",border:"1px solid "+C.border,borderRadius:4,color:C.goldBright,fontSize:12,fontFamily:"inherit",width:48}},
+            Array.from({length:maxUpgrade+1},function(_,i){return h("option",{key:i,value:i},i);})),
+          h("span",{style:{fontSize:13,fontWeight:700,color:isCatalyst?"#b080e0":C.goldBright,fontFamily:"monospace",marginLeft:6}},isCatalyst?slotScaling+" Scaling":slotAR+" AR")
+        ):null
+      );
+    }
     
     // === WEAPON ANALYSIS ENGINE (v3.0) ===
     var wAnalysis=[];
-    var equippedWeapons=[lo.rh1,lo.rh2,lo.lh1,lo.lh2].filter(function(w){return w;});
+    var equippedSlots=[lo.rh1,lo.rh2,lo.lh1,lo.lh2].filter(function(s){return s&&s.name;});
+    var equippedWeapons=equippedSlots.map(function(s){return s.name;});
     var gateState=deriveGateState(ci);
     var unlockedAff=gateState.affinities.length>0?gateState.affinities:[0];
     // Always include Standard(0)
@@ -3796,12 +3891,50 @@ function renderCharacter(){
       
       h("div",{style:{fontSize:15,color:C.textDim,marginBottom:12}},"Track your current equipment. All changes saved automatically."),
       
+      // LIVE AR/SCALING HEADER — computed from primary right-hand weapon
+      (function(){
+        var primary=lo.rh1||{name:"",affinity:-1,upgrade:0};
+        if(!primary.name)return h("div",{style:{textAlign:"center",padding:"12px 0",marginBottom:12,border:"1px solid "+C.border+"40",borderRadius:8}},h("span",{style:{fontSize:14,color:C.textDim}},"Equip a weapon to see live stats"));
+        var wEnc=ENG_DATA.reg.w.find(function(w){return w.w===primary.name&&w.a===primary.affinity;})||ENG_DATA.reg.w.find(function(w){return w.w===primary.name;});
+        if(!wEnc)return null;
+        var maxUp=(ENG_DATA.reg.rt[wEnc.ri]||[]).length-1;
+        var dec=engDecodeWAtLevel(wEnc,Math.min(primary.upgrade,maxUp));
+        if(!dec)return null;
+        var ar=engCalcAR(dec,stats,0,false);
+        var totalAR=0;[0,1,2,3,4].forEach(function(dt){totalAR+=(ar.attackPower[dt]||0);});totalAR=Math.floor(totalAR);
+        var isCat=dec.sorceryTool||dec.incantationTool;
+        var scaling=ar.spellScaling[0]?Math.floor(ar.spellScaling[0]):0;
+        var ammoBonus="";
+        if(AMMO_FOR_WEAPON[wEnc.t]&&lo.arrow1){var ammo=AMMO_DATA.find(function(a){return a.n===lo.arrow1;});if(ammo){var ad=0;Object.values(ammo.d).forEach(function(v){ad+=v;});ammoBonus=" + "+lo.arrow1+" (+"+ad+")";}}
+        return h("div",{style:{textAlign:"center",padding:"14px 0",marginBottom:12,border:"1px solid "+(isCat?"#b080e040":C.gold+"40"),borderRadius:8,background:"#0a080420"}},
+          h("div",{style:{fontSize:11,color:C.textDim,letterSpacing:2,textTransform:"uppercase",marginBottom:4}},isCat?(dec.sorceryTool?"Sorcery Scaling":"Incantation Scaling"):"Attack Rating"),
+          h("div",{style:{fontSize:32,fontWeight:700,color:isCat?"#b080e0":C.goldBright,fontFamily:"monospace"}},isCat?scaling:totalAR),
+          h("div",{style:{fontSize:13,color:C.textDim}},primary.name," ",(ENG_AFFINITY_NAMES[primary.affinity]||""),ammoBonus?" +"+primary.upgrade:""," +"+primary.upgrade),
+          ammoBonus?h("div",{style:{fontSize:12,color:"#6898d0",marginTop:2}},ammoBonus):null
+        );
+      })(),
+
       // WEAPONS
       sectionHeader("Weapons"),
-      slotRow("rh1","Right Hand 1",allHandWeapons),
-      slotRow("rh2","Right Hand 2",allHandWeapons),
-      slotRow("lh1","Left Hand 1",allHandWeapons.concat(shieldWeapons).filter(function(v,i,a){return a.indexOf(v)===i;}).sort()),
-      slotRow("lh2","Left Hand 2",allHandWeapons.concat(shieldWeapons).filter(function(v,i,a){return a.indexOf(v)===i;}).sort()),
+      weaponSlotRow("rh1","Right Hand 1",allHandWeapons),
+      weaponSlotRow("rh2","Right Hand 2",allHandWeapons),
+      weaponSlotRow("lh1","Left Hand 1",allHandWeapons.concat(shieldWeapons).filter(function(v,i,a){return a.indexOf(v)===i;}).sort()),
+      weaponSlotRow("lh2","Left Hand 2",allHandWeapons.concat(shieldWeapons).filter(function(v,i,a){return a.indexOf(v)===i;}).sort()),
+
+      // ARROWS / BOLTS — shown if any ranged weapon is equipped
+      (function(){
+        var rangedSlots=["rh1","rh2","lh1","lh2"].filter(function(k){var s=lo[k];if(!s||!s.name)return false;var wt=0;ENG_DATA.reg.w.forEach(function(w){if(w.w===s.name&&!wt)wt=w.t;});return[50,51,53,55,56].indexOf(wt)>=0;});
+        if(!rangedSlots.length)return null;
+        // Determine ammo type from first ranged weapon
+        var firstRanged=lo[rangedSlots[0]];var rWt=0;ENG_DATA.reg.w.forEach(function(w){if(w.w===firstRanged.name&&!rWt)rWt=w.t;});
+        var ammoList=AMMO_FOR_WEAPON[rWt]||AMMO_ARROWS;
+        var ammoNames=ammoList.map(function(a){return a.n;});
+        return h("div",null,
+          sectionHeader("Ammunition","#6898d0"),
+          slotRow("arrow1","Slot 1",ammoNames,"— None —"),
+          slotRow("arrow2","Slot 2",ammoNames,"— None —")
+        );
+      })(),
       
       // ARMOR
       sectionHeader("Armor"),
