@@ -57,8 +57,8 @@ The delivery is not complete until the checklist is complete.
 
 ## Current State
 
-**Version:** v3.4
-**Baseline file:** `Tarnished_Companion_v3.1.html`
-**Lines:** 4,615
-**Last completed task:** B9 — physical damage subtype (slash/strike/pierce) in engDmgVsBoss
+**Version:** v3.2
+**Baseline file:** `Tarnished_Companion_v3.2.html`
+**Lines:** 4,616
+**Last completed task:** v3.2 delivery — E1, E2, B3, B4, B5 + all engine work (B1, B7, B9, DD37)
 **Next task:** Awaiting instruction from command authority
