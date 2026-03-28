@@ -83,7 +83,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,608 | **Size:** ~1.35 MB
+**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,604 | **Size:** ~1.35 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -120,7 +120,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ### What's built and working (v3.1 — current baseline)
 
-**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,608
+**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,604
 
 Everything from v2.0 plus:
 
@@ -173,7 +173,7 @@ Everything from v2.0 plus:
 ## BACKLOG
 
 ### BUGS (broken behavior)
-- **B1:** Level calc hardcodes 79 as base stat total — Wretch has 80 (10×8). Fix: compute from actual class base stats. Exists in renderCharacter (line 3339) AND renderCompare calcBuild (line 2444, already fixed there). [OPEN]
+- **B1:** Level calc hardcodes 79 as base stat total — Wretch has 80 (10×8). [DONE v3.2 — uses WRETCH_BASE_TOTAL/WRETCH_LEVEL constants in both renderCharacter and calcBuild]
 - **B2:** Compare tab hooks violation — renderCompare (2393) calls useState outside App component. 312-line standalone component orphaned from main UI block (3334+). [OPEN]
 - **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
 - **B4:** renderSettings About section (line 4348) hardcodes "Tarnished's Companion v1.0" — should show current version. Also shows "3,216 weapons" (stale, actual: 2,764) and "172 bosses" (actual: 173). [OPEN]

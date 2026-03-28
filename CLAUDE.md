@@ -57,8 +57,8 @@ The delivery is not complete until the checklist is complete.
 
 ## Current State
 
-**Version:** v3.1
+**Version:** v3.2
 **Baseline file:** `Tarnished_Companion_v3.1.html`
-**Lines:** 4,608
-**Last completed task:** Workflow protocol established, backlog structured, state synchronized
+**Lines:** 4,604
+**Last completed task:** DD37 Wretch-only optimization — engine, UI, data layer
 **Next task:** Awaiting instruction from command authority

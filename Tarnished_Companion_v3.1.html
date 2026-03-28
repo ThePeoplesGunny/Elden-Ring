@@ -2004,6 +2004,11 @@ var ENG_DATA={"reg":{"cg":{"0":[{"maxVal":1,"maxGrowVal":0,"adjPt":1.2},{"maxVal
 function evalCCGraph(graph){var arr=[];for(var i=1;i<graph.length;i++){var prev=graph[i-1],stage=graph[i];var mn=i===1?1:prev.maxVal+1,mx=i===graph.length-1?148:stage.maxVal;for(var a=mn;a<=mx;a++){if(!arr[a]){var r=Math.max(0,Math.min(1,(a-prev.maxVal)/(stage.maxVal-prev.maxVal)));if(prev.adjPt>0)r=Math.pow(r,prev.adjPt);else if(prev.adjPt<0)r=1-Math.pow(1-r,-prev.adjPt);arr[a]=prev.maxGrowVal+(stage.maxGrowVal-prev.maxGrowVal)*r;}}}return arr;}
 var ENG_GRAPHS={};Object.keys(ENG_DATA.reg.cg).forEach(function(id){ENG_GRAPHS[id]=evalCCGraph(ENG_DATA.reg.cg[id]);});
 
+// DD37: Wretch is universally optimal class (10×8=80, zero stat waste)
+var WRETCH=ENG_DATA.classes.find(function(c){return c.id==="wretch"});
+var WRETCH_BASE_TOTAL=80;
+var WRETCH_LEVEL=1;
+
 // Decode compact weapon
 function engDecodeW(enc){
   var rp=ENG_DATA.reg.rt[enc.ri];if(!rp)return null;
@@ -2228,8 +2233,9 @@ function globalOptimize(targetLevel,includeDLC,options){
   var allWeapons=ENG_DATA.reg.w;
   var results=[];
 
-  ENG_DATA.classes.forEach(function(cls){
-    STAT_TEMPLATES.forEach(function(template){
+  // DD37: Wretch only — eliminates 9/10 class iterations
+  var cls=WRETCH;
+  STAT_TEMPLATES.forEach(function(template){
       var stats=resolveStats(cls,template,targetLevel);
 
       // Phase 1: Filter eligible weapons + decode + compute AR (both grips)
@@ -2309,7 +2315,7 @@ function globalOptimize(targetLevel,includeDLC,options){
       }
 
       results.push({
-        className:cls.name,classId:cls.id,
+        className:"Wretch",classId:"wretch",
         templateName:template.name,templateId:template.id,
         stats:stats,
         singleWeapon:{name:sw.name,affinity:ENG_AFFINITY_NAMES[sw.affinityId]||'Unknown',
@@ -2319,7 +2325,6 @@ function globalOptimize(targetLevel,includeDLC,options){
         gap:wTotalHTK[bestSI]-portTotalHTK,
         vulnerabilities:vulns
       });
-    });
   });
 
   // Phase 2: Rank
@@ -2344,11 +2349,11 @@ function bestWeaponForBoss(bossName,stats,gateState,regionName,twoHand){
   var results=[];
   ENG_DATA.reg.w.forEach(function(wEnc){
     if(wEnc.a!==-1&&affIds.indexOf(wEnc.a)===-1)return;
-    var decoded=engDecodeW(wEnc);if(!decoded)return;
-    var upg=(wEnc.a===-1)?maxSom:maxReg;
-    upg=Math.min(upg,decoded.maxUpgrade);
-    var ar=engCalcAR(decoded,engStats,upg,twoHand);
-    if(ar.unmet.length>0)return;
+    if(!meetsRequirements(wEnc,engStats,twoHand))return; // Pre-filter before decode
+    var maxUp=(ENG_DATA.reg.rt[wEnc.ri]||[]).length-1;
+    var upg=Math.min((wEnc.a===-1)?maxSom:maxReg,maxUp);
+    var decoded=engDecodeWAtLevel(wEnc,upg);if(!decoded)return; // Single-level decode
+    var ar=engCalcAR(decoded,engStats,0,twoHand);
     var dmg=engDmgVsBoss(ar,boss);
     var totalAR=0;[0,1,2,3,4].forEach(function(dt){totalAR+=(ar.attackPower[dt]||0);});
     results.push({name:wEnc.w,affinity:wEnc.a,affinityName:ENG_AFFINITY_NAMES[wEnc.a]||"Unique",upgrade:upg,totalAR:Math.floor(totalAR),dmgPerHit:dmg.total,hitsToKill:dmg.hitsToKill,breakdown:dmg.breakdown});
@@ -2357,11 +2362,18 @@ function bestWeaponForBoss(bossName,stats,gateState,regionName,twoHand){
   return results.slice(0,10);
 }
 
-// Derived stat lookups
-function engHP(v){var t=ENG_DATA.derivedStats.hp.values;var keys=Object.keys(t).map(Number).sort(function(a,b){return a-b;});if(v<=keys[0])return t[keys[0]];if(v>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(v>=keys[i]&&v<=keys[i+1]){var r=(v-keys[i])/(keys[i+1]-keys[i]);return Math.round(t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r);}}return t[keys[keys.length-1]];}
-function engFP(m){var t=ENG_DATA.derivedStats.fp.values;var keys=Object.keys(t).map(Number).sort(function(a,b){return a-b;});if(m<=keys[0])return t[keys[0]];if(m>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(m>=keys[i]&&m<=keys[i+1]){var r=(m-keys[i])/(keys[i+1]-keys[i]);return Math.round(t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r);}}return t[keys[keys.length-1]];}
-function engStam(e){var t=ENG_DATA.derivedStats.stamina.values;var keys=Object.keys(t).map(Number).sort(function(a,b){return a-b;});if(e<=keys[0])return t[keys[0]];if(e>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(e>=keys[i]&&e<=keys[i+1]){var r=(e-keys[i])/(keys[i+1]-keys[i]);return Math.round(t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r);}}return t[keys[keys.length-1]];}
-function engEquip(e){var t=ENG_DATA.derivedStats.equipLoad.values;var keys=Object.keys(t).map(Number).sort(function(a,b){return a-b;});if(e<=keys[0])return t[keys[0]];if(e>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(e>=keys[i]&&e<=keys[i+1]){var r=(e-keys[i])/(keys[i+1]-keys[i]);return Math.round((t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r)*10)/10;}}return t[keys[keys.length-1]];}
+// Derived stat lookups — keys pre-computed once at startup
+var _dsKeys={};
+(function(){function sk(obj){return Object.keys(obj).map(Number).sort(function(a,b){return a-b;});}
+_dsKeys.hp=sk(ENG_DATA.derivedStats.hp.values);
+_dsKeys.fp=sk(ENG_DATA.derivedStats.fp.values);
+_dsKeys.stam=sk(ENG_DATA.derivedStats.stamina.values);
+_dsKeys.equip=sk(ENG_DATA.derivedStats.equipLoad.values);})();
+function _dsLookup(t,keys,v){if(v<=keys[0])return t[keys[0]];if(v>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(v>=keys[i]&&v<=keys[i+1]){var r=(v-keys[i])/(keys[i+1]-keys[i]);return Math.round(t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r);}}return t[keys[keys.length-1]];}
+function engHP(v){return _dsLookup(ENG_DATA.derivedStats.hp.values,_dsKeys.hp,v);}
+function engFP(m){return _dsLookup(ENG_DATA.derivedStats.fp.values,_dsKeys.fp,m);}
+function engStam(e){return _dsLookup(ENG_DATA.derivedStats.stamina.values,_dsKeys.stam,e);}
+function engEquip(e){var t=ENG_DATA.derivedStats.equipLoad.values;var keys=_dsKeys.equip;if(e<=keys[0])return t[keys[0]];if(e>=keys[keys.length-1])return t[keys[keys.length-1]];for(var i=0;i<keys.length-1;i++){if(e>=keys[i]&&e<=keys[i+1]){var r=(e-keys[i])/(keys[i+1]-keys[i]);return Math.round((t[keys[i]]+(t[keys[i+1]]-t[keys[i]])*r)*10)/10;}}return t[keys[keys.length-1]];}
 
 // Damage vs boss — full piecewise defense curve
 function engDmgVsBoss(arResult,boss){
@@ -2391,9 +2403,10 @@ function engDmgVsBoss(arResult,boss){
 // COMPARE TAB — Side-by-side build comparison
 // ═══════════════════════════════════════════════════════
 function renderCompare(){
+  // DD37: Both builds use Wretch as base class
   var _cmpState=React.useState(function(){return{
-    a:{cls:"vagabond",stats:{str:40,dex:40,int:10,fai:10,arc:10,vig:40,mnd:15,end:20},weapon:"Longsword",affinity:3,upgrade:25,twoHand:false,armorSet:""},
-    b:{cls:"prophet",stats:{str:11,dex:12,int:9,fai:80,arc:10,vig:60,mnd:30,end:15},weapon:"Erdtree Seal",affinity:-1,upgrade:10,twoHand:false,armorSet:""},
+    a:{cls:"wretch",stats:{str:40,dex:40,int:10,fai:10,arc:10,vig:40,mnd:15,end:20},weapon:"Longsword",affinity:3,upgrade:25,twoHand:false,armorSet:""},
+    b:{cls:"wretch",stats:{str:10,dex:10,int:10,fai:80,arc:10,vig:60,mnd:30,end:15},weapon:"Erdtree Seal",affinity:-1,upgrade:10,twoHand:false,armorSet:""},
     bossIdx:null,skillLevel:0.5,weaponFilterA:"",weaponFilterB:""
   };});
   var cmpData=_cmpState[0];var setCmpData=_cmpState[1];
@@ -2439,10 +2452,9 @@ function renderCompare(){
   
   // Calculate both builds
   function calcBuild(b){
-    var cls=ENG_DATA.classes.find(function(c){return c.id===b.cls;})||ENG_DATA.classes[0];
+    // DD37: Wretch only — level = totalPts - 80 + 1
     var totalPts=0;["vig","mnd","end","str","dex","int","fai","arc"].forEach(function(s){totalPts+=(b.stats[s]||10);});
-    var clsBase=cls.vig+cls.mnd+cls.end+cls.str+cls.dex+cls.int+cls.fai+cls.arc;
-    var level=cls.level+(totalPts-clsBase);
+    var level=WRETCH_LEVEL+(totalPts-WRETCH_BASE_TOTAL);
     
     var wData=ENG_DATA.reg.w.find(function(w){return w.w===b.weapon&&w.a===b.affinity;})||
               ENG_DATA.reg.w.find(function(w){return w.w===b.weapon;});
@@ -2467,7 +2479,7 @@ function renderCompare(){
     return{level:level,hp:engHP(b.stats.vig),fp:engFP(b.stats.mnd),stam:engStam(b.stats.end),
       equip:equipLoad,totalAR:totalAR,spellBuff:spellBuff,arResult:arResult,maxUp:maxUp,
       weapon:b.weapon,affinity:ENG_AFFINITY_NAMES[b.affinity]||"Standard",
-      className:(ENG_DATA.classes.find(function(c){return c.id===b.cls;})||{}).name||b.cls,
+      className:"Wretch",
       armor:armor,rollType:rollType,loadRatio:Math.round(loadRatio*1000)/10};
   }
   
@@ -2514,17 +2526,8 @@ function renderCompare(){
       h("div",{style:{position:"absolute",top:0,left:20,right:20,height:1,background:"linear-gradient(90deg,transparent,"+accentColor+"40,transparent)"}}),
       h("div",{style:{fontSize:13,fontWeight:700,color:accentColor,letterSpacing:2,textTransform:"uppercase",marginBottom:12}},label),
       
-      // Class selector
-      h("select",{value:b.cls,onChange:function(e){
-        var nc=ENG_DATA.classes.find(function(c){return c.id===e.target.value;});
-        if(nc){setCmpData(function(prev){
-          var next=JSON.parse(JSON.stringify(prev));
-          next[buildKey].cls=nc.id;
-          next[buildKey].stats={vig:nc.vig,mnd:nc.mnd,end:nc.end,str:nc.str,dex:nc.dex,int:nc.int,fai:nc.fai,arc:nc.arc};
-          return next;
-        });}
-      },style:{width:"100%",padding:"6px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:15,fontFamily:"inherit",marginBottom:10}},
-        ENG_DATA.classes.map(function(c){return h("option",{key:c.id,value:c.id},c.name+" (Lv"+c.level+")");})),
+      // DD37: Wretch locked
+      h("div",{style:{fontSize:14,color:C.textDim,marginBottom:10}},"Wretch (Lv1 \u2022 10 all stats)"),
       
       // Stats
       h("div",{style:{marginBottom:10}},
@@ -2896,30 +2899,31 @@ function calcScaleAR(baseDmg,grade,statVal){
   return Math.round(baseDmg*m*((20*0.6+35*1.0+(eff-55)*0.4)/80));
 }
 
+// DD37: All builds assume Wretch base (10 all stats). Stats shown are target allocation.
 var BUILDS=[
-{name:"Colossal Crusher",arch:"Pure STR",desc:"Giant weapons, massive stagger. Two-hand for 1.5x STR.",cl:"hero",rl:150,
- stats:{vig:60,mnd:20,end:35,str:80,dex:12,int:7,fai:8,arc:11},
+{name:"Colossal Crusher",arch:"Pure STR",desc:"Giant weapons, massive stagger. Two-hand for 1.5x STR.",cl:"wretch",rl:150,
+ stats:{vig:60,mnd:20,end:35,str:80,dex:12,int:10,fai:10,arc:10},
  weapons:"Giant-Crusher, Greatsword, Ruins Greatsword",talismans:"Shard of Alexander, Claw Talisman, Great-Jar's Arsenal, Erdtree's Favor +2"},
-{name:"Swift Blade",arch:"Pure DEX",desc:"Fast weapons, bleed, high DPS. Katanas and curved swords.",cl:"samurai",rl:150,
- stats:{vig:60,mnd:20,end:30,str:12,dex:80,int:9,fai:8,arc:8},
+{name:"Swift Blade",arch:"Pure DEX",desc:"Fast weapons, bleed, high DPS. Katanas and curved swords.",cl:"wretch",rl:150,
+ stats:{vig:60,mnd:20,end:30,str:12,dex:80,int:10,fai:10,arc:10},
  weapons:"Uchigatana, Nagakiba, Hand of Malenia",talismans:"Winged Sword Insignia, Millicent's Prosthesis, Rotten Winged, Shard of Alexander"},
-{name:"Quality Knight",arch:"Quality (STR+DEX)",desc:"Versatile melee. Use Quality affinity weapons.",cl:"vagabond",rl:150,
- stats:{vig:55,mnd:20,end:30,str:50,dex:50,int:9,fai:9,arc:7},
+{name:"Quality Knight",arch:"Quality (STR+DEX)",desc:"Versatile melee. Use Quality affinity weapons.",cl:"wretch",rl:150,
+ stats:{vig:55,mnd:20,end:30,str:50,dex:50,int:10,fai:10,arc:10},
  weapons:"Claymore, Bloodhound's Fang, Banished Knight's Halberd",talismans:"Erdtree's Favor +2, Great-Jar's Arsenal, Claw Talisman, Shard of Alexander"},
-{name:"Glintstone Sorcerer",arch:"Pure INT",desc:"Long-range sorcery devastation. Comet Azur and Stars of Ruin.",cl:"astrologer",rl:150,
- stats:{vig:50,mnd:40,end:20,str:8,dex:12,int:80,fai:7,arc:9},
+{name:"Glintstone Sorcerer",arch:"Pure INT",desc:"Long-range sorcery devastation. Comet Azur and Stars of Ruin.",cl:"wretch",rl:150,
+ stats:{vig:50,mnd:40,end:20,str:10,dex:12,int:80,fai:10,arc:10},
  weapons:"Lusat's Glintstone Staff, Carian Regal Scepter, Wing of Astel",talismans:"Graven-Mass Talisman, Radagon Icon, Godfrey Icon, Cerulean Amber +2"},
-{name:"Prophet of Flame",arch:"Pure FTH",desc:"Incantation powerhouse. Black Flame, Lightning, Dragon spells.",cl:"prophet",rl:150,
- stats:{vig:50,mnd:35,end:20,str:12,dex:12,int:7,fai:80,arc:10},
+{name:"Prophet of Flame",arch:"Pure FTH",desc:"Incantation powerhouse. Black Flame, Lightning, Dragon spells.",cl:"wretch",rl:150,
+ stats:{vig:50,mnd:35,end:20,str:12,dex:12,int:10,fai:80,arc:10},
  weapons:"Erdtree Seal, Godslayer's Seal, Coded Sword, Blasphemous Blade",talismans:"Flock's Canvas, Radagon Icon, Godfrey Icon, Shard of Alexander"},
-{name:"Holy Paladin",arch:"STR/FTH Hybrid",desc:"Heavy weapons with faith buffs. Golden Vow, Flame Grant Me Strength.",cl:"confessor",rl:150,
- stats:{vig:55,mnd:25,end:30,str:54,dex:12,int:9,fai:40,arc:9},
+{name:"Holy Paladin",arch:"STR/FTH Hybrid",desc:"Heavy weapons with faith buffs. Golden Vow, Flame Grant Me Strength.",cl:"wretch",rl:150,
+ stats:{vig:55,mnd:25,end:30,str:54,dex:12,int:10,fai:40,arc:10},
  weapons:"Blasphemous Blade, Ordovis's Greatsword, Envoy's Long Horn",talismans:"Shard of Alexander, Flock's Canvas, Erdtree's Favor +2, Great-Jar's Arsenal"},
-{name:"Spellblade",arch:"DEX/INT Hybrid",desc:"Moonveil, Wing of Astel. Mix melee with sorcery.",cl:"prisoner",rl:150,
- stats:{vig:50,mnd:30,end:20,str:11,dex:50,int:50,fai:6,arc:9},
+{name:"Spellblade",arch:"DEX/INT Hybrid",desc:"Moonveil, Wing of Astel. Mix melee with sorcery.",cl:"wretch",rl:150,
+ stats:{vig:50,mnd:30,end:20,str:11,dex:50,int:50,fai:10,arc:10},
  weapons:"Moonveil, Wing of Astel, Dark Moon Greatsword",talismans:"Magic Scorpion Charm, Graven-Mass, Shard of Alexander, Radagon Icon"},
-{name:"Lord of Blood",arch:"Arcane Bleed",desc:"Rivers of Blood, Mohgwyn spear. Bleed everything.",cl:"bandit",rl:150,
- stats:{vig:55,mnd:25,end:25,str:12,dex:50,int:9,fai:8,arc:45},
+{name:"Lord of Blood",arch:"Arcane Bleed",desc:"Rivers of Blood, Mohgwyn spear. Bleed everything.",cl:"wretch",rl:150,
+ stats:{vig:55,mnd:25,end:25,str:12,dex:50,int:10,fai:10,arc:45},
  weapons:"Rivers of Blood, Mohgwyn's Sacred Spear, Eleonora's Poleblade",talismans:"Lord of Blood's Exultation, Winged Sword Insignia, Rotten Winged, Shard of Alexander"}
 ];
 
@@ -3332,22 +3336,17 @@ function pct(s){return s.total?Math.round(s.done/s.total*100):0}
 
 // ══════ CHARACTER TAB ══════
 function renderCharacter(){
-  var ch=charData||{classId:"vagabond",stats:{vig:15,mnd:10,end:11,str:14,dex:13,int:9,fai:9,arc:7},loadout:{rh1:"",rh2:"",lh1:"",lh2:"",head:"",chest:"",arms:"",legs:"",t1:"",t2:"",t3:"",t4:"",spell1:"",spell2:"",spell3:"",spell4:"",spell5:"",spell6:"",greatRune:"",physick1:"",physick2:""}};
-  var cls=CLASSES.find(function(c){return c.id===ch.classId})||CLASSES[0];
-  var stats=ch.stats||Object.assign({},cls.stats);
+  // DD37: Wretch is universally optimal class — all stats start at 10
+  var ch=charData||{classId:"wretch",stats:{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10},loadout:{rh1:"",rh2:"",lh1:"",lh2:"",head:"",chest:"",arms:"",legs:"",t1:"",t2:"",t3:"",t4:"",spell1:"",spell2:"",spell3:"",spell4:"",spell5:"",spell6:"",greatRune:"",physick1:"",physick2:""}};
+  var stats=ch.stats||{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10};
   var totalPts=0;STAT_NAMES.forEach(function(s){totalPts+=stats[s]});
-  var level=totalPts-79+cls.lv; // approx
-  
+  var level=totalPts-WRETCH_BASE_TOTAL+WRETCH_LEVEL; // B1 fix: computed from Wretch base
+
   function setStat(key,val){
-    var mn=cls.stats[key];
-    val=Math.max(mn,Math.min(99,val));
+    val=Math.max(10,Math.min(99,val)); // Wretch floor: 10 for all stats
     var ns=Object.assign({},stats);ns[key]=val;
     var nc=Object.assign({},ch,{stats:ns});
     saveChar(nc);
-  }
-  function setClass(clsId){
-    var nc2=CLASSES.find(function(c){return c.id===clsId})||CLASSES[0];
-    saveChar({classId:clsId,stats:Object.assign({},nc2.stats),loadout:ch.loadout||{}});
   }
   function setLoadout(key,val){
     var nl=Object.assign({},ch.loadout||{});nl[key]=val;
@@ -3367,7 +3366,7 @@ function renderCharacter(){
   }
 
   function statRow(key){
-    var val=stats[key],mn=cls.stats[key],caps=SOFT_CAPS[key]||[];
+    var val=stats[key],mn=10,caps=SOFT_CAPS[key]||[]; // Wretch: all minimums are 10
     var col=scColor(key,val);
     var pctFill=Math.min(100,val/99*100);
     return h("div",{key:key,style:{marginBottom:10,background:C.card,borderRadius:8,padding:"10px 14px",border:"1px solid "+C.border}},
@@ -3402,18 +3401,16 @@ function renderCharacter(){
     {id:"builds",label:"Recommended Builds"},
     {id:"loadout",label:"Loadout"},
     {id:"respec",label:"Respec Planner"},
-    {id:"ar",label:"AR Estimator"},
-    {id:"classes",label:"Class Optimizer"}
+    {id:"ar",label:"AR Estimator"}
   ];
 
   function renderProfile(){
     return h("div",null,
-      // Class selector
+      // DD37: Wretch is universally optimal — no class selection needed
       h("div",{style:{marginBottom:16}},
-        h("label",{style:{fontSize:17,color:C.gold,marginRight:10}},"Starting Class:"),
-        h("select",{value:ch.classId,onChange:function(e){setClass(e.target.value)},style:{padding:"6px 12px",background:C.card,border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:17,fontFamily:"inherit"}},
-          CLASSES.map(function(c){return h("option",{key:c.id,value:c.id},c.name+" (Lv"+c.lv+")")})
-        )
+        h("span",{style:{fontSize:17,color:C.gold}},"Class: "),
+        h("span",{style:{fontSize:17,color:C.textBright,fontWeight:700}},"Wretch"),
+        h("span",{style:{fontSize:15,color:C.textDim,marginLeft:8}},"(Lv1 \u2022 10 all stats \u2022 zero waste)")
       ),
       // Level display
       h("div",{style:{display:"flex",gap:20,flexWrap:"wrap",marginBottom:20}},
@@ -3462,8 +3459,7 @@ function renderCharacter(){
               h("div",{style:{fontSize:15,color:C.purple}},b.arch+" \u2022 RL "+b.rl)
             ),
             h("button",{onClick:function(){
-              var nc3=CLASSES.find(function(c){return c.id===b.cl})||CLASSES[0];
-              saveChar({classId:b.cl,stats:Object.assign({},b.stats),loadout:ch.loadout||{}});
+              saveChar({classId:"wretch",stats:Object.assign({},b.stats),loadout:ch.loadout||{}});
             },style:Object.assign({},btnS(false),{fontSize:15,padding:"4px 12px"})},"Load Build")
           ),
           h("div",{style:{fontSize:15,color:C.text,marginBottom:8}},b.desc),
