@@ -79,8 +79,8 @@ Permanent +1 flask charge, build-agnostic. No other keepsake provides lasting be
 ### DD36: Crafting Kit + Torch are mandatory first purchases
 Every class needs both. 500 runes at Kalé. Tool should flag at Church of Elleh for all classes.
 
-### DD37: Wretch is NOT universally optimal class
-Wretch is optimal only when target build is unknown or spans all stats broadly. For focused builds (pure STR, pure INT, etc.), specialized classes reach the target at lower total level due to lower stat waste in irrelevant stats. The tool should compute optimal class per archetype template.
+### DD37: Wretch IS universally optimal class (CONFIRMED, corrected post-session)
+Original session note questioned universality for focused builds. Overruled by command with technical backing: Wretch (10×8=80) has zero stat waste. Every other class pre-commits points before the player has made build decisions. Pre-committed points become waste when the actual build diverges from class distribution. Wretch makes no assumptions — every point is a deliberate choice. This simplifies all downstream computation: one class, one starting point.
 
 ### DD38: Weapon upgrade level dominates stat investment in early game
 Going from +0 to +3 increases AR more than the next 10 stat points combined. The tool should prioritize upgrade path recommendations over stat allocation at low upgrade levels.
