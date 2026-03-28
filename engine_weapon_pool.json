@@ -1,0 +1,1404 @@
+{
+  "generated": "2026-03-28T03:48:20.810Z",
+  "method": "globalOptimize(10lvl x 2risk) + bestWeaponForBoss(17boss x 15stat x 2grip x 3gate) + earlyGame(2boss x 5stat x 2grip)",
+  "totalSearchSpace": 2764,
+  "melee": [
+    {
+      "name": "Iron Cleaver",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 7,
+      "peakDmg": 768
+    },
+    {
+      "name": "Messmer Soldier's Axe",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Flame Art",
+        "Heavy",
+        "Lightning",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 7,
+      "peakDmg": 756
+    },
+    {
+      "name": "Giant-Crusher",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Cold",
+        "Fire",
+        "Flame Art",
+        "Heavy",
+        "Lightning",
+        "Magic",
+        "Quality",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 6,
+      "peakDmg": 1240
+    },
+    {
+      "name": "Prelate's Inferno Crozier",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Cold",
+        "Fire",
+        "Flame Art",
+        "Heavy",
+        "Lightning",
+        "Magic",
+        "Quality",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 6,
+      "peakDmg": 1117
+    },
+    {
+      "name": "Duelist Greataxe",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Fire",
+        "Flame Art",
+        "Heavy",
+        "Keen",
+        "Lightning",
+        "Magic",
+        "Quality",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 6,
+      "peakDmg": 1097
+    },
+    {
+      "name": "Watchdog's Greatsword",
+      "type": "Colossal Sword",
+      "typeId": 7,
+      "affinities": [
+        "Fire",
+        "Flame Art",
+        "Heavy",
+        "Lightning",
+        "Magic",
+        "Sacred"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 6,
+      "peakDmg": 1070
+    },
+    {
+      "name": "Rakshasa's Great Katana",
+      "type": "Great Katana",
+      "typeId": 94,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 6,
+      "peakDmg": 965
+    },
+    {
+      "name": "Great Katana",
+      "type": "Great Katana",
+      "typeId": 94,
+      "affinities": [
+        "Cold",
+        "Fire",
+        "Flame Art",
+        "Keen",
+        "Lightning",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 6,
+      "peakDmg": 953
+    },
+    {
+      "name": "Bloodfiend's Fork",
+      "type": "Spear",
+      "typeId": 25,
+      "affinities": [
+        "Flame Art",
+        "Sacred"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 5,
+      "peakDmg": 768
+    },
+    {
+      "name": "Iron Greatsword",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Flame Art",
+        "Heavy",
+        "Lightning",
+        "Magic",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early",
+        "opt-portfolio"
+      ],
+      "sourceCount": 5,
+      "peakDmg": 764
+    },
+    {
+      "name": "Staff of the Avatar",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-portfolio"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 1121
+    },
+    {
+      "name": "Shadow Sunflower Blossom",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "opt-portfolio"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 974
+    },
+    {
+      "name": "Lizard Greatsword",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Flame Art",
+        "Heavy",
+        "Keen",
+        "Lightning",
+        "Magic",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 906
+    },
+    {
+      "name": "Hand Axe",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Fire",
+        "Flame Art",
+        "Heavy",
+        "Keen",
+        "Lightning",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 738
+    },
+    {
+      "name": "Banished Knight's Greatsword",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Flame Art",
+        "Heavy",
+        "Magic",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 730
+    },
+    {
+      "name": "Jawbone Axe",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Flame Art",
+        "Lightning",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 728
+    },
+    {
+      "name": "Battle Axe",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Flame Art",
+        "Heavy",
+        "Keen",
+        "Lightning",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 710
+    },
+    {
+      "name": "Bastard Sword",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Flame Art",
+        "Heavy",
+        "Magic",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 706
+    },
+    {
+      "name": "Forked Hatchet",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Keen",
+        "Magic",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 687
+    },
+    {
+      "name": "Broadsword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Flame Art",
+        "Lightning",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 671
+    },
+    {
+      "name": "Morning Star",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 4,
+      "peakDmg": 610
+    },
+    {
+      "name": "Ruins Greatsword",
+      "type": "Colossal Sword",
+      "typeId": 7,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "opt-portfolio"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 1138
+    },
+    {
+      "name": "Greatsword",
+      "type": "Colossal Sword",
+      "typeId": 7,
+      "affinities": [
+        "Fire",
+        "Lightning",
+        "Quality"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 1021
+    },
+    {
+      "name": "Troll's Golden Sword",
+      "type": "Colossal Sword",
+      "typeId": 7,
+      "affinities": [
+        "Fire",
+        "Flame Art",
+        "Heavy",
+        "Lightning",
+        "Magic"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 875
+    },
+    {
+      "name": "Vulgar Militia Shotel",
+      "type": "Halberd",
+      "typeId": 29,
+      "affinities": [
+        "Keen",
+        "Lightning",
+        "Magic"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 874
+    },
+    {
+      "name": "Backhand Blade",
+      "type": "Backhand Blade",
+      "typeId": 92,
+      "affinities": [
+        "Keen",
+        "Lightning",
+        "Magic"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 761
+    },
+    {
+      "name": "Nightrider Flail",
+      "type": "Flail",
+      "typeId": 24,
+      "affinities": [
+        "Flame Art",
+        "Keen",
+        "Lightning",
+        "Magic",
+        "Occult"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 751
+    },
+    {
+      "name": "Twinblade",
+      "type": "Twinblade",
+      "typeId": 14,
+      "affinities": [
+        "Flame Art",
+        "Keen",
+        "Lightning"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 744
+    },
+    {
+      "name": "Gargoyle's Blackblade",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 715
+    },
+    {
+      "name": "Hammer",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "early"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 714
+    },
+    {
+      "name": "Urumi",
+      "type": "Whip",
+      "typeId": 39,
+      "affinities": [
+        "Keen"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 708
+    },
+    {
+      "name": "Star-Lined Sword",
+      "type": "Katana",
+      "typeId": 13,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 699
+    },
+    {
+      "name": "Troll's Hammer",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "opt-maximin",
+        "opt-portfolio",
+        "opt-total"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 698
+    },
+    {
+      "name": "Claws of Night",
+      "type": "Claw",
+      "typeId": 37,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 697
+    },
+    {
+      "name": "Greataxe",
+      "type": "Greataxe",
+      "typeId": 19,
+      "affinities": [
+        "Fire",
+        "Heavy",
+        "Magic"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 682
+    },
+    {
+      "name": "Bastard's Stars",
+      "type": "Flail",
+      "typeId": 24,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 682
+    },
+    {
+      "name": "Short Spear",
+      "type": "Spear",
+      "typeId": 25,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Occult",
+        "Sacred",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 618
+    },
+    {
+      "name": "Scythe",
+      "type": "Reaper",
+      "typeId": 31,
+      "affinities": [
+        "Keen"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 614
+    },
+    {
+      "name": "Family Heads",
+      "type": "Flail",
+      "typeId": 24,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 606
+    },
+    {
+      "name": "Lordsworn's Straight Sword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Occult",
+        "Standard"
+      ],
+      "sources": [
+        "boss-crum",
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 584
+    },
+    {
+      "name": "Mantis Blade",
+      "type": "Curved Sword",
+      "typeId": 9,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Standard"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 575
+    },
+    {
+      "name": "Carian Knight's Sword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 545
+    },
+    {
+      "name": "Dragon-Hunter's Great Katana",
+      "type": "Great Katana",
+      "typeId": 94,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 3,
+      "peakDmg": 517
+    },
+    {
+      "name": "Grafted Blade Greatsword",
+      "type": "Colossal Sword",
+      "typeId": 7,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 1094
+    },
+    {
+      "name": "Watchdog's Staff",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 1063
+    },
+    {
+      "name": "Dragon Greatclaw",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 1041
+    },
+    {
+      "name": "Banished Knight's Halberd",
+      "type": "Halberd",
+      "typeId": 29,
+      "affinities": [
+        "Flame Art",
+        "Lightning",
+        "Magic"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 856
+    },
+    {
+      "name": "Vulgar Militia Saw",
+      "type": "Halberd",
+      "typeId": 29,
+      "affinities": [
+        "Lightning"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 856
+    },
+    {
+      "name": "Morgott's Cursed Sword",
+      "type": "Curved Greatsword",
+      "typeId": 11,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 755
+    },
+    {
+      "name": "Rotten Staff",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 743
+    },
+    {
+      "name": "Cranial Vessel Candlestand",
+      "type": "Great Hammer",
+      "typeId": 23,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 728
+    },
+    {
+      "name": "Flail",
+      "type": "Flail",
+      "typeId": 24,
+      "affinities": [
+        "Flame Art",
+        "Keen",
+        "Lightning"
+      ],
+      "sources": [
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 721
+    },
+    {
+      "name": "Curseblade's Cirque",
+      "type": "Backhand Blade",
+      "typeId": 92,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 699
+    },
+    {
+      "name": "Spiked Club",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Sacred"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 694
+    },
+    {
+      "name": "Sacrificial Axe",
+      "type": "Axe",
+      "typeId": 17,
+      "affinities": [
+        "Flame Art"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 667
+    },
+    {
+      "name": "Club",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Occult",
+        "Sacred"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 608
+    },
+    {
+      "name": "Rivers of Blood",
+      "type": "Katana",
+      "typeId": 13,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-crum",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 608
+    },
+    {
+      "name": "Mace",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Flame Art",
+        "Sacred"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 604
+    },
+    {
+      "name": "Firespark Perfume Bottle",
+      "type": "Perfume Bottle",
+      "typeId": 89,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg",
+        "opt-portfolio"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 602
+    },
+    {
+      "name": "Short Sword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Flame Art",
+        "Magic",
+        "Sacred"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-crum"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 592
+    },
+    {
+      "name": "Flowerstone Gavel",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 427
+    },
+    {
+      "name": "Poisoned Hand",
+      "type": "Fist",
+      "typeId": 35,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 328
+    },
+    {
+      "name": "Golden Epitaph",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 285
+    },
+    {
+      "name": "Lazuli Glintstone Sword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 253
+    },
+    {
+      "name": "Clayman's Harpoon",
+      "type": "Spear",
+      "typeId": 25,
+      "affinities": [
+        "Standard"
+      ],
+      "sources": [
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 246
+    },
+    {
+      "name": "Coded Sword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-altu",
+        "boss-limg"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 215
+    },
+    {
+      "name": "St. Trina's Torch",
+      "type": "Torch",
+      "typeId": 87,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 209
+    },
+    {
+      "name": "Curved Club",
+      "type": "Hammer",
+      "typeId": 21,
+      "affinities": [
+        "Standard"
+      ],
+      "sources": [
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 170
+    },
+    {
+      "name": "Steel-Wire Torch",
+      "type": "Torch",
+      "typeId": 87,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg",
+        "early"
+      ],
+      "sourceCount": 2,
+      "peakDmg": 165
+    },
+    {
+      "name": "Ghiza's Wheel",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-crum"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 959
+    },
+    {
+      "name": "Great Club",
+      "type": "Colossal Weapon",
+      "typeId": 41,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "opt-portfolio"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 926
+    },
+    {
+      "name": "Sacred Relic Sword",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "opt-portfolio"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 773
+    },
+    {
+      "name": "Gargoyle's Black Axe",
+      "type": "Greataxe",
+      "typeId": 19,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 355
+    },
+    {
+      "name": "Helphen's Steeple",
+      "type": "Greatsword",
+      "typeId": 5,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 342
+    },
+    {
+      "name": "Longhaft Axe",
+      "type": "Greataxe",
+      "typeId": 19,
+      "affinities": [
+        "Heavy"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 327
+    },
+    {
+      "name": "Moonveil",
+      "type": "Katana",
+      "typeId": 13,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 290
+    },
+    {
+      "name": "Noble's Estoc",
+      "type": "Thrusting Sword",
+      "typeId": 15,
+      "affinities": [
+        "Flame Art"
+      ],
+      "sources": [
+        "boss-altu"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 288
+    },
+    {
+      "name": "Crystal Sword",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 251
+    },
+    {
+      "name": "Sentry's Torch",
+      "type": "Torch",
+      "typeId": 87,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 228
+    },
+    {
+      "name": "Velvet Sword of St. Trina",
+      "type": "Straight Sword",
+      "typeId": 3,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 198
+    },
+    {
+      "name": "Cipher Pata",
+      "type": "Fist",
+      "typeId": 35,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 195
+    },
+    {
+      "name": "Ghostflame Torch",
+      "type": "Torch",
+      "typeId": 87,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 165
+    },
+    {
+      "name": "Beast-Repellent Torch",
+      "type": "Torch",
+      "typeId": 87,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 116
+    },
+    {
+      "name": "Torch",
+      "type": "Torch",
+      "typeId": 87,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 100
+    }
+  ],
+  "ranged": [
+    {
+      "name": "Rabbath's Cannon",
+      "type": "Ballista",
+      "typeId": 56,
+      "affinities": [
+        "Unique"
+      ],
+      "sources": [
+        "boss-limg"
+      ],
+      "sourceCount": 1,
+      "peakDmg": 240
+    }
+  ],
+  "catalysts": []
+}
