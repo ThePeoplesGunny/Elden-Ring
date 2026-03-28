@@ -83,34 +83,48 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v2.html` | **Lines:** 4,392 | **Size:** 1.35 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 4,749 | **Size:** ~1.4 MB
 
 | Section | Lines | Notes |
 |---|---|---|
 | HTML shell + CSS | 1–66 | |
 | Script open | 68 | |
 | **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA, ENG_GRAPHS (~69% of file) |
-| Engine functions | 2004–2392 | Safe to load in full |
-| UI helpers | 2401–2706 | |
-| Character system + gates | 2707–2857 | REGION_CAPS, BOSS_READY, whetstones, bells, tactical, archetypes |
-| Stat calc helpers | 2880–2925 | |
-| App core | 2926–3141 | Achievements, endings, categories |
-| Quests | 3142–3227 | |
-| UI primitives | 3228–3240 | |
-| **App component** | **3241** | All useState hooks live here |
-| State helpers + export/import | 3283–3330 | |
-| React UI components | 3334–4135 | 16 render functions |
-| Optimizer UI | 4134–4149 | renderOptimizer, runOptimizer |
-| Mount | 4389 | ReactDOM.render |
-| Close | 4390–4392 | |
+| Engine constants | 2004–2011 | evalCCGraph, ENG_GRAPHS, WRETCH/WRETCH_BASE_TOTAL/WRETCH_LEVEL |
+| Engine functions | 2013–2365 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss |
+| Derived stat lookups | 2367–2377 | Pre-computed keys (_dsKeys), _dsLookup, engHP/FP/Stam/Equip |
+| Physical subtype + ammo data | 2380–2408 | PHYS_SUBTYPE map, AMMO_DATA (30 entries), AMMO_FOR_WEAPON |
+| engDmgVsBoss | 2412–2438 | Defense → negation, physical subtype aware |
+| **renderCompare (HOOKS VIOLATION)** | **2441–2744** | Standalone, own useState. Wretch-locked. |
+| Character system data | 2746–2802 | REGION_CAPS, BOSS_READY (17), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
+| Gate + archetype functions | 2804–2896 | deriveGateState, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
+| Step classification data | 2892–2894 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
+| Class/stat constants | 2897–2916 | CLASSES (from ENG_DATA), STAT_NAMES/LABELS/DESC, SOFT_CAPS |
+| Stat calc wrappers | 2919–2936 | calcHP/FP/Stam/Equip, SCALE_MULT, calcScaleAR |
+| **BUILDS (static — replace with F4)** | **2938–2963** | 8 hardcoded builds, Wretch-based |
+| App core | 2965–2993 | STORAGE_KEY, storage{}, color palette C{} |
+| Achievements + Endings | 2993–3153 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
+| Categories | 3155–3181 | CATEGORIES array |
+| Quests + Boss lists | 3182–3262 | 28 quests, BOSSES_BASE (31), BOSSES_DLC (14) |
+| UI constants + helpers | 3264–3272 | DASH_CATS, tier/prio colors, catClass, stepClass, h(), btnS() |
+| UI primitives | 3274–3278 | ProgressRing, ProgressBar, Chk |
+| **App component** | **3281–4746** | 24 useState hooks. Save migration for weapon slots. |
+| renderCharacter (+ nested) | 3388–4202 | renderBuilds (3520), renderLoadout (3553) with live AR header, weaponSlotRow, arrow slots |
+| renderWalkthrough | 4203–4373 | Step numbers (#N), step cards |
+| renderDashboard | 4374–4434 | |
+| renderAchievements | 4435 | |
+| renderSettings | 4489 | Shows v3.2, correct data counts |
+| Main render + tab routing | 4491–4746 | renderOptimizer (4494), TABS, renderers |
+| Mount | 4747 | ReactDOM.render |
+| Close | 4748–4749 | |
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.1 — current baseline)
+### What's built and working (v3.2 — current baseline)
 
-**File:** `Tarnished_Companion_v3.1.html` | **Lines:** 4,608
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 4,749
 
 Everything from v2.0 plus:
 
