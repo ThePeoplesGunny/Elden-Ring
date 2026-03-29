@@ -240,7 +240,7 @@ tail -3 app.html
 - **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [PLANNED]
 - **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [PLANNED]
 - **F4:** Replace renderBuilds with archetype-computed recommendations. [PLANNED]
-- **F5:** Ranged utility system — bows as separate category, arrow/bolt data, contextual recommendations. [PLANNED]
+- **F5:** Ranged utility system. [DONE v3.2 — AMMO_DATA (30 entries) in engine, arrow/bolt slots in loadout UI, ammo auto-filters by weapon type, live AR = weapon + arrow combined, status effects displayed. Shortbow in Kalé mandatory purchases (B3).]
 - **F6:** Curated weapon pool — optimizer uses 66 engine-verified weapons instead of 2,764. [PLANNED]
 - **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [PLANNED]
 
