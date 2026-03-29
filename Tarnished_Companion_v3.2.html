@@ -2435,314 +2435,7 @@ function engDmgVsBoss(arResult,boss,weaponType){
 }
 
 
-// ═══════════════════════════════════════════════════════
-// COMPARE TAB — Side-by-side build comparison
-// ═══════════════════════════════════════════════════════
-function renderCompare(){
-  // DD37: Both builds use Wretch as base class
-  var _cmpState=React.useState(function(){return{
-    a:{cls:"wretch",stats:{str:40,dex:40,int:10,fai:10,arc:10,vig:40,mnd:15,end:20},weapon:"Longsword",affinity:3,upgrade:25,twoHand:false,armorSet:""},
-    b:{cls:"wretch",stats:{str:10,dex:10,int:10,fai:80,arc:10,vig:60,mnd:30,end:15},weapon:"Erdtree Seal",affinity:-1,upgrade:10,twoHand:false,armorSet:""},
-    bossIdx:null,skillLevel:0.5,weaponFilterA:"",weaponFilterB:""
-  };});
-  var cmpData=_cmpState[0];var setCmpData=_cmpState[1];
-  
-  function upd(path,val){
-    setCmpData(function(prev){
-      var next=JSON.parse(JSON.stringify(prev));
-      var parts=path.split(".");var obj=next;
-      for(var i=0;i<parts.length-1;i++)obj=obj[parts[i]];
-      obj[parts[parts.length-1]]=val;return next;
-    });
-  }
-  
-  // Get maxUpgrade for a weapon
-  function getMaxUpgrade(weaponName,affinityId){
-    var wData=ENG_DATA.reg.w.find(function(w){return w.w===weaponName&&w.a===affinityId;})||
-              ENG_DATA.reg.w.find(function(w){return w.w===weaponName;});
-    if(!wData)return 10;
-    var rp=ENG_DATA.reg.rt[wData.ri];
-    return rp?rp.length-1:10;
-  }
-  
-  // Calculate armor negation from set name
-  function calcArmorFromSet(setName){
-    if(!setName)return{phys:0,magic:0,fire:0,lightning:0,holy:0,poise:0,weight:0};
-    var set=ENG_DATA.armor.find(function(s){return s.n===setName;});
-    if(!set)return{phys:0,magic:0,fire:0,lightning:0,holy:0,poise:0,weight:0};
-    var pieces=[];var totalWeight=0;
-    ["head","chest","arms","legs"].forEach(function(slot){
-      var p=set.pc[slot];
-      if(p){pieces.push(p);totalWeight+=p.w||0;}
-    });
-    if(pieces.length===0)return{phys:0,magic:0,fire:0,lightning:0,holy:0,poise:set.po||0,weight:set.w||0};
-    var types=["p","m","f","l","h"];var typeNames=["phys","magic","fire","lightning","holy"];
-    var result={poise:set.po||0,weight:Math.round(totalWeight*10)/10};
-    for(var ti=0;ti<types.length;ti++){
-      var pass=1.0;
-      pieces.forEach(function(pc){if(pc[types[ti]])pass*=(1-pc[types[ti]]/100);});
-      result[typeNames[ti]]=Math.round((1-pass)*100*10)/10;
-    }
-    return result;
-  }
-  
-  // Calculate both builds
-  function calcBuild(b){
-    // DD37: Wretch only — level = totalPts - 80 + 1
-    var totalPts=0;["vig","mnd","end","str","dex","int","fai","arc"].forEach(function(s){totalPts+=(b.stats[s]||10);});
-    var level=WRETCH_LEVEL+(totalPts-WRETCH_BASE_TOTAL);
-    
-    var wData=ENG_DATA.reg.w.find(function(w){return w.w===b.weapon&&w.a===b.affinity;})||
-              ENG_DATA.reg.w.find(function(w){return w.w===b.weapon;});
-    var arResult=null,totalAR=0,spellBuff=0,maxUp=10;
-    if(wData){
-      var decoded=engDecodeW(wData);
-      if(decoded){
-        maxUp=decoded.maxUpgrade;
-        var engStats={str:b.stats.str,dex:b.stats.dex,int:b.stats.int,fai:b.stats.fai||10,arc:b.stats.arc};
-        arResult=engCalcAR(decoded,engStats,Math.min(b.upgrade,maxUp),b.twoHand);
-        [0,1,2,3,4].forEach(function(dt){totalAR+=(arResult.attackPower[dt]||0);});
-        totalAR=Math.floor(totalAR);
-        if(arResult.spellScaling[0])spellBuff=Math.floor(arResult.spellScaling[0]);
-      }
-    }
-    
-    var armor=calcArmorFromSet(b.armorSet);
-    var equipLoad=engEquip(b.stats.end);
-    var loadRatio=equipLoad>0?armor.weight/equipLoad:0;
-    var rollType=loadRatio<=0.299?"Light":loadRatio<=0.699?"Medium":loadRatio<=0.999?"Heavy":"Overloaded";
-    
-    return{level:level,hp:engHP(b.stats.vig),fp:engFP(b.stats.mnd),stam:engStam(b.stats.end),
-      equip:equipLoad,totalAR:totalAR,spellBuff:spellBuff,arResult:arResult,maxUp:maxUp,
-      weapon:b.weapon,wType:wData?wData.t:0,affinity:ENG_AFFINITY_NAMES[b.affinity]||"Standard",
-      className:"Wretch",
-      armor:armor,rollType:rollType,loadRatio:Math.round(loadRatio*1000)/10};
-  }
-  
-  var resultA=calcBuild(cmpData.a);
-  var resultB=calcBuild(cmpData.b);
-  
-  // Boss matchup
-  var bossResult=null;
-  if(cmpData.bossIdx!==null&&cmpData.bossIdx!==undefined){
-    var boss=ENG_DATA.bosses[cmpData.bossIdx];
-    if(boss){
-      var dmgA=resultA.arResult?engDmgVsBoss(resultA.arResult,boss,resultA.wType):null;
-      var dmgB=resultB.arResult?engDmgVsBoss(resultB.arResult,boss,resultB.wType):null;
-      bossResult={boss:boss,a:dmgA,b:dmgB};
-    }
-  }
-  
-  // ── UI Helper: Stat row for build panel ──
-  function buildStatInput(buildKey,statKey,label){
-    var val=cmpData[buildKey].stats[statKey]||10;
-    return h("div",{key:statKey,style:{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"3px 0"}},
-      h("span",{style:{fontSize:15,color:C.textDim,minWidth:35}},label),
-      h("div",{style:{display:"flex",alignItems:"center",gap:4}},
-        h("button",{onClick:function(){upd(buildKey+".stats."+statKey,Math.max(1,val-1));},
-          style:{background:"transparent",border:"1px solid "+C.border,color:C.textDim,width:24,height:24,borderRadius:4,fontSize:15,padding:0,cursor:"pointer",fontFamily:"inherit"}},"-"),
-        h("span",{style:{fontSize:17,fontWeight:700,color:C.goldBright,minWidth:30,textAlign:"center",fontFamily:"monospace"}},val),
-        h("button",{onClick:function(){upd(buildKey+".stats."+statKey,Math.min(99,val+1));},
-          style:{background:"transparent",border:"1px solid "+C.border,color:C.textDim,width:24,height:24,borderRadius:4,fontSize:15,padding:0,cursor:"pointer",fontFamily:"inherit"}},"+")
-      )
-    );
-  }
-  
-  // Armor set names for dropdown (exclude special pieces entry)
-  var armorSetList=ENG_DATA.armor.filter(function(s){return s.n!=="Special Effect Pieces";}).map(function(s){return{name:s.n,cat:s.c,poise:s.po,weight:s.w};}).sort(function(a,b){return b.poise-a.poise;});
-  
-  // ── UI Helper: Build panel ──
-  function buildPanel(buildKey,result,label,accentColor){
-    var b=cmpData[buildKey];
-    var filterKey=buildKey==="a"?"weaponFilterA":"weaponFilterB";
-    var weaponFilter=(cmpData[filterKey]||"").toLowerCase();
-    var filteredWeapons=weaponFilter?ENG_WEAPON_NAMES.filter(function(w){return w.name.toLowerCase().indexOf(weaponFilter)>=0;}):ENG_WEAPON_NAMES;
-    
-    return h("div",{style:{flex:1,minWidth:280,border:"1px solid "+C.border,borderRadius:10,padding:16,position:"relative",overflow:"hidden"}},
-      h("div",{style:{position:"absolute",top:0,left:20,right:20,height:1,background:"linear-gradient(90deg,transparent,"+accentColor+"40,transparent)"}}),
-      h("div",{style:{fontSize:13,fontWeight:700,color:accentColor,letterSpacing:2,textTransform:"uppercase",marginBottom:12}},label),
-      
-      // DD37: Wretch locked
-      h("div",{style:{fontSize:14,color:C.textDim,marginBottom:10}},"Wretch (Lv1 \u2022 10 all stats)"),
-      
-      // Stats
-      h("div",{style:{marginBottom:10}},
-        ["vig","mnd","end","str","dex","int","fai","arc"].map(function(s){
-          return buildStatInput(buildKey,s,s.toUpperCase());
-        })
-      ),
-      h("div",{style:{fontSize:13,color:"#604018",fontFamily:"monospace",marginBottom:12}},"Level "+result.level),
-      
-      // Weapon search filter
-      h("div",{style:{marginBottom:6,fontSize:13,color:C.textDim,letterSpacing:1,textTransform:"uppercase"}},"Weapon"),
-      h("input",{type:"text",value:cmpData[filterKey]||"",placeholder:"Search weapons...",
-        onChange:function(e){upd(filterKey,e.target.value);},
-        style:{width:"100%",padding:"5px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.textDim,fontSize:13,fontFamily:"inherit",marginBottom:4,boxSizing:"border-box"}}),
-      h("select",{value:b.weapon,onChange:function(e){
-        var newWeapon=e.target.value;
-        setCmpData(function(prev){
-          var next=JSON.parse(JSON.stringify(prev));
-          next[buildKey].weapon=newWeapon;
-          var wn=ENG_WEAPON_NAMES.find(function(x){return x.name===newWeapon;});
-          if(wn&&wn.affinities.indexOf(next[buildKey].affinity)<0)next[buildKey].affinity=wn.affinities[0];
-          // Auto-set upgrade to max for the new weapon
-          next[buildKey].upgrade=getMaxUpgrade(newWeapon,next[buildKey].affinity);
-          return next;
-        });
-      },style:{width:"100%",padding:"6px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:14,fontFamily:"inherit",marginBottom:6}},
-        filteredWeapons.map(function(w){return h("option",{key:w.name,value:w.name},w.name);})),
-      
-      // Affinity + Upgrade (uses actual maxUpgrade)
-      h("div",{style:{display:"flex",gap:6,marginBottom:6}},
-        h("select",{value:b.affinity,onChange:function(e){
-          var newAff=parseInt(e.target.value);
-          setCmpData(function(prev){
-            var next=JSON.parse(JSON.stringify(prev));
-            next[buildKey].affinity=newAff;
-            next[buildKey].upgrade=getMaxUpgrade(next[buildKey].weapon,newAff);
-            return next;
-          });
-        },style:{flex:1,padding:"6px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:14,fontFamily:"inherit"}},
-          (ENG_WEAPON_NAMES.find(function(w){return w.name===b.weapon;})||{affinities:[-1]}).affinities.map(function(a){
-            return h("option",{key:a,value:a},ENG_AFFINITY_NAMES[a]||"?");
-          })),
-        h("select",{value:b.upgrade,onChange:function(e){upd(buildKey+".upgrade",parseInt(e.target.value));},
-          style:{width:70,padding:"6px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:14,fontFamily:"inherit"}},
-          Array.from({length:result.maxUp+1},function(_,i){return h("option",{key:i,value:i},"+"+(i));}))
-      ),
-      
-      // Two-handing toggle
-      h("label",{style:{display:"flex",alignItems:"center",gap:6,fontSize:15,color:C.textDim,cursor:"pointer",marginBottom:8}},
-        h("input",{type:"checkbox",checked:b.twoHand,onChange:function(){upd(buildKey+".twoHand",!b.twoHand);}}),
-        "Two-handing"),
-      
-      // Armor selector
-      h("div",{style:{marginBottom:6,fontSize:13,color:C.textDim,letterSpacing:1,textTransform:"uppercase"}},"Armor Set"),
-      h("select",{value:b.armorSet||"",onChange:function(e){upd(buildKey+".armorSet",e.target.value);},
-        style:{width:"100%",padding:"6px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:14,fontFamily:"inherit",marginBottom:12}},
-        h("option",{value:""},"— No Armor —"),
-        armorSetList.map(function(s){return h("option",{key:s.name,value:s.name},s.name+" ("+s.poise+" poise, "+s.weight+" wt)");})),
-      
-      // Results
-      h("div",{style:{borderTop:"1px solid "+C.border,paddingTop:12}},
-        h("div",{style:{display:"flex",justifyContent:"space-between",marginBottom:6}},
-          h("span",{style:{fontSize:13,color:C.textDim,letterSpacing:1,textTransform:"uppercase"}},"Total AR"),
-          h("span",{style:{fontSize:26,fontWeight:700,color:accentColor,fontFamily:"monospace"}},result.totalAR)),
-        result.spellBuff?h("div",{style:{display:"flex",justifyContent:"space-between",marginBottom:6}},
-          h("span",{style:{fontSize:13,color:C.textDim,letterSpacing:1,textTransform:"uppercase"}},"Spell Buff"),
-          h("span",{style:{fontSize:22,fontWeight:700,color:"#b080e0",fontFamily:"monospace"}},result.spellBuff)):null,
-        
-        // AR breakdown bar
-        result.arResult?h("div",{style:{height:6,borderRadius:3,overflow:"hidden",display:"flex",marginBottom:10,background:"#0a0a08"}},
-          [0,1,2,3,4].map(function(dt){
-            var val=result.arResult.attackPower[dt]||0;if(val<=0)return null;
-            return h("div",{key:dt,title:ENG_DMG_NAMES[dt]+": "+Math.floor(val),
-              style:{width:(val/Math.max(result.totalAR,1)*100)+"%",height:"100%",background:ENG_DMG_COLORS[dt]}});
-          })
-        ):null,
-        
-        // Derived stats
-        h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:4,fontSize:14}},
-          h("div",{style:{color:"#e05040"}},"HP: "+result.hp),
-          h("div",{style:{color:"#5898c8"}},"FP: "+result.fp),
-          h("div",{style:{color:"#50b060"}},"Stam: "+result.stam),
-          h("div",{style:{color:C.textDim}},"Equip: "+result.equip)
-        ),
-        
-        // Armor stats (if armor selected)
-        result.armor.poise>0?h("div",{style:{marginTop:8,paddingTop:8,borderTop:"1px solid "+C.border+"30",display:"grid",gridTemplateColumns:"1fr 1fr",gap:4,fontSize:13}},
-          h("div",{style:{color:C.textDim}},"Poise: "+result.armor.poise),
-          h("div",{style:{color:C.textDim}},result.rollType+" ("+result.loadRatio+"%)"),
-          h("div",{style:{color:C.textDim}},"Phys Neg: "+result.armor.phys+"%"),
-          h("div",{style:{color:C.textDim}},"Elem: M"+result.armor.magic+" F"+result.armor.fire+" L"+result.armor.lightning+" H"+result.armor.holy+"%")
-        ):null
-      )
-    );
-  }
-  
-  // ── Comparison result (winner highlight) ──
-  function comparisonRow(label,valA,valB,higherIsBetter){
-    var winner=higherIsBetter?(valA>valB?"a":valA<valB?"b":"tie"):(valA<valB?"a":valA>valB?"b":"tie");
-    var colA=winner==="a"?C.green:winner==="tie"?C.textDim:"#604018";
-    var colB=winner==="b"?C.green:winner==="tie"?C.textDim:"#604018";
-    return h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",borderBottom:"1px solid "+C.border+"30"}},
-      h("span",{style:{fontSize:17,fontWeight:700,color:colA,fontFamily:"monospace",minWidth:60,textAlign:"right"}},typeof valA==="number"?valA.toLocaleString():valA),
-      h("span",{style:{fontSize:13,color:C.textDim,letterSpacing:1,textTransform:"uppercase",textAlign:"center",flex:1}},label),
-      h("span",{style:{fontSize:17,fontWeight:700,color:colB,fontFamily:"monospace",minWidth:60,textAlign:"left"}},typeof valB==="number"?valB.toLocaleString():valB)
-    );
-  }
-  
-  return h("div",null,
-    h("div",{style:{fontSize:13,color:C.textDim,letterSpacing:2,textTransform:"uppercase",marginBottom:16,textAlign:"center"}},"Build Comparison Engine"),
-    
-    // Build panels side by side
-    h("div",{style:{display:"flex",gap:12,marginBottom:16,flexWrap:"wrap"}},
-      buildPanel("a",resultA,"Build A",C.gold),
-      buildPanel("b",resultB,"Build B","#5898c8")
-    ),
-    
-    // Boss selector
-    h("div",{style:{border:"1px solid "+C.border,borderRadius:10,padding:16,marginBottom:16,position:"relative",overflow:"hidden"}},
-      h("div",{style:{position:"absolute",top:0,left:40,right:40,height:1,background:"linear-gradient(90deg,transparent,"+C.red+"20,transparent)"}}),
-      h("div",{style:{fontSize:13,fontWeight:700,color:C.red,letterSpacing:2,textTransform:"uppercase",marginBottom:10}},"Boss Matchup"),
-      h("select",{value:cmpData.bossIdx===null?"":cmpData.bossIdx,onChange:function(e){upd("bossIdx",e.target.value===""?null:parseInt(e.target.value));},
-        style:{width:"100%",padding:"8px 12px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:15,fontFamily:"inherit",marginBottom:8}},
-        h("option",{value:""},"Select a boss..."),
-        ENG_BOSS_LIST.map(function(b){return h("option",{key:b.idx,value:b.idx},b.name+" ("+b.region+")");})),
-      
-      // Skill level slider
-      h("div",{style:{display:"flex",alignItems:"center",gap:10,marginTop:6}},
-        h("span",{style:{fontSize:13,color:C.textDim}},"Skill Level:"),
-        h("input",{type:"range",min:0,max:100,value:Math.round(cmpData.skillLevel*100),
-          onChange:function(e){upd("skillLevel",parseInt(e.target.value)/100);},
-          style:{flex:1}}),
-        h("span",{style:{fontSize:13,color:C.gold,fontFamily:"monospace"}},Math.round(cmpData.skillLevel*100)+"%"))
-    ),
-    
-    // Comparison results
-    h("div",{style:{border:"1px solid "+C.border,borderRadius:10,padding:16,position:"relative",overflow:"hidden"}},
-      h("div",{style:{position:"absolute",top:0,left:40,right:40,height:1,background:"linear-gradient(90deg,transparent,"+C.gold+"20,transparent)"}}),
-      h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:12}},"Head to Head"),
-      
-      // Header
-      h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",marginBottom:8}},
-        h("span",{style:{fontSize:13,color:C.gold,letterSpacing:1,textTransform:"uppercase",fontWeight:700,minWidth:60,textAlign:"right"}},"Build A"),
-        h("span",{style:{fontSize:13,color:C.textDim}},""),
-        h("span",{style:{fontSize:13,color:"#5898c8",letterSpacing:1,textTransform:"uppercase",fontWeight:700,minWidth:60,textAlign:"left"}},"Build B")),
-      
-      comparisonRow("Total AR",resultA.totalAR,resultB.totalAR,true),
-      resultA.spellBuff||resultB.spellBuff?comparisonRow("Spell Buff",resultA.spellBuff||0,resultB.spellBuff||0,true):null,
-      comparisonRow("HP",resultA.hp,resultB.hp,true),
-      comparisonRow("FP",resultA.fp,resultB.fp,true),
-      comparisonRow("Stamina",resultA.stam,resultB.stam,true),
-      comparisonRow("Equip Load",resultA.equip,resultB.equip,true),
-      comparisonRow("Poise",resultA.armor.poise,resultB.armor.poise,true),
-      comparisonRow("Phys Neg %",resultA.armor.phys,resultB.armor.phys,true),
-      comparisonRow("Roll",resultA.rollType,resultB.rollType,false),
-      comparisonRow("Level",resultA.level,resultB.level,false),
-      
-      // Boss-specific comparison
-      bossResult?h("div",{style:{borderTop:"1px solid "+C.border,marginTop:10,paddingTop:10}},
-        h("div",{style:{fontSize:13,fontWeight:700,color:C.red,letterSpacing:1,textTransform:"uppercase",marginBottom:8}},
-          "vs "+bossResult.boss.n+" (HP: "+bossResult.boss.hp+")"),
-        bossResult.a&&bossResult.b?[
-          comparisonRow("Effective Dmg",bossResult.a.total,bossResult.b.total,true),
-          comparisonRow("Hits to Kill",bossResult.a.hitsToKill,bossResult.b.hitsToKill,false),
-          // Breakdown
-          h("div",{key:"bd",style:{display:"flex",justifyContent:"space-between",marginTop:8,fontSize:13}},
-            h("div",{style:{color:C.textDim}},Object.entries(bossResult.a.breakdown).map(function(e){return e[0]+":"+e[1];}).join(", ")),
-            h("div",{style:{color:C.textDim}},Object.entries(bossResult.b.breakdown).map(function(e){return e[0]+":"+e[1];}).join(", "))
-          )
-        ]:h("div",{style:{color:C.textDim,fontSize:15}},"Select weapons for both builds")
-      ):null
-    ),
-    
-    // Engine info
-    h("div",{style:{textAlign:"center",marginTop:16,fontSize:12,color:"#302818"}},
-      "Datamined regulation v1.14 \u2022 "+ENG_DATA.reg.w.length+" weapons \u2022 "+ENG_DATA.bosses.length+" bosses \u2022 Validated: Erdtree Seal 353=353")
-  );
-}
-
+// renderCompare removed — rebuilt inside App component (B2 fix)
 // === CHARACTER SYSTEM DATA ===
 
 // Region upgrade caps — max smithing stone tier available per region
@@ -3311,6 +3004,12 @@ var _ores=us(null),optRes=_ores[0],setOptRes=_ores[1];
 var _orun=us(false),optRun=_orun[0],setOptRun=_orun[1];
 var _oexp2=us({}),optExp=_oexp2[0],setOptExp=_oexp2[1];
 var _otm=us(null),optTime=_otm[0],setOptTime=_otm[1];
+
+// Compare tab state (B2 fix: hooks in App, not in renderCompare)
+var _cmp=us(function(){return{
+  a:{stats:{str:40,dex:40,int:10,fai:10,arc:10,vig:40,mnd:15,end:20},weapon:"Longsword",affinity:3,upgrade:25,twoHand:false},
+  b:{stats:{str:10,dex:10,int:10,fai:80,arc:10,vig:60,mnd:30,end:15},weapon:"Erdtree Seal",affinity:-1,upgrade:10,twoHand:false},
+  bossIdx:null};}),cmpData=_cmp[0],setCmpData=_cmp[1];
 
 React.useEffect(function(){
   var d=storage.load();
@@ -4487,6 +4186,149 @@ function renderQuests(){var f=QUESTS.filter(function(q){if(qf==="base")return q.
 function renderCollectibles(){var f=CATEGORIES.filter(function(c){if(cf==="dlc")return c.dlc;if(cf==="base")return!c.dlc;if(cf==="legendary")return c.id.indexOf("leg_")===0;return true});return h("div",null,h("div",{style:{display:"flex",gap:6,marginBottom:12,flexWrap:"wrap"}},["all","base","dlc","legendary"].map(function(x){return h("button",{key:x,onClick:function(){setCf(x)},style:btnS(cf===x)},x.charAt(0).toUpperCase()+x.slice(1))})),f.map(function(cat){var isE=exp["c_"+cat.id];var done=getCatDone(cat);return h("div",{key:cat.id,style:{background:C.card,borderRadius:10,padding:14,marginBottom:10,border:"1px solid "+(done>=cat.total?C.green+"40":C.border)}},h("div",{onClick:function(){togSec("c_"+cat.id)},style:{cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}},h("div",null,h("div",{style:{fontSize:17,fontWeight:700,color:done>=cat.total?C.green:C.textBright}},cat.icon+" "+cat.name,cat.dlc?h("span",{style:{fontSize:13,color:C.purple,marginLeft:8,background:C.purple+"22",padding:"2px 6px",borderRadius:8}},"DLC"):null),h("div",{style:{fontSize:15,color:C.textDim,marginTop:3}},cat.desc)),h("div",{style:{textAlign:"right"}},h("div",{style:{fontSize:15,fontWeight:700,color:done>=cat.total?C.green:C.gold}},done+"/"+cat.total),h("div",{style:{fontSize:13,color:C.textDim}},isE?"\u25BE":"\u25B8"))),isE?h("div",{style:{marginTop:12,paddingTop:12,borderTop:"1px solid "+C.border}},cat.items?cat.items.map(function(item,i){return Chk({key:i,id:cat.id+"_"+i,label:item,checked:!!ci[cat.id+"_"+i],onChange:toggle})}):h("div",{style:{display:"flex",alignItems:"center",gap:8}},h("button",{onClick:function(){updCtr(cat.id,Math.max(0,(ci[cat.id+"_count"]||0)-1))},style:Object.assign({},btnS(false),{padding:"4px 10px",fontSize:18})},"\u2212"),h("span",{style:{fontSize:18,color:C.textBright,minWidth:44,textAlign:"center",fontWeight:700}},ci[cat.id+"_count"]||0),h("button",{onClick:function(){updCtr(cat.id,Math.min(cat.total,(ci[cat.id+"_count"]||0)+1))},style:Object.assign({},btnS(false),{padding:"4px 10px",fontSize:18})},"+"),h("span",{style:{fontSize:17,color:C.textDim}},"/ "+cat.total))):null)}))}
 
 function renderSettings(){return h("div",null,h("div",{style:{borderRadius:10,padding:20,border:"1px solid "+C.border,marginBottom:16,position:"relative",overflow:"hidden"}},h("div",{style:{position:"absolute",top:0,left:40,right:40,height:1,background:"linear-gradient(90deg,transparent,"+C.gold+"20,transparent)"}}),h("div",{style:{fontSize:15,fontWeight:700,color:C.gold,marginBottom:12,letterSpacing:2,textTransform:"uppercase"}},"Save & Data"),h("div",{style:{fontSize:17,color:C.textDim,marginBottom:16,lineHeight:1.6}},"Auto-saves to localStorage. Persists across sessions."),h("div",{style:{display:"flex",gap:10,flexWrap:"wrap",marginBottom:16}},h("button",{onClick:exportSave,style:Object.assign({},btnS(false),{fontSize:15})},"Export Save"),h("label",{style:Object.assign({},btnS(false),{fontSize:15,cursor:"pointer",display:"inline-flex",alignItems:"center"})},h("input",{type:"file",accept:".json",style:{display:"none"},onChange:function(e){if(confirm("This will overwrite all current progress. Continue?")){importSave(e.target.files[0]);}e.target.value="";}}),"Import Save")),h("button",{onClick:function(){if(confirm("Reset ALL progress?")){setCi({});setQp({});setCharData(null);setRespecData(null);storage.clear();setSav("Reset")}},style:Object.assign({},btnS(false),{borderColor:C.red,color:C.red})},"Reset All Progress")),h("div",{style:{borderRadius:10,padding:20,border:"1px solid "+C.border,position:"relative",overflow:"hidden"}},h("div",{style:{position:"absolute",top:0,left:40,right:40,height:1,background:"linear-gradient(90deg,transparent,"+C.gold+"20,transparent)"}}),h("div",{style:{fontSize:15,fontWeight:700,color:C.gold,marginBottom:12,letterSpacing:2,textTransform:"uppercase"}},"About"),h("div",{style:{fontSize:17,color:C.textDim,lineHeight:1.7}},h("b",{style:{color:C.textBright}},"Tarnished's Companion v3.2")," \u2014 Complete guide: base game, NG+, Shadow of the Erdtree.",h("br"),h("br"),"Contextualized Decision Support Engine. Full character planner with stat allocator, soft cap warnings, AR estimator, 8 recommended builds, loadout tracker, and respec planner.",h("br"),"Boss readiness with personalized damage calc, dynamic tactical needs resolution, progression gate tracking (whetstones, bell bearings, affinities), power budget cards, focused mode.",h("br"),"42 achievements, 6 endings, 46 bosses, 28 NPC quests, 25+ collectible categories.",h("br"),"Regional walkthroughs: "+BASE_REGIONS.length+" base + "+DLC_REGIONS.length+" DLC regions. 1,679 classified steps (M/P/T/N/C). 2,764 weapons, 173 bosses, AR calc validated 29/29.")))}
+
+// ══════ COMPARE TAB (B2 fix: rebuilt inside App, hooks-compliant) ══════
+function renderCompare(){
+  function cmpUpd(path,val){setCmpData(function(prev){
+    var next=JSON.parse(JSON.stringify(prev));
+    var parts=path.split(".");var obj=next;
+    for(var i=0;i<parts.length-1;i++)obj=obj[parts[i]];
+    obj[parts[parts.length-1]]=val;return next;});}
+
+  function cmpCalc(b){
+    var totalPts=0;["vig","mnd","end","str","dex","int","fai","arc"].forEach(function(s){totalPts+=(b.stats[s]||10);});
+    var level=WRETCH_LEVEL+(totalPts-WRETCH_BASE_TOTAL);
+    var wEnc=ENG_DATA.reg.w.find(function(w){return w.w===b.weapon&&w.a===b.affinity;})||ENG_DATA.reg.w.find(function(w){return w.w===b.weapon;});
+    var arResult=null,totalAR=0,spellBuff=0,maxUp=10,wType=0,isCat=false;
+    if(wEnc){
+      maxUp=(ENG_DATA.reg.rt[wEnc.ri]||[]).length-1;wType=wEnc.t;
+      var dec=engDecodeWAtLevel(wEnc,Math.min(b.upgrade,maxUp));
+      if(dec){var engStats={str:b.stats.str,dex:b.stats.dex,int:b.stats.int,fai:b.stats.fai||10,arc:b.stats.arc};
+        arResult=engCalcAR(dec,engStats,0,b.twoHand);
+        [0,1,2,3,4].forEach(function(dt){totalAR+=(arResult.attackPower[dt]||0);});totalAR=Math.floor(totalAR);
+        if(dec.sorceryTool||dec.incantationTool){isCat=true;spellBuff=arResult.spellScaling[0]?Math.floor(arResult.spellScaling[0]):0;}
+      }
+    }
+    return{level:level,hp:engHP(b.stats.vig),fp:engFP(b.stats.mnd),stam:engStam(b.stats.end),equip:engEquip(b.stats.end),
+      totalAR:totalAR,spellBuff:spellBuff,arResult:arResult,maxUp:maxUp,wType:wType,isCat:isCat,weapon:b.weapon,
+      affinity:ENG_AFFINITY_NAMES[b.affinity]||"Standard"};
+  }
+
+  var rA=cmpCalc(cmpData.a),rB=cmpCalc(cmpData.b);
+
+  // Boss matchup
+  var bossResult=null;
+  if(cmpData.bossIdx!==null&&cmpData.bossIdx!==undefined){
+    var boss=ENG_DATA.bosses[cmpData.bossIdx];
+    if(boss){
+      var dmgA=rA.arResult?engDmgVsBoss(rA.arResult,boss,rA.wType):null;
+      var dmgB=rB.arResult?engDmgVsBoss(rB.arResult,boss,rB.wType):null;
+      bossResult={boss:boss,a:dmgA,b:dmgB};
+    }
+  }
+
+  function statInput(bk,sk,label){
+    var val=cmpData[bk].stats[sk]||10;
+    return h("div",{key:sk,style:{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"2px 0"}},
+      h("span",{style:{fontSize:13,color:C.textDim,minWidth:32}},label),
+      h("div",{style:{display:"flex",alignItems:"center",gap:3}},
+        h("button",{onClick:function(){cmpUpd(bk+".stats."+sk,Math.max(10,val-1));},
+          style:{background:"transparent",border:"1px solid "+C.border,color:C.textDim,width:22,height:22,borderRadius:3,fontSize:13,padding:0,cursor:"pointer"}},"-"),
+        h("span",{style:{fontSize:14,fontWeight:700,color:C.goldBright,minWidth:26,textAlign:"center",fontFamily:"monospace"}},val),
+        h("button",{onClick:function(){cmpUpd(bk+".stats."+sk,Math.min(99,val+1));},
+          style:{background:"transparent",border:"1px solid "+C.border,color:C.textDim,width:22,height:22,borderRadius:3,fontSize:13,padding:0,cursor:"pointer"}},"+"))
+    );
+  }
+
+  function buildPanel(bk,result,label,accent){
+    var b=cmpData[bk];
+    var wEntry=ENG_WEAPON_NAMES.find(function(w){return w.name===b.weapon;});
+    var affinities=wEntry?wEntry.affinities:[-1];
+    return h("div",{style:{flex:1,minWidth:260,border:"1px solid "+C.border,borderRadius:10,padding:14,position:"relative",overflow:"hidden"}},
+      h("div",{style:{position:"absolute",top:0,left:20,right:20,height:1,background:"linear-gradient(90deg,transparent,"+accent+"40,transparent)"}}),
+      h("div",{style:{fontSize:12,fontWeight:700,color:accent,letterSpacing:2,textTransform:"uppercase",marginBottom:10}},label),
+      h("div",{style:{fontSize:12,color:C.textDim,marginBottom:8}},"Wretch (Lv"+result.level+")"),
+      h("div",{style:{marginBottom:8}},["vig","mnd","end","str","dex","int","fai","arc"].map(function(s){return statInput(bk,s,s.toUpperCase());})),
+      // Weapon selector
+      h("select",{value:b.weapon,onChange:function(e){
+        var nw=e.target.value;var we=ENG_WEAPON_NAMES.find(function(w){return w.name===nw;});
+        setCmpData(function(prev){var next=JSON.parse(JSON.stringify(prev));
+          next[bk].weapon=nw;next[bk].affinity=we&&we.affinities.length?we.affinities[0]:-1;
+          next[bk].upgrade=0;return next;});
+      },style:{width:"100%",padding:"5px 8px",background:"#080806",border:"1px solid "+C.border,borderRadius:5,color:C.gold,fontSize:13,fontFamily:"inherit",marginBottom:4}},
+        ENG_WEAPON_NAMES.map(function(w){return h("option",{key:w.name,value:w.name},w.name);})),
+      h("div",{style:{display:"flex",gap:5,marginBottom:4}},
+        affinities.length>1?h("select",{value:b.affinity,onChange:function(e){cmpUpd(bk+".affinity",parseInt(e.target.value));},
+          style:{flex:1,padding:"4px 6px",background:"#080806",border:"1px solid "+C.border,borderRadius:4,color:"#a080c0",fontSize:12,fontFamily:"inherit"}},
+          affinities.map(function(a){return h("option",{key:a,value:a},ENG_AFFINITY_NAMES[a]||"Unique");})):h("span",{style:{fontSize:12,color:"#a080c0",flex:1}},ENG_AFFINITY_NAMES[b.affinity]||"Unique"),
+        h("select",{value:b.upgrade,onChange:function(e){cmpUpd(bk+".upgrade",parseInt(e.target.value));},
+          style:{width:50,padding:"4px 6px",background:"#080806",border:"1px solid "+C.border,borderRadius:4,color:C.goldBright,fontSize:12,fontFamily:"inherit"}},
+          Array.from({length:result.maxUp+1},function(_,i){return h("option",{key:i,value:i},"+"+i);})),
+        h("label",{style:{display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textDim,cursor:"pointer"}},
+          h("input",{type:"checkbox",checked:b.twoHand,onChange:function(){cmpUpd(bk+".twoHand",!b.twoHand);}}),
+          "2H")
+      ),
+      // Results
+      h("div",{style:{borderTop:"1px solid "+C.border,paddingTop:10,marginTop:6}},
+        h("div",{style:{display:"flex",justifyContent:"space-between",marginBottom:4}},
+          h("span",{style:{fontSize:12,color:C.textDim,letterSpacing:1,textTransform:"uppercase"}},result.isCat?"Spell Scaling":"Total AR"),
+          h("span",{style:{fontSize:24,fontWeight:700,color:result.isCat?"#b080e0":accent,fontFamily:"monospace"}},result.isCat?result.spellBuff:result.totalAR)),
+        h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:3,fontSize:13}},
+          h("div",{style:{color:"#e05040"}},"HP: "+result.hp),
+          h("div",{style:{color:"#5898c8"}},"FP: "+result.fp),
+          h("div",{style:{color:"#50b060"}},"Stam: "+result.stam),
+          h("div",{style:{color:C.textDim}},"Equip: "+Math.round(result.equip*10)/10))
+      )
+    );
+  }
+
+  function cmpRow(label,vA,vB,higherBetter){
+    var winner=higherBetter?(vA>vB?"a":vA<vB?"b":"tie"):(vA<vB?"a":vA>vB?"b":"tie");
+    var cA=winner==="a"?C.green:winner==="tie"?C.textDim:"#604018";
+    var cB=winner==="b"?C.green:winner==="tie"?C.textDim:"#604018";
+    return h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"4px 0",borderBottom:"1px solid "+C.border+"30"}},
+      h("span",{style:{fontSize:15,fontWeight:700,color:cA,fontFamily:"monospace",minWidth:55,textAlign:"right"}},typeof vA==="number"?vA.toLocaleString():vA),
+      h("span",{style:{fontSize:12,color:C.textDim,letterSpacing:1,textTransform:"uppercase",textAlign:"center",flex:1}},label),
+      h("span",{style:{fontSize:15,fontWeight:700,color:cB,fontFamily:"monospace",minWidth:55,textAlign:"left"}},typeof vB==="number"?vB.toLocaleString():vB));
+  }
+
+  return h("div",null,
+    h("div",{style:{fontSize:12,color:C.textDim,letterSpacing:2,textTransform:"uppercase",marginBottom:14,textAlign:"center"}},"Build Comparison Engine"),
+    h("div",{style:{display:"flex",gap:10,marginBottom:14,flexWrap:"wrap"}},
+      buildPanel("a",rA,"Build A",C.gold),
+      buildPanel("b",rB,"Build B","#5898c8")),
+    // Boss selector
+    h("div",{style:{border:"1px solid "+C.border,borderRadius:8,padding:12,marginBottom:14}},
+      h("div",{style:{fontSize:12,fontWeight:700,color:C.red,letterSpacing:2,textTransform:"uppercase",marginBottom:8}},"Boss Matchup"),
+      h("select",{value:cmpData.bossIdx===null?"":cmpData.bossIdx,onChange:function(e){cmpUpd("bossIdx",e.target.value===""?null:parseInt(e.target.value));},
+        style:{width:"100%",padding:"6px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:5,color:C.gold,fontSize:14,fontFamily:"inherit"}},
+        h("option",{value:""},"Select a boss..."),
+        ENG_BOSS_LIST.map(function(b){return h("option",{key:b.idx,value:b.idx},b.name+" ("+b.region+")");}))),
+    // Head to head
+    h("div",{style:{border:"1px solid "+C.border,borderRadius:8,padding:12}},
+      h("div",{style:{fontSize:12,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:10}},"Head to Head"),
+      h("div",{style:{display:"flex",justifyContent:"space-between",padding:"4px 0",marginBottom:6}},
+        h("span",{style:{fontSize:12,color:C.gold,fontWeight:700,minWidth:55,textAlign:"right"}},"BUILD A"),
+        h("span"),
+        h("span",{style:{fontSize:12,color:"#5898c8",fontWeight:700,minWidth:55,textAlign:"left"}},"BUILD B")),
+      cmpRow("Total AR",rA.totalAR,rB.totalAR,true),
+      rA.spellBuff||rB.spellBuff?cmpRow("Spell Buff",rA.spellBuff||0,rB.spellBuff||0,true):null,
+      cmpRow("HP",rA.hp,rB.hp,true),
+      cmpRow("FP",rA.fp,rB.fp,true),
+      cmpRow("Stamina",rA.stam,rB.stam,true),
+      cmpRow("Equip Load",Math.round(rA.equip),Math.round(rB.equip),true),
+      cmpRow("Level",rA.level,rB.level,false),
+      bossResult?h("div",{style:{borderTop:"1px solid "+C.border,marginTop:8,paddingTop:8}},
+        h("div",{style:{fontSize:12,fontWeight:700,color:C.red,letterSpacing:1,textTransform:"uppercase",marginBottom:6}},
+          "vs "+bossResult.boss.n+" (HP: "+bossResult.boss.hp.toLocaleString()+")"),
+        bossResult.a&&bossResult.b?h("div",null,
+          cmpRow("Eff. Damage",bossResult.a.total,bossResult.b.total,true),
+          cmpRow("Hits to Kill",bossResult.a.hitsToKill,bossResult.b.hitsToKill,false)
+        ):h("div",{style:{color:C.textDim,fontSize:13}},"Select weapons for both builds")
+      ):null
+    )
+  );
+}
 
 // ══════ MAIN RENDER ══════
 function svgIcon(paths,sz){sz=sz||14;return h("svg",{width:sz,height:sz,viewBox:"0 0 14 14",style:{display:"inline-block",verticalAlign:"middle",marginRight:6}},paths.map(function(p,i){return h("path",Object.assign({key:i,fill:"none",stroke:"currentColor",strokeWidth:"0.8",strokeLinecap:"round"},p))}))}

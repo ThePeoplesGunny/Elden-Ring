@@ -226,7 +226,7 @@ tail -3 app.html
 
 ### BUGS (broken behavior)
 - **B1:** Level calc hardcodes 79 as base stat total. [DONE v3.2 — WRETCH_BASE_TOTAL/WRETCH_LEVEL constants]
-- **B2:** Compare tab hooks violation — renderCompare calls useState outside App component. [OPEN]
+- **B2:** Compare tab hooks violation. [DONE v3.2 — rebuilt inside App component. 312 lines → ~160 lines. Hooks-compliant, Wretch-native, uses B7/B9 engine fixes, physical subtype aware.]
 - **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
 - **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [OPEN]
 - **B5:** Optimizer header shows stale "3,216 weapons" count. [OPEN]
