@@ -61,4 +61,4 @@ The delivery is not complete until the checklist is complete.
 **Baseline file:** `Tarnished_Companion_v3.2.html`
 **Lines:** 4,460
 **Last completed task:** F4 — removed static Fextralife builds + dead class optimizer (-178 lines)
-**Next task:** Awaiting instruction from command authority
+**Next task:** F2/F3/F7 — progression system (power-gated walkthrough, "where to go next", per-archetype weapon curves). These are interconnected and should be planned together.
