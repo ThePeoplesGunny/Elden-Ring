@@ -2628,33 +2628,7 @@ function calcScaleAR(baseDmg,grade,statVal){
   return Math.round(baseDmg*m*((20*0.6+35*1.0+(eff-55)*0.4)/80));
 }
 
-// DD37: All builds assume Wretch base (10 all stats). Stats shown are target allocation.
-var BUILDS=[
-{name:"Colossal Crusher",arch:"Pure STR",desc:"Giant weapons, massive stagger. Two-hand for 1.5x STR.",cl:"wretch",rl:150,
- stats:{vig:60,mnd:20,end:35,str:80,dex:12,int:10,fai:10,arc:10},
- weapons:"Giant-Crusher, Greatsword, Ruins Greatsword",talismans:"Shard of Alexander, Claw Talisman, Great-Jar's Arsenal, Erdtree's Favor +2"},
-{name:"Swift Blade",arch:"Pure DEX",desc:"Fast weapons, bleed, high DPS. Katanas and curved swords.",cl:"wretch",rl:150,
- stats:{vig:60,mnd:20,end:30,str:12,dex:80,int:10,fai:10,arc:10},
- weapons:"Uchigatana, Nagakiba, Hand of Malenia",talismans:"Winged Sword Insignia, Millicent's Prosthesis, Rotten Winged, Shard of Alexander"},
-{name:"Quality Knight",arch:"Quality (STR+DEX)",desc:"Versatile melee. Use Quality affinity weapons.",cl:"wretch",rl:150,
- stats:{vig:55,mnd:20,end:30,str:50,dex:50,int:10,fai:10,arc:10},
- weapons:"Claymore, Bloodhound's Fang, Banished Knight's Halberd",talismans:"Erdtree's Favor +2, Great-Jar's Arsenal, Claw Talisman, Shard of Alexander"},
-{name:"Glintstone Sorcerer",arch:"Pure INT",desc:"Long-range sorcery devastation. Comet Azur and Stars of Ruin.",cl:"wretch",rl:150,
- stats:{vig:50,mnd:40,end:20,str:10,dex:12,int:80,fai:10,arc:10},
- weapons:"Lusat's Glintstone Staff, Carian Regal Scepter, Wing of Astel",talismans:"Graven-Mass Talisman, Radagon Icon, Godfrey Icon, Cerulean Amber +2"},
-{name:"Prophet of Flame",arch:"Pure FTH",desc:"Incantation powerhouse. Black Flame, Lightning, Dragon spells.",cl:"wretch",rl:150,
- stats:{vig:50,mnd:35,end:20,str:12,dex:12,int:10,fai:80,arc:10},
- weapons:"Erdtree Seal, Godslayer's Seal, Coded Sword, Blasphemous Blade",talismans:"Flock's Canvas, Radagon Icon, Godfrey Icon, Shard of Alexander"},
-{name:"Holy Paladin",arch:"STR/FTH Hybrid",desc:"Heavy weapons with faith buffs. Golden Vow, Flame Grant Me Strength.",cl:"wretch",rl:150,
- stats:{vig:55,mnd:25,end:30,str:54,dex:12,int:10,fai:40,arc:10},
- weapons:"Blasphemous Blade, Ordovis's Greatsword, Envoy's Long Horn",talismans:"Shard of Alexander, Flock's Canvas, Erdtree's Favor +2, Great-Jar's Arsenal"},
-{name:"Spellblade",arch:"DEX/INT Hybrid",desc:"Moonveil, Wing of Astel. Mix melee with sorcery.",cl:"wretch",rl:150,
- stats:{vig:50,mnd:30,end:20,str:11,dex:50,int:50,fai:10,arc:10},
- weapons:"Moonveil, Wing of Astel, Dark Moon Greatsword",talismans:"Magic Scorpion Charm, Graven-Mass, Shard of Alexander, Radagon Icon"},
-{name:"Lord of Blood",arch:"Arcane Bleed",desc:"Rivers of Blood, Mohgwyn spear. Bleed everything.",cl:"wretch",rl:150,
- stats:{vig:55,mnd:25,end:25,str:12,dex:50,int:10,fai:10,arc:45},
- weapons:"Rivers of Blood, Mohgwyn's Sacred Spear, Eleonora's Poleblade",talismans:"Lord of Blood's Exultation, Winged Sword Insignia, Rotten Winged, Shard of Alexander"}
-];
+// BUILDS array removed (F4) — static Fextralife content replaced by engine-computed recommendations
 
 // === APP CORE ===
 var STORAGE_KEY="elden-ring-companion-v3";
@@ -3206,7 +3180,6 @@ function renderCharacter(){
   // Sub-tabs
   var subtabs=[
     {id:"profile",label:"My Stats"},
-    {id:"builds",label:"Recommended Builds"},
     {id:"loadout",label:"Loadout"},
     {id:"respec",label:"Respec Planner"},
     {id:"ar",label:"AR Estimator"}
@@ -3253,39 +3226,6 @@ function renderCharacter(){
       ),
       // Stats
       STAT_NAMES.map(function(key){return statRow(key)})
-    );
-  }
-
-  function renderBuilds(){
-    return h("div",null,
-      h("div",{style:{fontSize:17,color:C.textDim,marginBottom:16}},"Optimized builds at Rune Level 150. Select one to auto-load stats."),
-      BUILDS.map(function(b){
-        return h("div",{key:b.name,style:{background:C.card,borderRadius:10,padding:16,marginBottom:12,border:"1px solid "+C.border}},
-          h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}},
-            h("div",null,
-              h("div",{style:{fontSize:18,fontWeight:700,color:C.gold}},b.name),
-              h("div",{style:{fontSize:15,color:C.purple}},b.arch+" \u2022 RL "+b.rl)
-            ),
-            h("button",{onClick:function(){
-              saveChar({classId:"wretch",stats:Object.assign({},b.stats),loadout:ch.loadout||{}});
-            },style:Object.assign({},btnS(false),{fontSize:15,padding:"4px 12px"})},"Load Build")
-          ),
-          h("div",{style:{fontSize:15,color:C.text,marginBottom:8}},b.desc),
-          h("div",{style:{display:"flex",flexWrap:"wrap",gap:8,marginBottom:8}},
-            STAT_NAMES.map(function(s){
-              return h("span",{key:s,style:{fontSize:15,color:scColor(s,b.stats[s]),background:C.surface,padding:"2px 8px",borderRadius:4}},
-                STAT_LABELS[s].substr(0,3)+": "+b.stats[s]
-              );
-            })
-          ),
-          h("div",{style:{fontSize:15,color:C.textDim}},
-            h("span",{style:{color:C.gold}},"Weapons: "),b.weapons
-          ),
-          h("div",{style:{fontSize:15,color:C.textDim,marginTop:4}},
-            h("span",{style:{color:C.gold}},"Talismans: "),b.talismans
-          )
-        );
-      })
     );
   }
 
@@ -3810,122 +3750,6 @@ function renderCharacter(){
   }
 
   // === CLASS OPTIMIZER ===
-  function renderClasses(){
-    var tgt=optData.target;
-    
-    // Compute optimal class rankings
-    var rankings=ENG_DATA.classes.map(function(c){
-      var invested=0,wasted=0,wasteDetail=[];
-      ["vig","mnd","end","str","dex","int","fai","arc"].forEach(function(s){
-        var t=tgt[s]||1;
-        if(c[s]>t){wasted+=(c[s]-t);wasteDetail.push(s.toUpperCase()+"+"+(c[s]-t));}
-        else{invested+=Math.max(0,t-c[s]);}
-      });
-      return{id:c.id,name:c.name,startLv:c.level,invested:invested,wasted:wasted,wasteDetail:wasteDetail,finalLv:c.level+invested};
-    }).sort(function(a,b){return a.finalLv-b.finalLv;});
-    
-    var bestLv=rankings[0].finalLv;
-    
-    // Archetype presets
-    var presets=[
-      {name:"Pure STR",t:{vig:60,mnd:15,end:30,str:66,dex:12,int:7,fai:8,arc:7}},
-      {name:"Pure DEX",t:{vig:50,mnd:15,end:25,str:12,dex:60,int:9,fai:8,arc:8}},
-      {name:"Quality",t:{vig:50,mnd:15,end:30,str:40,dex:40,int:10,fai:10,arc:10}},
-      {name:"INT Mage",t:{vig:50,mnd:40,end:15,str:12,dex:12,int:70,fai:7,arc:9}},
-      {name:"Faith Caster",t:{vig:60,mnd:30,end:15,str:12,dex:12,int:9,fai:80,arc:10}},
-      {name:"STR/FAI",t:{vig:50,mnd:20,end:25,str:50,dex:12,int:7,fai:40,arc:9}},
-      {name:"Bleed/ARC",t:{vig:50,mnd:20,end:20,str:12,dex:50,int:9,fai:8,arc:45}},
-      {name:"Spellblade",t:{vig:40,mnd:30,end:15,str:12,dex:18,int:60,fai:6,arc:9}}
-    ];
-    
-    return h("div",null,
-      // Header
-      h("div",{style:{fontSize:17,color:C.textDim,marginBottom:6}},"Enter your target stats. The optimizer calculates which starting class reaches that build at the lowest rune level."),
-      h("div",{style:{fontSize:13,color:"#604018",marginBottom:16}},"Why it matters: you can't un-invest starting stats. A class with 16 INT wastes 9 points on a faith build that only needs 7 INT. Those 9 points raise your rune level without making you stronger."),
-      
-      // Archetype quick-select
-      h("div",{style:{display:"flex",gap:4,flexWrap:"wrap",marginBottom:12}},
-        presets.map(function(p){
-          var isActive=JSON.stringify(tgt)===JSON.stringify(p.t);
-          return h("button",{key:p.name,onClick:function(){setOptData({target:p.t});},
-            style:{padding:"5px 10px",fontSize:13,background:isActive?C.gold+"20":"#080806",border:"1px solid "+(isActive?C.gold:C.border),borderRadius:6,color:isActive?C.gold:C.textDim,cursor:"pointer",fontFamily:"inherit"}},p.name);
-        })
-      ),
-      
-      // Target stat inputs
-      h("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:6,marginBottom:16}},
-        ["vig","mnd","end","str","dex","int","fai","arc"].map(function(s){
-          return h("div",{key:s,style:{display:"flex",alignItems:"center",gap:4}},
-            h("span",{style:{fontSize:13,color:C.textDim,minWidth:30,textTransform:"uppercase"}},s),
-            h("input",{type:"number",min:1,max:99,value:tgt[s]||10,
-              onChange:function(e){var v=parseInt(e.target.value)||10;setOptData(function(prev){var next={target:Object.assign({},prev.target)};next.target[s]=Math.max(1,Math.min(99,v));return next;});},
-              style:{width:50,padding:"4px 6px",background:"#080806",border:"1px solid "+C.border,borderRadius:4,color:C.gold,fontSize:15,fontFamily:"monospace",textAlign:"center"}})
-          );
-        })
-      ),
-      
-      // Target level display
-      h("div",{style:{fontSize:13,color:"#604018",marginBottom:16,fontFamily:"monospace"}},"Target stat total: "+["vig","mnd","end","str","dex","int","fai","arc"].reduce(function(s,k){return s+(tgt[k]||10);},0)),
-      
-      // Rankings
-      h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:8}},"Optimal Class Ranking"),
-      rankings.map(function(r,i){
-        var isOptimal=r.finalLv===bestLv;
-        var penalty=r.finalLv-bestLv;
-        return h("div",{key:r.id,style:{display:"flex",alignItems:"center",gap:10,padding:"8px 12px",marginBottom:4,
-          border:"1px solid "+(isOptimal?C.gold+"60":C.border+"40"),borderRadius:8,background:isOptimal?C.gold+"08":"transparent"}},
-          // Rank
-          h("div",{style:{fontSize:22,fontWeight:700,color:isOptimal?C.gold:"#604018",minWidth:28,textAlign:"center",fontFamily:"monospace"}},i+1),
-          // Class name + starting level
-          h("div",{style:{flex:1}},
-            h("div",{style:{fontSize:16,fontWeight:700,color:isOptimal?C.gold:C.text}},r.name),
-            h("div",{style:{fontSize:12,color:C.textDim}},"Starts Lv"+r.startLv+", invest "+r.invested+" points")),
-          // Waste indicator
-          r.wasted>0?h("div",{style:{fontSize:12,color:C.red,textAlign:"right",maxWidth:140}},
-            r.wasted+" wasted",r.wasteDetail.length?h("div",{style:{fontSize:11,color:"#803020"}},r.wasteDetail.join(", ")):null):
-            h("div",{style:{fontSize:12,color:C.green}},"0 wasted"),
-          // Final level
-          h("div",{style:{fontSize:22,fontWeight:700,color:isOptimal?C.gold:penalty<=2?"#a08030":"#605030",fontFamily:"monospace",minWidth:60,textAlign:"right"}},"RL "+r.finalLv),
-          // Penalty
-          penalty>0?h("div",{style:{fontSize:12,color:C.red,minWidth:30,textAlign:"right"}},"+"+penalty):
-            h("div",{style:{fontSize:12,color:C.green,minWidth:30,textAlign:"right"}},"\u2713")
-        );
-      }),
-      
-      // Full stat comparison table
-      h("div",{style:{marginTop:24,fontSize:13,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:8}},"Starting Stat Comparison"),
-      h("div",{style:{overflowX:"auto"}},
-        h("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:14}},
-          h("thead",null,
-            h("tr",{style:{borderBottom:"2px solid "+C.border}},
-              ["Class","Lv","VIG","MND","END","STR","DEX","INT","FAI","ARC","Total"].map(function(hd){
-                return h("th",{key:hd,style:{padding:"6px 4px",textAlign:hd==="Class"?"left":"center",color:C.gold,fontSize:13}},hd);
-              })
-            )
-          ),
-          h("tbody",null,
-            CLASSES.map(function(c){
-              var total=0;STAT_NAMES.forEach(function(s){total+=c.stats[s]});
-              var isOpt=rankings[0].id===c.id;
-              return h("tr",{key:c.id,style:{borderBottom:"1px solid "+C.border+"44",background:isOpt?C.gold+"10":"transparent"}},
-                h("td",{style:{padding:"6px 4px",fontWeight:700,color:isOpt?C.gold:C.text}},c.name),
-                h("td",{style:{textAlign:"center",color:C.textDim}},c.lv),
-                STAT_NAMES.map(function(s){
-                  var v=c.stats[s];var t=tgt[s]||10;
-                  var isWaste=v>t;var isShort=v<t;
-                  return h("td",{key:s,style:{textAlign:"center",color:isWaste?"#c04030":v>=14?C.green:C.text,fontWeight:isWaste?700:v>=14?700:400,
-                    background:isWaste?"#c0403010":"transparent"}},v);
-                }),
-                h("td",{style:{textAlign:"center",color:C.textDim}},total)
-              );
-            })
-          )
-        )
-      ),
-      h("div",{style:{marginTop:8,fontSize:12,color:"#604018"}},"Red cells = stat above your target (wasted points that raise your RL without benefit)")
-    );
-  }
-
   return h("div",null,
     // Sub-tabs
     h("div",{style:{display:"flex",gap:4,marginBottom:16,flexWrap:"wrap"}},
@@ -3934,11 +3758,9 @@ function renderCharacter(){
       })
     ),
     csub==="profile"?renderProfile():
-    csub==="builds"?renderBuilds():
     csub==="loadout"?renderLoadout():
     csub==="respec"?renderRespec():
     csub==="ar"?renderAR():
-    csub==="classes"?renderClasses():
     renderProfile()
   );
 }

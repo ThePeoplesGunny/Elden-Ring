@@ -239,7 +239,7 @@ tail -3 app.html
 - **F1:** Character creation screen. [CLOSED — not needed. Wretch locked (DD37), walkthrough guides first purchases (Step 16), keepsake guidance is implicit. No added value as separate UI.]
 - **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [PLANNED]
 - **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [PLANNED]
-- **F4:** Replace renderBuilds with archetype-computed recommendations. [PLANNED]
+- **F4:** Remove static Fextralife builds. [DONE v3.2 — BUILDS array, renderBuilds, renderClasses deleted. -178 lines. Opinion-based content replaced by engine-computed recommendations in loadout/optimizer.]
 - **F5:** Ranged utility system. [DONE v3.2 — AMMO_DATA (30 entries) in engine, arrow/bolt slots in loadout UI, ammo auto-filters by weapon type, live AR = weapon + arrow combined, status effects displayed. Shortbow in Kalé mandatory purchases (B3).]
 - **F6:** Dynamic weapon pool. [DONE v3.2 — builds async after first render (~1s). 98 unique weapons, 787 entries (28% of 2,764). 4x globalOptimize speedup (38ms vs 158ms). Same results, no static list to maintain. Header shows pool status indicator.]
 - **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [PLANNED]

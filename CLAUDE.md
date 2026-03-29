@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.2
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,638
-**Last completed task:** F6 — dynamic weapon pool, async build after render, 4x optimizer speedup
+**Lines:** 4,460
+**Last completed task:** F4 — removed static Fextralife builds + dead class optimizer (-178 lines)
 **Next task:** Awaiting instruction from command authority
