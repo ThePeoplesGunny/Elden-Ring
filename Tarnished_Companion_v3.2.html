@@ -3603,13 +3603,18 @@ function renderCharacter(){
         var totalAR=0;[0,1,2,3,4].forEach(function(dt){totalAR+=(ar.attackPower[dt]||0);});totalAR=Math.floor(totalAR);
         var isCat=dec.sorceryTool||dec.incantationTool;
         var scaling=ar.spellScaling[0]?Math.floor(ar.spellScaling[0]):0;
-        var ammoBonus="";
-        if(AMMO_FOR_WEAPON[wEnc.t]&&lo.arrow1){var ammo=AMMO_DATA.find(function(a){return a.n===lo.arrow1;});if(ammo){var ad=0;Object.values(ammo.d).forEach(function(v){ad+=v;});ammoBonus=" + "+lo.arrow1+" (+"+ad+")";}}
+        var ammoName="",ammoDmg=0,ammoStatus="";
+        var isRanged=!!AMMO_FOR_WEAPON[wEnc.t];
+        if(isRanged&&lo.arrow1){var ammo=AMMO_DATA.find(function(a){return a.n===lo.arrow1;});
+          if(ammo){ammoName=ammo.n;Object.values(ammo.d).forEach(function(v){ammoDmg+=v;});
+            if(ammo.st){var stKeys=Object.keys(ammo.st);ammoStatus=stKeys.map(function(k){return k+" "+ammo.st[k];}).join(", ");}}}
+        var displayAR=isRanged?totalAR+ammoDmg:totalAR;
         return h("div",{style:{textAlign:"center",padding:"14px 0",marginBottom:12,border:"1px solid "+(isCat?"#b080e040":C.gold+"40"),borderRadius:8,background:"#0a080420"}},
-          h("div",{style:{fontSize:11,color:C.textDim,letterSpacing:2,textTransform:"uppercase",marginBottom:4}},isCat?(dec.sorceryTool?"Sorcery Scaling":"Incantation Scaling"):"Attack Rating"),
-          h("div",{style:{fontSize:32,fontWeight:700,color:isCat?"#b080e0":C.goldBright,fontFamily:"monospace"}},isCat?scaling:totalAR),
-          h("div",{style:{fontSize:13,color:C.textDim}},primary.name," ",(ENG_AFFINITY_NAMES[primary.affinity]||""),ammoBonus?" +"+primary.upgrade:""," +"+primary.upgrade),
-          ammoBonus?h("div",{style:{fontSize:12,color:"#6898d0",marginTop:2}},ammoBonus):null
+          h("div",{style:{fontSize:11,color:C.textDim,letterSpacing:2,textTransform:"uppercase",marginBottom:4}},isCat?(dec.sorceryTool?"Sorcery Scaling":"Incantation Scaling"):isRanged?"Attack Rating (Weapon + Ammo)":"Attack Rating"),
+          h("div",{style:{fontSize:32,fontWeight:700,color:isCat?"#b080e0":C.goldBright,fontFamily:"monospace"}},isCat?scaling:displayAR),
+          isRanged&&ammoDmg?h("div",{style:{fontSize:12,color:C.textDim,marginTop:2}},totalAR+" weapon + "+ammoDmg+" ammo"):null,
+          h("div",{style:{fontSize:13,color:C.textDim,marginTop:2}},primary.name," ",(ENG_AFFINITY_NAMES[primary.affinity]||"")," +"+primary.upgrade),
+          ammoName?h("div",{style:{fontSize:12,color:"#6898d0",marginTop:2}},ammoName+(ammoStatus?" \u2022 "+ammoStatus:"")):null
         );
       })(),
 
