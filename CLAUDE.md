@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.2
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,591
-**Last completed task:** B2 — renderCompare rebuilt inside App component, hooks-compliant, 312 lines → ~160 lines
+**Lines:** 4,638
+**Last completed task:** F6 — dynamic weapon pool, async build after render, 4x optimizer speedup
 **Next task:** Awaiting instruction from command authority
