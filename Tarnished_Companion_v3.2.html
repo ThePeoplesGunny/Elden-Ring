@@ -3025,6 +3025,7 @@ var _bw2h=us(false),bw2h=_bw2h[0],setBw2h=_bw2h[1];
 // Character state
 var _char=us(null),charData=_char[0],setCharData=_char[1];
 var _csub=us("profile"),csub=_csub[0],setCsub=_csub[1];
+var _pt=us(null),progTmpl=_pt[0],setProgTmpl=_pt[1];
 var _respec=us(null),respecData=_respec[0],setRespecData=_respec[1];
 var _optState=us(function(){return{target:{vig:60,mnd:30,end:15,str:12,dex:12,int:9,fai:80,arc:10}};}),optData=_optState[0],setOptData=_optState[1];
 var _bd=us(200),baseDmg=_bd[0],setBD=_bd[1];
@@ -3243,7 +3244,8 @@ function renderCharacter(){
     {id:"profile",label:"My Stats"},
     {id:"loadout",label:"Loadout"},
     {id:"respec",label:"Respec Planner"},
-    {id:"ar",label:"AR Estimator"}
+    {id:"ar",label:"AR Estimator"},
+    {id:"progression",label:"Progression"}
   ];
 
   function renderProfile(){
@@ -3794,6 +3796,109 @@ function renderCharacter(){
     );
   }
 
+  // === PROGRESSION CURVES (F7 UI) ===
+  function renderProgression(){
+    var buildArch=charData&&charData.stats?detectBuildArchetype(charData.stats):null;
+    var selId=progTmpl||(buildArch&&buildArch!=="mixed"?STAT_TEMPLATES.find(function(t){return t.id.indexOf(buildArch)>=0||(buildArch==="strength"&&t.id==="pure_str")||(buildArch==="dexterity"&&t.id==="pure_dex")||(buildArch==="intelligence"&&t.id==="pure_int")||(buildArch==="faith"&&t.id==="pure_fth")||(buildArch==="arcane"&&t.id==="dex_arc")||(buildArch==="quality"&&t.id==="quality")}):null);
+    if(selId&&typeof selId==="object")selId=selId.id;
+    if(!selId)selId=STAT_TEMPLATES[0].id;
+    var selTmpl=STAT_TEMPLATES.find(function(t){return t.id===selId})||STAT_TEMPLATES[0];
+    var inclDLC=!!exp.progDLC;
+    var curve=weaponPool?computeProgressionCurve(selTmpl,inclDLC,weaponPool):[];
+    var prevWeapon=null;var transitions=0;var stressPoints=[];
+    var readyCount=0,chalCount=0,underCount=0;
+    curve.forEach(function(c){
+      if(c.weapon&&prevWeapon&&c.weapon.name!==prevWeapon)transitions++;
+      prevWeapon=c.weapon?c.weapon.name:prevWeapon;
+      if(c.status==="READY")readyCount++;else if(c.status==="CHALLENGING")chalCount++;else underCount++;
+      if(c.status==="UNDERPOWERED"||c.status==="NO_WEAPON")stressPoints.push(c.boss.split(",")[0]);
+    });
+    var statusColor={"READY":"#50c878","CHALLENGING":"#d8a850","UNDERPOWERED":"#e05040","NO_WEAPON":"#808080"};
+    var statusIcon={"READY":"\u2714","CHALLENGING":"\u26A0","UNDERPOWERED":"\u2718","NO_WEAPON":"\u2014"};
+    var thS={padding:"4px 6px",fontSize:11,color:C.textDim,textAlign:"right",borderBottom:"1px solid "+C.border+"60",fontWeight:600,whiteSpace:"nowrap"};
+    var tdS={padding:"4px 6px",fontSize:13,textAlign:"right",color:C.textDim,borderBottom:"1px solid "+C.border+"20"};
+    var prevName=null;
+    return h("div",null,
+      h("div",{style:{textAlign:"center",marginBottom:16}},
+        h("div",{style:{fontSize:12,color:C.textDim,textTransform:"uppercase",letterSpacing:4,marginBottom:6}},"Archetype Progression Curves"),
+        h("div",{style:{fontSize:14,color:C.goldDim}},"Optimal weapon at each mandatory boss gate for a given archetype")
+      ),
+      h("div",{style:{display:"flex",gap:4,flexWrap:"wrap",marginBottom:12}},
+        STAT_TEMPLATES.map(function(t){
+          return h("button",{key:t.id,onClick:function(){setProgTmpl(t.id)},style:Object.assign({},btnS(selId===t.id),{fontSize:12,padding:"4px 10px"})},t.name)
+        })
+      ),
+      h("label",{style:{display:"flex",alignItems:"center",gap:6,fontSize:13,color:C.textDim,marginBottom:16,cursor:"pointer"}},
+        h("input",{type:"checkbox",checked:inclDLC,onChange:function(){setExp(function(p){var n=Object.assign({},p);n.progDLC=!p.progDLC;return n})},style:{cursor:"pointer",accentColor:C.purple}}),
+        "Include Shadow of the Erdtree"
+      ),
+      !weaponPool?h("div",{style:{textAlign:"center",padding:40,color:C.textDim}},"Building weapon pool..."):
+      curve.length===0?h("div",{style:{textAlign:"center",padding:40,color:C.textDim}},"No data"):
+      h("div",null,
+        h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:10,paddingBottom:6,borderBottom:"1px solid "+C.border+"40"}},"Weapon Curve: "+selTmpl.name),
+        h("div",{style:{overflowX:"auto",WebkitOverflowScrolling:"touch"}},
+          h("table",{style:{width:"100%",borderCollapse:"collapse",minWidth:700}},
+            h("thead",null,h("tr",null,
+              h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:140})},"Boss"),
+              h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:120})},"Region"),
+              h("th",{style:thS},"Lvl"),
+              h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:140})},"Weapon"),
+              h("th",{style:thS},"+Upg"),
+              h("th",{style:thS},"AR"),
+              h("th",{style:thS},"Dmg"),
+              h("th",{style:thS},"Hits"),
+              h("th",{style:Object.assign({},thS,{textAlign:"center",minWidth:50})},"Status")
+            )),
+            h("tbody",null,curve.map(function(c,i){
+              var w=c.weapon;var isTransition=w&&prevName&&w.name!==prevName;
+              var row=h("tr",{key:i,style:{cursor:"pointer",background:isTransition?"#d8a85008":"transparent"},onClick:function(){togSec("prog_"+i)}},
+                h("td",{style:Object.assign({},tdS,{textAlign:"left",color:C.textBright,fontWeight:600})},c.boss.split(",")[0]),
+                h("td",{style:Object.assign({},tdS,{textAlign:"left",fontSize:12})},c.region.split(",")[0]),
+                h("td",{style:tdS},c.level),
+                h("td",{style:Object.assign({},tdS,{textAlign:"left"})},
+                  w?h("span",null,
+                    h("span",{style:{color:isTransition?C.gold:C.textBright,fontWeight:isTransition?700:400}},w.name),
+                    w.affinity!==-1?h("span",{style:{color:"#a080c0",fontSize:11,marginLeft:4}},"["+w.affinityName+"]"):null,
+                    c.twoHanded?h("span",{style:{color:"#6898d0",fontSize:10,marginLeft:4}},"2H"):null
+                  ):h("span",{style:{color:"#808080",fontStyle:"italic"}},"None")
+                ),
+                h("td",{style:tdS},w?"+"+w.upgrade:"\u2014"),
+                h("td",{style:tdS},w?w.totalAR:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},w?w.dmgPerHit:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:statusColor[c.status]})},w?w.hitsToKill:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{textAlign:"center"})},h("span",{style:{color:statusColor[c.status],fontWeight:700,fontSize:12}},statusIcon[c.status]))
+              );
+              prevName=w?w.name:prevName;
+              var detail=exp["prog_"+i]?h("tr",{key:"d"+i},h("td",{colSpan:9,style:{padding:"8px 12px",background:"#ffffff04",borderBottom:"1px solid "+C.border+"30"}},
+                h("div",{style:{display:"flex",gap:16,flexWrap:"wrap",fontSize:12,color:C.textDim,marginBottom:6}},
+                  h("span",null,"\u2694\uFE0F Reg +"+c.upgradeCap.reg+" \u00B7 Som +"+c.upgradeCap.som),
+                  c.affinities.length?h("span",null,"\u2728 "+c.affinities.join(", ")):null,
+                  h("span",null,"Stats: STR "+c.stats.str+" DEX "+c.stats.dex+" INT "+c.stats.int+" FTH "+c.stats.fai+" ARC "+c.stats.arc)
+                ),
+                c.top3_1h.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"1H: "),
+                  c.top3_1h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
+                ):null,
+                c.top3_2h.length?h("div",null,
+                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"2H: "),
+                  c.top3_2h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
+                ):null
+              )):null;
+              return[row,detail];
+            }))
+          )
+        ),
+        h("div",{style:{borderTop:"1px solid "+C.border+"40",marginTop:12,paddingTop:12,display:"flex",gap:16,flexWrap:"wrap",fontSize:13}},
+          h("span",{style:{color:C.textDim}},"Transitions: "+transitions),
+          h("span",{style:{color:"#50c878"}},"\u2714 "+readyCount+" Ready"),
+          h("span",{style:{color:"#d8a850"}},"\u26A0 "+chalCount+" Challenging"),
+          underCount>0?h("span",{style:{color:"#e05040"}},"\u2718 "+underCount+" Underpowered"):null,
+          stressPoints.length>0?h("span",{style:{color:"#e05040",fontSize:12}},"Stress: "+stressPoints.join(", ")):null
+        )
+      )
+    );
+  }
+
   // === CLASS OPTIMIZER ===
   return h("div",null,
     // Sub-tabs
@@ -3806,6 +3911,7 @@ function renderCharacter(){
     csub==="loadout"?renderLoadout():
     csub==="respec"?renderRespec():
     csub==="ar"?renderAR():
+    csub==="progression"?renderProgression():
     renderProfile()
   );
 }

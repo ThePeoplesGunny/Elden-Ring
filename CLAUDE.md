@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.3
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,566
-**Last completed task:** B10/F2/F3/F7 — colossal STR fix + progression system (power-gated walkthrough, "where to go next" dashboard panel, progression curve engine, boss name alignment)
-**Next task:** F7 UI (progression curve visualization), E1-E4 enhancements, Compare tab hooks fix
+**Lines:** 4,672
+**Last completed task:** F7 UI — progression curve visualization (archetype selector, weapon curve table, expandable details, summary)
+**Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing)
