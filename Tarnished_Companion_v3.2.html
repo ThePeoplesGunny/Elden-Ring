@@ -3819,7 +3819,7 @@ function renderCharacter(){
     if(!selId)selId=STAT_TEMPLATES[0].id;
     var selTmpl=STAT_TEMPLATES.find(function(t){return t.id===selId})||STAT_TEMPLATES[0];
     var inclDLC=!!exp.progDLC;
-    var curve=weaponPool?computeProgressionCurve(selTmpl,inclDLC,weaponPool):[];
+    var curve=computeProgressionCurve(selTmpl,inclDLC,null);
     var prevWeapon=null;var transitions=0;var stressPoints=[];
     var readyCount=0,chalCount=0,underCount=0;
     curve.forEach(function(c){
