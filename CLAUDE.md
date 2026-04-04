@@ -1,32 +1,16 @@
 # CLAUDE.md — Tarnished's Companion
 
-## Workflow: Token Ring
+## Workflow
 
-Three entities. State flows one direction. The repo is the single source of truth.
-
-```
-Chat (plan) → Gunny (approve) → Claude Code (execute) → Repo (state) → Gunny (verify) → Chat (debrief/next)
-```
-
-**Command Authority (Gunny):** Approves design decisions. Sets priorities. Accepts or rejects work. Carries the token. Final say.
-
-**Operational Authority (Claude chat):** Maintains project history and design context. Researches game data. Drafts specs and task instructions. Surfaces discrepancies — when operational flags a conflict, work stops until command resolves it. Does not direct Claude Code without command approval.
-
-**Technical Authority (Claude Code):** Executes approved tasks against the codebase. Owns all implementation decisions. Advocates on technical matters — when the code or data contradicts a design assumption, flag it and defend the technical position. Surfaces optimization opportunities discovered during execution. Gunny decides, but technical authority is expected to push back with evidence. Implementation decisions (code structure, algorithm choice, edit approach, tool strategy) are Technical Authority scope. Task instructions that prescribe implementation methods are non-binding.
-
-## Task Protocol
-
-Tasks arrive in this format:
+Two entities. The repo is the single source of truth.
 
 ```
-TASK: [name]
-SCOPE: [what to change]
-FILES: [which files to read/edit]
-READ FIRST: [specific functions or sections by name]
-CONSTRAINTS: [what NOT to do]
-ACCEPTANCE: [verification criteria]
-STATE UPDATE: [what to update after completion]
+Gunny (command) ↔ Claude Code (operational + technical) → Repo (state) → Gunny (verify)
 ```
+
+**Command Authority (Gunny):** Approves design decisions. Sets priorities. Accepts or rejects work. Final say.
+
+**Operational + Technical Authority (Claude Code):** Owns planning, research, specs, AND implementation. Advocates on technical matters — when the code or data contradicts a design assumption, flag it and defend the technical position. Surfaces optimization opportunities discovered during execution. Gunny decides, but Claude Code is expected to push back with evidence.
 
 Execution steps:
 
@@ -52,7 +36,7 @@ The delivery is not complete until the checklist is complete.
 - **Never load lines 69–2003 into context.** Inline JSON data block (~69% of file). Use targeted grep/sed.
 - **All useState hooks live in App component only.** Pre-existing violation in Compare tab — do not add more.
 - **Single-file offline architecture is final.**
-- **One backlog item per conversation.** If an item is too large for one conversation, it's too large to be one item — break it down in the backlog before it reaches Technical Authority.
+- **One backlog item per conversation** (flexible when items are interconnected — Gunny may direct multiple items per session).
 - **All structural reference** (file map, engine functions, data counts, design decisions, backlog, roadmap) **lives in `tarnished_companion_project.md`.** That is the single source of truth. Do not duplicate it here.
 
 ## Current State

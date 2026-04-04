@@ -42,13 +42,20 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | Weapons (encoded, all affinity variants) | 2,764 | `ENG_DATA.reg.w` |
 | Unique base weapons | 441 | Deduplicated from above |
 | Unique weapons tracked in walkthrough | 102 | Matched by name in step text |
-| Bosses (full resistance profiles) | 173 | `ENG_DATA.bosses` |
+| Bosses (full resistance + status + poise) | 173 | `ENG_DATA.bosses` (ph[].rs for status resist, ph[].po for poise) |
 | Mandatory boss roster | 13 base + 5 DLC (with region, step, level) | `MANDATORY_BOSSES` |
 | Armor sets | 18 | `ENG_DATA.armor` |
+| Sorceries | 14 | `ENG_DATA.sorceries` (name, school, type, fp, req, slots) |
+| Incantations | 33 | `ENG_DATA.incantations` (name, school, type, fp, req, slots) |
+| Spell damage multipliers | 47 | `SPELL_DMG` (community-verified motion values + cast times) |
+| Talismans | 41 | `ENG_DATA.talismans` (name, effect, value, weight, note) |
+| Ashes of War | 15 curated | `ASHES_OF_WAR` (damage mult, FP, cast time, availability step) |
+| Weapon buffs | 10 | `WEAPON_BUFFS` (incantation/sorcery/consumable buffs) |
+| DLC weapon exclusion list | 58 | `DLC_WEAPONS` |
 | Walkthrough steps | 1,679 classified | `STEP_CLASS` |
 | Step classifications | M 7.4%, P 25.9%, T 0.3%, N 8.5%, C 57.9% | Static tags, promotion computed at render |
 | Build-specific P3 tags | 69 | `STEP_ITEMS` |
-| Stat templates | 13 archetypes | `STAT_TEMPLATES` |
+| Stat templates | 13 archetypes (with affPref + primaryStats) | `STAT_TEMPLATES` |
 | Region upgrade caps | 15 | `REGION_CAPS` |
 | Whetstones (affinity gates) | 6 | `GATE_WHETSTONES` |
 | Bell bearings (upgrade gates) | 9 | `GATE_BELL_BEARINGS` |
@@ -64,86 +71,108 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 | Function | Line | Purpose |
 |---|---|---|
-| `engDecodeW(enc)` | 2008 | Decode weapon (all 26 upgrade levels) |
-| `engDecodeWAtLevel(enc, level)` | 2025 | Decode weapon (single level — optimizer use) |
-| `engCalcAR(weapon, attrs, upg, 2h)` | 2042 | Compute attack rating (validated 29/29) |
-| `engDmgVsBoss(arResult, boss)` | 2367 | AR through boss resistance profile → effective damage |
-| `resolveStats(cls, tmpl, lvl)` | 2155 | Class + archetype + level → effective stats |
-| `meetsRequirements(wEnc, stats, 2h)` | 2201 | Pre-decode stat requirement filter |
-| `globalOptimize(lvl, bosses, tmpls, opts)` | 2216 | Exhaustive class × template × weapon search → top 10 |
-| `bestWeaponForBoss(boss, stats, gate, region, 2h)` | 2335 | Top 10 weapons for a single boss given player state |
-| `getPlayerBossDmg(bossName, charState)` | 2179 | Single-weapon damage against a specific boss |
-| `deriveGateState(ci, atStep)` | 2530 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path gate state at any step. |
-| `getNextMandatoryBoss(ci, includeDLC)` | 2546 | Next undefeated mandatory boss from journey checkoffs |
-| `computeProgressionCurve(template, includeDLC, weaponList)` | 2560 | Per-archetype weapon progression through all mandatory bosses |
-| `resolveTacticalNeeds(bossName, ci)` | 2600 | Boss + checkoffs → tactical mitigation options |
-| `detectBuildArchetype(stats)` | 2620 | Derive archetype from player stats |
-| `endingAvailability(ci, qp)` | 3030 | Checkoffs + quest progress → ending status |
-| `engHP/engFP/engStam/engEquip` | 2361–2364 | Derived stat curves |
+| `engDecodeW(enc)` | 2013 | Decode weapon (all 26 upgrade levels) |
+| `engDecodeWAtLevel(enc, level)` | 2030 | Decode weapon (single level — optimizer use) |
+| `engCalcAR(weapon, attrs, upg, 2h)` | 2047 | Compute attack rating (validated 29/29). Computes damage types 0-4 + status 5-10. |
+| `engDmgVsBoss(arResult, boss, weaponType)` | 2421 | AR through boss defense curve + negation. Physical subtype aware. |
+| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2475 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
+| `engStatusVsBoss(arResult, boss)` | 2580 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
+| `resolveStats(cls, tmpl, lvl)` | 2162 | Class + archetype + level → effective stats |
+| `meetsRequirements(wEnc, stats, 2h)` | 2208 | Pre-decode stat requirement filter |
+| `globalOptimize(lvl, bosses, tmpls, opts)` | 2224 | Exhaustive class × template × weapon search → top 10 |
+| `bestWeaponForBoss(boss, stats, gate, region, 2h)` | 2346 | Top 10 weapons ranked by effective damage (melee + status DPS) |
+| `bestCatalystAtCheckpoint(stats, gate, region, type, isDLC)` | 2768 | Top 5 staves/seals ranked by spell scaling |
+| `getPlayerBossDmg(bossName, charState)` | 2186 | Single-weapon damage against a specific boss |
+| `deriveGateState(ci, atStep)` | 2727 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path. |
+| `getNextMandatoryBoss(ci, includeDLC)` | 2735 | Next undefeated mandatory boss from journey checkoffs |
+| `computeProgressionCurve(template, includeDLC, weaponList)` | 2789 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
+| `availableSpells(stats, type)` | 2599 | Filter sorceries/incantations by stat requirements |
+| `bestTalismans(template)` | 2608 | Top 4 talismans per archetype from 41 entries |
+| `bestAshOfWar(template, step, isDLC)` | 2518 | Top AoW recommendations per archetype and step |
+| `availableBuffs(template, stats, step)` | 2547 | Weapon buffs available at given stats/step |
+| `getBossPoiseInfo(boss)` | 2567 | Boss poise threshold and stagger difficulty |
+| `resolveTacticalNeeds(bossName, ci)` | 2887 | Boss + checkoffs → tactical mitigation options |
+| `detectBuildArchetype(stats)` | ~2900 | Derive archetype from player stats |
+| `endingAvailability(ci, qp)` | ~3400 | Checkoffs + quest progress → ending status |
+| `engHP/engFP/engStam/engEquip` | 2371–2374 | Derived stat curves |
 
 ---
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 4,672 | **Size:** ~1.4 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,012 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
 | HTML shell + CSS | 1–66 | |
 | Script open | 68 | |
-| **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA, ENG_GRAPHS (~69% of file) |
+| **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA (weapons, bosses, sorceries, incantations, talismans), ENG_GRAPHS |
 | Engine constants | 2004–2011 | evalCCGraph, ENG_GRAPHS, WRETCH/WRETCH_BASE_TOTAL/WRETCH_LEVEL |
-| Engine functions | 2013–2365 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss |
-| Derived stat lookups | 2367–2377 | Pre-computed keys (_dsKeys), _dsLookup, engHP/FP/Stam/Equip |
-| Physical subtype + ammo data | 2380–2408 | PHYS_SUBTYPE map, AMMO_DATA (30 entries), AMMO_FOR_WEAPON |
-| engDmgVsBoss | 2412–2438 | Defense → negation, physical subtype aware |
-| **renderCompare (HOOKS VIOLATION)** | **2441–2744** | Standalone, own useState. Wretch-locked. |
-| Character system data | 2746–2802 | REGION_CAPS, BOSS_READY (17), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
-| Gate + progression functions | 2497–2600 | deriveGateState (atStep), getNextMandatoryBoss, computeProgressionCurve |
-| Tactical needs + archetype | 2600–2660 | resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
-| Step classification data | 2892–2894 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
-| Class/stat constants | 2897–2916 | CLASSES (from ENG_DATA), STAT_NAMES/LABELS/DESC, SOFT_CAPS |
-| Stat calc wrappers | 2919–2936 | calcHP/FP/Stam/Equip, SCALE_MULT, calcScaleAR |
-| **BUILDS (static — replace with F4)** | **2938–2963** | 8 hardcoded builds, Wretch-based |
-| App core | 2965–2993 | STORAGE_KEY, storage{}, color palette C{} |
-| Achievements + Endings | 2993–3153 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
-| Categories | 3155–3181 | CATEGORIES array |
-| Quests + Boss lists | 3182–3262 | 28 quests, BOSSES_BASE (31), BOSSES_DLC (14) |
-| UI constants + helpers | 3264–3272 | DASH_CATS, tier/prio colors, catClass, stepClass, h(), btnS() |
-| UI primitives | 3274–3278 | ProgressRing, ProgressBar, Chk |
-| **App component** | **3281–4746** | 24 useState hooks. Save migration for weapon slots. |
-| renderCharacter (+ nested) | 3388–4202 | renderBuilds (3520), renderLoadout (3553) with live AR header, weaponSlotRow, arrow slots |
-| renderWalkthrough | 4203–4373 | Step numbers (#N), step cards |
-| renderDashboard | 4374–4434 | |
-| renderAchievements | 4435 | |
-| renderSettings | 4489 | Shows v3.2, correct data counts |
-| Main render + tab routing | 4491–4746 | renderOptimizer (4494), TABS, renderers |
-| Mount | 4747 | ReactDOM.render |
-| Close | 4748–4749 | |
+| Core engine functions | 2013–2420 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss (now with status DPS) |
+| Derived stat lookups | 2371–2380 | _dsKeys, _dsLookup, engHP/FP/Stam/Equip |
+| Physical subtype + ammo data | 2383–2415 | PHYS_SUBTYPE map, AMMO_DATA (30 entries), AMMO_FOR_WEAPON |
+| engDmgVsBoss | 2421–2442 | Defense → negation, physical subtype aware |
+| **Spell damage system** | **2449–2494** | SPELL_DMG (47 motion values), engSpellDmgVsBoss |
+| **Ashes of War** | **2499–2530** | ASHES_OF_WAR (15 curated), bestAshOfWar |
+| **Weapon buffs** | **2533–2552** | WEAPON_BUFFS (10 entries), availableBuffs |
+| **Poise/stagger** | **2556–2572** | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
+| **Status effect system** | **2575–2597** | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
+| **Spell availability + talismans** | **2599–2632** | availableSpells, bestTalismans |
+| Character system data | 2636–2700 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
+| Gate + progression functions | 2727–2885 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, bestCatalystAtCheckpoint, computeProgressionCurve |
+| Tactical needs + archetype | 2887–2950 | TACTICAL_NEEDS, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
+| Step classification data | ~2955 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
+| Class/stat constants | ~2960–2980 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
+| App core | ~3100–3150 | STORAGE_KEY, storage{}, color palette C{} |
+| Achievements + Endings | ~3150–3400 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
+| UI constants + helpers | ~3420–3460 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
+| **App component** | **3308–5010** | 25 useState hooks (progTmpl added). |
+| renderCharacter (+ nested) | 3462–4258 | renderProfile, renderLoadout, renderRespec, renderAR, **renderProgression (F7 UI)** |
+| renderWalkthrough | 4260–4448 | Step cards, power gate banner (F2), boss readiness inline |
+| renderDashboard | 4449–4607 | Next Objective panel (F3), walkthrough progress, endings |
+| renderSettings | 4608 | v3.3, live data counts |
+| renderCompare | 4611–4755 | B2 fix, hooks-compliant |
+| renderOptimizer | 4756–4900 | Dynamic weapon count, 13 archetypes |
+| Main render + tab routing | ~4900–5010 | TABS, renderers |
+| Mount | 5010 | ReactDOM.render |
+| Close | 5011–5012 | |
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.2 — current baseline)
+### What's built and working (v3.3 — current baseline)
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 4,749
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,012
 
 Everything from v2.0 plus:
 
-**Weapon Analysis Panel** (renderLoadout): Computes AR for equipped weapons across all affinities in ENG_DATA. Shows single recommendation (best weapon + affinity + upgrade level). Current vs Optimal side-by-side. Hits-to-kill against next boss gate. Collapsible detail for alternatives. Flags locked affinities with instructions to obtain whetstone. Tactical needs displayed below.
+**Weapon Analysis Panel** (renderLoadout): Computes AR for equipped weapons across all affinities in ENG_DATA. Shows single recommendation (best weapon + affinity + upgrade level). Current vs Optimal side-by-side. Hits-to-kill (melee + status DPS) against next boss gate. Collapsible detail for alternatives. Flags locked affinities with instructions to obtain whetstone. Tactical needs displayed below.
 
 **Next Level-Up Advisor** (renderLoadout): Computes value of +1 in each stat against equipped weapon and next boss. Recommends VIG until 20, then highest damage stat. Per-stat breakdown: AR gain, damage gain, HP gain, stamina gain.
 
-**Affinity search fix:** Searches all affinities that exist for a weapon in ENG_DATA, not just unlocked ones. Flags locked affinities. Fixes empty results for weapons like Lordsworn's Greatsword that have no Standard (affinity 0) entry.
+**Progression System** (v3.3): Full archetype progression through all mandatory bosses.
+- `computeProgressionCurve`: Walks 13 archetypes through 13+5 boss gates with optimal weapon per checkpoint
+- **Archetype affinity filtering**: Weapons filtered by archetype fit (Heavy for STR, Magic/Cold for INT, etc.)
+- **Caster catalyst system**: INT/FTH builds show staff/seal ranked by spell scaling, melee as backup
+- **Spell DPS model**: 47 spells with motion values → damage × defense × negation → DPS ranking per boss
+- **Status effect integration**: Bleed/frost/poison/rot/sleep computed from weapon buildup vs boss resistance
+- **Effective damage ranking**: bestWeaponForBoss now ranks by melee + status DPS combined
+- **Ashes of War**: 15 curated weapon skills with damage, FP cost, availability by step
+- **Weapon buffs**: 10 buff entries (incantations, greases, consumables) filtered by stats/step
+- **Talismans**: Top 4 per archetype from 41 entries with damage/stat bonuses
+- **Poise/stagger**: Boss poise from data + weapon stagger tier → difficulty assessment
+- **DLC weapon gating**: 58 DLC weapons excluded from base game boss recommendations
+- **Power-gated walkthrough** (F2): Warning banner when player is underpowered for region
+- **Next Objective** (F3): Dashboard panel showing next boss, readiness, best weapon, power budget
 
-**Core engine (from v2.0):** AR calculation validated 29/29. Piecewise defense model. Derived stat curves. Class optimizer. `bestWeaponForBoss`, `globalOptimize`, `engCalcAR`, `engDmgVsBoss`.
+**Core engine (from v2.0):** AR calculation validated 29/29. Piecewise defense model. Derived stat curves. Class optimizer. Physical subtype negation (slash/strike/pierce).
 
 **Walkthrough system:** 1,679 steps classified. Focused mode (M/P/T only). Build-aware dimming for 69 P3 items.
 
-**Progression gates:** 6 whetstones → affinity unlocks. 9 bell bearings → upgrade caps. Gate state derived from journey checkoffs.
+**Progression gates:** 6 whetstones → affinity unlocks. 9 bell bearings → upgrade caps. Gate state derived from journey checkoffs, extendable with `atStep` for ideal-path simulation.
 
-**Boss readiness:** 16 bosses with thresholds. Equipped weapon → AR → boss defenses → hits-to-kill → badge.
+**Boss readiness:** 27 bosses with thresholds (13 base + 5 DLC + 9 optional). Equipped weapon → AR → boss defenses → hits-to-kill → badge.
 
 **Tactical needs:** 10 entries across 13 bosses. Multi-provider resolution.
 
@@ -151,16 +180,14 @@ Everything from v2.0 plus:
 
 **Save system:** Versioned JSON export/import.
 
-**UI:** 18+ React components. Tabs: Character, Journey, Dashboard, Optimizer, Compare, plus sub-views.
+**UI:** 20+ React components. Tabs: Character (My Stats, Loadout, Respec, AR Estimator, Progression), Journey, Dashboard, Optimizer, Compare, plus sub-views.
 
-### v3.2 build scope (next delivery)
+### v3.3 engine expansion scope (completed this session)
 
-From v3.1 baseline, apply these changes:
-
-1. **Level calc fix** — `totalPts-79+cls.lv` hardcodes 79 as base stat total. Wretch has 80 (10×8). Fix: compute from actual class base stats.
-2. **Step numbers on walkthrough cards** — display `#stepnumber` in upper right corner of each card for reference during playtesting.
-3. **Version display in header** — "COMPANION v3.2" displayed visually in the tool header after the word COMPANION. Minor version numbers 1–99.
-4. **Stormfoot Catacombs ranged weapon issue** — walkthrough step requires shooting fire pillars but player may have no ranged weapon. Flag requirement or ensure ranged weapon acquisition is addressed in prior steps.
+Three-tier engine expansion activated data already in ENG_DATA and added curated game knowledge:
+- **Tier 1**: Status effects (6 types from enc.sp + boss.rs), spell availability, talisman recommendations
+- **Tier 2**: Spell damage model (47 motion values × spell scaling × boss defense/negation → DPS)
+- **Tier 3**: Ashes of War (15 curated), weapon buffs (10 entries), poise/stagger model
 
 ### Design decisions confirmed by playthrough (DD35–DD40)
 
@@ -170,28 +197,29 @@ From v3.1 baseline, apply these changes:
 | DD36 | Crafting Kit + Torch are mandatory first purchases for ALL classes | Confirmed |
 | DD37 | Wretch IS universally optimal class (zero stat waste: 10×8=80, every point at minimum) | Confirmed |
 | DD38 | Weapon upgrade level dominates stat investment in early game | Confirmed |
-| DD39 | Walkthrough steps need power-gate filtering | Confirmed, not yet implemented |
+| DD39 | Walkthrough steps need power-gate filtering | Confirmed, implemented in v3.3 (F2) |
 | DD40 | Single recommendation over comparison tables | Confirmed, implemented in v3.1 |
 
-### v3.x future roadmap (after v3.2)
+### v3.x future roadmap
 
-- Replace renderBuilds (Fextralife copy-paste content) with archetype-computed recommendations
-- Power-gated walkthrough filtering (suppress/flag steps unviable at current power level)
-- Character creation screen: Wretch optimal, Golden Seed universal, Crafting Kit + Torch mandatory, class optimizer per archetype
-- "Where to go next" — highest-value destination computed from current state and next boss gate
-- Enemy resistance awareness in routing (e.g., miners resist slash, bring Club)
-- Stat point advisor: account for weapon requirement breakpoints (e.g., "1 STR unlocks two-handing LGS")
-- Fix Compare tab (React hooks violation in renderCompare — pre-existing)
+- Enemy resistance awareness in routing (E4 — e.g., miners resist slash, bring Club)
+- Stat point advisor: account for weapon requirement breakpoints (E3 — e.g., "1 STR unlocks two-handing LGS")
+- Talisman damage multipliers applied to effective damage calculations (currently shown as recommendations only)
+- Spirit ash availability flagging (Mimic Tear = 2x DPS gate)
+- Spell availability by walkthrough step (currently filtered by stat requirements only)
 - Kill the checklist, build the journey — walkthrough steps become backing data queried by engine, not a scrollable list
 
 ### Known limitations
 
 - Upgrade level not tracked per weapon — uses regional cap
-- Obtained items not tracked — weapon availability modeled by constraints
+- Obtained items not tracked — weapon availability modeled by constraints (DLC weapons gated, base weapons not region-gated)
 - Static HTML shell flashes before React hydrates
 - Build-aware filtering covers 69 of 214 P3 steps
-- Optimizer is endgame-only
-- Compare tab broken (hooks violation, pre-existing)
+- Optimizer is endgame-only (does not use progression curve data)
+- Spell motion values are community-estimated, not datamined — may have ±15% variance
+- AoW damage table is curated (15 of ~100+ AoWs) — covers most impactful, not exhaustive
+- Talisman bonuses shown as recommendations only, not applied to damage calculations yet
+- Spell availability filtered by stat requirements only, not by walkthrough step acquisition
 
 ---
 
@@ -207,9 +235,9 @@ From v3.1 baseline, apply these changes:
 
 **Batch edits into single scripts.** Python heredoc for multiple edits, create-then-inject for new functions. Target: 4–6 tool calls per feature.
 
-**One feature per conversation.** State the target, draft in context, execute in one batch, verify in one bash call, deliver.
+**One feature per conversation** (flexible when features are interconnected — user may direct multiple items per session).
 
-**Technical Authority inquiries.** All verification requests from Operational to Technical Authority follow: context + why it matters → authoritative basis cited → WHAT needs verification and WHY (never HOW — no diagnostic steps, line numbers, or tool choices) → scope boundary.
+**Two-entity workflow.** Gunny (command) ↔ Claude Code (operational + technical). Chat removed from loop as of April 3, 2026.
 
 **Verify minimally:**
 ```bash
@@ -244,7 +272,7 @@ tail -3 app.html
 - **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [DONE v3.3 — region-level power gate warning banner when player is underpowered vs gating boss]
 - **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [DONE v3.3 — Next Objective dashboard panel with boss readiness, best weapon recommendation, power budget. getNextMandatoryBoss shared engine function.]
 - **F4:** Remove static Fextralife builds. [DONE v3.2 — BUILDS array, renderBuilds, renderClasses deleted. -178 lines. Opinion-based content replaced by engine-computed recommendations in loadout/optimizer.]
-- **F5:** Ranged utility system. [DONE v3.2 — AMMO_DATA (30 entries) in engine, arrow/bolt slots in loadout UI, ammo auto-filters by weapon type, live AR = weapon + arrow combined, status effects displayed. Shortbow in Kalé mandatory purchases (B3).]
+- **F5:** Ranged utility system. [DONE v3.2 — AMMO_DATA (30 entries) in engine, arrow/bolt slots in loadout UI, ammo auto-filters by weapon type, live AR = weapon + arrow combined, status effects displayed. Shortbow from Coastal Merchant step 145 (B3 corrected v3.3).]
 - **F6:** Dynamic weapon pool. [DONE v3.2 — builds async after first render (~1s). 98 unique weapons, 787 entries (28% of 2,764). 4x globalOptimize speedup (38ms vs 158ms). Same results, no static list to maintain. Header shows pool status indicator.]
 - **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [DONE v3.3 — computeProgressionCurve engine + Progression sub-tab in Character. Archetype selector (13 templates), DLC toggle, weapon curve table with status coloring, weapon transition highlighting, expandable per-boss detail (top 3 1H/2H, stats, affinities, upgrade caps), summary footer.]
 
@@ -268,9 +296,20 @@ tail -3 app.html
 - **v3.4:** B9 — physical subtype negation (slash/strike/pierce). PHYS_SUBTYPE map, engDmgVsBoss weaponType param, all 11 call sites updated. 39-55% damage differentiation now visible.
 - **v3.2 DELIVERY:** E1 (step numbers on walkthrough cards), E2 (version display "COMPANION v3.2" in header), B3 (Shortbow added to Kalé mandatory purchases, Stormfoot step references it), B4 (About section updated to v3.2 + correct data counts), B5 (optimizer count corrected to 2,764). File renamed to Tarnished_Companion_v3.2.html. Lines: 4,616.
 
-- **v3.3:** B10 (colossal STR fix), F2 (power-gated walkthrough banner), F3 (Next Objective dashboard panel with getNextMandatoryBoss), F7 engine (computeProgressionCurve, deriveGateState atStep, MANDATORY_BOSSES enriched with region/step/lvl). Boss name alignment across MANDATORY_BOSSES/BOSS_READY/BOSS_ENG_MAP. 11 new BOSS_READY entries (4 base, 5 DLC, 2 renamed). Lines: 4,567.
+- **v3.3 (April 3, 2026):** Major engine expansion session. 552 lines added.
+  - B10: Colossal STR fix. B3: Kalé Shortbow corrected to Coastal Merchant. B4/B5/B6: Version/count display fixes.
+  - F2: Power-gated walkthrough banner. F3: Next Objective dashboard panel. F7: Progression curve engine + UI.
+  - Boss name alignment across 4 data structures. 11 new BOSS_READY entries.
+  - Archetype affinity filtering + DLC weapon gating (58 weapons).
+  - Caster catalyst system (staves/seals ranked by spell scaling).
+  - **Tier 1**: Status effects (6 types from enc.sp + boss.rs → hits-to-proc, proc damage, integrated into weapon rankings).
+  - **Tier 2**: Spell damage model (47 motion values × scaling × defense/negation → DPS ranking per boss).
+  - **Tier 3**: Ashes of War (15 curated), weapon buffs (10 entries), poise/stagger model.
+  - Talisman recommender (top 4 per archetype from 41 entries).
+  - Spell availability by stat requirements.
+  - Lines: 4,460 → 5,012.
 
 ---
 
-*Single project document | March 28, 2026*
+*Single project document | March 28, 2026 | Updated April 3, 2026*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
