@@ -230,7 +230,7 @@ tail -3 app.html
 ### BUGS (broken behavior)
 - **B1:** Level calc hardcodes 79 as base stat total. [DONE v3.2 — WRETCH_BASE_TOTAL/WRETCH_LEVEL constants]
 - **B2:** Compare tab hooks violation. [DONE v3.2 — rebuilt inside App component. 312 lines → ~160 lines. Hooks-compliant, Wretch-native, uses B7/B9 engine fixes, physical subtype aware.]
-- **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [OPEN]
+- **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [DONE v3.3 — removed false Kalé Shortbow claim from step 16. Stormfoot (step 74) now notes sprint-past option and points to Coastal Merchant (step 145) for Shortbow (600r).]
 - **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [OPEN]
 - **B5:** Optimizer header shows stale "3,216 weapons" count. [OPEN]
 - **B6:** Header shows "COMPANION" with no version number. [OPEN]
