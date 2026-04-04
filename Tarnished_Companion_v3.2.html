@@ -2361,8 +2361,12 @@ function bestWeaponForBoss(bossName,stats,gateState,regionName,twoHand,weaponLis
     var decoded=engDecodeWAtLevel(wEnc,upg);if(!decoded)return; // Single-level decode
     var ar=engCalcAR(decoded,engStats,0,twoHand);
     var dmg=engDmgVsBoss(ar,boss,wEnc.t);
+    var statusEffects=engStatusVsBoss(ar,boss);
+    var statusDPS=0;statusEffects.forEach(function(se){if(se.procDamage>0)statusDPS+=se.procDamage/se.hitsToProc;});
+    var effectiveDmg=dmg.total+statusDPS;
     var totalAR=0;[0,1,2,3,4].forEach(function(dt){totalAR+=(ar.attackPower[dt]||0);});
-    results.push({name:wEnc.w,affinity:wEnc.a,affinityName:ENG_AFFINITY_NAMES[wEnc.a]||"Unique",upgrade:upg,totalAR:Math.floor(totalAR),dmgPerHit:dmg.total,hitsToKill:dmg.hitsToKill,breakdown:dmg.breakdown});
+    var effectiveHTK=Math.ceil((boss.hp||1)/Math.max(effectiveDmg,1));
+    results.push({name:wEnc.w,affinity:wEnc.a,affinityName:ENG_AFFINITY_NAMES[wEnc.a]||"Unique",upgrade:upg,totalAR:Math.floor(totalAR),dmgPerHit:Math.floor(effectiveDmg),meleeDmg:dmg.total,hitsToKill:effectiveHTK,statusEffects:statusEffects,statusDPS:Math.floor(statusDPS),breakdown:dmg.breakdown});
   });
   results.sort(function(a,b){return b.dmgPerHit-a.dmgPerHit;});
   return results.slice(0,10);
@@ -2439,6 +2443,63 @@ function engDmgVsBoss(arResult,boss,weaponType){
   return{total:Math.floor(total),breakdown:bd,hitsToKill:Math.ceil((boss.hp||1)/Math.max(total,1))};
 }
 
+// === STATUS EFFECT SYSTEM ===
+var STATUS_TYPES={5:"poison",6:"rot",7:"bleed",8:"frost",9:"sleep",10:"madness"};
+var STATUS_PROC_DAMAGE={bleed:0.15,frost:0.10,poison:0.07,rot:0.14,sleep:0,madness:0};
+var STATUS_NAMES={poison:"Poison",rot:"Scarlet Rot",bleed:"Bleed",frost:"Frostbite",sleep:"Sleep",madness:"Madness"};
+var STATUS_COLORS={bleed:"#c04040",frost:"#6898d0",poison:"#60a040",rot:"#a06040",sleep:"#a080c0",madness:"#d8a850"};
+
+function engStatusVsBoss(arResult,boss){
+  var ph=boss.ph[0];var rs=ph.rs||{};var results=[];
+  Object.keys(STATUS_TYPES).forEach(function(dtKey){
+    var dt=parseInt(dtKey);var statusName=STATUS_TYPES[dt];
+    var buildup=arResult.attackPower[dt]||0;
+    if(!buildup||buildup<1)return;
+    var threshold=rs[statusName];
+    if(!threshold||threshold==="IMMUNE")return;
+    var hitsToProcBase=Math.ceil(threshold/buildup);
+    var hitsToProc=Math.ceil(hitsToProcBase*1.3);
+    var procDmg=Math.floor(STATUS_PROC_DAMAGE[statusName]*boss.hp);
+    results.push({status:statusName,label:STATUS_NAMES[statusName],color:STATUS_COLORS[statusName],
+      buildup:Math.floor(buildup),threshold:threshold,hitsToProc:hitsToProc,
+      procDamage:procDmg,procsToKill:procDmg>0?Math.ceil(boss.hp/procDmg):999});
+  });
+  return results;
+}
+
+// === SPELL AVAILABILITY ===
+function availableSpells(stats,type){
+  var list=type==="sorcery"?ENG_DATA.sorceries:ENG_DATA.incantations;
+  if(!list)return[];
+  return list.filter(function(s){
+    return Object.keys(s.req).every(function(k){return(stats[k]||0)>=s.req[k];});
+  });
+}
+
+// === TALISMAN RECOMMENDER ===
+function bestTalismans(template){
+  if(!ENG_DATA.talismans)return[];
+  var pri=template.primaryStats||[];
+  return ENG_DATA.talismans.filter(function(t){
+    if(t.effect==="sorcery_damage"&&pri.indexOf("int")>=0)return true;
+    if(t.effect==="incantation_damage"&&pri.indexOf("fai")>=0)return true;
+    if(t.effect==="magic_damage"&&pri.indexOf("int")>=0)return true;
+    if(t.effect==="fire_damage"&&pri.indexOf("fai")>=0)return true;
+    if(t.effect==="lightning_damage"&&(pri.indexOf("dex")>=0||pri.indexOf("fai")>=0))return true;
+    if(t.effect==="holy_damage"&&pri.indexOf("fai")>=0)return true;
+    if(t.effect==="int_bonus"&&pri.indexOf("int")>=0)return true;
+    if(t.effect==="faith_bonus"&&pri.indexOf("fai")>=0)return true;
+    if(t.effect==="str_bonus"&&pri.indexOf("str")>=0)return true;
+    if(t.effect==="dex_bonus"&&pri.indexOf("dex")>=0)return true;
+    if(t.effect==="skill_damage"||t.effect==="full_hp_damage")return true;
+    if(t.effect==="charged_damage")return true;
+    return false;
+  }).sort(function(a,b){
+    var va=typeof a.value==="number"?a.value:0.05;
+    var vb=typeof b.value==="number"?b.value:0.05;
+    return vb-va;
+  }).slice(0,4);
+}
 
 // renderCompare removed — rebuilt inside App component (B2 fix)
 // === CHARACTER SYSTEM DATA ===
@@ -2656,10 +2717,15 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     }
     var br=BOSS_READY[boss.name];
     var status=best?(best.hitsToKill<=(br?br.comf:30)?"READY":best.hitsToKill<=(br?br.strug:60)?"CHALLENGING":"UNDERPOWERED"):"NO_WEAPON";
+    // Spell availability for casters
+    var spells=isCaster?availableSpells(stats,catalystType===57?"sorcery":"incantation"):[];
+    // Talisman recommendations
+    var talismans=bestTalismans(template);
     curve.push({boss:boss.name,region:boss.region,level:boss.lvl,step:boss.step,
       stats:stats,affinities:gateState.affLabels,upgradeCap:{reg:maxReg,som:maxSom},
       weapon:best,weapon1h:best1h,weapon2h:best2h,twoHanded:twoHanded,
       catalyst:catalyst,catalystList:catalystList,isCaster:isCaster,
+      spells:spells,talismans:talismans,
       status:status,bossReady:br,top3_1h:w1h.slice(0,3),top3_2h:w2h.slice(0,3)});
   }
   return curve;
@@ -3972,9 +4038,21 @@ function renderCharacter(){
                   h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 1H: "),
                   c.top3_1h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
                 ):null,
-                c.top3_2h.length?h("div",null,
+                c.top3_2h.length?h("div",{style:{marginBottom:4}},
                   h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 2H: "),
                   c.top3_2h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
+                ):null,
+                w&&w.statusEffects&&w.statusEffects.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#c04040",fontWeight:600}},"Status: "),
+                  w.statusEffects.map(function(se,si){return h("span",{key:si,style:{fontSize:12,color:se.color,marginRight:10}},se.label+" "+se.buildup+"/hit \u2192 proc every "+se.hitsToProc+" hits"+(se.procDamage>0?" ("+se.procDamage+" dmg)":""))})
+                ):null,
+                c.spells&&c.spells.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Spells: "),
+                  c.spells.slice(0,6).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:C.textDim,marginRight:6,background:"#a080c010",padding:"1px 5px",borderRadius:3}},sp.name+" ("+sp.fp+"FP)")})
+                ):null,
+                c.talismans&&c.talismans.length?h("div",null,
+                  h("span",{style:{fontSize:11,color:C.gold,fontWeight:600}},"Talismans: "),
+                  c.talismans.map(function(t,ti){return h("span",{key:ti,style:{fontSize:11,color:C.textDim,marginRight:8}},t.name)})
                 ):null
               )):null;
               return[row,detail];
