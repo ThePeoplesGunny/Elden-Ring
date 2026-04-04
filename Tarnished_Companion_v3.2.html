@@ -2557,6 +2557,46 @@ function getNextMandatoryBoss(ci,includeDLC){
 }
 
 // F7: Compute per-archetype weapon progression through mandatory boss sequence
+// DLC weapons — not available during base game progression
+var DLC_WEAPONS={"Messmer Soldier's Axe":1,"Messmer Soldier's Spear":1,"Messmer Soldier Shield":1,
+"Fire Knight's Shortsword":1,"Fire Knight's Greatsword":1,"Fire Knight's Seal":1,
+"Ancient Meteoric Ore Greatsword":1,"Backhand Blade":1,"Carian Thrusting Shield":1,
+"Dane's Footwork":1,"Dryleaf Arts":1,"Dryleaf Seal":1,"Dueling Shield":1,"Euporia":1,
+"Falx":1,"Gazing Finger":1,"Milady":1,"Putrescence Cleaver":1,"Shadow Sunflower Blossom":1,
+"Smithscript Cirque":1,"Smithscript Dagger":1,"Smithscript Greathammer":1,"Smithscript Shield":1,
+"Smithscript Spear":1,"Spirit Glaive":1,"Star-Lined Sword":1,"Sword of Darkness":1,"Sword of Light":1,
+"Sword of Night":1,"Great Katana":1,"Claws of Night":1,"Dancing Blade of Ranah":1,
+"Beast Claw":1,"Golden Lion Shield":1,"Greatsword of Solitude":1,"Stone-Sheathed Sword":1,
+"Barbed Staff-Spear":1,"Deadly Poison Perfume Bottle":1,"Spread Crossbow":1,
+"Bloodfiend's Arm":1,"Bloodfiend's Fork":1,"Curseblade's Cirque":1,"Rellana's Twin Blades":1,
+"Rakshasa's Great Katana":1,"Poleblade of the Bud":1,"Queelign's Greatsword":1,
+"Freyja's Greatsword":1,"Leda's Sword":1,"Sword Lance":1,"Verdigris Greatshield":1,
+"Devonia's Hammer":1,"Bonny Butchering Knife":1,"Thiollier's Hidden Needle":1,
+"Pata":1,"Repeating Crossbow":1,"Obsidian Lamina":1,"Shield of Night":1,"Carian Sorcery Sword":1};
+
+// Best staff/seal for a caster archetype — ranked by spell scaling, not melee damage
+// type 57 = glintstone staff (sorcery), type 61 = sacred seal (incantation)
+function bestCatalystAtCheckpoint(stats,gateState,regionName,catalystType,isDLC,weaponList){
+  var rc=REGION_CAPS[regionName]||{reg:0,smbr:0};
+  var maxSom=Math.max(rc.smbr,gateState.buyableSomMax);
+  var engStats={str:stats.str||10,dex:stats.dex||10,int:stats.int||10,fai:stats.fai||10,arc:stats.arc||10};
+  var results=[];
+  (weaponList||ENG_DATA.reg.w).forEach(function(wEnc){
+    if(wEnc.a!==-1)return; // catalysts are always unique
+    if(wEnc.t!==catalystType)return;
+    if(!isDLC&&DLC_WEAPONS[wEnc.w])return;
+    if(!meetsRequirements(wEnc,engStats,false))return;
+    var maxUp=(ENG_DATA.reg.rt[wEnc.ri]||[]).length-1;
+    var upg=Math.min(maxSom,maxUp);
+    var decoded=engDecodeWAtLevel(wEnc,upg);if(!decoded)return;
+    var ar=engCalcAR(decoded,engStats,0,false);
+    var scaling=ar.spellScaling[0]?Math.floor(ar.spellScaling[0]):0;
+    if(scaling>0)results.push({name:wEnc.w,upgrade:upg,spellScaling:scaling,affinityName:"Unique"});
+  });
+  results.sort(function(a,b){return b.spellScaling-a.spellScaling;});
+  return results.slice(0,5);
+}
+
 function computeProgressionCurve(template,includeDLC,weaponList){
   var cls=WRETCH;
   var bossList=MANDATORY_BOSSES.base.slice();
@@ -2564,21 +2604,39 @@ function computeProgressionCurve(template,includeDLC,weaponList){
   // Filter weapon pool by archetype affinity preference
   var affPref=template.affPref||[];
   var priStats=template.primaryStats||[];
-  var archPool=(weaponList||ENG_DATA.reg.w).filter(function(wEnc){
+  var baseCount=MANDATORY_BOSSES.base.length;
+  var allWeapons=weaponList||ENG_DATA.reg.w;
+  // Base pool: archetype-filtered, no DLC weapons
+  var baseArchPool=allWeapons.filter(function(wEnc){
+    if(DLC_WEAPONS[wEnc.w])return false;
     if(wEnc.a===-1){
-      // Unique weapon: check if it has scaling in any primary stat
-      // Use the base scaling data from the encoded weapon
       if(!priStats.length)return true;
       var hasScaling=false;
       if(wEnc.as){wEnc.as.forEach(function(pair){if(priStats.indexOf(pair[0])>=0&&pair[1]>0)hasScaling=true;});}
       return hasScaling;
     }
-    // Infusable weapon: must match a preferred affinity
     return affPref.indexOf(wEnc.a)>=0;
   });
+  // DLC pool: archetype-filtered, includes DLC weapons
+  var dlcArchPool=allWeapons.filter(function(wEnc){
+    if(wEnc.a===-1){
+      if(!priStats.length)return true;
+      var hasScaling=false;
+      if(wEnc.as){wEnc.as.forEach(function(pair){if(priStats.indexOf(pair[0])>=0&&pair[1]>0)hasScaling=true;});}
+      return hasScaling;
+    }
+    return affPref.indexOf(wEnc.a)>=0;
+  });
+  // Detect caster archetype — needs catalyst (staff/seal) recommendation
+  var isCaster=priStats.indexOf("int")>=0||priStats.indexOf("fai")>=0;
+  var catalystType=priStats.indexOf("int")>=0?57:priStats.indexOf("fai")>=0?61:0;
+  // Hybrids with both int+fai could use either; prioritize int (staff) for int_fth
+  if(priStats.indexOf("int")>=0&&priStats.indexOf("fai")>=0)catalystType=57;
   var curve=[];
   for(var i=0;i<bossList.length;i++){
     var boss=bossList[i];
+    var isDLC=i>=baseCount;
+    var archPool=isDLC?dlcArchPool:baseArchPool;
     var stats=resolveStats(cls,template,boss.lvl);
     var gateState=deriveGateState({},boss.step);
     var rc=REGION_CAPS[boss.region]||{reg:0,smbr:0};
@@ -2590,11 +2648,18 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     var best1h=w1h[0]||null;var best2h=w2h[0]||null;
     var best=(best2h&&best1h)?(best2h.dmgPerHit>best1h.dmgPerHit?best2h:best1h):(best2h||best1h);
     var twoHanded=best&&best2h&&best===best2h;
+    // Catalyst for caster archetypes
+    var catalyst=null;var catalystList=[];
+    if(isCaster&&catalystType){
+      catalystList=bestCatalystAtCheckpoint(stats,synthGate,boss.region,catalystType,isDLC);
+      catalyst=catalystList[0]||null;
+    }
     var br=BOSS_READY[boss.name];
     var status=best?(best.hitsToKill<=(br?br.comf:30)?"READY":best.hitsToKill<=(br?br.strug:60)?"CHALLENGING":"UNDERPOWERED"):"NO_WEAPON";
     curve.push({boss:boss.name,region:boss.region,level:boss.lvl,step:boss.step,
       stats:stats,affinities:gateState.affLabels,upgradeCap:{reg:maxReg,som:maxSom},
       weapon:best,weapon1h:best1h,weapon2h:best2h,twoHanded:twoHanded,
+      catalyst:catalyst,catalystList:catalystList,isCaster:isCaster,
       status:status,bossReady:br,top3_1h:w1h.slice(0,3),top3_2h:w2h.slice(0,3)});
   }
   return curve;
@@ -3871,16 +3936,25 @@ function renderCharacter(){
                 h("td",{style:Object.assign({},tdS,{textAlign:"left",fontSize:12})},c.region.split(",")[0]),
                 h("td",{style:tdS},c.level),
                 h("td",{style:Object.assign({},tdS,{textAlign:"left"})},
-                  w?h("span",null,
+                  c.isCaster&&c.catalyst?h("div",null,
+                    h("div",{style:{marginBottom:2}},
+                      h("span",{style:{color:"#a080c0",fontWeight:700}},c.catalyst.name),
+                      h("span",{style:{color:"#808080",fontSize:11,marginLeft:4}},"+"+c.catalyst.upgrade),
+                      h("span",{style:{color:"#6898d0",fontSize:11,marginLeft:6}},"Scaling: "+c.catalyst.spellScaling)
+                    ),
+                    w?h("div",{style:{fontSize:11,color:C.textDim}},
+                      "Melee: "+w.name+(w.affinity!==-1?" ["+w.affinityName+"]":"")+" +"+w.upgrade
+                    ):null
+                  ):w?h("span",null,
                     h("span",{style:{color:isTransition?C.gold:C.textBright,fontWeight:isTransition?700:400}},w.name),
                     w.affinity!==-1?h("span",{style:{color:"#a080c0",fontSize:11,marginLeft:4}},"["+w.affinityName+"]"):null,
                     c.twoHanded?h("span",{style:{color:"#6898d0",fontSize:10,marginLeft:4}},"2H"):null
                   ):h("span",{style:{color:"#808080",fontStyle:"italic"}},"None")
                 ),
-                h("td",{style:tdS},w?"+"+w.upgrade:"\u2014"),
-                h("td",{style:tdS},w?w.totalAR:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},w?w.dmgPerHit:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:statusColor[c.status]})},w?w.hitsToKill:"\u2014"),
+                h("td",{style:tdS},c.isCaster&&c.catalyst?"+"+c.catalyst.upgrade:w?"+"+w.upgrade:"\u2014"),
+                h("td",{style:tdS},c.isCaster&&c.catalyst?c.catalyst.spellScaling:w?w.totalAR:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},c.isCaster?"Spell":w?w.dmgPerHit:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:c.isCaster?"#a080c0":statusColor[c.status]})},c.isCaster&&c.catalyst?c.catalyst.spellScaling:w?w.hitsToKill:"\u2014"),
                 h("td",{style:Object.assign({},tdS,{textAlign:"center"})},h("span",{style:{color:statusColor[c.status],fontWeight:700,fontSize:12}},statusIcon[c.status]))
               );
               prevName=w?w.name:prevName;
@@ -3890,12 +3964,16 @@ function renderCharacter(){
                   c.affinities.length?h("span",null,"\u2728 "+c.affinities.join(", ")):null,
                   h("span",null,"Stats: STR "+c.stats.str+" DEX "+c.stats.dex+" INT "+c.stats.int+" FTH "+c.stats.fai+" ARC "+c.stats.arc)
                 ),
+                c.catalystList&&c.catalystList.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},catalystType===57?"Staves: ":"Seals: "),
+                  c.catalystList.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+" +"+a.upgrade+" ("+a.spellScaling+")")})
+                ):null,
                 c.top3_1h.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"1H: "),
+                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 1H: "),
                   c.top3_1h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
                 ):null,
                 c.top3_2h.length?h("div",null,
-                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"2H: "),
+                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 2H: "),
                   c.top3_2h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
                 ):null
               )):null;
