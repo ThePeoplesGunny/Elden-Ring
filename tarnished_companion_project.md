@@ -43,7 +43,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | Unique base weapons | 441 | Deduplicated from above |
 | Unique weapons tracked in walkthrough | 102 | Matched by name in step text |
 | Bosses (full resistance profiles) | 173 | `ENG_DATA.bosses` |
-| Mandatory boss roster | 13 base + 5 DLC | `MANDATORY_BOSSES` |
+| Mandatory boss roster | 13 base + 5 DLC (with region, step, level) | `MANDATORY_BOSSES` |
 | Armor sets | 18 | `ENG_DATA.armor` |
 | Walkthrough steps | 1,679 classified | `STEP_CLASS` |
 | Step classifications | M 7.4%, P 25.9%, T 0.3%, N 8.5%, C 57.9% | Static tags, promotion computed at render |
@@ -73,9 +73,11 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | `globalOptimize(lvl, bosses, tmpls, opts)` | 2216 | Exhaustive class × template × weapon search → top 10 |
 | `bestWeaponForBoss(boss, stats, gate, region, 2h)` | 2335 | Top 10 weapons for a single boss given player state |
 | `getPlayerBossDmg(bossName, charState)` | 2179 | Single-weapon damage against a specific boss |
-| `deriveGateState(ci)` | 2765 | Journey checkoffs → unlocked affinities + upgrade caps |
-| `resolveTacticalNeeds(bossName, ci)` | 2836 | Boss + checkoffs → tactical mitigation options |
-| `detectBuildArchetype(stats)` | 2856 | Derive archetype from player stats |
+| `deriveGateState(ci, atStep)` | 2530 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path gate state at any step. |
+| `getNextMandatoryBoss(ci, includeDLC)` | 2546 | Next undefeated mandatory boss from journey checkoffs |
+| `computeProgressionCurve(template, includeDLC, weaponList)` | 2560 | Per-archetype weapon progression through all mandatory bosses |
+| `resolveTacticalNeeds(bossName, ci)` | 2600 | Boss + checkoffs → tactical mitigation options |
+| `detectBuildArchetype(stats)` | 2620 | Derive archetype from player stats |
 | `endingAvailability(ci, qp)` | 3030 | Checkoffs + quest progress → ending status |
 | `engHP/engFP/engStam/engEquip` | 2361–2364 | Derived stat curves |
 
@@ -83,7 +85,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 4,749 | **Size:** ~1.4 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 4,567 | **Size:** ~1.4 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -97,7 +99,8 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | engDmgVsBoss | 2412–2438 | Defense → negation, physical subtype aware |
 | **renderCompare (HOOKS VIOLATION)** | **2441–2744** | Standalone, own useState. Wretch-locked. |
 | Character system data | 2746–2802 | REGION_CAPS, BOSS_READY (17), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
-| Gate + archetype functions | 2804–2896 | deriveGateState, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
+| Gate + progression functions | 2497–2600 | deriveGateState (atStep), getNextMandatoryBoss, computeProgressionCurve |
+| Tactical needs + archetype | 2600–2660 | resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
 | Step classification data | 2892–2894 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
 | Class/stat constants | 2897–2916 | CLASSES (from ENG_DATA), STAT_NAMES/LABELS/DESC, SOFT_CAPS |
 | Stat calc wrappers | 2919–2936 | calcHP/FP/Stam/Equip, SCALE_MULT, calcScaleAR |
@@ -234,15 +237,16 @@ tail -3 app.html
 - **B7:** engDmgVsBoss applied negation/defense in wrong order. [DONE v3.3 — defense curve on raw AR first, then negation]
 - **B8:** Boss data single `df` value vs per-type defense. [CLOSED — verified via Fextralife, PureEldenRing, tarnished.dev that Elden Ring bosses use single scalar defense. Per-type differentiation is handled entirely by negation, which we already have correct.]
 - **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). [DONE v3.4 — PHYS_SUBTYPE map added, engDmgVsBoss accepts weaponType param, all 11 call sites updated. Strike vs standard: 39-55% damage difference on resistant bosses now computable.]
+- **B10:** Colossal weapons unconditionally apply 1.5x STR even when one-handed. [DONE v3.3 — added twoHand guard to engCalcAR line 2050 and meetsRequirements line 2209. Affected: Giant-Crusher and all type 50/51/53/56 weapons.]
 
 ### FEATURES (new capability)
 - **F1:** Character creation screen. [CLOSED — not needed. Wretch locked (DD37), walkthrough guides first purchases (Step 16), keepsake guidance is implicit. No added value as separate UI.]
-- **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [PLANNED]
-- **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [PLANNED]
+- **F2:** Power-gated walkthrough filtering — suppress/flag steps unviable at current power level. [DONE v3.3 — region-level power gate warning banner when player is underpowered vs gating boss]
+- **F3:** "Where to go next" — highest-value destination computed from current state and next boss gate. [DONE v3.3 — Next Objective dashboard panel with boss readiness, best weapon recommendation, power budget. getNextMandatoryBoss shared engine function.]
 - **F4:** Remove static Fextralife builds. [DONE v3.2 — BUILDS array, renderBuilds, renderClasses deleted. -178 lines. Opinion-based content replaced by engine-computed recommendations in loadout/optimizer.]
 - **F5:** Ranged utility system. [DONE v3.2 — AMMO_DATA (30 entries) in engine, arrow/bolt slots in loadout UI, ammo auto-filters by weapon type, live AR = weapon + arrow combined, status effects displayed. Shortbow in Kalé mandatory purchases (B3).]
 - **F6:** Dynamic weapon pool. [DONE v3.2 — builds async after first render (~1s). 98 unique weapons, 787 entries (28% of 2,764). 4x globalOptimize speedup (38ms vs 158ms). Same results, no static list to maintain. Header shows pool status indicator.]
-- **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [PLANNED]
+- **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [DONE v3.3 — computeProgressionCurve engine function. MANDATORY_BOSSES enriched with region/step/lvl. deriveGateState extended with atStep for ideal-path simulation. UI visualization pending.]
 
 ### ENHANCEMENTS (improve existing capability)
 - **E1:** Step numbers on walkthrough cards. [PLANNED]
@@ -263,6 +267,8 @@ tail -3 app.html
 - **B8 investigation:** Per-type boss defense confirmed as single scalar. Not a real issue. Closed.
 - **v3.4:** B9 — physical subtype negation (slash/strike/pierce). PHYS_SUBTYPE map, engDmgVsBoss weaponType param, all 11 call sites updated. 39-55% damage differentiation now visible.
 - **v3.2 DELIVERY:** E1 (step numbers on walkthrough cards), E2 (version display "COMPANION v3.2" in header), B3 (Shortbow added to Kalé mandatory purchases, Stormfoot step references it), B4 (About section updated to v3.2 + correct data counts), B5 (optimizer count corrected to 2,764). File renamed to Tarnished_Companion_v3.2.html. Lines: 4,616.
+
+- **v3.3:** B10 (colossal STR fix), F2 (power-gated walkthrough banner), F3 (Next Objective dashboard panel with getNextMandatoryBoss), F7 engine (computeProgressionCurve, deriveGateState atStep, MANDATORY_BOSSES enriched with region/step/lvl). Boss name alignment across MANDATORY_BOSSES/BOSS_READY/BOSS_ENG_MAP. 11 new BOSS_READY entries (4 base, 5 DLC, 2 renamed). Lines: 4,567.
 
 ---
 

@@ -2047,7 +2047,7 @@ function engDecodeWAtLevel(enc,level){
 function engCalcAR(weapon,attrs,upgradeLevel,twoHand){
   var a=Object.assign({},attrs);
   if(twoHand&&!weapon.paired)a.str=Math.floor(a.str*1.5);
-  if([50,51,53,56].indexOf(weapon.weaponType)>=0)a.str=Math.floor(attrs.str*1.5);
+  if(twoHand&&[50,51,53,56].indexOf(weapon.weaponType)>=0)a.str=Math.floor(attrs.str*1.5);
   var unmet=[];Object.keys(weapon.requirements).forEach(function(at){if(a[at]<weapon.requirements[at])unmet.push(at);});
   var ap={},ss={};
   [0,1,2,3,4,5,6,7,8,9,10,11].forEach(function(dt){
@@ -2098,7 +2098,12 @@ var BOSS_ENG_MAP={};
     "Mohg, Lord of Blood":"Mohg, Lord of Blood","Commander Niall":"Commander Niall",
     "Dragonlord Placidusax":"Dragonlord Placidusax","Lichdragon Fortissax":"Lichdragon Fortissax",
     "Mohg, the Omen":"Mohg, the Omen",
-    "Sir Gideon Ofnir, the All-Knowing":"Sir Gideon Ofnir, the All-Knowing"};
+    "Sir Gideon Ofnir, the All-Knowing":"Sir Gideon Ofnir, the All-Knowing",
+    "Red Wolf of Radagon":"Red Wolf of Radagon","Draconic Tree Sentinel":"Draconic Tree Sentinel",
+    "Godfrey, the First Lord":"Godfrey, First Elden Lord","Hoarah Loux, the Warrior":"Hoarah Loux, Warrior",
+    "Divine Beast Dancing Lion":"Divine Beast Dancing Lion","Rellana, Twin Moon Knight":"Rellana, Twin Moon Knight",
+    "Messmer the Impaler":"Messmer the Impaler","Romina, Saint of the Bud":"Romina, Saint of the Bud",
+    "Promised Consort Radahn":"Promised Consort Radahn"};
   Object.keys(nameMap).forEach(function(readyName){
     var engName=nameMap[readyName].toLowerCase();
     for(var i=0;i<ENG_DATA.bosses.length;i++){
@@ -2114,26 +2119,26 @@ var BOSS_ENG_MAP={};
 // DLC: Shadow of the Erdtree main path (5 fights, opt-in toggle)
 var MANDATORY_BOSSES={
   base:[
-    {idx:22,name:"Margit, the Fell Omen"},
-    {idx:27,name:"Godrick the Grafted"},
-    {idx:38,name:"Red Wolf of Radagon"},
-    {idx:54,name:"Rennala, Queen of the Full Moon"},
-    {idx:106,name:"Draconic Tree Sentinel"},
-    {idx:104,name:"Godfrey, First Elden Lord (Shade)"},
-    {idx:109,name:"Morgott, the Omen King"},
-    {idx:132,name:"Fire Giant"},
-    {idx:131,name:"Godskin Duo"},
-    {idx:137,name:"Beast Clergyman / Maliketh"},
-    {idx:142,name:"Sir Gideon Ofnir, the All-Knowing"},
-    {idx:143,name:"Godfrey / Hoarah Loux"},
-    {idx:151,name:"Radagon / Elden Beast"}
+    {idx:22,name:"Margit, the Fell Omen",region:"Stormveil Castle",step:250,lvl:25},
+    {idx:27,name:"Godrick, the Grafted",region:"Stormveil Castle",step:310,lvl:30},
+    {idx:38,name:"Red Wolf of Radagon",region:"Raya Lucaria Academy",step:840,lvl:40},
+    {idx:54,name:"Renalla, Queen of the Full Moon",region:"Raya Lucaria Academy",step:870,lvl:45},
+    {idx:106,name:"Draconic Tree Sentinel",region:"Leyndell, Royal Capital",step:1680,lvl:65},
+    {idx:104,name:"Godfrey, the First Lord",region:"Leyndell, Royal Capital",step:1750,lvl:75},
+    {idx:109,name:"Morgott, The Omen King",region:"Leyndell, Royal Capital",step:1790,lvl:80},
+    {idx:132,name:"Fire Giant",region:"Mountaintops of the Giants",step:2200,lvl:100},
+    {idx:131,name:"Godskin Duo",region:"Crumbling Farum Azula",step:2450,lvl:110},
+    {idx:137,name:"Maliketh the Black Blade",region:"Crumbling Farum Azula",step:2510,lvl:115},
+    {idx:142,name:"Sir Gideon Ofnir, the All-Knowing",region:"Leyndell, Capital of Ash",step:2550,lvl:120},
+    {idx:143,name:"Hoarah Loux, the Warrior",region:"Leyndell, Capital of Ash",step:2560,lvl:125},
+    {idx:151,name:"Radagon of the Golden Order and Elden Beast",region:"Leyndell, Capital of Ash",step:2570,lvl:130}
   ],
   dlc:[
-    {idx:159,name:"Divine Beast Dancing Lion"},
-    {idx:160,name:"Rellana, Twin Moon Knight"},
-    {idx:161,name:"Messmer the Impaler"},
-    {idx:162,name:"Romina, Saint of the Bud"},
-    {idx:169,name:"Promised Consort Radahn"}
+    {idx:159,name:"Divine Beast Dancing Lion",region:"Belurat, Tower Settlement",step:2600,lvl:110},
+    {idx:160,name:"Rellana, Twin Moon Knight",region:"Castle Ensis",step:2650,lvl:120},
+    {idx:161,name:"Messmer the Impaler",region:"Shadow Keep",step:2700,lvl:130},
+    {idx:162,name:"Romina, Saint of the Bud",region:"Ancient Ruins of Rauh",step:2750,lvl:140},
+    {idx:169,name:"Promised Consort Radahn",region:"Enir-Ilim",step:2800,lvl:150}
   ]
 };
 
@@ -2206,7 +2211,7 @@ function getPlayerBossDmg(bossName,charState){
 function meetsRequirements(wEnc,stats,twoHand){
   var r=wEnc.r;if(!r)return true;
   var effStr=twoHand&&!wEnc.p?Math.floor(stats.str*1.5):stats.str;
-  if([50,51,53,56].indexOf(wEnc.t)>=0)effStr=Math.floor(stats.str*1.5);
+  if(twoHand&&[50,51,53,56].indexOf(wEnc.t)>=0)effStr=Math.floor(stats.str*1.5);
   if(r.str&&effStr<r.str)return false;if(r.dex&&stats.dex<r.dex)return false;
   if(r.int&&stats.int<r.int)return false;if(r.fai&&stats.fai<r.fai)return false;
   if(r.arc&&stats.arc<r.arc)return false;return true;
@@ -2468,7 +2473,17 @@ var BOSS_READY={
 "Dragonlord Placidusax":{comf:40,strug:80,block:140,items:[],note:"Optional. Lightning-heavy attacks"},
 "Lichdragon Fortissax":{comf:35,strug:70,block:120,items:[],note:"Required for Fia ending. Death Lightning"},
 "Mohg, the Omen":{comf:30,strug:60,block:100,items:["Mohg's Shackle"],note:"Required for Frenzied Flame path"},
-"Sir Gideon Ofnir, the All-Knowing":{comf:15,strug:30,block:50,items:[],note:"NPC spellcaster. Weak to lightning. Can be staggered easily."}
+"Sir Gideon Ofnir, the All-Knowing":{comf:15,strug:30,block:50,items:[],note:"NPC spellcaster. Weak to lightning. Can be staggered easily."},
+"Red Wolf of Radagon":{comf:25,strug:50,block:80,items:[],note:"Fast gap-closer. Glintstone sorceries. Short openings after combos."},
+"Draconic Tree Sentinel":{comf:35,strug:70,block:120,items:[],note:"Lightning attacks phase 2. Shield poke + patience."},
+"Godfrey, the First Lord":{comf:30,strug:60,block:100,items:[],note:"Shade version. Stomps create shockwaves — jump to dodge."},
+"Hoarah Loux, the Warrior":{comf:30,strug:60,block:100,items:[],note:"Phase 2 grabs are one-shots at low VIG. Roll into, not away."},
+"Godrick, the Grafted":{comf:35,strug:70,block:120,items:[],note:"Phase 2 fire arm adds fire damage. Stay close."},
+"Divine Beast Dancing Lion":{comf:35,strug:70,block:120,items:[],note:"Elemental phase shifts. Lightning form most dangerous."},
+"Rellana, Twin Moon Knight":{comf:30,strug:60,block:100,items:[],note:"Dual-wield magic/fire combos. Punish after big slams."},
+"Messmer the Impaler":{comf:35,strug:70,block:120,items:[],note:"Aggressive spear combos. Phase 2 serpent form."},
+"Romina, Saint of the Bud":{comf:35,strug:70,block:120,items:[],note:"Scarlet Rot buildup. Bring Preserving Boluses."},
+"Promised Consort Radahn":{comf:40,strug:80,block:140,items:[],note:"Multi-phase. Miquella buffs in phase 2. Endurance fight."}
 };
 
 // === PHASE 3: Progression Gate Tracking ===
@@ -2494,11 +2509,12 @@ var GATE_BELL_BEARINGS=[
 {step:2497,name:"Somberstone Miner's BB [5]",type:"somber",unlocks:[9],maxSmbr:10,loc:"Church near Great Bridge, Farum Azula"}
 ];
 // Derive gate state from journey checkoffs
-function deriveGateState(ci){
+function deriveGateState(ci,atStep){
   var affinities=[],affLabels=[];
   var ownedWhetstones=[];
   for(var w=0;w<GATE_WHETSTONES.length;w++){
-    if(ci["w_"+GATE_WHETSTONES[w].step]){
+    var wObtained=atStep!==undefined?GATE_WHETSTONES[w].step<=atStep:!!ci["w_"+GATE_WHETSTONES[w].step];
+    if(wObtained){
       ownedWhetstones.push(GATE_WHETSTONES[w]);
       for(var a=0;a<GATE_WHETSTONES[w].affinities.length;a++){
         if(affinities.indexOf(GATE_WHETSTONES[w].affinities[a])===-1){
@@ -2511,17 +2527,62 @@ function deriveGateState(ci){
   var buyableRegMax=0,buyableSomMax=0;
   var ownedBB=[];
   for(var b=0;b<GATE_BELL_BEARINGS.length;b++){
-    if(ci["w_"+GATE_BELL_BEARINGS[b].step]){
+    var bObtained=atStep!==undefined?GATE_BELL_BEARINGS[b].step<=atStep:!!ci["w_"+GATE_BELL_BEARINGS[b].step];
+    if(bObtained){
       ownedBB.push(GATE_BELL_BEARINGS[b]);
       if(GATE_BELL_BEARINGS[b].type==="regular"&&GATE_BELL_BEARINGS[b].maxReg>buyableRegMax) buyableRegMax=GATE_BELL_BEARINGS[b].maxReg;
       if(GATE_BELL_BEARINGS[b].type==="somber"&&GATE_BELL_BEARINGS[b].maxSmbr>buyableSomMax) buyableSomMax=GATE_BELL_BEARINGS[b].maxSmbr;
     }
   }
-  // Next unclaimed gates
   var nextWhet=null,nextRegBB=null,nextSomBB=null;
-  for(var w2=0;w2<GATE_WHETSTONES.length;w2++){if(!ci["w_"+GATE_WHETSTONES[w2].step]){nextWhet=GATE_WHETSTONES[w2];break}}
-  for(var b2=0;b2<GATE_BELL_BEARINGS.length;b2++){if(!ci["w_"+GATE_BELL_BEARINGS[b2].step]){if(GATE_BELL_BEARINGS[b2].type==="regular"&&!nextRegBB) nextRegBB=GATE_BELL_BEARINGS[b2];if(GATE_BELL_BEARINGS[b2].type==="somber"&&!nextSomBB) nextSomBB=GATE_BELL_BEARINGS[b2];}}
+  if(atStep===undefined){
+    for(var w2=0;w2<GATE_WHETSTONES.length;w2++){if(!ci["w_"+GATE_WHETSTONES[w2].step]){nextWhet=GATE_WHETSTONES[w2];break}}
+    for(var b2=0;b2<GATE_BELL_BEARINGS.length;b2++){if(!ci["w_"+GATE_BELL_BEARINGS[b2].step]){if(GATE_BELL_BEARINGS[b2].type==="regular"&&!nextRegBB) nextRegBB=GATE_BELL_BEARINGS[b2];if(GATE_BELL_BEARINGS[b2].type==="somber"&&!nextSomBB) nextSomBB=GATE_BELL_BEARINGS[b2];}}
+  }
   return{affinities:affinities,affLabels:affLabels,ownedWhetstones:ownedWhetstones,ownedBB:ownedBB,buyableRegMax:buyableRegMax,buyableSomMax:buyableSomMax,nextWhet:nextWhet,nextRegBB:nextRegBB,nextSomBB:nextSomBB}
+}
+
+// F3: Next mandatory boss from journey checkoffs
+function getNextMandatoryBoss(ci,includeDLC){
+  var bossList=MANDATORY_BOSSES.base.slice();
+  if(includeDLC)bossList=bossList.concat(MANDATORY_BOSSES.dlc);
+  for(var i=0;i<bossList.length;i++){
+    var b=bossList[i];
+    if(!ci["boss_"+b.name]&&!ci["b_"+b.name]){
+      var engBoss=ENG_DATA.bosses[b.idx]||null;
+      return{name:b.name,region:b.region,step:b.step,lvl:b.lvl,idx:b.idx,engBoss:engBoss,ready:BOSS_READY[b.name]||null};
+    }
+  }
+  return null;
+}
+
+// F7: Compute per-archetype weapon progression through mandatory boss sequence
+function computeProgressionCurve(template,includeDLC,weaponList){
+  var cls=WRETCH;
+  var bossList=MANDATORY_BOSSES.base.slice();
+  if(includeDLC)bossList=bossList.concat(MANDATORY_BOSSES.dlc);
+  var curve=[];
+  for(var i=0;i<bossList.length;i++){
+    var boss=bossList[i];
+    var stats=resolveStats(cls,template,boss.lvl);
+    var gateState=deriveGateState({},boss.step);
+    var rc=REGION_CAPS[boss.region]||{reg:0,smbr:0};
+    var maxReg=Math.max(rc.reg,gateState.buyableRegMax);
+    var maxSom=Math.max(rc.smbr,gateState.buyableSomMax);
+    var synthGate=Object.assign({},gateState,{buyableRegMax:maxReg,buyableSomMax:maxSom});
+    var w1h=bestWeaponForBoss(boss.name,stats,synthGate,boss.region,false,weaponList);
+    var w2h=bestWeaponForBoss(boss.name,stats,synthGate,boss.region,true,weaponList);
+    var best1h=w1h[0]||null;var best2h=w2h[0]||null;
+    var best=(best2h&&best1h)?(best2h.dmgPerHit>best1h.dmgPerHit?best2h:best1h):(best2h||best1h);
+    var twoHanded=best&&best2h&&best===best2h;
+    var br=BOSS_READY[boss.name];
+    var status=best?(best.hitsToKill<=(br?br.comf:30)?"READY":best.hitsToKill<=(br?br.strug:60)?"CHALLENGING":"UNDERPOWERED"):"NO_WEAPON";
+    curve.push({boss:boss.name,region:boss.region,level:boss.lvl,step:boss.step,
+      stats:stats,affinities:gateState.affLabels,upgradeCap:{reg:maxReg,som:maxSom},
+      weapon:best,weapon1h:best1h,weapon2h:best2h,twoHanded:twoHanded,
+      status:status,bossReady:br,top3_1h:w1h.slice(0,3),top3_2h:w2h.slice(0,3)});
+  }
+  return curve;
 }
 
 // === TACTICAL NEEDS: Dynamic provider resolution ===
@@ -3369,28 +3430,12 @@ function renderCharacter(){
     // Cap to Limgrave if no bell bearings
     if(maxReg<6)maxReg=6;if(maxSom<2)maxSom=2;
     
-    // Find next mandatory boss from journey progress
-    var nextBossName=null;var nextBoss=null;var nextBossReady=null;
-    var mbOrder=["Margit, the Fell Omen","Godrick, the Grafted","Renalla, Queen of the Full Moon",
-      "Starscourge Radahn","Morgott, The Omen King","Fire Giant","Godskin Duo",
-      "Maliketh the Black Blade","Sir Gideon Ofnir, the All-Knowing",
-      "Radagon of the Golden Order and Elden Beast"];
-    for(var mb=0;mb<mbOrder.length;mb++){
-      if(!ci["boss_"+mbOrder[mb]]&&!ci["b_"+mbOrder[mb]]){
-        nextBossName=mbOrder[mb];nextBossReady=BOSS_READY[mbOrder[mb]];
-        // Find in engine data
-        for(var bi=0;bi<ENG_DATA.bosses.length;bi++){
-          var bn=ENG_DATA.bosses[bi].n.toLowerCase();
-          var target=BOSS_ENG_MAP[mbOrder[mb]];
-          if(target!==undefined&&target===bi){nextBoss=ENG_DATA.bosses[bi];break;}
-          if(bn.indexOf(mbOrder[mb].toLowerCase())===0||mbOrder[mb].toLowerCase().indexOf(bn)===0){nextBoss=ENG_DATA.bosses[bi];break;}
-        }
-        break;
-      }
-    }
-    if(!nextBossName){nextBossName="Margit, the Fell Omen";nextBossReady=BOSS_READY["Margit, the Fell Omen"];
-      for(var bi2=0;bi2<ENG_DATA.bosses.length;bi2++){if(ENG_DATA.bosses[bi2].n.toLowerCase().indexOf("margit")===0){nextBoss=ENG_DATA.bosses[bi2];break;}}
-    }
+    // Find next mandatory boss from journey progress (F3: uses shared getNextMandatoryBoss)
+    var nmb=getNextMandatoryBoss(ci,false);
+    var nextBossName=nmb?nmb.name:"Margit, the Fell Omen";
+    var nextBoss=nmb?nmb.engBoss:null;
+    var nextBossReady=nmb?nmb.ready:BOSS_READY["Margit, the Fell Omen"];
+    if(!nextBoss){for(var bi2=0;bi2<ENG_DATA.bosses.length;bi2++){if(ENG_DATA.bosses[bi2].n.toLowerCase().indexOf("margit")===0){nextBoss=ENG_DATA.bosses[bi2];break;}}}
     
     // Analyze ALL weapons in equipped slots + all weapons player might have
     // For now: analyze equipped weapons across all unlocked affinities
@@ -3787,6 +3832,24 @@ function renderWalkthrough(){
     ),
     region?h("div",null,
       ProgressBar({done:regionDone,total:regionTotal,label:region.name+" Progress"}),
+      (function(){
+        var allMB=MANDATORY_BOSSES.base.concat(MANDATORY_BOSSES.dlc);
+        var regionBoss=null;
+        for(var rb=0;rb<allMB.length;rb++){if(allMB[rb].region===region.name){regionBoss=allMB[rb];break;}}
+        if(!regionBoss||!charData||!charData.stats)return null;
+        var pgDmg=getPlayerBossDmg(regionBoss.name,charData);
+        var pgBR=BOSS_READY[regionBoss.name];
+        if(!pgDmg||!pgBR)return null;
+        if(pgDmg.hitsToKill<=pgBR.block)return null;
+        return h("div",{style:{background:"linear-gradient(135deg,#1a1015,#201218)",border:"1px solid #e0504060",borderRadius:8,padding:"10px 14px",marginBottom:10}},
+          h("div",{style:{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}},
+            h("span",{style:{fontSize:13,fontWeight:700,color:"#e05040",textTransform:"uppercase",letterSpacing:2}},"\u26A0 Underpowered"),
+            h("span",{style:{fontSize:14,color:C.textDim}},regionBoss.name+" requires ~"+pgBR.comf+"\u2013"+pgBR.strug+" hits."),
+            h("span",{style:{fontSize:14,color:"#e05040",fontWeight:600}},"You: "+pgDmg.hitsToKill+" hits."),
+            h("span",{style:{fontSize:13,color:C.textDim}},"Level up, upgrade weapons, or try a different affinity.")
+          )
+        );
+      })(),
       REGION_CAPS[region.name]?(function(){
         var rc=REGION_CAPS[region.name];
         var effReg=Math.max(rc.reg,gateState.buyableRegMax);
@@ -3957,6 +4020,50 @@ function renderDashboard(){
       ProgressBar({done:baseDone,total:baseTotal,label:"Base Game ("+baseTotal+" key steps)"}),
       ProgressBar({done:dlcDone,total:dlcTotal,label:"Shadow of the Erdtree ("+dlcTotal+" steps)",color:C.purple})
     ),
+    (function(){
+      var nmb=getNextMandatoryBoss(ci,false);
+      if(!nmb)return h("div",{style:{borderRadius:10,padding:20,border:"1px solid #50c87840",marginBottom:16,textAlign:"center"}},
+        h("div",{style:{fontSize:15,fontWeight:700,color:"#50c878",letterSpacing:3,textTransform:"uppercase"}},"\u2714 ALL MANDATORY BOSSES DEFEATED"));
+      var pd=getPlayerBossDmg(nmb.name,charData);
+      var br=nmb.ready;
+      var statusColor=pd?(pd.hitsToKill<=(br?br.comf:30)?"#50c878":pd.hitsToKill<=(br?br.strug:60)?"#d8a850":"#e05040"):"#808080";
+      var statusLabel=pd?(pd.hitsToKill<=(br?br.comf:30)?"READY":pd.hitsToKill<=(br?br.strug:60)?"CHALLENGING":"UNDERPOWERED"):"NO WEAPON";
+      var gateState=deriveGateState(ci);
+      var bwR=charData&&charData.stats?bestWeaponForBoss(nmb.name,charData.stats,gateState,nmb.region,false,weaponPool):[];
+      var bwR2h=charData&&charData.stats?bestWeaponForBoss(nmb.name,charData.stats,gateState,nmb.region,true,weaponPool):[];
+      var bestRec=(bwR2h[0]&&bwR[0])?(bwR2h[0].dmgPerHit>bwR[0].dmgPerHit?bwR2h[0]:bwR[0]):(bwR2h[0]||bwR[0]||null);
+      var bestIs2h=bestRec&&bwR2h[0]&&bestRec===bwR2h[0];
+      var rc=REGION_CAPS[nmb.region];
+      return h("div",{style:{borderRadius:10,padding:16,border:"1px solid "+statusColor+"40",marginBottom:16,position:"relative",overflow:"hidden"}},
+        h("div",{style:{position:"absolute",top:0,left:40,right:40,height:1,background:"linear-gradient(90deg,transparent,"+statusColor+"30,transparent)"}}),
+        h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}},
+          h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:3,textTransform:"uppercase"}},"Next Objective"),
+          h("span",{style:{fontSize:12,fontWeight:700,color:statusColor,background:statusColor+"18",padding:"2px 10px",borderRadius:10}},statusLabel)
+        ),
+        h("div",{style:{fontSize:18,fontWeight:700,color:C.textBright,marginBottom:4}},nmb.name),
+        h("div",{style:{fontSize:14,color:C.textDim,marginBottom:10}},nmb.region+" \u00B7 Expected Level "+nmb.lvl),
+        pd?h("div",{style:{display:"flex",gap:16,flexWrap:"wrap",marginBottom:10,fontSize:14}},
+          h("span",{style:{color:C.textDim}},pd.totalAR+" AR \u2192 "+pd.dmgPerHit+" dmg/hit"),
+          h("span",{style:{color:statusColor,fontWeight:700,fontFamily:"monospace"}},pd.hitsToKill+" hits"),
+          br?h("span",{style:{color:"#808080",fontSize:12}},"\u2714 <"+br.comf+" \u00B7 \u26A0 "+br.comf+"\u2013"+br.strug+" \u00B7 \u2718 >"+br.strug):null
+        ):h("div",{style:{fontSize:13,color:C.textDim,fontStyle:"italic",marginBottom:10}},"Equip a weapon in Character tab to see readiness"),
+        bestRec?h("div",{style:{background:"#ffffff06",borderRadius:6,padding:"8px 12px",marginBottom:10}},
+          h("div",{style:{fontSize:11,color:"#6898d0",textTransform:"uppercase",letterSpacing:2,fontWeight:700,marginBottom:4}},"Best Weapon for This Boss"),
+          h("div",{style:{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}},
+            h("span",{style:{fontSize:15,fontWeight:700,color:C.textBright}},bestRec.name),
+            bestRec.affinity!==-1?h("span",{style:{fontSize:12,color:"#a080c0",background:"#a080c018",padding:"1px 6px",borderRadius:3}},"["+bestRec.affinityName+"]"):null,
+            h("span",{style:{fontSize:13,color:C.textDim}},"+"+bestRec.upgrade+(bestIs2h?" (2H)":"")),
+            h("span",{style:{fontSize:13,color:"#50c878",fontWeight:600}},bestRec.dmgPerHit+" dmg \u2192 "+bestRec.hitsToKill+" hits")
+          )
+        ):null,
+        rc?h("div",{style:{display:"flex",gap:12,flexWrap:"wrap",fontSize:13,color:C.textDim}},
+          h("span",null,"\u2694\uFE0F Regular +"+Math.max(rc.reg,gateState.buyableRegMax)),
+          h("span",null,"\u2728 Somber +"+Math.max(rc.smbr,gateState.buyableSomMax)),
+          gateState.affLabels.length?h("span",null,"\u2728 "+gateState.affLabels.join(", ")):null
+        ):null,
+        br&&br.note?h("div",{style:{fontSize:13,color:C.textDim,fontStyle:"italic",marginTop:6}},br.note):null
+      );
+    })(),
     h("div",{style:{borderRadius:10,padding:20,border:"1px solid "+C.border,marginBottom:16,position:"relative",overflow:"hidden"}},
       h("div",{style:{position:"absolute",top:0,left:40,right:40,height:1,background:"linear-gradient(90deg,transparent,"+C.gold+"20,transparent)"}}),
       h("div",{style:{fontSize:15,fontWeight:700,color:C.gold,marginBottom:16,letterSpacing:3,textTransform:"uppercase"}},"Collectible Progress"),
