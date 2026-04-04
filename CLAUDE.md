@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.3
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,843
-**Last completed task:** Tier 1 engine expansion — status effects, spell availability, talisman recommendations
-**Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing), Tier 2 engine (spell damage model)
+**Lines:** 4,907
+**Last completed task:** Tier 2 engine — spell damage model with motion values, DPS ranking vs bosses
+**Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing), Tier 3 (AoW, buffs, poise)

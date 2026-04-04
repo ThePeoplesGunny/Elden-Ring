@@ -2443,6 +2443,56 @@ function engDmgVsBoss(arResult,boss,weaponType){
   return{total:Math.floor(total),breakdown:bd,hitsToKill:Math.ceil((boss.hp||1)/Math.max(total,1))};
 }
 
+// === SPELL DAMAGE MULTIPLIERS (motion values relative to spell scaling) ===
+// Community-verified: spellDamage ≈ spellScaling × dmgMult × (boss magic negation)
+// Source: tarnished.dev AR calculator, Fextralife motion value tables
+var SPELL_DMG={
+// Sorceries
+"Glintstone Pebble":{dmg:1.1,castTime:0.8},"Great Glintstone Shard":{dmg:1.7,castTime:1.0},
+"Comet":{dmg:3.0,castTime:1.2},"Comet Azur":{dmg:1.5,castTime:0.3,notes:"per tick, 8-12 ticks with Cerulean Tear"},
+"Stars of Ruin":{dmg:0.3,castTime:1.5,notes:"12 hits × 0.3 = 3.6 total"},"Meteorite of Astel":{dmg:4.0,castTime:2.0},
+"Carian Slicer":{dmg:0.85,castTime:0.4},"Adula's Moonblade":{dmg:2.5,castTime:1.0,notes:"+frost buildup"},
+"Ranni's Dark Moon":{dmg:2.8,castTime:2.0,notes:"-10% magic resist on target"},
+"Glintstone Icecrag":{dmg:1.6,castTime:0.9,notes:"+frost buildup"},"Night Comet":{dmg:2.4,castTime:1.0,notes:"bosses don't dodge"},
+"Swift Glintstone Shard":{dmg:0.7,castTime:0.4},"Cannon of Haima":{dmg:2.6,castTime:1.2},
+// Incantations
+"Catch Flame":{dmg:1.3,castTime:0.3},"Flame Sling":{dmg:1.4,castTime:0.9},"O, Flame!":{dmg:2.0,castTime:1.0},
+"Giantsflame Take Thee":{dmg:3.5,castTime:1.5},"Burn, O Flame!":{dmg:2.5,castTime:1.2},
+"Fire Serpent":{dmg:1.5,castTime:0.5},"Lightning Spear":{dmg:2.0,castTime:1.0},
+"Knight's Lightning Spear":{dmg:2.8,castTime:1.2},"Lightning Strike":{dmg:2.5,castTime:1.2},
+"Ancient Dragons' Lightning Spear":{dmg:2.2,castTime:1.0},"Ancient Dragons' Lightning Strike":{dmg:3.5,castTime:1.5},
+"Honed Bolt":{dmg:1.5,castTime:0.6},"Discus of Light":{dmg:1.6,castTime:0.7},
+"Radagon's Rings of Light":{dmg:2.5,castTime:1.2},"Elden Stars":{dmg:3.0,castTime:2.0},
+"Pest Threads":{dmg:1.0,castTime:0.8,notes:"per thread, 6-8 threads on large bosses"},
+"Pest-Thread Spears":{dmg:1.5,castTime:0.9},"Black Flame":{dmg:1.8,castTime:0.8,notes:"+2% max HP DoT"},
+"Black Blade":{dmg:2.5,castTime:1.2,notes:"-10% max HP cap"},"Scouring Black Flame":{dmg:2.2,castTime:1.0},
+"Dragonfire":{dmg:2.0,castTime:1.5},"Rotten Breath":{dmg:1.5,castTime:2.0,notes:"+Scarlet Rot buildup"},
+"The Flame of Frenzy":{dmg:1.8,castTime:0.8},"Aspect of the Crucible: Horns":{dmg:2.5,castTime:1.2},
+"Aspect of the Crucible: Tail":{dmg:2.8,castTime:1.0},"Multilayered Ring of Light":{dmg:2.5,castTime:1.0}
+};
+
+// Compute spell effective damage against a boss
+function engSpellDmgVsBoss(spellScaling,spell,boss){
+  var sd=SPELL_DMG[spell.name];if(!sd)return null;
+  var rawDmg=spellScaling*sd.dmg;
+  // Apply boss magic/fire/lightning/holy negation based on spell type
+  var ph=boss.ph[0];var negType=spell.type==="Fire"?"fire":spell.type==="Lightning"?"lightning":spell.type==="Holy"?"holy":spell.type==="Physical"?"standard":"magic";
+  var neg=ph.ng[negType]||0;
+  // Apply defense curve (same as melee, using boss defense)
+  var def=ph.df||100;var ratio=rawDmg/def;
+  var mult;
+  if(ratio<=0.125){mult=0.10*(ratio/0.125);}
+  else if(ratio<=1.0){mult=0.10+0.80*((ratio-0.125)/0.875);}
+  else if(ratio<=2.5){mult=0.90+0.10*((ratio-1.0)/1.5);}
+  else if(ratio<=8.0){mult=1.00+0.10*((ratio-2.5)/5.5);}
+  else{mult=1.10+0.05*((ratio-8.0)/12.0);if(mult>1.20)mult=1.20;}
+  var afterDef=rawDmg*mult;
+  var dmg=Math.floor(afterDef*(1-neg/100));
+  var dps=sd.castTime>0?Math.floor(dmg/sd.castTime):dmg;
+  var fpPerDmg=dmg>0?(spell.fp/dmg):999;
+  return{damage:dmg,dps:dps,fp:spell.fp,fpEfficiency:Math.round(fpPerDmg*1000)/1000,castTime:sd.castTime,notes:sd.notes||""};
+}
+
 // === STATUS EFFECT SYSTEM ===
 var STATUS_TYPES={5:"poison",6:"rot",7:"bleed",8:"frost",9:"sleep",10:"madness"};
 var STATUS_PROC_DAMAGE={bleed:0.15,frost:0.10,poison:0.07,rot:0.14,sleep:0,madness:0};
@@ -2717,15 +2767,26 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     }
     var br=BOSS_READY[boss.name];
     var status=best?(best.hitsToKill<=(br?br.comf:30)?"READY":best.hitsToKill<=(br?br.strug:60)?"CHALLENGING":"UNDERPOWERED"):"NO_WEAPON";
-    // Spell availability for casters
+    // Spell availability + DPS for casters
     var spells=isCaster?availableSpells(stats,catalystType===57?"sorcery":"incantation"):[];
+    var bestSpell=null;var spellDmgList=[];
+    if(isCaster&&catalyst&&spells.length){
+      var engBoss=ENG_DATA.bosses[BOSS_ENG_MAP[boss.name]]||boss;
+      spells.forEach(function(sp){
+        if(sp.type==="Buff"||sp.type==="Heal")return;
+        var sd=engSpellDmgVsBoss(catalyst.spellScaling,sp,engBoss);
+        if(sd)spellDmgList.push({name:sp.name,fp:sp.fp,type:sp.type,damage:sd.damage,dps:sd.dps,fpEff:sd.fpEfficiency,castTime:sd.castTime,notes:sd.notes});
+      });
+      spellDmgList.sort(function(a,b){return b.dps-a.dps;});
+      bestSpell=spellDmgList[0]||null;
+    }
     // Talisman recommendations
     var talismans=bestTalismans(template);
     curve.push({boss:boss.name,region:boss.region,level:boss.lvl,step:boss.step,
       stats:stats,affinities:gateState.affLabels,upgradeCap:{reg:maxReg,som:maxSom},
       weapon:best,weapon1h:best1h,weapon2h:best2h,twoHanded:twoHanded,
       catalyst:catalyst,catalystList:catalystList,isCaster:isCaster,
-      spells:spells,talismans:talismans,
+      spells:spells,spellDmgList:spellDmgList,bestSpell:bestSpell,talismans:talismans,
       status:status,bossReady:br,top3_1h:w1h.slice(0,3),top3_2h:w2h.slice(0,3)});
   }
   return curve;
@@ -4019,8 +4080,8 @@ function renderCharacter(){
                 ),
                 h("td",{style:tdS},c.isCaster&&c.catalyst?"+"+c.catalyst.upgrade:w?"+"+w.upgrade:"\u2014"),
                 h("td",{style:tdS},c.isCaster&&c.catalyst?c.catalyst.spellScaling:w?w.totalAR:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},c.isCaster?"Spell":w?w.dmgPerHit:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:c.isCaster?"#a080c0":statusColor[c.status]})},c.isCaster&&c.catalyst?c.catalyst.spellScaling:w?w.hitsToKill:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},c.bestSpell?c.bestSpell.damage:w?w.dmgPerHit:"\u2014"),
+                h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:c.bestSpell?"#a080c0":statusColor[c.status]})},c.bestSpell?c.bestSpell.dps+" dps":w?w.hitsToKill:"\u2014"),
                 h("td",{style:Object.assign({},tdS,{textAlign:"center"})},h("span",{style:{color:statusColor[c.status],fontWeight:700,fontSize:12}},statusIcon[c.status]))
               );
               prevName=w?w.name:prevName;
@@ -4046,8 +4107,11 @@ function renderCharacter(){
                   h("span",{style:{fontSize:11,color:"#c04040",fontWeight:600}},"Status: "),
                   w.statusEffects.map(function(se,si){return h("span",{key:si,style:{fontSize:12,color:se.color,marginRight:10}},se.label+" "+se.buildup+"/hit \u2192 proc every "+se.hitsToProc+" hits"+(se.procDamage>0?" ("+se.procDamage+" dmg)":""))})
                 ):null,
-                c.spells&&c.spells.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Spells: "),
+                c.spellDmgList&&c.spellDmgList.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Spell DPS: "),
+                  c.spellDmgList.slice(0,5).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:si===0?"#a080c0":C.textDim,fontWeight:si===0?700:400,marginRight:8}},sp.name+" "+sp.damage+"dmg "+sp.dps+"dps ("+sp.fp+"FP)"+(sp.notes?" \u2014 "+sp.notes:""))})
+                ):c.spells&&c.spells.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Available: "),
                   c.spells.slice(0,6).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:C.textDim,marginRight:6,background:"#a080c010",padding:"1px 5px",borderRadius:3}},sp.name+" ("+sp.fp+"FP)")})
                 ):null,
                 c.talismans&&c.talismans.length?h("div",null,
