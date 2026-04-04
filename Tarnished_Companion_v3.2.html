@@ -2493,6 +2493,84 @@ function engSpellDmgVsBoss(spellScaling,spell,boss){
   return{damage:dmg,dps:dps,fp:spell.fp,fpEfficiency:Math.round(fpPerDmg*1000)/1000,castTime:sd.castTime,notes:sd.notes||""};
 }
 
+// === ASHES OF WAR — Curated weapon skills with damage/utility data ===
+// dmgMult: damage relative to weapon AR. fpCost: FP per use. castTime: seconds.
+// tier: "spam"|"burst"|"utility". Available step from walkthrough.
+var ASHES_OF_WAR=[
+{name:"Square Off (Heavy)",dmgMult:2.5,fpCost:6,castTime:0.8,tier:"spam",type:"Physical",step:0,note:"Default straight sword skill. Low FP, high poise damage."},
+{name:"Lion's Claw",dmgMult:3.2,fpCost:20,castTime:1.2,tier:"burst",type:"Physical",step:445,note:"Somersault slam. Massive poise damage. Available from Fort Haight."},
+{name:"Flame of the Redmanes",dmgMult:2.0,fpCost:14,castTime:0.8,tier:"spam",type:"Fire",step:985,note:"Fastest poise break in the game. 2 casts staggers most bosses."},
+{name:"Hoarfrost Stomp",dmgMult:1.8,fpCost:10,castTime:0.6,tier:"spam",type:"Magic",step:300,note:"AoE frost. Trivializes early bosses. Still strong late."},
+{name:"Bloody Slash",dmgMult:2.2,fpCost:6,castTime:0.5,tier:"spam",type:"Physical",step:302,note:"Fast bleed burst. Self-damage. Available Stormveil."},
+{name:"Glintstone Pebble (AoW)",dmgMult:2.0,fpCost:8,castTime:0.7,tier:"spam",type:"Magic",step:1500,note:"Pebble + thrust combo. Great on thrusting swords."},
+{name:"Gravitas",dmgMult:1.5,fpCost:13,castTime:0.8,tier:"utility",type:"Magic",step:100,note:"AoE pull + magic damage. Seaside Ruins."},
+{name:"Wild Strikes",dmgMult:0.8,fpCost:4,castTime:0.3,tier:"spam",type:"Physical",step:0,note:"Per-hit in flurry. 6-8 hits per use. Great with status buildup."},
+{name:"Spinning Slash",dmgMult:1.5,fpCost:6,castTime:0.5,tier:"spam",type:"Physical",step:0,note:"Multi-hit. Good status proc rate."},
+{name:"Giant Hunt",dmgMult:3.0,fpCost:15,castTime:1.0,tier:"burst",type:"Physical",step:1750,note:"Launching thrust. Huge poise damage."},
+{name:"Cragblade",dmgMult:0,fpCost:10,castTime:0.5,tier:"utility",type:"Buff",step:870,note:"+15% phys damage, +10 poise for 30s."},
+{name:"Royal Knight's Resolve",dmgMult:0,fpCost:15,castTime:0.5,tier:"utility",type:"Buff",step:1800,note:"+80% damage on next attack. Massive with charged R2."},
+{name:"Seppuku",dmgMult:0,fpCost:4,castTime:1.0,tier:"utility",type:"Buff",step:2150,note:"Self-bleed for +30 bleed buildup, +12.5% AR. Stacks with Occult."},
+{name:"Bloodhound's Step",dmgMult:0,fpCost:5,castTime:0.2,tier:"utility",type:"Movement",step:1680,note:"Near-invincible dodge. Trivializes Malenia's Waterfowl."},
+{name:"Determination",dmgMult:0,fpCost:10,castTime:0.5,tier:"utility",type:"Buff",step:16,note:"+60% damage on next attack. Available immediately."}
+];
+
+// Best AoW for archetype at a given progression step
+function bestAshOfWar(template,step,isDLC){
+  var pri=template.primaryStats||[];
+  return ASHES_OF_WAR.filter(function(a){
+    if(a.step>step)return false;
+    if(a.type==="Physical"&&(pri.indexOf("str")>=0||pri.indexOf("dex")>=0))return true;
+    if(a.type==="Magic"&&pri.indexOf("int")>=0)return true;
+    if(a.type==="Fire"&&pri.indexOf("fai")>=0)return true;
+    if(a.type==="Buff"||a.type==="Movement")return true;
+    // Universal picks
+    if(a.tier==="spam"&&a.type==="Physical")return true;
+    return false;
+  }).sort(function(a,b){return b.dmgMult-a.dmgMult;}).slice(0,5);
+}
+
+// === WEAPON BUFFS — Greases, incantation buffs, and universal buffs ===
+var WEAPON_BUFFS=[
+{name:"Flame, Grant Me Strength",type:"incantation",effect:"phys_fire",value:0.20,duration:30,req:{fai:15},step:1330,note:"+20% physical and fire damage"},
+{name:"Golden Vow",type:"incantation",effect:"all_damage",value:0.108,duration:80,req:{fai:25},step:1500,note:"+10.8% all damage, +10% defense"},
+{name:"Scholar's Armament",type:"sorcery",effect:"magic_flat",value:0,duration:60,req:{int:12},step:400,note:"Adds magic damage to weapon (scales with catalyst)"},
+{name:"Electrify Armament",type:"incantation",effect:"lightning_flat",value:0,duration:60,req:{fai:15},step:700,note:"Adds lightning damage to weapon"},
+{name:"Bloodflame Blade",type:"incantation",effect:"fire_bleed",value:0,duration:60,req:{fai:12,arc:0},step:1400,note:"Adds fire + bleed to weapon"},
+{name:"Grease (Fire)",type:"consumable",effect:"fire_flat",value:85,duration:60,req:{},step:16,note:"+85 fire damage. Craftable early."},
+{name:"Grease (Magic)",type:"consumable",effect:"magic_flat",value:85,duration:60,req:{},step:300,note:"+85 magic damage."},
+{name:"Grease (Lightning)",type:"consumable",effect:"lightning_flat",value:85,duration:60,req:{},step:500,note:"+85 lightning damage."},
+{name:"Grease (Holy)",type:"consumable",effect:"holy_flat",value:85,duration:60,req:{},step:800,note:"+85 holy damage."},
+{name:"Exalted Flesh",type:"consumable",effect:"phys_pct",value:0.20,duration:60,req:{},step:200,note:"+20% physical damage. Craftable."}
+];
+
+// Available buffs for archetype at progression step
+function availableBuffs(template,stats,step){
+  return WEAPON_BUFFS.filter(function(b){
+    if(b.step>step)return false;
+    return Object.keys(b.req).every(function(k){return(stats[k]||0)>=b.req[k];});
+  });
+}
+
+// === POISE/STAGGER — Simplified weapon weight class model ===
+// Weapon types mapped to stagger tier (0=none, 1=light, 2=medium, 3=heavy, 4=colossal)
+var STAGGER_TIER={
+1:1,3:1,9:1,13:1,15:1,35:1,  // daggers, straight swords, curved swords, katanas, thrusting, fists
+5:2,17:2,19:2,23:2,25:2,28:2,31:2,33:2,37:2,39:2,  // greatswords, axes, spears, halberds, reapers, whips, flails
+7:3,21:3,41:3,  // colossal swords, greataxes, great spears
+50:4,51:4,53:4,56:4  // colossal weapons
+};
+var STAGGER_LABELS={0:"None",1:"Light",2:"Medium",3:"Heavy",4:"Colossal"};
+var STAGGER_COLORS={0:"#808080",1:"#808080",2:"#d8a850",3:"#e05040",4:"#c04040"};
+
+// Boss poise values (from boss data ph[].po field)
+// Higher poise = harder to stagger. Light weapons (<50 poise dmg) won't stagger high-poise bosses.
+function getBossPoiseInfo(boss){
+  var ph=boss.ph[0];if(!ph||!ph.po)return null;
+  var poise=ph.po;
+  var difficulty=poise<=40?"Easy to stagger":poise<=80?"Moderate poise":poise<=120?"High poise":"Very high poise — colossal weapons recommended";
+  return{poise:poise,difficulty:difficulty};
+}
+
 // === STATUS EFFECT SYSTEM ===
 var STATUS_TYPES={5:"poison",6:"rot",7:"bleed",8:"frost",9:"sleep",10:"madness"};
 var STATUS_PROC_DAMAGE={bleed:0.15,frost:0.10,poison:0.07,rot:0.14,sleep:0,madness:0};
@@ -2782,11 +2860,25 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     }
     // Talisman recommendations
     var talismans=bestTalismans(template);
+    // Ashes of War
+    var aows=bestAshOfWar(template,boss.step,isDLC);
+    // Weapon buffs
+    var buffs=availableBuffs(template,stats,boss.step);
+    // Poise info
+    var engBossForPoise=ENG_DATA.bosses[BOSS_ENG_MAP[boss.name]]||null;
+    var poiseInfo=engBossForPoise?getBossPoiseInfo(engBossForPoise):null;
+    var weaponStagger=best?STAGGER_TIER[best.weaponType||0]||0:0;
+    // Add weaponType to best if available
+    if(best&&!best.weaponType){
+      var bestEnc=(archPool||ENG_DATA.reg.w).find(function(w){return w.w===best.name&&(w.a===best.affinity||best.affinity===-1);});
+      if(bestEnc)weaponStagger=STAGGER_TIER[bestEnc.t]||0;
+    }
     curve.push({boss:boss.name,region:boss.region,level:boss.lvl,step:boss.step,
       stats:stats,affinities:gateState.affLabels,upgradeCap:{reg:maxReg,som:maxSom},
       weapon:best,weapon1h:best1h,weapon2h:best2h,twoHanded:twoHanded,
       catalyst:catalyst,catalystList:catalystList,isCaster:isCaster,
       spells:spells,spellDmgList:spellDmgList,bestSpell:bestSpell,talismans:talismans,
+      aows:aows,buffs:buffs,poiseInfo:poiseInfo,staggerTier:weaponStagger,
       status:status,bossReady:br,top3_1h:w1h.slice(0,3),top3_2h:w2h.slice(0,3)});
   }
   return curve;
@@ -4113,6 +4205,19 @@ function renderCharacter(){
                 ):c.spells&&c.spells.length?h("div",{style:{marginBottom:4}},
                   h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Available: "),
                   c.spells.slice(0,6).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:C.textDim,marginRight:6,background:"#a080c010",padding:"1px 5px",borderRadius:3}},sp.name+" ("+sp.fp+"FP)")})
+                ):null,
+                c.aows&&c.aows.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#e09040",fontWeight:600}},"Ashes of War: "),
+                  c.aows.slice(0,3).map(function(a,ai){return h("span",{key:ai,style:{fontSize:11,color:ai===0?"#e09040":C.textDim,fontWeight:ai===0?600:400,marginRight:8}},a.name+(a.dmgMult?" "+a.dmgMult+"\u00D7AR":"")+" ("+a.fpCost+"FP)"+(a.note?" \u2014 "+a.note:""))})
+                ):null,
+                c.buffs&&c.buffs.length?h("div",{style:{marginBottom:4}},
+                  h("span",{style:{fontSize:11,color:"#50c878",fontWeight:600}},"Buffs: "),
+                  c.buffs.slice(0,3).map(function(b,bi){return h("span",{key:bi,style:{fontSize:11,color:C.textDim,marginRight:8}},b.name+" \u2014 "+b.note)})
+                ):null,
+                c.poiseInfo?h("div",{style:{marginBottom:4,display:"flex",gap:8,alignItems:"center"}},
+                  h("span",{style:{fontSize:11,color:"#e05040",fontWeight:600}},"Boss Poise: "+c.poiseInfo.poise),
+                  h("span",{style:{fontSize:11,color:C.textDim}},c.poiseInfo.difficulty),
+                  c.staggerTier?h("span",{style:{fontSize:11,color:STAGGER_COLORS[c.staggerTier],background:STAGGER_COLORS[c.staggerTier]+"18",padding:"1px 6px",borderRadius:3}},"Your stagger: "+STAGGER_LABELS[c.staggerTier]):null
                 ):null,
                 c.talismans&&c.talismans.length?h("div",null,
                   h("span",{style:{fontSize:11,color:C.gold,fontWeight:600}},"Talismans: "),

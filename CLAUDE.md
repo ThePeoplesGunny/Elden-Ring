@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.3
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,907
-**Last completed task:** Tier 2 engine — spell damage model with motion values, DPS ranking vs bosses
-**Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing), Tier 3 (AoW, buffs, poise)
+**Lines:** 5,012
+**Last completed task:** Tier 3 engine — Ashes of War, weapon buffs, poise/stagger model
+**Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing)
