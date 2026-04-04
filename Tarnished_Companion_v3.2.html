@@ -2145,19 +2145,19 @@ var MANDATORY_BOSSES={
 // Stat templates for global optimizer (Design Decision 28)
 // 13 archetypes × 10 classes = 130 configs. Survival stats (VIG/MND/END) not factored.
 var STAT_TEMPLATES=[
-  {id:"pure_str",name:"Pure Strength",targets:{str:80,dex:10,int:10,fai:10,arc:10}},
-  {id:"pure_dex",name:"Pure Dexterity",targets:{str:10,dex:80,int:10,fai:10,arc:10}},
-  {id:"quality",name:"Quality",targets:{str:55,dex:55,int:10,fai:10,arc:10}},
-  {id:"pure_int",name:"Pure Intelligence",targets:{str:10,dex:10,int:80,fai:10,arc:10}},
-  {id:"pure_fth",name:"Pure Faith",targets:{str:10,dex:10,int:10,fai:80,arc:10}},
-  {id:"str_int",name:"Strength/Intelligence",targets:{str:55,dex:10,int:50,fai:10,arc:10}},
-  {id:"str_fth",name:"Strength/Faith",targets:{str:55,dex:10,int:10,fai:50,arc:10}},
-  {id:"dex_int",name:"Dexterity/Intelligence",targets:{str:10,dex:55,int:50,fai:10,arc:10}},
-  {id:"dex_fth",name:"Dexterity/Faith",targets:{str:10,dex:55,int:10,fai:50,arc:10}},
-  {id:"dex_arc",name:"Dexterity/Arcane",targets:{str:10,dex:55,int:10,fai:10,arc:45}},
-  {id:"int_fth",name:"Intelligence/Faith",targets:{str:10,dex:10,int:45,fai:45,arc:10}},
-  {id:"fth_arc",name:"Faith/Arcane",targets:{str:10,dex:10,int:10,fai:50,arc:45}},
-  {id:"int_arc",name:"Intelligence/Arcane",targets:{str:10,dex:10,int:50,fai:10,arc:45}}
+  {id:"pure_str",name:"Pure Strength",targets:{str:80,dex:10,int:10,fai:10,arc:10},affPref:[0,1],primaryStats:["str"]},
+  {id:"pure_dex",name:"Pure Dexterity",targets:{str:10,dex:80,int:10,fai:10,arc:10},affPref:[0,2],primaryStats:["dex"]},
+  {id:"quality",name:"Quality",targets:{str:55,dex:55,int:10,fai:10,arc:10},affPref:[0,3],primaryStats:["str","dex"]},
+  {id:"pure_int",name:"Pure Intelligence",targets:{str:10,dex:10,int:80,fai:10,arc:10},affPref:[4,8],primaryStats:["int"]},
+  {id:"pure_fth",name:"Pure Faith",targets:{str:10,dex:10,int:10,fai:80,arc:10},affPref:[9,7],primaryStats:["fai"]},
+  {id:"str_int",name:"Strength/Intelligence",targets:{str:55,dex:10,int:50,fai:10,arc:10},affPref:[4,8,1],primaryStats:["str","int"]},
+  {id:"str_fth",name:"Strength/Faith",targets:{str:55,dex:10,int:10,fai:50,arc:10},affPref:[9,7,1],primaryStats:["str","fai"]},
+  {id:"dex_int",name:"Dexterity/Intelligence",targets:{str:10,dex:55,int:50,fai:10,arc:10},affPref:[4,8,2],primaryStats:["dex","int"]},
+  {id:"dex_fth",name:"Dexterity/Faith",targets:{str:10,dex:55,int:10,fai:50,arc:10},affPref:[9,7,2],primaryStats:["dex","fai"]},
+  {id:"dex_arc",name:"Dexterity/Arcane",targets:{str:10,dex:55,int:10,fai:10,arc:45},affPref:[11,12,2],primaryStats:["dex","arc"]},
+  {id:"int_fth",name:"Intelligence/Faith",targets:{str:10,dex:10,int:45,fai:45,arc:10},affPref:[9,4],primaryStats:["int","fai"]},
+  {id:"fth_arc",name:"Faith/Arcane",targets:{str:10,dex:10,int:10,fai:50,arc:45},affPref:[9,12,11],primaryStats:["fai","arc"]},
+  {id:"int_arc",name:"Intelligence/Arcane",targets:{str:10,dex:10,int:50,fai:10,arc:45},affPref:[4,12,8],primaryStats:["int","arc"]}
 ];
 
 // Resolve effective stats for a class + template at a target level
@@ -2561,6 +2561,21 @@ function computeProgressionCurve(template,includeDLC,weaponList){
   var cls=WRETCH;
   var bossList=MANDATORY_BOSSES.base.slice();
   if(includeDLC)bossList=bossList.concat(MANDATORY_BOSSES.dlc);
+  // Filter weapon pool by archetype affinity preference
+  var affPref=template.affPref||[];
+  var priStats=template.primaryStats||[];
+  var archPool=(weaponList||ENG_DATA.reg.w).filter(function(wEnc){
+    if(wEnc.a===-1){
+      // Unique weapon: check if it has scaling in any primary stat
+      // Use the base scaling data from the encoded weapon
+      if(!priStats.length)return true;
+      var hasScaling=false;
+      if(wEnc.as){wEnc.as.forEach(function(pair){if(priStats.indexOf(pair[0])>=0&&pair[1]>0)hasScaling=true;});}
+      return hasScaling;
+    }
+    // Infusable weapon: must match a preferred affinity
+    return affPref.indexOf(wEnc.a)>=0;
+  });
   var curve=[];
   for(var i=0;i<bossList.length;i++){
     var boss=bossList[i];
@@ -2570,8 +2585,8 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     var maxReg=Math.max(rc.reg,gateState.buyableRegMax);
     var maxSom=Math.max(rc.smbr,gateState.buyableSomMax);
     var synthGate=Object.assign({},gateState,{buyableRegMax:maxReg,buyableSomMax:maxSom});
-    var w1h=bestWeaponForBoss(boss.name,stats,synthGate,boss.region,false,weaponList);
-    var w2h=bestWeaponForBoss(boss.name,stats,synthGate,boss.region,true,weaponList);
+    var w1h=bestWeaponForBoss(boss.name,stats,synthGate,boss.region,false,archPool);
+    var w2h=bestWeaponForBoss(boss.name,stats,synthGate,boss.region,true,archPool);
     var best1h=w1h[0]||null;var best2h=w2h[0]||null;
     var best=(best2h&&best1h)?(best2h.dmgPerHit>best1h.dmgPerHit?best2h:best1h):(best2h||best1h);
     var twoHanded=best&&best2h&&best===best2h;

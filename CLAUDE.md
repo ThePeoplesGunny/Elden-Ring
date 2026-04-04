@@ -59,6 +59,6 @@ The delivery is not complete until the checklist is complete.
 
 **Version:** v3.3
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 4,672
+**Lines:** 4,687
 **Last completed task:** F7 UI — progression curve visualization (archetype selector, weapon curve table, expandable details, summary)
 **Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing)
