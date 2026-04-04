@@ -231,9 +231,9 @@ tail -3 app.html
 - **B1:** Level calc hardcodes 79 as base stat total. [DONE v3.2 — WRETCH_BASE_TOTAL/WRETCH_LEVEL constants]
 - **B2:** Compare tab hooks violation. [DONE v3.2 — rebuilt inside App component. 312 lines → ~160 lines. Hooks-compliant, Wretch-native, uses B7/B9 engine fixes, physical subtype aware.]
 - **B3:** Stormfoot Catacombs step requires ranged weapon player may not have. [DONE v3.3 — removed false Kalé Shortbow claim from step 16. Stormfoot (step 74) now notes sprint-past option and points to Coastal Merchant (step 145) for Shortbow (600r).]
-- **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [OPEN]
-- **B5:** Optimizer header shows stale "3,216 weapons" count. [OPEN]
-- **B6:** Header shows "COMPANION" with no version number. [OPEN]
+- **B4:** renderSettings About section hardcodes "v1.0" and stale data counts. [DONE v3.3 — version to v3.3, removed "8 recommended builds", updated to live ENG_DATA counts, added progression system description.]
+- **B5:** Optimizer header shows stale "3,216 weapons" count. [DONE v3.3 — uses dynamic weaponPool/ENG_DATA counts. Removed "10 classes", says "13 archetypes, Wretch-locked (DD37)".]
+- **B6:** Header shows "COMPANION" with no version number. [DONE v3.2 — was already implemented. Version bumped to v3.3.]
 - **B7:** engDmgVsBoss applied negation/defense in wrong order. [DONE v3.3 — defense curve on raw AR first, then negation]
 - **B8:** Boss data single `df` value vs per-type defense. [CLOSED — verified via Fextralife, PureEldenRing, tarnished.dev that Elden Ring bosses use single scalar defense. Per-type differentiation is handled entirely by negation, which we already have correct.]
 - **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). [DONE v3.4 — PHYS_SUBTYPE map added, engDmgVsBoss accepts weaponType param, all 11 call sites updated. Strike vs standard: 39-55% damage difference on resistant bosses now computable.]
@@ -249,8 +249,8 @@ tail -3 app.html
 - **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [DONE v3.3 — computeProgressionCurve engine function. MANDATORY_BOSSES enriched with region/step/lvl. deriveGateState extended with atStep for ideal-path simulation. UI visualization pending.]
 
 ### ENHANCEMENTS (improve existing capability)
-- **E1:** Step numbers on walkthrough cards. [PLANNED]
-- **E2:** Version display in header. [PLANNED]
+- **E1:** Step numbers on walkthrough cards. [DONE v3.2 — #stepnumber in upper right of each card, already implemented.]
+- **E2:** Version display in header. [DONE v3.2 — "COMPANION v3.3" in header, already implemented.]
 - **E3:** Stat advisor accounts for weapon requirement breakpoints. [PLANNED]
 - **E4:** Enemy resistance awareness in routing. [PLANNED]
 
