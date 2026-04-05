@@ -7,7 +7,10 @@
       "WebFetch(domain:tarnished.dev)",
       "WebFetch(domain:pureeldenring.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "WebSearch",
+      "WebFetch(domain:eldenring.wiki.fextralife.com)",
+      "Bash(node -e ':*)"
     ]
   }
 }

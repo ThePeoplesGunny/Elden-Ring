@@ -2946,7 +2946,7 @@ var STEP_CLASS={0:"P2",1:"C",3:"C",4:"C",5:"C",6:"C",8:"C",11:"C",12:"C",13:"C",
 var CLASS_LABELS={M:"Milestone",M1:"Gate Unlock",M2:"Major Upgrade",M3:"Quest Branch",M4:"Achievement",P:"Power",P1:"Core Upgrade",P2:"Build Material",P3:"Boss Drop",P4:"Stat Boost",T:"Tactical",T1:"Boss Counter",T2:"Crafting Recipe",T5:"Utility",N:"Noise",C:"Context"};
 var STEP_ITEMS={25:["str"],62:["str","dex"],85:["str","dex"],142:["str","fai"],364:["int","dex"],560:["dex"],645:["int"],677:["fai"],727:["str","dex"],797:["int"],854:["dex"],885:["dex","fai"],893:["int"],930:["int","fai"],937:["dex","int"],951:["int"],989:["str","int"],990:["str","int"],1062:["str","fai"],1098:["str"],1104:["int","dex"],1135:["str","dex"],1155:["str","dex","int"],1177:["dex"],1189:["int"],1287:["str","fai"],1394:["dex"],1412:["int"],1417:["int"],1423:["int","str"],1486:["str"],1520:["str","arc"],1522:["str","arc"],1611:["fai"],1623:["fai"],1627:["dex","fai"],1644:["dex","arc"],1685:["int"],1689:["int"],1710:["dex"],1736:["str","dex"],1738:["str","dex","int"],1811:["fai"],1820:["str","fai"],1847:["str","fai"],1857:["str","int"],1904:["str","fai"],1907:["str"],1957:["fai","arc"],2006:["dex"],2064:["fai"],2072:["str","fai"],2085:["int"],2103:["str","fai"],2173:["int"],2193:["dex","int"],2201:["dex","fai"],2205:["str","dex"],2254:["int"],2260:["str","dex","fai"],2261:["str","dex","fai"],2280:["int"],2337:["dex","int"],2403:["fai"],2411:["fai"],2425:["dex"],2505:["str","fai"],2523:["str","int"],2588:["fai","arc"]};
 function detectBuildArchetype(stats){if(!stats)return null;var off={str:stats.str||0,dex:stats.dex||0,int:stats.int||0,fai:stats.fai||0,arc:stats.arc||0};var sorted=Object.keys(off).sort(function(a,b){return off[b]-off[a]});var p=sorted[0];if(p==="str"&&off.str>=40)return"strength";if(p==="dex"&&off.dex>=40)return"dexterity";if(p==="int"&&off.int>=40)return"intelligence";if(p==="fai"&&off.fai>=40)return"faith";if(p==="arc"&&off.arc>=30)return"arcane";if(off.str>=30&&off.dex>=30)return"quality";return"mixed"}
-function isBuildRelevant(itemScaling,archetype){if(!archetype||archetype==="mixed")return true;var m={strength:["str"],dexterity:["dex"],intelligence:["int"],faith:["fai"],arcane:["arc"],quality:["str","dex"]};var as=m[archetype];if(!as)return true;for(var i=0;i<itemScaling.length;i++){if(as.indexOf(itemScaling[i])>=0)return true}return false}
+function isBuildRelevant(itemScaling,archetype){if(!archetype||archetype==="mixed")return true;var m={strength:["str"],dexterity:["dex"],intelligence:["int"],faith:["fai"],arcane:["arc"],quality:["str","dex"]};var as=m[archetype];if(!as){var tmpl=STAT_TEMPLATES.find(function(t){return t.id===archetype});if(tmpl)as=tmpl.primaryStats;} if(!as)return true;for(var i=0;i<itemScaling.length;i++){if(as.indexOf(itemScaling[i])>=0)return true}return false}
 var CLASS_COLORS={M:"#e05040",P:"#d8a850",T:"#6898d0",N:"#504030",C:"#80786880"};
 
 // Derive CLASSES from engine data (single source of truth)
@@ -3324,7 +3324,7 @@ var _bw2h=us(false),bw2h=_bw2h[0],setBw2h=_bw2h[1];
 // Character state
 var _char=us(null),charData=_char[0],setCharData=_char[1];
 var _csub=us("profile"),csub=_csub[0],setCsub=_csub[1];
-var _pt=us(null),progTmpl=_pt[0],setProgTmpl=_pt[1];
+
 var _respec=us(null),respecData=_respec[0],setRespecData=_respec[1];
 var _optState=us(function(){return{target:{vig:60,mnd:30,end:15,str:12,dex:12,int:9,fai:80,arc:10}};}),optData=_optState[0],setOptData=_optState[1];
 var _bd=us(200),baseDmg=_bd[0],setBD=_bd[1];
@@ -3359,7 +3359,7 @@ React.useEffect(function(){
         var v=d.character.loadout[k];
         if(typeof v==="string")d.character.loadout[k]={name:v,affinity:-1,upgrade:0};
         else if(!v)d.character.loadout[k]={name:"",affinity:-1,upgrade:0};
-      });if(!d.character.loadout.arrow1)d.character.loadout.arrow1="";if(!d.character.loadout.arrow2)d.character.loadout.arrow2="";}
+      });["arrow1","arrow2"].forEach(function(k){var v=d.character.loadout[k];if(!v)d.character.loadout[k]={name:""};else if(typeof v==="string")d.character.loadout[k]={name:v};else if(typeof v!=="object"||!v.name)d.character.loadout[k]={name:""};});}
       setCharData(d.character);
     }
     if(d.respec)setRespecData(d.respec);
@@ -3430,12 +3430,27 @@ function importSave(file){
     try{
       var d=JSON.parse(e.target.result);
       if(!d.version||typeof d.checkedItems!=="object"){setSav("Invalid save file");return;}
-      // Migrate old weapon slots on import
-      if(d.character&&d.character.loadout){["rh1","rh2","lh1","lh2"].forEach(function(k){
-        var v=d.character.loadout[k];
-        if(typeof v==="string")d.character.loadout[k]={name:v,affinity:-1,upgrade:0};
-        else if(!v)d.character.loadout[k]={name:"",affinity:-1,upgrade:0};
-      });if(!d.character.loadout.arrow1)d.character.loadout.arrow1="";if(!d.character.loadout.arrow2)d.character.loadout.arrow2="";}
+      // Migrate and validate weapon slots on import
+      if(d.character&&d.character.loadout){
+        var validWeapon=function(n){return !n||ENG_WEAPON_NAMES.some(function(w){return w.name===n;});};
+        var validAmmo=function(n){return !n||AMMO_DATA.some(function(a){return a.n===n;});};
+        ["rh1","rh2","lh1","lh2"].forEach(function(k){
+          var v=d.character.loadout[k];
+          if(typeof v==="string"){v={name:v,affinity:-1,upgrade:0};}
+          else if(!v||typeof v!=="object"){v={name:"",affinity:-1,upgrade:0};}
+          if(!validWeapon(v.name))v.name="";
+          if(typeof v.affinity!=="number")v.affinity=-1;
+          if(typeof v.upgrade!=="number"||v.upgrade<0)v.upgrade=0;
+          d.character.loadout[k]=v;
+        });
+        ["arrow1","arrow2"].forEach(function(k){
+          var v=d.character.loadout[k];
+          if(typeof v==="string"){v={name:v};}
+          else if(!v||typeof v!=="object"){v={name:""};}
+          if(!validAmmo(v.name))v.name="";
+          d.character.loadout[k]=v;
+        });
+      }
       setCi(d.checkedItems||{});
       setQp(d.questProgress||{});
       setCharData(d.character||null);
@@ -3461,12 +3476,14 @@ function pct(s){return s.total?Math.round(s.done/s.total*100):0}
 // ══════ CHARACTER TAB ══════
 function renderCharacter(){
   // DD37: Wretch is universally optimal class — all stats start at 10
-  // Weapon slots: {name, affinity, upgrade} objects. Arrow slots: string names.
+  // Weapon slots: {name, affinity, upgrade} objects. Ammo slots: {name} objects.
   function migrateSlot(v){if(!v)return{name:"",affinity:-1,upgrade:0};if(typeof v==="string")return{name:v,affinity:-1,upgrade:0};return v;}
-  var defaultLoadout={rh1:{name:"",affinity:-1,upgrade:0},rh2:{name:"",affinity:-1,upgrade:0},lh1:{name:"",affinity:-1,upgrade:0},lh2:{name:"",affinity:-1,upgrade:0},arrow1:"",arrow2:"",head:"",chest:"",arms:"",legs:"",t1:"",t2:"",t3:"",t4:"",spell1:"",spell2:"",spell3:"",spell4:"",spell5:"",spell6:"",greatRune:"",physick1:"",physick2:""};
-  var ch=charData||{classId:"wretch",stats:{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10},loadout:Object.assign({},defaultLoadout)};
+  var defaultLoadout={rh1:{name:"",affinity:-1,upgrade:0},rh2:{name:"",affinity:-1,upgrade:0},lh1:{name:"",affinity:-1,upgrade:0},lh2:{name:"",affinity:-1,upgrade:0},arrow1:{name:""},arrow2:{name:""},head:"",chest:"",arms:"",legs:"",t1:"",t2:"",t3:"",t4:"",spell1:"",spell2:"",spell3:"",spell4:"",spell5:"",spell6:"",greatRune:"",physick1:"",physick2:""};
+  var ch=charData||{classId:"wretch",stats:{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10},loadout:Object.assign({},defaultLoadout),archetype:null};
   // Migrate old string-based weapon slots
-  if(ch.loadout){["rh1","rh2","lh1","lh2"].forEach(function(k){ch.loadout[k]=migrateSlot(ch.loadout[k]);});if(!ch.loadout.arrow1)ch.loadout.arrow1="";if(!ch.loadout.arrow2)ch.loadout.arrow2="";};
+  if(ch.loadout){["rh1","rh2","lh1","lh2"].forEach(function(k){ch.loadout[k]=migrateSlot(ch.loadout[k]);});
+    ["arrow1","arrow2"].forEach(function(k){var v=ch.loadout[k];if(!v)ch.loadout[k]={name:""};else if(typeof v==="string")ch.loadout[k]={name:v};else if(typeof v!=="object"||!v.name)ch.loadout[k]={name:""};});
+  };
   var stats=ch.stats||{vig:10,mnd:10,end:10,str:10,dex:10,int:10,fai:10,arc:10};
   var totalPts=0;STAT_NAMES.forEach(function(s){totalPts+=stats[s]});
   var level=totalPts-WRETCH_BASE_TOTAL+WRETCH_LEVEL; // B1 fix: computed from Wretch base
@@ -3543,17 +3560,24 @@ function renderCharacter(){
     {id:"profile",label:"My Stats"},
     {id:"loadout",label:"Loadout"},
     {id:"respec",label:"Respec Planner"},
-    {id:"ar",label:"AR Estimator"},
-    {id:"progression",label:"Progression"}
+    {id:"ar",label:"AR Estimator"}
   ];
 
   function renderProfile(){
     return h("div",null,
       // DD37: Wretch is universally optimal — no class selection needed
-      h("div",{style:{marginBottom:16}},
-        h("span",{style:{fontSize:17,color:C.gold}},"Class: "),
-        h("span",{style:{fontSize:17,color:C.textBright,fontWeight:700}},"Wretch"),
-        h("span",{style:{fontSize:15,color:C.textDim,marginLeft:8}},"(Lv1 \u2022 10 all stats \u2022 zero waste)")
+      h("div",{style:{display:"flex",alignItems:"center",gap:16,flexWrap:"wrap",marginBottom:16}},
+        h("div",null,
+          h("span",{style:{fontSize:17,color:C.gold}},"Class: "),
+          h("span",{style:{fontSize:17,color:C.textBright,fontWeight:700}},"Wretch"),
+          h("span",{style:{fontSize:15,color:C.textDim,marginLeft:8}},"(Lv1 \u2022 10 all stats \u2022 zero waste)")
+        ),
+        h("div",{style:{display:"flex",alignItems:"center",gap:8}},
+          h("span",{style:{fontSize:15,color:C.gold}},"Archetype:"),
+          h("select",{value:ch.archetype||"",onChange:function(e){var val=e.target.value||null;saveChar(Object.assign({},ch,{archetype:val}));},style:{padding:"5px 10px",background:"#080806",border:"1px solid "+C.border,borderRadius:6,color:C.gold,fontSize:15,fontFamily:"inherit"}},
+            h("option",{value:""},"— Undecided —"),
+            STAT_TEMPLATES.map(function(t){return h("option",{key:t.id,value:t.id},t.name);}))
+        )
       ),
       // Level display
       h("div",{style:{display:"flex",gap:20,flexWrap:"wrap",marginBottom:20}},
@@ -3664,6 +3688,16 @@ function renderCharacter(){
       );
     }
     
+    function ammoSlotRow(key,label,options){
+      var slot=lo[key]||{name:""};
+      return h("div",{key:key,style:{display:"flex",alignItems:"center",gap:10,marginBottom:6}},
+        h("span",{style:{fontSize:14,color:C.textDim,minWidth:100,letterSpacing:0.5}},label),
+        h("div",{style:{flex:1}},h("select",{value:slot.name||"",onChange:function(e){setLoadout(key,{name:e.target.value});},style:selectStyle},
+          h("option",{value:"",style:{color:C.textDim}},"— None —"),
+          options.map(function(opt){return h("option",{key:opt,value:opt},opt);})))
+      );
+    }
+
     function slotRow(key,label,options,placeholder){
       return h("div",{key:key,style:{display:"flex",alignItems:"center",gap:10,marginBottom:6}},
         h("span",{style:{fontSize:14,color:C.textDim,minWidth:100,letterSpacing:0.5}},label),
@@ -3854,7 +3888,7 @@ function renderCharacter(){
           var baseHP2=0;try{baseHP2=engHP(stats.vig);}catch(e){}
           
           var statTests=[];
-          ["vig","str","dex","end","mnd"].forEach(function(st){
+          ["vig","mnd","end","str","dex","int","fai","arc"].forEach(function(st){
             var ts=Object.assign({},stats);ts[st]++;
             var tAR=engCalcAR(bDec,ts,useLvl,true);
             var tT=0;Object.keys(tAR.attackPower).forEach(function(k){if(parseInt(k)<=4)tT+=tAR.attackPower[k];});
@@ -3863,15 +3897,42 @@ function renderCharacter(){
             var dmgGain=Math.round(tDmg)-Math.round(baseBD);
             var hpGain=0;if(st==="vig"){try{hpGain=Math.round(engHP(ts.vig)-baseHP2);}catch(e){}}
             var stamGain=0;if(st==="end"){try{stamGain=Math.round(engStam(ts.end)-engStam(stats.end));}catch(e){}}
-            statTests.push({stat:st,arGain:arGain,dmgGain:dmgGain,hpGain:hpGain,stamGain:stamGain,val:ts[st]});
+            statTests.push({stat:st,arGain:arGain,dmgGain:dmgGain,hpGain:hpGain,stamGain:stamGain,val:ts[st],unlocks:[]});
           });
-          
-          // Pick recommendation: VIG until 20 if under, then highest damage gain, then VIG
+
+          // E3: Breakpoint scan — find weapons unlocked by +1 in each stat
+          var archTmpl=ch.archetype?STAT_TEMPLATES.find(function(t){return t.id===ch.archetype}):null;
+          if(archTmpl){
+            var archAffs=archTmpl.affPref;
+            var archWeapons=ENG_DATA.reg.w.filter(function(w){return archAffs.indexOf(w.a)>=0&&w.r;});
+            statTests.forEach(function(st){
+              var ts=Object.assign({},stats);ts[st.stat]++;
+              var seen={};
+              archWeapons.forEach(function(wEnc){
+                if(seen[wEnc.w])return;
+                var cur1h=meetsRequirements(wEnc,stats,false);
+                var cur2h=meetsRequirements(wEnc,stats,true);
+                var new1h=meetsRequirements(wEnc,ts,false);
+                var new2h=meetsRequirements(wEnc,ts,true);
+                if(!cur1h&&new1h){seen[wEnc.w]=true;st.unlocks.push({name:wEnc.w,grip:"1H"});}
+                else if(!cur2h&&new2h){seen[wEnc.w]=true;st.unlocks.push({name:wEnc.w,grip:"2H"});}
+              });
+            });
+          }
+
+          // Pick recommendation: VIG until 20 if under, then highest damage gain (unlocks as tiebreaker), then VIG
           var rec=null;var reason="";
           if(stats.vig<20){rec=statTests.find(function(s){return s.stat==="vig";});reason="Survivability — HP is critical below 20 VIG (+" + (rec?rec.hpGain:0) + " HP)";}
           else{
-            var dmgOptions=statTests.filter(function(s){return s.dmgGain>0;}).sort(function(a,b){return b.dmgGain-a.dmgGain;});
-            if(dmgOptions.length>0){rec=dmgOptions[0];reason="Damage — +" + rec.arGain + " AR, +" + rec.dmgGain + " eff.dmg vs " + nextBossName.split(",")[0];}
+            var dmgOptions=statTests.filter(function(s){return s.dmgGain>0||s.unlocks.length>0;}).sort(function(a,b){
+              if(b.dmgGain!==a.dmgGain)return b.dmgGain-a.dmgGain;
+              return b.unlocks.length-a.unlocks.length;
+            });
+            if(dmgOptions.length>0){
+              rec=dmgOptions[0];
+              reason=rec.dmgGain>0?"Damage — +" + rec.arGain + " AR, +" + rec.dmgGain + " eff.dmg vs " + nextBossName.split(",")[0]:"";
+              if(rec.unlocks.length>0)reason+=(reason?" + ":"")+"Unlocks "+rec.unlocks.map(function(u){return u.name+" ("+u.grip+")";}).join(", ");
+            }
             else{rec=statTests.find(function(s){return s.stat==="vig";});reason="Survivability — no damage stat gains at this level (+" + (rec?rec.hpGain:0) + " HP)";}
           }
           
@@ -3891,9 +3952,11 @@ function renderCharacter(){
                 if(s.dmgGain>0)detail+="Dmg+"+s.dmgGain+" ";
                 if(s.hpGain>0)detail+="HP+"+s.hpGain+" ";
                 if(s.stamGain>0)detail+="Stam+"+s.stamGain+" ";
-                if(s.arGain===0&&s.hpGain===0&&s.stamGain===0)detail+="no benefit";
+                if(s.arGain===0&&s.hpGain===0&&s.stamGain===0&&s.unlocks.length===0)detail+="no benefit";
+                var unlockText=s.unlocks.length>0?s.unlocks.map(function(u){return u.name+" ("+u.grip+")";}).join(", "):"";
                 return h("div",{key:si,style:{padding:"2px 0",color:isRec?C.gold:C.textDim,fontWeight:isRec?700:400}},
-                  (isRec?"\u2605 ":"")+detail
+                  (isRec?"\u2605 ":"")+detail,
+                  unlockText?h("span",{style:{color:"#50c878",fontWeight:600}}," \u2192 Unlocks: "+unlockText):null
                 );
               })
             )
@@ -3931,7 +3994,7 @@ function renderCharacter(){
         var scaling=ar.spellScaling[0]?Math.floor(ar.spellScaling[0]):0;
         var ammoName="",ammoDmg=0,ammoStatus="";
         var isRanged=!!AMMO_FOR_WEAPON[wEnc.t];
-        if(isRanged&&lo.arrow1){var ammo=AMMO_DATA.find(function(a){return a.n===lo.arrow1;});
+        if(isRanged&&lo.arrow1&&lo.arrow1.name){var ammo=AMMO_DATA.find(function(a){return a.n===lo.arrow1.name;});
           if(ammo){ammoName=ammo.n;Object.values(ammo.d).forEach(function(v){ammoDmg+=v;});
             if(ammo.st){var stKeys=Object.keys(ammo.st);ammoStatus=stKeys.map(function(k){return k+" "+ammo.st[k];}).join(", ");}}}
         var displayAR=isRanged?totalAR+ammoDmg:totalAR;
@@ -3961,8 +4024,8 @@ function renderCharacter(){
         var ammoNames=ammoList.map(function(a){return a.n;});
         return h("div",null,
           sectionHeader("Ammunition","#6898d0"),
-          slotRow("arrow1","Slot 1",ammoNames,"— None —"),
-          slotRow("arrow2","Slot 2",ammoNames,"— None —")
+          ammoSlotRow("arrow1","Slot 1",ammoNames),
+          ammoSlotRow("arrow2","Slot 2",ammoNames)
         );
       })(),
       
@@ -4047,6 +4110,28 @@ function renderCharacter(){
     var statVal=stats[arStat]||10;
     var bonus=calcScaleAR(baseDmg,grade,statVal);
     var totalAR=baseDmg+bonus;
+
+    // Weapon progression curve — uses charData.archetype
+    var archId=ch.archetype;
+    var selTmpl=archId?STAT_TEMPLATES.find(function(t){return t.id===archId}):null;
+    var inclDLC=!!exp.progDLC;
+    var curve=selTmpl?computeProgressionCurve(selTmpl,inclDLC,null):[];
+    var prevWeapon=null;var transitions=0;var stressPoints=[];
+    var readyCount=0,chalCount=0,underCount=0;
+    curve.forEach(function(c){
+      if(c.weapon&&prevWeapon&&c.weapon.name!==prevWeapon)transitions++;
+      prevWeapon=c.weapon?c.weapon.name:prevWeapon;
+      if(c.status==="READY")readyCount++;else if(c.status==="CHALLENGING")chalCount++;else underCount++;
+      if(c.status==="UNDERPOWERED"||c.status==="NO_WEAPON")stressPoints.push(c.boss.split(",")[0]);
+    });
+    var statusColor={"READY":"#50c878","CHALLENGING":"#d8a850","UNDERPOWERED":"#e05040","NO_WEAPON":"#808080"};
+    var statusIcon={"READY":"\u2714","CHALLENGING":"\u26A0","UNDERPOWERED":"\u2718","NO_WEAPON":"\u2014"};
+    var thS={padding:"4px 6px",fontSize:11,color:C.textDim,textAlign:"right",borderBottom:"1px solid "+C.border+"60",fontWeight:600,whiteSpace:"nowrap"};
+    var tdS={padding:"4px 6px",fontSize:13,textAlign:"right",color:C.textDim,borderBottom:"1px solid "+C.border+"20"};
+    var prevName=null;
+    // Derive catalyst type from archetype primaryStats
+    var archCatType=selTmpl?(selTmpl.primaryStats.indexOf("int")>=0?57:selTmpl.primaryStats.indexOf("fai")>=0?61:0):0;
+
     return h("div",null,
       h("div",{style:{fontSize:17,color:C.textDim,marginBottom:16}},"Estimate weapon Attack Rating based on your stats. This is simplified \u2014 actual AR varies per weapon."),
       h("div",{style:{background:C.card,borderRadius:10,padding:16,border:"1px solid "+C.border,marginBottom:16}},
@@ -4085,155 +4170,131 @@ function renderCharacter(){
           )
         )
       ),
-      h("div",{style:{background:C.card,borderRadius:10,padding:16,border:"1px solid "+C.border}},
+      h("div",{style:{background:C.card,borderRadius:10,padding:16,border:"1px solid "+C.border,marginBottom:20}},
         h("div",{style:{fontSize:18,fontWeight:700,color:C.gold,marginBottom:10}},"Scaling Grade Reference"),
         h("div",{style:{fontSize:15,color:C.text,lineHeight:1.8}},
           "S = ~165% bonus  |  A = ~115%  |  B = ~85%  |  C = ~60%  |  D = ~35%  |  E = ~15%",h("br"),
           "Two-handing gives 1.5x effective STR. Actual scaling varies per weapon and upgrade level."
         )
-      )
-    );
-  }
+      ),
 
-  // === PROGRESSION CURVES (F7 UI) ===
-  function renderProgression(){
-    var buildArch=charData&&charData.stats?detectBuildArchetype(charData.stats):null;
-    var selId=progTmpl||(buildArch&&buildArch!=="mixed"?STAT_TEMPLATES.find(function(t){return t.id.indexOf(buildArch)>=0||(buildArch==="strength"&&t.id==="pure_str")||(buildArch==="dexterity"&&t.id==="pure_dex")||(buildArch==="intelligence"&&t.id==="pure_int")||(buildArch==="faith"&&t.id==="pure_fth")||(buildArch==="arcane"&&t.id==="dex_arc")||(buildArch==="quality"&&t.id==="quality")}):null);
-    if(selId&&typeof selId==="object")selId=selId.id;
-    if(!selId)selId=STAT_TEMPLATES[0].id;
-    var selTmpl=STAT_TEMPLATES.find(function(t){return t.id===selId})||STAT_TEMPLATES[0];
-    var inclDLC=!!exp.progDLC;
-    var curve=computeProgressionCurve(selTmpl,inclDLC,null);
-    var prevWeapon=null;var transitions=0;var stressPoints=[];
-    var readyCount=0,chalCount=0,underCount=0;
-    curve.forEach(function(c){
-      if(c.weapon&&prevWeapon&&c.weapon.name!==prevWeapon)transitions++;
-      prevWeapon=c.weapon?c.weapon.name:prevWeapon;
-      if(c.status==="READY")readyCount++;else if(c.status==="CHALLENGING")chalCount++;else underCount++;
-      if(c.status==="UNDERPOWERED"||c.status==="NO_WEAPON")stressPoints.push(c.boss.split(",")[0]);
-    });
-    var statusColor={"READY":"#50c878","CHALLENGING":"#d8a850","UNDERPOWERED":"#e05040","NO_WEAPON":"#808080"};
-    var statusIcon={"READY":"\u2714","CHALLENGING":"\u26A0","UNDERPOWERED":"\u2718","NO_WEAPON":"\u2014"};
-    var thS={padding:"4px 6px",fontSize:11,color:C.textDim,textAlign:"right",borderBottom:"1px solid "+C.border+"60",fontWeight:600,whiteSpace:"nowrap"};
-    var tdS={padding:"4px 6px",fontSize:13,textAlign:"right",color:C.textDim,borderBottom:"1px solid "+C.border+"20"};
-    var prevName=null;
-    return h("div",null,
-      h("div",{style:{textAlign:"center",marginBottom:16}},
-        h("div",{style:{fontSize:12,color:C.textDim,textTransform:"uppercase",letterSpacing:4,marginBottom:6}},"Archetype Progression Curves"),
-        h("div",{style:{fontSize:14,color:C.goldDim}},"Optimal weapon at each mandatory boss gate for a given archetype")
-      ),
-      h("div",{style:{display:"flex",gap:4,flexWrap:"wrap",marginBottom:12}},
-        STAT_TEMPLATES.map(function(t){
-          return h("button",{key:t.id,onClick:function(){setProgTmpl(t.id)},style:Object.assign({},btnS(selId===t.id),{fontSize:12,padding:"4px 10px"})},t.name)
-        })
-      ),
-      h("label",{style:{display:"flex",alignItems:"center",gap:6,fontSize:13,color:C.textDim,marginBottom:16,cursor:"pointer"}},
-        h("input",{type:"checkbox",checked:inclDLC,onChange:function(){setExp(function(p){var n=Object.assign({},p);n.progDLC=!p.progDLC;return n})},style:{cursor:"pointer",accentColor:C.purple}}),
-        "Include Shadow of the Erdtree"
-      ),
-      !weaponPool?h("div",{style:{textAlign:"center",padding:40,color:C.textDim}},"Building weapon pool..."):
-      curve.length===0?h("div",{style:{textAlign:"center",padding:40,color:C.textDim}},"No data"):
-      h("div",null,
-        h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:10,paddingBottom:6,borderBottom:"1px solid "+C.border+"40"}},"Weapon Curve: "+selTmpl.name),
-        h("div",{style:{overflowX:"auto",WebkitOverflowScrolling:"touch"}},
-          h("table",{style:{width:"100%",borderCollapse:"collapse",minWidth:700}},
-            h("thead",null,h("tr",null,
-              h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:140})},"Boss"),
-              h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:120})},"Region"),
-              h("th",{style:thS},"Lvl"),
-              h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:140})},"Weapon"),
-              h("th",{style:thS},"+Upg"),
-              h("th",{style:thS},"AR"),
-              h("th",{style:thS},"Dmg"),
-              h("th",{style:thS},"Hits"),
-              h("th",{style:Object.assign({},thS,{textAlign:"center",minWidth:50})},"Status")
-            )),
-            h("tbody",null,curve.map(function(c,i){
-              var w=c.weapon;var isTransition=w&&prevName&&w.name!==prevName;
-              var row=h("tr",{key:i,style:{cursor:"pointer",background:isTransition?"#d8a85008":"transparent"},onClick:function(){togSec("prog_"+i)}},
-                h("td",{style:Object.assign({},tdS,{textAlign:"left",color:C.textBright,fontWeight:600})},c.boss.split(",")[0]),
-                h("td",{style:Object.assign({},tdS,{textAlign:"left",fontSize:12})},c.region.split(",")[0]),
-                h("td",{style:tdS},c.level),
-                h("td",{style:Object.assign({},tdS,{textAlign:"left"})},
-                  c.isCaster&&c.catalyst?h("div",null,
-                    h("div",{style:{marginBottom:2}},
-                      h("span",{style:{color:"#a080c0",fontWeight:700}},c.catalyst.name),
-                      h("span",{style:{color:"#808080",fontSize:11,marginLeft:4}},"+"+c.catalyst.upgrade),
-                      h("span",{style:{color:"#6898d0",fontSize:11,marginLeft:6}},"Scaling: "+c.catalyst.spellScaling)
-                    ),
-                    w?h("div",{style:{fontSize:11,color:C.textDim}},
-                      "Melee: "+w.name+(w.affinity!==-1?" ["+w.affinityName+"]":"")+" +"+w.upgrade
-                    ):null
-                  ):w?h("span",null,
-                    h("span",{style:{color:isTransition?C.gold:C.textBright,fontWeight:isTransition?700:400}},w.name),
-                    w.affinity!==-1?h("span",{style:{color:"#a080c0",fontSize:11,marginLeft:4}},"["+w.affinityName+"]"):null,
-                    c.twoHanded?h("span",{style:{color:"#6898d0",fontSize:10,marginLeft:4}},"2H"):null
-                  ):h("span",{style:{color:"#808080",fontStyle:"italic"}},"None")
-                ),
-                h("td",{style:tdS},c.isCaster&&c.catalyst?"+"+c.catalyst.upgrade:w?"+"+w.upgrade:"\u2014"),
-                h("td",{style:tdS},c.isCaster&&c.catalyst?c.catalyst.spellScaling:w?w.totalAR:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},c.bestSpell?c.bestSpell.damage:w?w.dmgPerHit:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:c.bestSpell?"#a080c0":statusColor[c.status]})},c.bestSpell?c.bestSpell.dps+" dps":w?w.hitsToKill:"\u2014"),
-                h("td",{style:Object.assign({},tdS,{textAlign:"center"})},h("span",{style:{color:statusColor[c.status],fontWeight:700,fontSize:12}},statusIcon[c.status]))
-              );
-              prevName=w?w.name:prevName;
-              var detail=exp["prog_"+i]?h("tr",{key:"d"+i},h("td",{colSpan:9,style:{padding:"8px 12px",background:"#ffffff04",borderBottom:"1px solid "+C.border+"30"}},
-                h("div",{style:{display:"flex",gap:16,flexWrap:"wrap",fontSize:12,color:C.textDim,marginBottom:6}},
-                  h("span",null,"\u2694\uFE0F Reg +"+c.upgradeCap.reg+" \u00B7 Som +"+c.upgradeCap.som),
-                  c.affinities.length?h("span",null,"\u2728 "+c.affinities.join(", ")):null,
-                  h("span",null,"Stats: STR "+c.stats.str+" DEX "+c.stats.dex+" INT "+c.stats.int+" FTH "+c.stats.fai+" ARC "+c.stats.arc)
-                ),
-                c.catalystList&&c.catalystList.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},catalystType===57?"Staves: ":"Seals: "),
-                  c.catalystList.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+" +"+a.upgrade+" ("+a.spellScaling+")")})
-                ):null,
-                c.top3_1h.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 1H: "),
-                  c.top3_1h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
-                ):null,
-                c.top3_2h.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 2H: "),
-                  c.top3_2h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
-                ):null,
-                w&&w.statusEffects&&w.statusEffects.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#c04040",fontWeight:600}},"Status: "),
-                  w.statusEffects.map(function(se,si){return h("span",{key:si,style:{fontSize:12,color:se.color,marginRight:10}},se.label+" "+se.buildup+"/hit \u2192 proc every "+se.hitsToProc+" hits"+(se.procDamage>0?" ("+se.procDamage+" dmg)":""))})
-                ):null,
-                c.spellDmgList&&c.spellDmgList.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Spell DPS: "),
-                  c.spellDmgList.slice(0,5).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:si===0?"#a080c0":C.textDim,fontWeight:si===0?700:400,marginRight:8}},sp.name+" "+sp.damage+"dmg "+sp.dps+"dps ("+sp.fp+"FP)"+(sp.notes?" \u2014 "+sp.notes:""))})
-                ):c.spells&&c.spells.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Available: "),
-                  c.spells.slice(0,6).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:C.textDim,marginRight:6,background:"#a080c010",padding:"1px 5px",borderRadius:3}},sp.name+" ("+sp.fp+"FP)")})
-                ):null,
-                c.aows&&c.aows.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#e09040",fontWeight:600}},"Ashes of War: "),
-                  c.aows.slice(0,3).map(function(a,ai){return h("span",{key:ai,style:{fontSize:11,color:ai===0?"#e09040":C.textDim,fontWeight:ai===0?600:400,marginRight:8}},a.name+(a.dmgMult?" "+a.dmgMult+"\u00D7AR":"")+" ("+a.fpCost+"FP)"+(a.note?" \u2014 "+a.note:""))})
-                ):null,
-                c.buffs&&c.buffs.length?h("div",{style:{marginBottom:4}},
-                  h("span",{style:{fontSize:11,color:"#50c878",fontWeight:600}},"Buffs: "),
-                  c.buffs.slice(0,3).map(function(b,bi){return h("span",{key:bi,style:{fontSize:11,color:C.textDim,marginRight:8}},b.name+" \u2014 "+b.note)})
-                ):null,
-                c.poiseInfo?h("div",{style:{marginBottom:4,display:"flex",gap:8,alignItems:"center"}},
-                  h("span",{style:{fontSize:11,color:"#e05040",fontWeight:600}},"Boss Poise: "+c.poiseInfo.poise),
-                  h("span",{style:{fontSize:11,color:C.textDim}},c.poiseInfo.difficulty),
-                  c.staggerTier?h("span",{style:{fontSize:11,color:STAGGER_COLORS[c.staggerTier],background:STAGGER_COLORS[c.staggerTier]+"18",padding:"1px 6px",borderRadius:3}},"Your stagger: "+STAGGER_LABELS[c.staggerTier]):null
-                ):null,
-                c.talismans&&c.talismans.length?h("div",null,
-                  h("span",{style:{fontSize:11,color:C.gold,fontWeight:600}},"Talismans: "),
-                  c.talismans.map(function(t,ti){return h("span",{key:ti,style:{fontSize:11,color:C.textDim,marginRight:8}},t.name)})
-                ):null
-              )):null;
-              return[row,detail];
-            }))
-          )
+      // === WEAPON PROGRESSION CURVE ===
+      h("div",{style:{borderTop:"1px solid "+C.border+"40",paddingTop:20}},
+        h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8,marginBottom:12}},
+          h("div",null,
+            h("div",{style:{fontSize:12,color:C.textDim,textTransform:"uppercase",letterSpacing:4,marginBottom:4}},"Weapon Progression Curve"),
+            h("div",{style:{fontSize:14,color:C.goldDim}},"Optimal weapon at each mandatory boss gate for your archetype")
+          ),
+          selTmpl?h("label",{style:{display:"flex",alignItems:"center",gap:6,fontSize:13,color:C.textDim,cursor:"pointer"}},
+            h("input",{type:"checkbox",checked:inclDLC,onChange:function(){setExp(function(p){var n=Object.assign({},p);n.progDLC=!p.progDLC;return n})},style:{cursor:"pointer",accentColor:C.purple}}),
+            "Include DLC"
+          ):null
         ),
-        h("div",{style:{borderTop:"1px solid "+C.border+"40",marginTop:12,paddingTop:12,display:"flex",gap:16,flexWrap:"wrap",fontSize:13}},
-          h("span",{style:{color:C.textDim}},"Transitions: "+transitions),
-          h("span",{style:{color:"#50c878"}},"\u2714 "+readyCount+" Ready"),
-          h("span",{style:{color:"#d8a850"}},"\u26A0 "+chalCount+" Challenging"),
-          underCount>0?h("span",{style:{color:"#e05040"}},"\u2718 "+underCount+" Underpowered"):null,
-          stressPoints.length>0?h("span",{style:{color:"#e05040",fontSize:12}},"Stress: "+stressPoints.join(", ")):null
+        !selTmpl?h("div",{style:{textAlign:"center",padding:40,color:C.textDim,border:"1px dashed "+C.border,borderRadius:8}},"Select an archetype on My Stats to see your weapon progression curve"):
+        !weaponPool?h("div",{style:{textAlign:"center",padding:40,color:C.textDim}},"Building weapon pool..."):
+        curve.length===0?h("div",{style:{textAlign:"center",padding:40,color:C.textDim}},"No data"):
+        h("div",null,
+          h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:2,textTransform:"uppercase",marginBottom:10,paddingBottom:6,borderBottom:"1px solid "+C.border+"40"}},"Weapon Curve: "+selTmpl.name),
+          h("div",{style:{overflowX:"auto",WebkitOverflowScrolling:"touch"}},
+            h("table",{style:{width:"100%",borderCollapse:"collapse",minWidth:700}},
+              h("thead",null,h("tr",null,
+                h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:140})},"Boss"),
+                h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:120})},"Region"),
+                h("th",{style:thS},"Lvl"),
+                h("th",{style:Object.assign({},thS,{textAlign:"left",minWidth:140})},"Weapon"),
+                h("th",{style:thS},"+Upg"),
+                h("th",{style:thS},"AR"),
+                h("th",{style:thS},"Dmg"),
+                h("th",{style:thS},"Hits"),
+                h("th",{style:Object.assign({},thS,{textAlign:"center",minWidth:50})},"Status")
+              )),
+              h("tbody",null,curve.map(function(c,i){
+                var w=c.weapon;var isTransition=w&&prevName&&w.name!==prevName;
+                var row=h("tr",{key:i,style:{cursor:"pointer",background:isTransition?"#d8a85008":"transparent"},onClick:function(){togSec("prog_"+i)}},
+                  h("td",{style:Object.assign({},tdS,{textAlign:"left",color:C.textBright,fontWeight:600})},c.boss.split(",")[0]),
+                  h("td",{style:Object.assign({},tdS,{textAlign:"left",fontSize:12})},c.region.split(",")[0]),
+                  h("td",{style:tdS},c.level),
+                  h("td",{style:Object.assign({},tdS,{textAlign:"left"})},
+                    c.isCaster&&c.catalyst?h("div",null,
+                      h("div",{style:{marginBottom:2}},
+                        h("span",{style:{color:"#a080c0",fontWeight:700}},c.catalyst.name),
+                        h("span",{style:{color:"#808080",fontSize:11,marginLeft:4}},"+"+c.catalyst.upgrade),
+                        h("span",{style:{color:"#6898d0",fontSize:11,marginLeft:6}},"Scaling: "+c.catalyst.spellScaling)
+                      ),
+                      w?h("div",{style:{fontSize:11,color:C.textDim}},
+                        "Melee: "+w.name+(w.affinity!==-1?" ["+w.affinityName+"]":"")+" +"+w.upgrade
+                      ):null
+                    ):w?h("span",null,
+                      h("span",{style:{color:isTransition?C.gold:C.textBright,fontWeight:isTransition?700:400}},w.name),
+                      w.affinity!==-1?h("span",{style:{color:"#a080c0",fontSize:11,marginLeft:4}},"["+w.affinityName+"]"):null,
+                      c.twoHanded?h("span",{style:{color:"#6898d0",fontSize:10,marginLeft:4}},"2H"):null
+                    ):h("span",{style:{color:"#808080",fontStyle:"italic"}},"None")
+                  ),
+                  h("td",{style:tdS},c.isCaster&&c.catalyst?"+"+c.catalyst.upgrade:w?"+"+w.upgrade:"\u2014"),
+                  h("td",{style:tdS},c.isCaster&&c.catalyst?c.catalyst.spellScaling:w?w.totalAR:"\u2014"),
+                  h("td",{style:Object.assign({},tdS,{color:C.textBright,fontWeight:600})},c.bestSpell?c.bestSpell.damage:w?w.dmgPerHit:"\u2014"),
+                  h("td",{style:Object.assign({},tdS,{fontFamily:"monospace",fontWeight:700,color:c.bestSpell?"#a080c0":statusColor[c.status]})},c.bestSpell?c.bestSpell.dps+" dps":w?w.hitsToKill:"\u2014"),
+                  h("td",{style:Object.assign({},tdS,{textAlign:"center"})},h("span",{style:{color:statusColor[c.status],fontWeight:700,fontSize:12}},statusIcon[c.status]))
+                );
+                prevName=w?w.name:prevName;
+                var detail=exp["prog_"+i]?h("tr",{key:"d"+i},h("td",{colSpan:9,style:{padding:"8px 12px",background:"#ffffff04",borderBottom:"1px solid "+C.border+"30"}},
+                  h("div",{style:{display:"flex",gap:16,flexWrap:"wrap",fontSize:12,color:C.textDim,marginBottom:6}},
+                    h("span",null,"\u2694\uFE0F Reg +"+c.upgradeCap.reg+" \u00B7 Som +"+c.upgradeCap.som),
+                    c.affinities.length?h("span",null,"\u2728 "+c.affinities.join(", ")):null,
+                    h("span",null,"Stats: STR "+c.stats.str+" DEX "+c.stats.dex+" INT "+c.stats.int+" FTH "+c.stats.fai+" ARC "+c.stats.arc)
+                  ),
+                  c.catalystList&&c.catalystList.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},archCatType===57?"Staves: ":"Seals: "),
+                    c.catalystList.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+" +"+a.upgrade+" ("+a.spellScaling+")")})
+                  ):null,
+                  c.top3_1h.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 1H: "),
+                    c.top3_1h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
+                  ):null,
+                  c.top3_2h.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#6898d0",fontWeight:600}},"Melee 2H: "),
+                    c.top3_2h.map(function(a,ai){return h("span",{key:ai,style:{fontSize:12,color:C.textDim,marginRight:10}},a.name+(a.affinity!==-1?" ["+a.affinityName+"]":"")+" "+a.dmgPerHit+"dmg")})
+                  ):null,
+                  w&&w.statusEffects&&w.statusEffects.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#c04040",fontWeight:600}},"Status: "),
+                    w.statusEffects.map(function(se,si){return h("span",{key:si,style:{fontSize:12,color:se.color,marginRight:10}},se.label+" "+se.buildup+"/hit \u2192 proc every "+se.hitsToProc+" hits"+(se.procDamage>0?" ("+se.procDamage+" dmg)":""))})
+                  ):null,
+                  c.spellDmgList&&c.spellDmgList.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Spell DPS: "),
+                    c.spellDmgList.slice(0,5).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:si===0?"#a080c0":C.textDim,fontWeight:si===0?700:400,marginRight:8}},sp.name+" "+sp.damage+"dmg "+sp.dps+"dps ("+sp.fp+"FP)"+(sp.notes?" \u2014 "+sp.notes:""))})
+                  ):c.spells&&c.spells.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#a080c0",fontWeight:600}},"Available: "),
+                    c.spells.slice(0,6).map(function(sp,si){return h("span",{key:si,style:{fontSize:11,color:C.textDim,marginRight:6,background:"#a080c010",padding:"1px 5px",borderRadius:3}},sp.name+" ("+sp.fp+"FP)")})
+                  ):null,
+                  c.aows&&c.aows.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#e09040",fontWeight:600}},"Ashes of War: "),
+                    c.aows.slice(0,3).map(function(a,ai){return h("span",{key:ai,style:{fontSize:11,color:ai===0?"#e09040":C.textDim,fontWeight:ai===0?600:400,marginRight:8}},a.name+(a.dmgMult?" "+a.dmgMult+"\u00D7AR":"")+" ("+a.fpCost+"FP)"+(a.note?" \u2014 "+a.note:""))})
+                  ):null,
+                  c.buffs&&c.buffs.length?h("div",{style:{marginBottom:4}},
+                    h("span",{style:{fontSize:11,color:"#50c878",fontWeight:600}},"Buffs: "),
+                    c.buffs.slice(0,3).map(function(b,bi){return h("span",{key:bi,style:{fontSize:11,color:C.textDim,marginRight:8}},b.name+" \u2014 "+b.note)})
+                  ):null,
+                  c.poiseInfo?h("div",{style:{marginBottom:4,display:"flex",gap:8,alignItems:"center"}},
+                    h("span",{style:{fontSize:11,color:"#e05040",fontWeight:600}},"Boss Poise: "+c.poiseInfo.poise),
+                    h("span",{style:{fontSize:11,color:C.textDim}},c.poiseInfo.difficulty),
+                    c.staggerTier?h("span",{style:{fontSize:11,color:STAGGER_COLORS[c.staggerTier],background:STAGGER_COLORS[c.staggerTier]+"18",padding:"1px 6px",borderRadius:3}},"Your stagger: "+STAGGER_LABELS[c.staggerTier]):null
+                  ):null,
+                  c.talismans&&c.talismans.length?h("div",null,
+                    h("span",{style:{fontSize:11,color:C.gold,fontWeight:600}},"Talismans: "),
+                    c.talismans.map(function(t,ti){return h("span",{key:ti,style:{fontSize:11,color:C.textDim,marginRight:8}},t.name)})
+                  ):null
+                )):null;
+                return[row,detail];
+              }))
+            )
+          ),
+          h("div",{style:{borderTop:"1px solid "+C.border+"40",marginTop:12,paddingTop:12,display:"flex",gap:16,flexWrap:"wrap",fontSize:13}},
+            h("span",{style:{color:C.textDim}},"Transitions: "+transitions),
+            h("span",{style:{color:"#50c878"}},"\u2714 "+readyCount+" Ready"),
+            h("span",{style:{color:"#d8a850"}},"\u26A0 "+chalCount+" Challenging"),
+            underCount>0?h("span",{style:{color:"#e05040"}},"\u2718 "+underCount+" Underpowered"):null,
+            stressPoints.length>0?h("span",{style:{color:"#e05040",fontSize:12}},"Stress: "+stressPoints.join(", ")):null
+          )
         )
       )
     );
@@ -4251,7 +4312,6 @@ function renderCharacter(){
     csub==="loadout"?renderLoadout():
     csub==="respec"?renderRespec():
     csub==="ar"?renderAR():
-    csub==="progression"?renderProgression():
     renderProfile()
   );
 }
@@ -4259,7 +4319,7 @@ function renderCharacter(){
 // ══════ WALKTHROUGH TAB ══════
 function renderWalkthrough(){
   var gateState=deriveGateState(ci);
-  var buildArch=charData&&charData.stats?detectBuildArchetype(charData.stats):null;
+  var buildArch=(charData&&charData.archetype)||((charData&&charData.stats)?detectBuildArchetype(charData.stats):null);
   var regions=wm==="dlc"?DLC_REGIONS:BASE_REGIONS;var region=regions[wr]||regions[0];var steps=region?region.steps:[];
   if(ws){var q=ws.toLowerCase();steps=steps.filter(function(s){return s.i.toLowerCase().indexOf(q)>=0||s.c.toLowerCase().indexOf(q)>=0||s.l.toLowerCase().indexOf(q)>=0||s.n.toLowerCase().indexOf(q)>=0})}
   if(wFocused){steps=steps.filter(function(s){var cl=STEP_CLASS[s.s];return cl&&cl.charAt(0)!=="C"&&cl.charAt(0)!=="N"})}

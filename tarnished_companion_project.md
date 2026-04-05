@@ -100,7 +100,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,012 | **Size:** ~1.5 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,072 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -120,38 +120,40 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | **Spell availability + talismans** | **2599–2632** | availableSpells, bestTalismans |
 | Character system data | 2636–2700 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
 | Gate + progression functions | 2727–2885 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, bestCatalystAtCheckpoint, computeProgressionCurve |
-| Tactical needs + archetype | 2887–2950 | TACTICAL_NEEDS, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant |
+| Tactical needs + archetype | 2887–2950 | TACTICAL_NEEDS, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant (v3.4: accepts template IDs) |
 | Step classification data | ~2955 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
 | Class/stat constants | ~2960–2980 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
 | App core | ~3100–3150 | STORAGE_KEY, storage{}, color palette C{} |
 | Achievements + Endings | ~3150–3400 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
 | UI constants + helpers | ~3420–3460 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
-| **App component** | **3308–5010** | 25 useState hooks (progTmpl added). |
-| renderCharacter (+ nested) | 3462–4258 | renderProfile, renderLoadout, renderRespec, renderAR, **renderProgression (F7 UI)** |
-| renderWalkthrough | 4260–4448 | Step cards, power gate banner (F2), boss readiness inline |
-| renderDashboard | 4449–4607 | Next Objective panel (F3), walkthrough progress, endings |
-| renderSettings | 4608 | v3.3, live data counts |
-| renderCompare | 4611–4755 | B2 fix, hooks-compliant |
-| renderOptimizer | 4756–4900 | Dynamic weapon count, 13 archetypes |
-| Main render + tab routing | ~4900–5010 | TABS, renderers |
-| Mount | 5010 | ReactDOM.render |
-| Close | 5011–5012 | |
+| **App component** | **3308–5070** | 24 useState hooks (progTmpl removed v3.4). charData.archetype added. |
+| renderCharacter (+ nested) | 3477–4318 | renderProfile (archetype dropdown), renderLoadout (E3 breakpoints), renderRespec, renderAR (weapon curve merged from Progression) |
+| renderWalkthrough | 4320–4507 | Step cards, power gate banner (F2), boss readiness inline, charData.archetype with inference fallback |
+| renderDashboard | 4509–4666 | Next Objective panel (F3), walkthrough progress, endings |
+| renderSettings | 4668 | v3.3, live data counts |
+| renderCompare | 4671–4814 | B2 fix, hooks-compliant |
+| renderOptimizer | 4816–4960 | Dynamic weapon count, 13 archetypes |
+| Main render + tab routing | ~4960–5070 | TABS, renderers |
+| Mount | 5070 | ReactDOM.render |
+| Close | 5071–5072 | |
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.3 — current baseline)
+### What's built and working (v3.4 — current baseline)
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,012
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,072
 
 Everything from v2.0 plus:
 
 **Weapon Analysis Panel** (renderLoadout): Computes AR for equipped weapons across all affinities in ENG_DATA. Shows single recommendation (best weapon + affinity + upgrade level). Current vs Optimal side-by-side. Hits-to-kill (melee + status DPS) against next boss gate. Collapsible detail for alternatives. Flags locked affinities with instructions to obtain whetstone. Tactical needs displayed below.
 
-**Next Level-Up Advisor** (renderLoadout): Computes value of +1 in each stat against equipped weapon and next boss. Recommends VIG until 20, then highest damage stat. Per-stat breakdown: AR gain, damage gain, HP gain, stamina gain.
+**Next Level-Up Advisor** (renderLoadout): Computes value of +1 in all 8 stats against equipped weapon and next boss. Recommends VIG until 20, then highest damage stat (unlocks as tiebreaker). Per-stat breakdown: AR gain, damage gain, HP gain, stamina gain, weapon unlocks. E3 breakpoint scan: filters archetype weapons via meetsRequirements, shows which weapons become usable at +1 in each stat.
 
-**Progression System** (v3.3): Full archetype progression through all mandatory bosses.
+**Archetype Selection** (renderProfile): Persistent archetype dropdown (13 STAT_TEMPLATES + Undecided) saved to charData.archetype. Drives weapon curve, breakpoint scan, and Journey tab item filtering.
+
+**Progression System** (v3.3–3.4): Full archetype progression through all mandatory bosses. Weapon curve table merged into AR Estimator tab (v3.4). Progression subtab removed.
 - `computeProgressionCurve`: Walks 13 archetypes through 13+5 boss gates with optimal weapon per checkpoint
 - **Archetype affinity filtering**: Weapons filtered by archetype fit (Heavy for STR, Magic/Cold for INT, etc.)
 - **Caster catalyst system**: INT/FTH builds show staff/seal ranked by spell scaling, melee as backup
@@ -279,7 +281,7 @@ tail -3 app.html
 ### ENHANCEMENTS (improve existing capability)
 - **E1:** Step numbers on walkthrough cards. [DONE v3.2 — #stepnumber in upper right of each card, already implemented.]
 - **E2:** Version display in header. [DONE v3.2 — "COMPANION v3.3" in header, already implemented.]
-- **E3:** Stat advisor accounts for weapon requirement breakpoints. [PLANNED]
+- **E3:** Stat advisor accounts for weapon requirement breakpoints. [DONE v3.4 — archetype dropdown on My Stats, breakpoint scan in advisor, progression merged into AR Estimator, import validation hardened]
 - **E4:** Enemy resistance awareness in routing. [PLANNED]
 
 ### FUTURE (not yet scoped)
@@ -309,7 +311,17 @@ tail -3 app.html
   - Spell availability by stat requirements.
   - Lines: 4,460 → 5,012.
 
+- **v3.4 (April 4, 2026):** E3 — stat advisor breakpoints + archetype system + import hardening.
+  - Archetype dropdown on My Stats (13 STAT_TEMPLATES + Undecided), persisted to charData.archetype.
+  - Progression tab removed; weapon curve table merged into AR Estimator.
+  - Next Level-Up Advisor expanded: tests all 8 stats (was 5), breakpoint scan filters archetype weapons via meetsRequirements, shows unlock callouts.
+  - Import validation: weapon names checked against ENG_WEAPON_NAMES, ammo against AMMO_DATA, object field types enforced.
+  - Ammo slots normalized to {name} objects (was raw strings), consistent with weapon slot structure.
+  - isBuildRelevant expanded to accept template IDs via STAT_TEMPLATES lookup.
+  - Journey tab reads charData.archetype with detectBuildArchetype inference fallback.
+  - Lines: 5,012 → 5,072.
+
 ---
 
-*Single project document | March 28, 2026 | Updated April 3, 2026*
+*Single project document | March 28, 2026 | Updated April 4, 2026*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*

@@ -41,8 +41,8 @@ The delivery is not complete until the checklist is complete.
 
 ## Current State
 
-**Version:** v3.3
+**Version:** v3.4
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 5,012
-**Last completed task:** Tier 3 engine — Ashes of War, weapon buffs, poise/stagger model
-**Next task:** E3 (stat advisor breakpoints), E4 (enemy resistance routing)
+**Lines:** 5,072
+**Last completed task:** E3 — stat advisor breakpoints, archetype selection, import validation
+**Next task:** E4 (enemy resistance routing)
