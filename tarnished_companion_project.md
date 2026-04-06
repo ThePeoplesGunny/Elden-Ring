@@ -74,9 +74,10 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | `engDecodeW(enc)` | 2013 | Decode weapon (all 26 upgrade levels) |
 | `engDecodeWAtLevel(enc, level)` | 2030 | Decode weapon (single level — optimizer use) |
 | `engCalcAR(weapon, attrs, upg, 2h)` | 2047 | Compute attack rating (validated 29/29). Computes damage types 0-4 + status 5-10. |
-| `engDmgVsBoss(arResult, boss, weaponType)` | 2421 | AR through boss defense curve + negation. Physical subtype aware. |
-| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2475 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
-| `engStatusVsBoss(arResult, boss)` | 2580 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
+| `engDefenseMult(ratio)` | 2421 | Shared piecewise defense multiplier curve (TD-01). |
+| `engDmgVsBoss(arResult, boss, weaponType)` | 2429 | AR through boss defense curve + negation. Physical subtype aware. |
+| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2476 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
+| `engStatusVsBoss(arResult, boss)` | 2575 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
 | `resolveStats(cls, tmpl, lvl)` | 2162 | Class + archetype + level → effective stats |
 | `meetsRequirements(wEnc, stats, 2h)` | 2208 | Pre-decode stat requirement filter |
 | `globalOptimize(lvl, bosses, tmpls, opts)` | 2224 | Exhaustive class × template × weapon search → top 10 |
@@ -85,14 +86,15 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | `getPlayerBossDmg(bossName, charState)` | 2186 | Single-weapon damage against a specific boss |
 | `deriveGateState(ci, atStep)` | 2727 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path. |
 | `getNextMandatoryBoss(ci, includeDLC)` | 2735 | Next undefeated mandatory boss from journey checkoffs |
-| `computeProgressionCurve(template, includeDLC, weaponList)` | 2789 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
-| `availableSpells(stats, type)` | 2599 | Filter sorceries/incantations by stat requirements |
-| `bestTalismans(template)` | 2608 | Top 4 talismans per archetype from 41 entries |
-| `bestAshOfWar(template, step, isDLC)` | 2518 | Top AoW recommendations per archetype and step |
-| `availableBuffs(template, stats, step)` | 2547 | Weapon buffs available at given stats/step |
-| `getBossPoiseInfo(boss)` | 2567 | Boss poise threshold and stagger difficulty |
-| `resolveTacticalNeeds(bossName, ci)` | 2887 | Boss + checkoffs → tactical mitigation options |
-| `detectBuildArchetype(stats)` | ~2900 | Derive archetype from player stats |
+| `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 2785 | Shared archetype weapon pool filter (TD-02) |
+| `computeProgressionCurve(template, includeDLC, weaponList)` | 2797 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
+| `availableSpells(stats, type)` | 2594 | Filter sorceries/incantations by stat requirements |
+| `bestTalismans(template)` | 2603 | Top 4 talismans per archetype from 41 entries |
+| `bestAshOfWar(template, step)` | 2513 | Top AoW recommendations per archetype and step |
+| `availableBuffs(template, stats, step)` | 2542 | Weapon buffs available at given stats/step |
+| `getBossPoiseInfo(boss)` | 2562 | Boss poise threshold and stagger difficulty |
+| `resolveTacticalNeeds(bossName, ci)` | 2917 | Boss + checkoffs → tactical mitigation options |
+| `detectBuildArchetype(stats)` | 2938 | Score player stats against STAT_TEMPLATES → best-fit template ID (TD-04) |
 | `endingAvailability(ci, qp)` | ~3400 | Checkoffs + quest progress → ending status |
 | `engHP/engFP/engStam/engEquip` | 2371–2374 | Derived stat curves |
 
@@ -100,7 +102,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,072 | **Size:** ~1.5 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,063 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -108,42 +110,42 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | Script open | 68 | |
 | **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA (weapons, bosses, sorceries, incantations, talismans), ENG_GRAPHS |
 | Engine constants | 2004–2011 | evalCCGraph, ENG_GRAPHS, WRETCH/WRETCH_BASE_TOTAL/WRETCH_LEVEL |
-| Core engine functions | 2013–2420 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss (now with status DPS) |
+| Core engine functions | 2013–2418 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss (now with status DPS) |
 | Derived stat lookups | 2371–2380 | _dsKeys, _dsLookup, engHP/FP/Stam/Equip |
 | Physical subtype + ammo data | 2383–2415 | PHYS_SUBTYPE map, AMMO_DATA (30 entries), AMMO_FOR_WEAPON |
-| engDmgVsBoss | 2421–2442 | Defense → negation, physical subtype aware |
-| **Spell damage system** | **2449–2494** | SPELL_DMG (47 motion values), engSpellDmgVsBoss |
-| **Ashes of War** | **2499–2530** | ASHES_OF_WAR (15 curated), bestAshOfWar |
-| **Weapon buffs** | **2533–2552** | WEAPON_BUFFS (10 entries), availableBuffs |
-| **Poise/stagger** | **2556–2572** | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
-| **Status effect system** | **2575–2597** | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
-| **Spell availability + talismans** | **2599–2632** | availableSpells, bestTalismans |
-| Character system data | 2636–2700 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
-| Gate + progression functions | 2727–2885 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, bestCatalystAtCheckpoint, computeProgressionCurve |
-| Tactical needs + archetype | 2887–2950 | TACTICAL_NEEDS, resolveTacticalNeeds, detectBuildArchetype, isBuildRelevant (v3.4: accepts template IDs) |
-| Step classification data | ~2955 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
-| Class/stat constants | ~2960–2980 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
-| App core | ~3100–3150 | STORAGE_KEY, storage{}, color palette C{} |
-| Achievements + Endings | ~3150–3400 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
-| UI constants + helpers | ~3420–3460 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
-| **App component** | **3308–5070** | 24 useState hooks (progTmpl removed v3.4). charData.archetype added. |
-| renderCharacter (+ nested) | 3477–4318 | renderProfile (archetype dropdown), renderLoadout (E3 breakpoints), renderRespec, renderAR (weapon curve merged from Progression) |
-| renderWalkthrough | 4320–4507 | Step cards, power gate banner (F2), boss readiness inline, charData.archetype with inference fallback |
-| renderDashboard | 4509–4666 | Next Objective panel (F3), walkthrough progress, endings |
-| renderSettings | 4668 | v3.3, live data counts |
-| renderCompare | 4671–4814 | B2 fix, hooks-compliant |
-| renderOptimizer | 4816–4960 | Dynamic weapon count, 13 archetypes |
-| Main render + tab routing | ~4960–5070 | TABS, renderers |
-| Mount | 5070 | ReactDOM.render |
-| Close | 5071–5072 | |
+| engDefenseMult + engDmgVsBoss | 2421–2443 | Shared defense curve (TD-01), physical subtype aware |
+| **Spell damage system** | **2446–2490** | SPELL_DMG (47 motion values), engSpellDmgVsBoss |
+| **Ashes of War** | **2494–2525** | ASHES_OF_WAR (15 curated), bestAshOfWar |
+| **Weapon buffs** | **2528–2547** | WEAPON_BUFFS (10 entries), availableBuffs |
+| **Poise/stagger** | **2551–2567** | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
+| **Status effect system** | **2570–2592** | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
+| **Spell availability + talismans** | **2594–2627** | availableSpells, bestTalismans |
+| Character system data | 2631–2695 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
+| Gate + progression functions | 2722–2875 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, filterArchPool (TD-02), bestCatalystAtCheckpoint, computeProgressionCurve |
+| Tactical needs + archetype | 2877–2941 | TACTICAL_NEEDS, resolveTacticalNeeds, detectBuildArchetype (TD-04: STAT_TEMPLATES scoring), isBuildRelevant (TD-03: STAT_TEMPLATES only) |
+| Step classification data | ~2945 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
+| Class/stat constants | ~2950–2970 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
+| App core | ~3090–3140 | STORAGE_KEY, storage{}, color palette C{} |
+| Achievements + Endings | ~3140–3390 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
+| UI constants + helpers | ~3410–3450 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
+| **App component** | **3299–5061** | 24 useState hooks (progTmpl removed v3.4). charData.archetype added. |
+| renderCharacter (+ nested) | ~3468–4309 | renderProfile (archetype dropdown), renderLoadout (E3 breakpoints), renderRespec, renderAR (weapon curve merged from Progression) |
+| renderWalkthrough | ~4311–4498 | Step cards, power gate banner (F2), boss readiness inline, charData.archetype with inference fallback |
+| renderDashboard | ~4500–4657 | Next Objective panel (F3), walkthrough progress, endings |
+| renderSettings | ~4659 | v3.3, live data counts |
+| renderCompare | ~4662–4805 | B2 fix, hooks-compliant |
+| renderOptimizer | ~4807–4951 | Dynamic weapon count, 13 archetypes |
+| Main render + tab routing | ~4951–5061 | TABS, renderers |
+| Mount | 5061 | ReactDOM.render |
+| Close | 5062–5063 | |
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.4 — current baseline)
+### What's built and working (v3.5 — current baseline)
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,072
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,063
 
 Everything from v2.0 plus:
 
@@ -311,6 +313,14 @@ tail -3 app.html
   - Spell availability by stat requirements.
   - Lines: 4,460 → 5,012.
 
+- **v3.5 (April 6, 2026):** TD-01–05 — tech debt cleanup. -9 lines.
+  - TD-01: Extracted `engDefenseMult(ratio)` from duplicated defense curve in engDmgVsBoss + engSpellDmgVsBoss.
+  - TD-02: Extracted `filterArchPool(weapons,affPref,priStats,excludeDLC)` from duplicated pool filtering in computeProgressionCurve.
+  - TD-03: `isBuildRelevant` normalized to STAT_TEMPLATES lookup only (dropped hardcoded archetype name map).
+  - TD-04: `detectBuildArchetype` rewritten to score against STAT_TEMPLATES targets, returns template ID instead of ad-hoc names.
+  - TD-05: Removed unused `isDLC` parameter from `bestAshOfWar` signature and call site.
+  - Lines: 5,072 → 5,063.
+
 - **v3.4 (April 4, 2026):** E3 — stat advisor breakpoints + archetype system + import hardening.
   - Archetype dropdown on My Stats (13 STAT_TEMPLATES + Undecided), persisted to charData.archetype.
   - Progression tab removed; weapon curve table merged into AR Estimator.
@@ -323,5 +333,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 4, 2026*
+*Single project document | March 28, 2026 | Updated April 6, 2026*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*

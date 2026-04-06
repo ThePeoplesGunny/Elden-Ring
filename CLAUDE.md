@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.4
+**Version:** v3.5
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 5,072
-**Last completed task:** E3 — stat advisor breakpoints, archetype selection, import validation
+**Lines:** 5,063
+**Last completed task:** TD-01–05 — tech debt cleanup (defense curve, pool filter, archetype normalization, dead param)
 **Next task:** E4 (enemy resistance routing)
