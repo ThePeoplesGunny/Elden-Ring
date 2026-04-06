@@ -1,16 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node --check)",
       "WebFetch(domain:api.erdb.wiki)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:tarnished.dev)",
       "WebFetch(domain:pureeldenring.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(cd:*)",
       "WebSearch",
-      "WebFetch(domain:eldenring.wiki.fextralife.com)",
-      "Bash(node -e ':*)"
+      "WebFetch(domain:eldenring.wiki.fextralife.com)"
     ]
   }
 }

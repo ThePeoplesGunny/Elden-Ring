@@ -1,35 +1,12 @@
 # CLAUDE.md — Tarnished's Companion
 
-## Workflow
+## Project-Specific Delivery Close
 
-Two entities. The repo is the single source of truth.
+Every delivery updates these three artifacts (per global §VI.5):
 
-```
-Gunny (command) ↔ Claude Code (operational + technical) → Repo (state) → Gunny (verify)
-```
-
-**Command Authority (Gunny):** Approves design decisions. Sets priorities. Accepts or rejects work. Final say.
-
-**Operational + Technical Authority (Claude Code):** Owns planning, research, specs, AND implementation. Advocates on technical matters — when the code or data contradicts a design assumption, flag it and defend the technical position. Surfaces optimization opportunities discovered during execution. Gunny decides, but Claude Code is expected to push back with evidence.
-
-Execution steps:
-
-1. Read CLAUDE.md (automatic) and the sections listed in READ FIRST
-2. **Technical review:** Report what the code shows — conflicts with the task, conflicts with locked decisions, adjacent issues, optimization opportunities. This happens BEFORE execution.
-3. Execute on approval (or after reporting if no conflicts found)
-4. Verify against ACCEPTANCE criteria
-5. **Delivery close checklist** (see below)
-6. Report: what changed, what was verified, what was observed
-
-## Delivery Close Checklist
-
-Every delivery completes all three before reporting done:
-
-1. **CLAUDE.md Current State** updated (version, baseline file, lines, last task, next task)
-2. **tarnished_companion_project.md** updated (backlog item status → DONE v[X.Y], file structure line ranges re-verified, new functions/components documented)
-3. **Git commit:** `v[X.Y]: [backlog ID] — [what changed]`
-
-The delivery is not complete until the checklist is complete.
+1. **CLAUDE.md Current State** — version, baseline file, lines, last task, next task
+2. **tarnished_companion_project.md** — backlog item status → DONE v[X.Y], file structure line ranges re-verified, new functions/components documented
+3. **Git commit:** `v[X.Y]: [backlog ID] — [what changed]` — push to remote immediately
 
 ## Operating Rules
 
