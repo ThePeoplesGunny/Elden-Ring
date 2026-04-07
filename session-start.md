@@ -4,7 +4,7 @@ Global §V handles the generic startup protocol. This command adds the Elden Rin
 
 ## Project-Specific State Points
 
-During Phase 2 (Derive State) and Phase 3 (Cross-Check) of global §V, verify these Elden Ring-specific items:
+During Phase 1 (Load and Derive State) of global §V, verify these Elden Ring-specific items:
 
 ### Check 1: Filename alignment
 Does the filename on disk match CLAUDE.md "Baseline file" AND the FILE STRUCTURE header in tarnished_companion_project.md?
