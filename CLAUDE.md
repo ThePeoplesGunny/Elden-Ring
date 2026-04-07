@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.6
+**Version:** v3.7
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 5,128
-**Last completed task:** E4 — enemy resistance warnings at farming/progression chokepoints
+**Lines:** 5,249
+**Last completed task:** Talisman damage integration — optimal 4 per archetype applied to progression engine
 **Next task:** Per roadmap

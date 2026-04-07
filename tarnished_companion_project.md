@@ -48,7 +48,8 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | Sorceries | 14 | `ENG_DATA.sorceries` (name, school, type, fp, req, slots) |
 | Incantations | 33 | `ENG_DATA.incantations` (name, school, type, fp, req, slots) |
 | Spell damage multipliers | 47 | `SPELL_DMG` (community-verified motion values + cast times) |
-| Talismans | 41 | `ENG_DATA.talismans` (name, effect, value, weight, note) |
+| Talismans (raw data) | 41 | `ENG_DATA.talismans` (name, effect, value, weight, note) |
+| Talisman loadouts | 13 archetypes × 4 | `TALISMAN_LOADOUT` (optimal 4 per archetype, with step/loc/dmgMult/statBonus) |
 | Ashes of War | 15 curated | `ASHES_OF_WAR` (damage mult, FP, cast time, availability step) |
 | Weapon buffs | 10 | `WEAPON_BUFFS` (incantation/sorcery/consumable buffs) |
 | DLC weapon exclusion list | 58 | `DLC_WEAPONS` |
@@ -90,7 +91,8 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 2785 | Shared archetype weapon pool filter (TD-02) |
 | `computeProgressionCurve(template, includeDLC, weaponList)` | 2797 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
 | `availableSpells(stats, type)` | 2594 | Filter sorceries/incantations by stat requirements |
-| `bestTalismans(template)` | 2603 | Top 4 talismans per archetype from 41 entries |
+| `bestTalismans(template)` | 2603 | Top 4 talismans per archetype from 41 entries (legacy, fallback) |
+| `computeTalismanBonus(templateId)` | 2717 | Optimal loadout → {statBonus, meleeMult, spellMult} applied in progression |
 | `bestAshOfWar(template, step)` | 2513 | Top AoW recommendations per archetype and step |
 | `availableBuffs(template, stats, step)` | 2542 | Weapon buffs available at given stats/step |
 | `getBossPoiseInfo(boss)` | 2562 | Boss poise threshold and stagger difficulty |
@@ -104,7 +106,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,128 | **Size:** ~1.5 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,249 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -121,33 +123,34 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | **Weapon buffs** | **2528–2547** | WEAPON_BUFFS (10 entries), availableBuffs |
 | **Poise/stagger** | **2551–2567** | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
 | **Status effect system** | **2570–2592** | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
-| **Spell availability + talismans** | **2594–2627** | availableSpells, bestTalismans |
-| Character system data | 2631–2695 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
-| Gate + progression functions | 2722–2875 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, filterArchPool (TD-02), bestCatalystAtCheckpoint, computeProgressionCurve |
-| Tactical needs + archetype | 2877–2991 | TACTICAL_NEEDS, resolveTacticalNeeds, ENEMY_RESIST (E4), getEnemyResistWarning, detectBuildArchetype (TD-04), isBuildRelevant (TD-03) |
-| Step classification data | ~2995 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
-| Class/stat constants | ~3000–3020 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
-| App core | ~3140–3190 | STORAGE_KEY, storage{}, color palette C{} |
-| Achievements + Endings | ~3190–3440 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
-| UI constants + helpers | ~3460–3500 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
-| **App component** | **3349–5126** | 24 useState hooks (progTmpl removed v3.4). charData.archetype added. |
-| renderCharacter (+ nested) | ~3518–4359 | renderProfile (archetype dropdown), renderLoadout (E3 breakpoints), renderRespec, renderAR (weapon curve merged from Progression) |
-| renderWalkthrough | ~4361–4563 | Step cards, power gate banner (F2), enemy resist warnings (E4), boss readiness inline, charData.archetype with inference fallback |
-| renderDashboard | ~4565–4722 | Next Objective panel (F3), walkthrough progress, endings |
-| renderSettings | ~4724 | v3.3, live data counts |
-| renderCompare | ~4727–4870 | B2 fix, hooks-compliant |
-| renderOptimizer | ~4872–5016 | Dynamic weapon count, 13 archetypes |
-| Main render + tab routing | ~5016–5126 | TABS, renderers |
-| Mount | 5126 | ReactDOM.render |
-| Close | 5127–5128 | |
+| **Spell availability + talismans** | **2594–2627** | availableSpells, bestTalismans (legacy) |
+| **Talisman loadouts + engine** | **2628–2735** | TALISMAN_LOADOUT (13 archetypes × 4), computeTalismanBonus |
+| Character system data | 2745–2810 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
+| Gate + progression functions | 2836–2990 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, filterArchPool (TD-02), bestCatalystAtCheckpoint, computeProgressionCurve (talisman-integrated) |
+| Tactical needs + archetype | 2992–3105 | TACTICAL_NEEDS, resolveTacticalNeeds, ENEMY_RESIST (E4), getEnemyResistWarning, detectBuildArchetype (TD-04), isBuildRelevant (TD-03) |
+| Step classification data | ~3110 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
+| Class/stat constants | ~3115–3135 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
+| App core | ~3255–3305 | STORAGE_KEY, storage{}, color palette C{} |
+| Achievements + Endings | ~3305–3555 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
+| UI constants + helpers | ~3575–3615 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
+| **App component** | **3470–5247** | 24 useState hooks (progTmpl removed v3.4). charData.archetype added. |
+| renderCharacter (+ nested) | ~3639–4480 | renderProfile (archetype dropdown), renderLoadout (E3 breakpoints), renderRespec, renderAR (weapon curve merged from Progression) |
+| renderWalkthrough | ~4482–4684 | Step cards, power gate banner (F2), enemy resist warnings (E4), boss readiness inline, charData.archetype with inference fallback |
+| renderDashboard | ~4686–4843 | Next Objective panel (F3), walkthrough progress, endings |
+| renderSettings | ~4845 | v3.3, live data counts |
+| renderCompare | ~4848–4991 | B2 fix, hooks-compliant |
+| renderOptimizer | ~4993–5137 | Dynamic weapon count, 13 archetypes |
+| Main render + tab routing | ~5137–5247 | TABS, renderers |
+| Mount | 5247 | ReactDOM.render |
+| Close | 5248–5249 | |
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.6 — current baseline)
+### What's built and working (v3.7 — current baseline)
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,128
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,249
 
 Everything from v2.0 plus:
 
@@ -166,7 +169,7 @@ Everything from v2.0 plus:
 - **Effective damage ranking**: bestWeaponForBoss now ranks by melee + status DPS combined
 - **Ashes of War**: 15 curated weapon skills with damage, FP cost, availability by step
 - **Weapon buffs**: 10 buff entries (incantations, greases, consumables) filtered by stats/step
-- **Talismans**: Top 4 per archetype from 41 entries with damage/stat bonuses
+- **Talismans**: Optimal 4-talisman loadout per archetype (13 loadouts) with locations. Stat bonuses applied to AR calc, damage multipliers applied to melee and spell DPS in progression engine. DLC assessed — base game loadouts are optimal.
 - **Poise/stagger**: Boss poise from data + weapon stagger tier → difficulty assessment
 - **DLC weapon gating**: 58 DLC weapons excluded from base game boss recommendations
 - **Enemy resistance warnings** (E4): Curated problem enemy data (miners, crystalians) across 11 tunnel/cave zones. Detects when player's equipped weapon type is resisted, recommends best available strike weapon.
@@ -211,7 +214,7 @@ Three-tier engine expansion activated data already in ENG_DATA and added curated
 
 - ~~Enemy resistance awareness in routing (E4)~~ Done v3.6
 - Stat point advisor: account for weapon requirement breakpoints (E3 — e.g., "1 STR unlocks two-handing LGS")
-- Talisman damage multipliers applied to effective damage calculations (currently shown as recommendations only)
+- ~~Talisman damage multipliers applied to effective damage calculations~~ Done v3.7
 - Spirit ash availability flagging (Mimic Tear = 2x DPS gate)
 - Spell availability by walkthrough step (currently filtered by stat requirements only)
 - Kill the checklist, build the journey — walkthrough steps become backing data queried by engine, not a scrollable list
@@ -225,7 +228,7 @@ Three-tier engine expansion activated data already in ENG_DATA and added curated
 - Optimizer is endgame-only (does not use progression curve data)
 - Spell motion values are community-estimated, not datamined — may have ±15% variance
 - AoW damage table is curated (15 of ~100+ AoWs) — covers most impactful, not exhaustive
-- Talisman bonuses shown as recommendations only, not applied to damage calculations yet
+- Talisman loadout is curated top 4 per archetype — full talisman database not modeled
 - Spell availability filtered by stat requirements only, not by walkthrough step acquisition
 
 ---
@@ -316,6 +319,13 @@ tail -3 app.html
   - Spell availability by stat requirements.
   - Lines: 4,460 → 5,012.
 
+- **v3.7 (April 6, 2026):** Talisman damage integration — optimal loadouts applied to progression engine.
+  - `TALISMAN_LOADOUT`: 13 archetypes × 4 talismans each, with step numbers, locations, damage multipliers, and stat bonuses.
+  - `computeTalismanBonus(templateId)`: Returns {statBonus, meleeMult, spellMult} for an archetype's optimal loadout.
+  - Integration: stat bonuses applied before AR calc in `computeProgressionCurve`, melee multiplier applied to weapon damage results, spell multiplier applied to spell DPS results.
+  - DLC assessment: Blade of Mercy (+6%/hit conditional) does not displace any base game top 4. Base game loadouts are universally optimal.
+  - Lines: 5,128 → 5,249.
+
 - **v3.6 (April 6, 2026):** E4 — enemy resistance warnings at farming/progression chokepoints.
   - ENEMY_RESIST data: 2 enemy types (miners, crystalians) across 11 tunnel/cave zones with step ranges.
   - `getEnemyResistWarning(step, charState)`: Detects if player's equipped weapon damage subtype is resisted, finds best available strike weapon via meetsRequirements + engCalcAR.
@@ -342,5 +352,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 6, 2026 (v3.6)*
+*Single project document | March 28, 2026 | Updated April 6, 2026 (v3.7)*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
