@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.5
+**Version:** v3.6
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 5,063
-**Last completed task:** TD-01–05 — tech debt cleanup (defense curve, pool filter, archetype normalization, dead param)
-**Next task:** E4 (enemy resistance routing)
+**Lines:** 5,128
+**Last completed task:** E4 — enemy resistance warnings at farming/progression chokepoints
+**Next task:** Per roadmap
