@@ -48,6 +48,8 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | Sorceries | 14 | `ENG_DATA.sorceries` (name, school, type, fp, req, slots) |
 | Incantations | 33 | `ENG_DATA.incantations` (name, school, type, fp, req, slots) |
 | Spell damage multipliers | 47 | `SPELL_DMG` (community-verified motion values + cast times) |
+| Spell acquisition steps | 47 | `SPELL_STEP` (spell name → earliest walkthrough step to obtain) |
+| Caster hand loadouts | 9 archetypes | `CASTER_LOADOUT` (RH melee + LH catalyst + notes per caster archetype) |
 | Talismans (raw data) | 41 | `ENG_DATA.talismans` (name, effect, value, weight, note) |
 | Talisman loadouts | 13 archetypes × 4 | `TALISMAN_LOADOUT` (optimal 4 per archetype, with step/loc/dmgMult/statBonus) |
 | Ashes of War | 15 curated | `ASHES_OF_WAR` (damage mult, FP, cast time, availability step) |
@@ -90,7 +92,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | `getNextMandatoryBoss(ci, includeDLC)` | 2735 | Next undefeated mandatory boss from journey checkoffs |
 | `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 2785 | Shared archetype weapon pool filter (TD-02) |
 | `computeProgressionCurve(template, includeDLC, weaponList)` | 2797 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
-| `availableSpells(stats, type)` | 2594 | Filter sorceries/incantations by stat requirements |
+| `availableSpells(stats, type, step)` | 2668 | Filter spells by stat requirements + walkthrough step acquisition (SPELL_STEP) |
 | `bestTalismans(template)` | 2603 | Top 4 talismans per archetype from 41 entries (legacy, fallback) |
 | `computeTalismanBonus(templateId)` | 2717 | Optimal loadout → {statBonus, meleeMult, spellMult} applied in progression |
 | `bestAshOfWar(template, step)` | 2513 | Top AoW recommendations per archetype and step |
@@ -106,7 +108,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,249 | **Size:** ~1.5 MB
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,325 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -123,7 +125,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | **Weapon buffs** | **2528–2547** | WEAPON_BUFFS (10 entries), availableBuffs |
 | **Poise/stagger** | **2551–2567** | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
 | **Status effect system** | **2570–2592** | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
-| **Spell availability + talismans** | **2594–2627** | availableSpells, bestTalismans (legacy) |
+| **Spell system** | **2594–2676** | SPELL_STEP (47 spells → acquisition step), CASTER_LOADOUT (9 archetypes × RH/LH), availableSpells (stat+step gated) |
 | **Talisman loadouts + engine** | **2628–2735** | TALISMAN_LOADOUT (13 archetypes × 4), computeTalismanBonus |
 | Character system data | 2745–2810 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
 | Gate + progression functions | 2836–2990 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, filterArchPool (TD-02), bestCatalystAtCheckpoint, computeProgressionCurve (talisman-integrated) |
@@ -148,9 +150,9 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.7 — current baseline)
+### What's built and working (v3.8 — current baseline)
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,249
+**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,325
 
 Everything from v2.0 plus:
 
@@ -216,7 +218,7 @@ Three-tier engine expansion activated data already in ENG_DATA and added curated
 - Stat point advisor: account for weapon requirement breakpoints (E3 — e.g., "1 STR unlocks two-handing LGS")
 - ~~Talisman damage multipliers applied to effective damage calculations~~ Done v3.7
 - Spirit ash availability flagging (Mimic Tear = 2x DPS gate)
-- Spell availability by walkthrough step (currently filtered by stat requirements only)
+- ~~Spell availability by walkthrough step~~ Done v3.8
 - Kill the checklist, build the journey — walkthrough steps become backing data queried by engine, not a scrollable list
 
 ### Known limitations
@@ -229,7 +231,7 @@ Three-tier engine expansion activated data already in ENG_DATA and added curated
 - Spell motion values are community-estimated, not datamined — may have ±15% variance
 - AoW damage table is curated (15 of ~100+ AoWs) — covers most impactful, not exhaustive
 - Talisman loadout is curated top 4 per archetype — full talisman database not modeled
-- Spell availability filtered by stat requirements only, not by walkthrough step acquisition
+- ~~Spell availability filtered by stat requirements only~~ Done v3.8 — step-gated via SPELL_STEP
 
 ---
 
@@ -316,8 +318,15 @@ tail -3 app.html
   - **Tier 2**: Spell damage model (47 motion values × scaling × defense/negation → DPS ranking per boss).
   - **Tier 3**: Ashes of War (15 curated), weapon buffs (10 entries), poise/stagger model.
   - Talisman recommender (top 4 per archetype from 41 entries).
-  - Spell availability by stat requirements.
+  - Spell availability by stat requirements + walkthrough step acquisition (v3.8).
   - Lines: 4,460 → 5,012.
+
+- **v3.8 (April 6, 2026):** Spell availability by step + caster hand placement loadouts.
+  - `SPELL_STEP`: 47 spells mapped to earliest walkthrough acquisition step (NPC vendor, scroll, quest reward).
+  - `CASTER_LOADOUT`: 9 caster archetypes × {RH melee, LH catalyst, tactical notes} for hand placement guidance.
+  - `availableSpells(stats, type, step)`: Now accepts optional `step` param — filters out spells not yet obtainable at that progression point.
+  - Integration: `computeProgressionCurve` passes `boss.step` to `availableSpells`, adds `casterLoadout` to curve output.
+  - Lines: 5,249 → 5,325.
 
 - **v3.7 (April 6, 2026):** Talisman damage integration — optimal loadouts applied to progression engine.
   - `TALISMAN_LOADOUT`: 13 archetypes × 4 talismans each, with step numbers, locations, damage multipliers, and stat bonuses.
@@ -352,5 +361,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 6, 2026 (v3.7)*
+*Single project document | March 28, 2026 | Updated April 6, 2026 (v3.8)*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*

@@ -2591,11 +2591,87 @@ function engStatusVsBoss(arResult,boss){
 }
 
 // === SPELL AVAILABILITY ===
-function availableSpells(stats,type){
+// Spell acquisition step map — earliest walkthrough step where spell becomes obtainable
+// Sources: NPC vendor (step = first encounter), scroll/book (step = item pickup), quest reward (step = reward)
+var SPELL_STEP={
+// Sorceries — Sellen (step 89) sells basics; scrolls unlock more
+"Glintstone Pebble":89,"Great Glintstone Shard":89,"Swift Glintstone Shard":89,"Glintstone Icecrag":89,
+"Carian Slicer":609,"Night Comet":1192,"Comet":609,
+"Cannon of Haima":873,"Terra Magica":873,
+"Adula's Moonblade":1417,"Stars of Ruin":1689,"Comet Azur":1685,
+"Ranni's Dark Moon":1412,"Meteorite of Astel":1960,
+// Incantations — Corhyn (step 248), D (step 516), Miriel (step 609), Gowry (step 1529)
+"Catch Flame":248,"Flame Sling":248,"The Flame of Frenzy":248,
+"O, Flame!":609,"Flame, Grant Me Strength":1330,"Burn, O Flame!":609,
+"Giantsflame Take Thee":2443,"Scouring Black Flame":609,"Black Flame":609,
+"Black Blade":2064,"Elden Stars":2064,
+"Lightning Spear":516,"Electrify Armament":516,"Honed Bolt":609,
+"Lightning Strike":609,"Ancient Dragons' Lightning Spear":2462,"Ancient Dragons' Lightning Strike":2462,
+"Golden Vow":609,"Blessing's Boon":609,"Lord's Heal":248,"Erdtree Heal":609,
+"Discus of Light":609,"Radagon's Rings of Light":2009,
+"Pest Threads":1529,"Dragonfire":516,"Rotten Breath":516,
+"Aspect of the Crucible: Horns":363,"Aspect of the Crucible: Tail":1904,
+"Multilayered Ring of Light":2505,"Fire Serpent":267,"Knight's Lightning Spear":267,
+"Pest-Thread Spears":267,"Heal From Afar":267
+};
+
+// Caster hand placement — RH (main hand melee) + LH (offhand catalyst) per archetype
+// RH melee provides normal attacks + guard; LH catalyst enables casting while keeping melee ready
+var CASTER_LOADOUT={
+pure_int:{
+  rh:"Best INT-scaling melee weapon (Moonveil, Wing of Astel, Carian Slicer via staff)",
+  lh:"Staff (highest spell scaling)",
+  note:"Staff in LH for casting while RH melee stays ready. Carian Slicer is cast from staff — functions as melee. Switch to RH staff only for Terra Magica buff."
+},
+pure_fth:{
+  rh:"Best FTH-scaling melee weapon (Coded Sword, Blasphemous Blade, Winged Scythe)",
+  lh:"Seal (highest incant scaling)",
+  note:"Seal in LH for casting. Many FTH weapons have strong weapon arts (Blasphemous Blade L2) — RH weapon art damage benefits from Shard of Alexander."
+},
+str_int:{
+  rh:"Best STR/INT weapon (Ruins Greatsword, Dark Moon Greatsword, Fallingstar Beast Jaw)",
+  lh:"Staff for spell support (Meteorite Staff early, Carian Regal late)",
+  note:"RH heavy weapon is primary. LH staff for ranged poke (Pebble/Comet) and boss debuffs (Ranni's Dark Moon). Two-hand RH weapon for tough melee phases."
+},
+str_fth:{
+  rh:"Best STR/FTH weapon (Blasphemous Blade, Ordovis's Greatsword, Magma Wyrm's Scalesword)",
+  lh:"Seal for buffs + ranged (Flame Grant Me Strength, Lightning Spear)",
+  note:"RH melee primary. LH seal for Flame Grant Me Strength (+20% phys+fire) before bosses, Lightning Spear for ranged poke. Golden Vow from seal if 25 FTH."
+},
+dex_int:{
+  rh:"Best DEX/INT weapon (Moonveil, Wing of Astel, Darkmoon Longbow)",
+  lh:"Staff (Carian Regal Scepter, Lusat's for burst)",
+  note:"RH Moonveil L2 is primary burst. LH staff for spell DPS (Stars of Ruin, Night Comet). Swap to RH staff for Comet Azur + Cerulean Tear combo."
+},
+dex_fth:{
+  rh:"Best DEX/FTH weapon (Halo Scythe, Winged Scythe, Black Knife)",
+  lh:"Seal (Erdtree Seal scales with FTH, Godslayer Seal for black flame)",
+  note:"RH weapon for melee. LH seal for Lightning Spear (ranged), Black Flame (DoT), Golden Vow (buff). Weapon art + incantation versatility."
+},
+int_fth:{
+  rh:"Best INT/FTH weapon (Sword of Night and Flame, Death's Poker)",
+  lh:"Seal or Staff depending on boss weakness (Golden Order Seal for INT+FTH scaling)",
+  note:"Hybrid caster — Golden Order Seal scales with both INT and FTH. Swap LH between staff and seal based on whether sorcery or incantation DPS is higher for the boss."
+},
+fth_arc:{
+  rh:"Best FTH/ARC weapon (Rivers of Blood, Mohgwyn's Sacred Spear, Eleonora's Poleblade)",
+  lh:"Dragon Communion Seal (scales with ARC, boosts dragon incantations)",
+  note:"Dragon Communion Seal is the key — scales incant damage with ARC. Rotten Breath is devastating on large bosses. RH bleed weapon procs status while LH handles incantations."
+},
+int_arc:{
+  rh:"Best INT/ARC weapon (Mohgwyn's Sacred Spear with respec, Occult infused)",
+  lh:"Staff (Albinauric Staff scales with ARC for sorcery)",
+  note:"Albinauric Staff uniquely scales sorcery with ARC. RH weapon handles melee/status. LH staff for Night Comet (bosses don't dodge) and Slicer spam."
+}
+};
+
+function availableSpells(stats,type,step){
   var list=type==="sorcery"?ENG_DATA.sorceries:ENG_DATA.incantations;
   if(!list)return[];
   return list.filter(function(s){
-    return Object.keys(s.req).every(function(k){return(stats[k]||0)>=s.req[k];});
+    if(!Object.keys(s.req).every(function(k){return(stats[k]||0)>=s.req[k];}))return false;
+    if(step!==undefined&&SPELL_STEP[s.name]!==undefined&&SPELL_STEP[s.name]>step)return false;
+    return true;
   });
 }
 
@@ -2956,7 +3032,7 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     var br=BOSS_READY[boss.name];
     var status=best?(best.hitsToKill<=(br?br.comf:30)?"READY":best.hitsToKill<=(br?br.strug:60)?"CHALLENGING":"UNDERPOWERED"):"NO_WEAPON";
     // Spell availability + DPS for casters
-    var spells=isCaster?availableSpells(stats,catalystType===57?"sorcery":"incantation"):[];
+    var spells=isCaster?availableSpells(stats,catalystType===57?"sorcery":"incantation",boss.step):[];
     var bestSpell=null;var spellDmgList=[];
     if(isCaster&&catalyst&&spells.length){
       var engBoss=ENG_DATA.bosses[BOSS_ENG_MAP[boss.name]]||boss;
@@ -2986,7 +3062,7 @@ function computeProgressionCurve(template,includeDLC,weaponList){
     curve.push({boss:boss.name,region:boss.region,level:boss.lvl,step:boss.step,
       stats:stats,affinities:gateState.affLabels,upgradeCap:{reg:maxReg,som:maxSom},
       weapon:best,weapon1h:best1h,weapon2h:best2h,twoHanded:twoHanded,
-      catalyst:catalyst,catalystList:catalystList,isCaster:isCaster,
+      catalyst:catalyst,catalystList:catalystList,isCaster:isCaster,casterLoadout:CASTER_LOADOUT[template.id]||null,
       spells:spells,spellDmgList:spellDmgList,bestSpell:bestSpell,talismans:talismans,
       aows:aows,buffs:buffs,talismanBonus:talismanBonus,poiseInfo:poiseInfo,staggerTier:weaponStagger,
       status:status,bossReady:br,top3_1h:w1h.slice(0,3),top3_2h:w2h.slice(0,3)});

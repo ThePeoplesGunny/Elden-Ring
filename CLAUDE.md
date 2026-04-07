@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.7
+**Version:** v3.8
 **Baseline file:** `Tarnished_Companion_v3.2.html`
-**Lines:** 5,249
-**Last completed task:** Talisman damage integration — optimal 4 per archetype applied to progression engine
+**Lines:** 5,325
+**Last completed task:** Spell availability by step + caster hand placement loadouts
 **Next task:** Per roadmap
