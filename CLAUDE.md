@@ -19,7 +19,7 @@ Every delivery updates these three artifacts (per global §VI.5):
 ## Current State
 
 **Version:** v3.8
-**Baseline file:** `Tarnished_Companion_v3.2.html`
+**Baseline file:** `Tarnished_Companion_v3.9.html`
 **Lines:** 5,325
 **Last completed task:** Spell availability by step + caster hand placement loadouts
 **Next task:** Per roadmap
