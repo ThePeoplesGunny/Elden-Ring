@@ -3119,6 +3119,138 @@ function computeLevel(stats){
   return total-WRETCH_BASE_TOTAL+WRETCH_LEVEL;
 }
 
+// === STAT ALLOCATION OPTIMIZER ===
+// Greedy marginal-value allocation: each point goes where it yields the highest score increase.
+// Discovers optimal allocation from scaling curves — soft caps are inflection points, not rules.
+
+// Survivability floors — hard constraints, not targets
+function vigFloorForBoss(bossLevel){
+  if(bossLevel<=25)return 15;if(bossLevel<=50)return Math.round(15+(bossLevel-25)*0.4);
+  if(bossLevel<=80)return Math.round(25+(bossLevel-50)*0.33);
+  if(bossLevel<=120)return Math.round(35+(bossLevel-80)*0.125);return 40;
+}
+function mndFloorForCaster(bossLevel){if(bossLevel<=30)return 15;if(bossLevel<=60)return 20;if(bossLevel<=100)return 25;return 30;}
+function endFloor(){return 12;}
+
+// Objective function — combines damage, status, spells, survivability, sustainability
+function scoreAllocation(stats,decoded,boss,weaponType,params){
+  var es={str:stats.str,dex:stats.dex,int:stats.int,fai:stats.fai,arc:stats.arc};
+  var ar=engCalcAR(decoded,es,0,params.twoHand);
+  var dmg=engDmgVsBoss(ar,boss,weaponType);
+  var meleeDmg=dmg.total;
+  var statusDPS=0;
+  engStatusVsBoss(ar,boss).forEach(function(se){if(se.procDamage>0)statusDPS+=se.procDamage/se.hitsToProc;});
+  var spellDPS=0;
+  if(params.catalystDec&&params.spell){
+    var catAR=engCalcAR(params.catalystDec,es,0,false);
+    var scaling=catAR.spellScaling[0]||0;
+    if(scaling>0){var sd=engSpellDmgVsBoss(scaling,params.spell,boss);if(sd)spellDPS=sd.castTime>0?sd.damage/sd.castTime:sd.damage;}
+  }
+  var effDmg=params.isCaster?meleeDmg*0.3+spellDPS*0.7+statusDPS:meleeDmg+statusDPS;
+  var hp=engHP(stats.vig);
+  var hpBonus=Math.log(Math.max(hp,1)/400)*params.survWeight;
+  var sustBonus=params.isCaster
+    ?Math.log(Math.max(engFP(stats.mnd),1)/50)*params.sustWeight
+    :Math.log(Math.max(engStam(stats.end),1)/80)*params.sustWeight;
+  return effDmg+hpBonus+sustBonus;
+}
+
+// Greedy stat optimizer — allocates N points one at a time to maximize score
+function optimizeStats(params){
+  var boss=ENG_DATA.bosses[params.bossIdx];if(!boss)return null;
+  var presets={aggressive:{survWeight:50,sustWeight:15},balanced:{survWeight:75,sustWeight:25},tanky:{survWeight:100,sustWeight:35}};
+  var w=presets[params.preset]||presets.balanced;
+  var cls=params.cls||WRETCH;
+  var stats={};["vig","mnd","end","str","dex","int","fai","arc"].forEach(function(s){stats[s]=cls[s];});
+  var free=params.targetLevel-cls.level;
+  if(free<=0)return{stats:stats,score:0,hp:engHP(stats.vig),fp:engFP(stats.mnd),stamina:engStam(stats.end),dmgPerHit:0,hitsToKill:999,weapon:params.wEnc.w,upgrade:0,bossName:boss.ph[0].n};
+  // Decode weapon
+  var rc=REGION_CAPS[params.region]||{reg:0,smbr:0};
+  var maxUp=(ENG_DATA.reg.rt[params.wEnc.ri]||[]).length-1;
+  var gsBuyReg=params.gateState?params.gateState.buyableRegMax:0;
+  var gsBuySom=params.gateState?params.gateState.buyableSomMax:0;
+  var upg=Math.min(params.wEnc.a===-1?Math.max(rc.smbr,gsBuySom):Math.max(rc.reg,gsBuyReg),maxUp);
+  var decoded=engDecodeWAtLevel(params.wEnc,upg);if(!decoded)return null;
+  // Decode catalyst for casters
+  var catalystDec=null;
+  if(params.catalystEnc){
+    var catMaxUp=(ENG_DATA.reg.rt[params.catalystEnc.ri]||[]).length-1;
+    var catUpg=Math.min(Math.max(rc.smbr,gsBuySom),catMaxUp);
+    catalystDec=engDecodeWAtLevel(params.catalystEnc,catUpg);
+  }
+  // Phase 1: Hard constraints — weapon reqs + survivability floors
+  var engStats={str:stats.str,dex:stats.dex,int:stats.int,fai:stats.fai,arc:stats.arc};
+  var reqCost=computeStatCostToEquip(params.wEnc,engStats,params.twoHand);
+  Object.keys(reqCost.gaps).forEach(function(s){stats[s]+=reqCost.gaps[s];free-=reqCost.gaps[s];});
+  var bossLvl=boss.hp?params.targetLevel:25;
+  // Use MANDATORY_BOSSES to find boss level if available
+  MANDATORY_BOSSES.base.concat(MANDATORY_BOSSES.dlc||[]).forEach(function(mb){if(mb.idx===params.bossIdx)bossLvl=mb.lvl;});
+  var vigMin=vigFloorForBoss(bossLvl);
+  var mndMin=params.isCaster?mndFloorForCaster(bossLvl):10;
+  var endMin=endFloor();
+  [{s:"vig",f:vigMin},{s:"mnd",f:mndMin},{s:"end",f:endMin}].forEach(function(c){
+    var need=Math.max(c.f-stats[c.s],0);
+    if(need>0&&free>=need){stats[c.s]+=need;free-=need;}
+  });
+  // Phase 2: Greedy marginal allocation
+  var scoreParams=Object.assign({},w,{twoHand:params.twoHand,isCaster:params.isCaster,catalystDec:catalystDec,spell:params.spell});
+  var allStats=["vig","mnd","end","str","dex","int","fai","arc"];
+  while(free>0){
+    var bestStat=null,bestGain=-Infinity;
+    var baseScore=scoreAllocation(stats,decoded,boss,params.wEnc.t,scoreParams);
+    for(var si=0;si<allStats.length;si++){
+      var s=allStats[si];if(stats[s]>=99)continue;
+      stats[s]++;
+      var gain=scoreAllocation(stats,decoded,boss,params.wEnc.t,scoreParams)-baseScore;
+      if(gain>bestGain){bestGain=gain;bestStat=s;}
+      stats[s]--;
+    }
+    if(!bestStat)break;
+    stats[bestStat]++;free--;
+  }
+  // Final metrics
+  var fAR=engCalcAR(decoded,{str:stats.str,dex:stats.dex,int:stats.int,fai:stats.fai,arc:stats.arc},0,params.twoHand);
+  var fDmg=engDmgVsBoss(fAR,boss,params.wEnc.t);
+  var fStat=engStatusVsBoss(fAR,boss);
+  var fSDPS=0;fStat.forEach(function(se){if(se.procDamage>0)fSDPS+=se.procDamage/se.hitsToProc;});
+  return{stats:stats,level:params.targetLevel,preset:params.preset,
+    hp:engHP(stats.vig),fp:engFP(stats.mnd),stamina:engStam(stats.end),
+    dmgPerHit:Math.floor(fDmg.total+fSDPS),meleeDmg:Math.floor(fDmg.total),statusDPS:Math.floor(fSDPS),
+    hitsToKill:Math.ceil(boss.hp/Math.max(fDmg.total+fSDPS,1)),
+    weapon:params.wEnc.w,affinityName:ENG_AFFINITY_NAMES[params.wEnc.a]||"Unique",upgrade:upg,
+    twoHand:params.twoHand,bossName:boss.ph[0].n,bossHP:boss.hp};
+}
+
+// Auto-weapon variant — tests top 3 candidates, returns best stats+weapon combo
+function optimizeWithWeaponSelect(template,targetLevel,bossEntry,gateState,preset,includeDLC){
+  var cls=WRETCH;
+  var isCaster=template.primaryStats.indexOf("int")>=0||template.primaryStats.indexOf("fai")>=0;
+  var baseStats=resolveStats(cls,template,targetLevel);
+  var pool=filterArchPool(ENG_DATA.reg.w,template.affPref||[],template.primaryStats||[],!includeDLC);
+  var c2h=bestWeaponForBoss(bossEntry.name,baseStats,gateState,bossEntry.region,true,pool);
+  var c1h=bestWeaponForBoss(bossEntry.name,baseStats,gateState,bossEntry.region,false,pool);
+  var seen={},toTest=[];
+  [c2h,c1h].forEach(function(list,li){
+    list.forEach(function(c){
+      var key=c.name+"|"+c.affinity;
+      if(!seen[key]&&toTest.length<3){
+        seen[key]=true;
+        var wEnc=pool.find(function(w){return w.w===c.name&&(ENG_AFFINITY_NAMES[w.a]||"Unique")===c.affinityName;});
+        if(wEnc)toTest.push({wEnc:wEnc,twoHand:li===0});
+      }
+    });
+  });
+  var best=null;
+  toTest.forEach(function(t){
+    var result=optimizeStats({cls:cls,template:template,targetLevel:targetLevel,
+      bossIdx:bossEntry.idx,wEnc:t.wEnc,twoHand:t.twoHand,
+      gateState:gateState,region:bossEntry.region,
+      preset:preset,isCaster:isCaster});
+    if(result&&(!best||result.dmgPerHit>best.dmgPerHit))best=result;
+  });
+  return best;
+}
+
 // Generalized weapon damage evaluation against any target (boss or farm)
 function computeWeaponValue(wEnc,stats,gateState,target,twoHand){
   var rc=REGION_CAPS[target.region||target.rg]||{reg:0,smbr:0};
@@ -4391,6 +4523,57 @@ function renderCharacter(){
           ):null
         ):null,
         
+        // === STAT OPTIMIZER ===
+        ch.archetype&&nmb?(function(){
+          var optTmpl=STAT_TEMPLATES.find(function(t){return t.id===ch.archetype});
+          if(!optTmpl)return null;
+          var optPreset=ch.optPreset||"balanced";
+          var optResult=optimizeWithWeaponSelect(optTmpl,level>1?level:41,nmb,gateState,optPreset,false);
+          if(!optResult)return null;
+          // Compare vs current stats
+          var curDelta={};STAT_NAMES.forEach(function(s){curDelta[s]=optResult.stats[s]-stats[s];});
+          var hasDelta=STAT_NAMES.some(function(s){return curDelta[s]!==0;});
+          return h("div",{style:{marginTop:14,paddingTop:10,borderTop:"1px solid "+C.border+"40"}},
+            h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}},
+              h("div",{style:{fontSize:13,fontWeight:700,color:C.gold,letterSpacing:1}},"STAT OPTIMIZER"),
+              h("div",{style:{display:"flex",gap:4}},
+                ["aggressive","balanced","tanky"].map(function(p){
+                  return h("button",{key:p,onClick:function(){saveChar(Object.assign({},ch,{optPreset:p}));},
+                    style:Object.assign({},btnS(optPreset===p),{fontSize:11,padding:"2px 8px"})},
+                    p.charAt(0).toUpperCase()+p.slice(1));
+                })
+              )
+            ),
+            h("div",{style:{fontSize:12,color:C.textDim,marginBottom:8}},
+              "Level "+optResult.level+" vs "+optResult.bossName.split(",")[0]+" \u00B7 "+optResult.weapon+
+              (optResult.affinityName!=="Unique"?" ["+optResult.affinityName+"]":"")+
+              " +"+optResult.upgrade+(optResult.twoHand?" (2H)":"")
+            ),
+            h("div",{style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:4,marginBottom:8}},
+              STAT_NAMES.map(function(s){
+                var d=curDelta[s];var col=d>0?"#50c878":d<0?"#e05040":C.textDim;
+                return h("div",{key:s,style:{textAlign:"center",padding:"4px 0",background:"#ffffff06",borderRadius:4,border:"1px solid "+(d!==0?col+"30":C.border+"20")}},
+                  h("div",{style:{fontSize:10,color:C.textDim,textTransform:"uppercase"}},s),
+                  h("div",{style:{fontSize:16,fontWeight:700,color:d!==0?col:C.textBright}},optResult.stats[s]),
+                  d!==0?h("div",{style:{fontSize:10,color:col}},d>0?"+"+d:d):null
+                );
+              })
+            ),
+            h("div",{style:{display:"flex",gap:12,flexWrap:"wrap",fontSize:13}},
+              h("span",{style:{color:C.textDim}},optResult.hp+" HP"),
+              h("span",{style:{color:C.textDim}},optResult.stamina+" Stam"),
+              optResult.fp>50?h("span",{style:{color:C.textDim}},optResult.fp+" FP"):null,
+              h("span",{style:{color:"#50c878",fontWeight:600}},optResult.dmgPerHit+" dmg"),
+              h("span",{style:{color:optResult.hitsToKill<=30?"#50c878":optResult.hitsToKill<=60?"#d8a850":"#e05040",fontWeight:700}},optResult.hitsToKill+" hits")
+            ),
+            hasDelta?h("div",{style:{fontSize:11,color:C.textDim,marginTop:4,fontStyle:"italic"}},
+              "Delta from current: "+STAT_NAMES.filter(function(s){return curDelta[s]!==0;}).map(function(s){
+                return(curDelta[s]>0?"+":"")+curDelta[s]+" "+s.toUpperCase();
+              }).join(", ")
+            ):h("div",{style:{fontSize:11,color:"#50c878",marginTop:4}},"\u2714 Current stats match optimal allocation")
+          );
+        })():null,
+
         // === NEXT LEVEL ADVISOR ===
         equippedWeapons.length>0&&bestAtCap?(function(){
           // Compute value of +1 in each stat against the best weapon config
