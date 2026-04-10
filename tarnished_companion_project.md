@@ -68,6 +68,9 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 | Ending prerequisite data | 6 endings | `ENDING_DATA` |
 | Quests | 28 | `QUESTS` |
 | Regions | 20 base + 10 DLC | `BASE_REGIONS`, `DLC_REGIONS` |
+| Rune cost table (lvl 1–100) | 100 | `RUNE_COST_TABLE` (datamined, replaces formula) |
+| Weapon acquisition steps | 30 | `WEAPON_STEPS` (weapon name → earliest walkthrough step) |
+| Farm targets (rune sources) | 4 | `FARM_TARGETS` (Greyoll, Mohgwyn, Albinaurics, Palace Approach) |
 
 ---
 
@@ -75,86 +78,108 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 | Function | Line | Purpose |
 |---|---|---|
-| `engDecodeW(enc)` | 2013 | Decode weapon (all 26 upgrade levels) |
-| `engDecodeWAtLevel(enc, level)` | 2030 | Decode weapon (single level — optimizer use) |
-| `engCalcAR(weapon, attrs, upg, 2h)` | 2047 | Compute attack rating (validated 29/29). Computes damage types 0-4 + status 5-10. |
-| `engDefenseMult(ratio)` | 2421 | Shared piecewise defense multiplier curve (TD-01). |
-| `engDmgVsBoss(arResult, boss, weaponType)` | 2429 | AR through boss defense curve + negation. Physical subtype aware. |
-| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2476 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
-| `engStatusVsBoss(arResult, boss)` | 2575 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
-| `resolveStats(cls, tmpl, lvl)` | 2162 | Class + archetype + level → effective stats |
-| `meetsRequirements(wEnc, stats, 2h)` | 2208 | Pre-decode stat requirement filter |
-| `globalOptimize(lvl, bosses, tmpls, opts)` | 2224 | Exhaustive class × template × weapon search → top 10 |
-| `bestWeaponForBoss(boss, stats, gate, region, 2h)` | 2346 | Top 10 weapons ranked by effective damage (melee + status DPS) |
-| `bestCatalystAtCheckpoint(stats, gate, region, type, isDLC)` | 2768 | Top 5 staves/seals ranked by spell scaling |
-| `getPlayerBossDmg(bossName, charState)` | 2186 | Single-weapon damage against a specific boss |
-| `deriveGateState(ci, atStep)` | 2727 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path. |
-| `getNextMandatoryBoss(ci, includeDLC)` | 2735 | Next undefeated mandatory boss from journey checkoffs |
-| `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 2785 | Shared archetype weapon pool filter (TD-02) |
-| `computeProgressionCurve(template, includeDLC, weaponList)` | 2797 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
-| `availableSpells(stats, type, step)` | 2668 | Filter spells by stat requirements + walkthrough step acquisition (SPELL_STEP) |
-| `bestTalismans(template)` | 2603 | Top 4 talismans per archetype from 41 entries (legacy, fallback) |
-| `computeTalismanBonus(templateId)` | 2717 | Optimal loadout → {statBonus, meleeMult, spellMult} applied in progression |
-| `bestAshOfWar(template, step)` | 2513 | Top AoW recommendations per archetype and step |
-| `availableBuffs(template, stats, step)` | 2542 | Weapon buffs available at given stats/step |
-| `getBossPoiseInfo(boss)` | 2562 | Boss poise threshold and stagger difficulty |
-| `resolveTacticalNeeds(bossName, ci)` | 2917 | Boss + checkoffs → tactical mitigation options |
-| `getEnemyResistWarning(step, charState)` | 2940 | Step + equipped weapon → enemy resist warnings with strike weapon rec (E4) |
-| `detectBuildArchetype(stats)` | 2938 | Score player stats against STAT_TEMPLATES → best-fit template ID (TD-04) |
-| `endingAvailability(ci, qp)` | ~3400 | Checkoffs + quest progress → ending status |
-| `engHP/engFP/engStam/engEquip` | 2371–2374 | Derived stat curves |
+| `runeCostForLevel(l)` | 2020 | Rune cost for next level (datamined `RUNE_COST_TABLE`, lvl 1–100; cubic fallback above) |
+| `levelsFromRunes(fromLevel, runes)` | 2022 | Inverse: how many levels a rune budget buys from current level |
+| `engDecodeW(enc)` | ~2024 | Decode weapon (all 26 upgrade levels) |
+| `engDecodeWAtLevel(enc, level)` | ~2041 | Decode weapon (single level — optimizer use) |
+| `engCalcAR(weapon, attrs, upg, 2h)` | 2059 | Compute attack rating (validated 29/29). Damage types 0–4 + status 5–10. |
+| `resolveStats(cls, tmpl, lvl)` | ~2174 | Class + archetype + level → effective stats |
+| `getPlayerBossDmg(bossName, charState)` | ~2200 | Single-weapon damage against a specific boss |
+| `meetsRequirements(wEnc, stats, 2h)` | ~2220 | Pre-decode stat requirement filter |
+| `globalOptimize(lvl, includeDLC, opts, weaponList)` | 2238 | Exhaustive Wretch × template × weapon search → top results |
+| `bestWeaponForBoss(boss, stats, gate, region, 2h, weaponList)` | 2358 | Top weapons ranked by effective damage (melee + status DPS) |
+| `engHP/engFP/engStam/engEquip` | ~2383–2386 | Derived stat curves |
+| `engDefenseMult(ratio)` | 2433 | Shared piecewise defense multiplier curve (TD-01). |
+| `engDmgVsBoss(arResult, boss, weaponType)` | 2441 | AR through boss defense curve + negation. Physical subtype aware. |
+| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2488 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
+| `bestAshOfWar(template, step)` | 2525 | Top AoW recommendations per archetype and step |
+| `availableBuffs(template, stats, step)` | 2554 | Weapon buffs available at given stats/step |
+| `getBossPoiseInfo(boss)` | 2574 | Boss poise threshold and stagger difficulty |
+| `engStatusVsBoss(arResult, boss)` | 2587 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
+| `availableSpells(stats, type, step)` | 2680 | Filter spells by stat requirements + walkthrough step acquisition (SPELL_STEP) |
+| `computeTalismanBonus(templateId)` | 2805 | Optimal loadout → {statBonus, meleeMult, spellMult} applied in progression |
+| `deriveGateState(ci, atStep)` | 2898 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path. |
+| `getNextMandatoryBoss(ci, includeDLC)` | 2932 | Next undefeated mandatory boss from journey checkoffs |
+| `bestCatalystAtCheckpoint(stats, gate, region, type, isDLC, weaponList)` | 2965 | Top staves/seals ranked by spell scaling |
+| `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 2987 | Shared archetype weapon pool filter (TD-02) |
+| `computeProgressionCurve(template, includeDLC, weaponList)` | 2999 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
+| `computeStatCostToEquip(wEnc, stats, twoHand)` | 3089 | **v3.9** Inverse `meetsRequirements` — stat deltas needed to wield a weapon |
+| `vigFloorForBoss(bossLevel)` | 3127 | **v3.9** Survivability floor (vigor) scaled to boss level — prevents one-shot builds |
+| `optimizeStats(params)` | 3159 | **v3.9** Greedy coordinate-ascent stat allocator. ~320 evals × 0.025ms ≈ 8ms. Three presets. |
+| `computeWeaponValue(wEnc, stats, gateState, target, twoHand)` | 3255 | **v3.9** Generalized damage eval (melee + status + spell DPS) for choice scoring |
+| `evaluateChoices(charData, ci, includeDLC)` | 3301 | **v3.9** Enumerate ranked player actions with costs/outcomes (near-miss equips, farm runs, levels) |
+| `rankActions(actions, nextBoss, stats, level, gateState)` | 3404 | **v3.9** Score and order candidate actions for Recommended Actions panel |
+| `resolveTacticalNeeds(bossName, ci)` | 3485 | Boss + checkoffs → tactical mitigation options |
+| `getEnemyResistWarning(step, charState)` | 3554 | Step + equipped weapon → enemy resist warnings with strike weapon rec (E4) |
+| `isBuildRelevant(itemScaling, archetype)` | 3599 | STAT_TEMPLATES lookup → build-relevance filter (TD-03) |
+| `endingAvailability(ci, qp)` | 3747 | Checkoffs + quest progress → ending status |
+
+*Note: `detectBuildArchetype` removed v3.9 — `charData.archetype` is explicitly set, no inference fallback needed.*
 
 ---
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,325 | **Size:** ~1.5 MB
+**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,846 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
 | HTML shell + CSS | 1–66 | |
 | Script open | 68 | |
 | **Inline data (DO NOT LOAD)** | **69–2003** | Regions, ENG_DATA (weapons, bosses, sorceries, incantations, talismans), ENG_GRAPHS |
-| Engine constants | 2004–2011 | evalCCGraph, ENG_GRAPHS, WRETCH/WRETCH_BASE_TOTAL/WRETCH_LEVEL |
-| Core engine functions | 2013–2418 | engDecodeW, engCalcAR, resolveStats, globalOptimize, bestWeaponForBoss (now with status DPS) |
-| Derived stat lookups | 2371–2380 | _dsKeys, _dsLookup, engHP/FP/Stam/Equip |
-| Physical subtype + ammo data | 2383–2415 | PHYS_SUBTYPE map, AMMO_DATA (30 entries), AMMO_FOR_WEAPON |
-| engDefenseMult + engDmgVsBoss | 2421–2443 | Shared defense curve (TD-01), physical subtype aware |
-| **Spell damage system** | **2446–2490** | SPELL_DMG (47 motion values), engSpellDmgVsBoss |
-| **Ashes of War** | **2494–2525** | ASHES_OF_WAR (15 curated), bestAshOfWar |
-| **Weapon buffs** | **2528–2547** | WEAPON_BUFFS (10 entries), availableBuffs |
-| **Poise/stagger** | **2551–2567** | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
-| **Status effect system** | **2570–2592** | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
-| **Spell system** | **2594–2676** | SPELL_STEP (47 spells → acquisition step), CASTER_LOADOUT (9 archetypes × RH/LH), availableSpells (stat+step gated) |
-| **Talisman loadouts + engine** | **2628–2735** | TALISMAN_LOADOUT (13 archetypes × 4), computeTalismanBonus |
-| Character system data | 2745–2810 | REGION_CAPS, BOSS_READY (27 entries), GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
-| Gate + progression functions | 2836–2990 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, filterArchPool (TD-02), bestCatalystAtCheckpoint, computeProgressionCurve (talisman-integrated) |
-| Tactical needs + archetype | 2992–3105 | TACTICAL_NEEDS, resolveTacticalNeeds, ENEMY_RESIST (E4), getEnemyResistWarning, detectBuildArchetype (TD-04), isBuildRelevant (TD-03) |
-| Step classification data | ~3110 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS |
-| Class/stat constants | ~3115–3135 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
-| App core | ~3255–3305 | STORAGE_KEY, storage{}, color palette C{} |
-| Achievements + Endings | ~3305–3555 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability() |
-| UI constants + helpers | ~3575–3615 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
-| **App component** | **3470–5247** | 24 useState hooks (progTmpl removed v3.4). charData.archetype added. |
-| renderCharacter (+ nested) | ~3639–4480 | renderProfile (archetype dropdown), renderLoadout (E3 breakpoints), renderRespec, renderAR (weapon curve merged from Progression) |
-| renderWalkthrough | ~4482–4684 | Step cards, power gate banner (F2), enemy resist warnings (E4), boss readiness inline, charData.archetype with inference fallback |
-| renderDashboard | ~4686–4843 | Next Objective panel (F3), walkthrough progress, endings |
-| renderSettings | ~4845 | v3.3, live data counts |
-| renderCompare | ~4848–4991 | B2 fix, hooks-compliant |
-| renderOptimizer | ~4993–5137 | Dynamic weapon count, 13 archetypes |
-| Main render + tab routing | ~5137–5247 | TABS, renderers |
-| Mount | 5247 | ReactDOM.render |
-| Close | 5248–5249 | |
+| Engine constants | 2004–2018 | evalCCGraph, ENG_GRAPHS, WRETCH/WRETCH_BASE_TOTAL/WRETCH_LEVEL |
+| **Rune cost system (v3.9)** | **2019–2022** | RUNE_COST_TABLE (datamined lvl 1–100), runeCostForLevel, levelsFromRunes |
+| Core engine functions | 2024–2418 | engDecodeW, engCalcAR, resolveStats, meetsRequirements, globalOptimize, bestWeaponForBoss |
+| Derived stat lookups + ammo | ~2383–2418 | _dsKeys, _dsLookup, engHP/FP/Stam/Equip, PHYS_SUBTYPE, AMMO_DATA (30) |
+| engDefenseMult + engDmgVsBoss | 2433–2456 | Shared defense curve (TD-01), physical subtype aware |
+| Spell damage system | 2488–2520 | SPELL_DMG (47 motion values), engSpellDmgVsBoss |
+| Ashes of War | 2525–2550 | ASHES_OF_WAR (15 curated), bestAshOfWar |
+| Weapon buffs | 2554–2570 | WEAPON_BUFFS (10 entries), availableBuffs |
+| Poise/stagger | 2574–2585 | STAGGER_TIER, STAGGER_LABELS, getBossPoiseInfo |
+| Status effect system | 2587–2670 | STATUS_TYPES, STATUS_PROC_DAMAGE, engStatusVsBoss |
+| Spell system | 2680–2800 | SPELL_STEP (47 spells), CASTER_LOADOUT (9 archetypes), availableSpells (stat+step gated) |
+| Talisman loadouts + engine | ~2730–2895 | TALISMAN_LOADOUT (13 archetypes × 4), computeTalismanBonus |
+| Character system data | ~2810–2895 | REGION_CAPS, BOSS_READY, GATE_WHETSTONES (6), GATE_BELL_BEARINGS (9) |
+| Gate + progression functions | 2898–3088 | deriveGateState, getNextMandatoryBoss, DLC_WEAPONS, bestCatalystAtCheckpoint, filterArchPool, computeProgressionCurve |
+| **Stat optimizer (v3.9)** | **3089–3253** | computeStatCostToEquip, vigFloorForBoss, optimizeStats (greedy coordinate ascent, 3 presets) |
+| **Choice evaluation engine (v3.9)** | **3255–3447** | computeWeaponValue, evaluateChoices, rankActions |
+| Tactical needs | 3448–3503 | TACTICAL_NEEDS, resolveTacticalNeeds |
+| Enemy resist (E4) | 3505–3593 | ENEMY_RESIST (2 enemies × 11 zones), getEnemyResistWarning |
+| **Choice data (v3.9)** | **3511–3593** | FARM_TARGETS (4), WEAPON_STEPS (30) — interleaved with enemy resist section |
+| Step classification data | ~3595–3602 | STEP_CLASS, CLASS_LABELS, STEP_ITEMS, isBuildRelevant (TD-03) |
+| Class/stat constants | 3604–~3640 | CLASSES, STAT_NAMES/LABELS/DESC, SOFT_CAPS |
+| App core | 3644–3670 | STORAGE_KEY, storage{}, color palette C{} |
+| Achievements + Endings | 3671–3940 | 42 achievements, 6 endings, ENDING_DATA, endingAvailability (3747) |
+| UI constants + helpers | 3941–3957 | DASH_CATS, h(), btnS(), ProgressRing, ProgressBar |
+| **App component** | **3958–5800** | 24+ useState hooks. charData.archetype, stat optimizer state, recommended actions panel state. |
+| renderCharacter (+ nested) | 4127–5028 | renderProfile (4216), renderLoadout (4268, E3 breakpoints +1–5), renderRespec (4776), renderAR (4819) |
+| renderWalkthrough | 5030–5232 | Step cards, power gate banner (F2), enemy resist warnings (E4), boss readiness inline, level warnings (Larval/Darriwil) |
+| renderDashboard | 5234–5385 | Next Objective panel (F3), Recommended Actions panel (v3.9), walkthrough progress, endings |
+| Other tabs (compact) | 5387–5443 | renderAchievements (5388), renderBosses (5390), renderEndings (5392), renderQuests (5438), renderCollectibles (5440), renderSettings (5442) |
+| renderCompare | 5445–5588 | B2 fix, hooks-compliant |
+| renderOptimizer | 5590–5800 | Dynamic weapon count, 13 archetypes |
+| Main render + tab routing | 5802–5840 | TABS, renderers |
+| Mount | 5844 | ReactDOM.render |
+| Close | 5845–5846 | |
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.8 — current baseline)
+### What's built and working (v3.9 — current baseline)
 
-**File:** `Tarnished_Companion_v3.2.html` | **Lines:** 5,325
+**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,846
 
 Everything from v2.0 plus:
+
+**v3.9 additions:**
+- **Stat allocation optimizer** (Character tab): `optimizeStats` greedy coordinate ascent. Allocates points one at a time at the highest marginal score. Soft caps emerge from scaling curves, not hardcoded rules. Scoring combines weapon damage, status DPS, spell DPS, log(HP), log(stamina/FP). Three presets (Aggressive / Balanced / Tanky). `vigFloorForBoss` enforces survivability floor scaled to boss level. Auto-tests top 3 weapon candidates per archetype. ~8ms per optimization.
+- **Choice evaluation engine** (Dashboard "Recommended Actions" panel): `evaluateChoices` + `rankActions` enumerate ranked player actions with costs and outcomes. Turns null checks into near-miss math — instead of "can't equip," reports "2 STR to equip Morning Star (strike + bleed)." `computeStatCostToEquip` is the inverse of `meetsRequirements`. `computeWeaponValue` is the generalized damage scoring used by both optimizer and choice ranker.
+- **Rune cost correction**: `runeCostForLevel` replaced wrong cubic formula with datamined `RUNE_COST_TABLE` (lvl 1–100). Old formula produced ~40% of actual costs; 80K runes now correctly shows 38 levels (was 100). `levelsFromRunes` provides the inverse for farm-target evaluation.
+- **Walkthrough early-game fixes**: Map fragments (steps 33, 46), Lordsworn's Greatsword (34) and Flail (35) at Gatefront, Crimson Crystal Tear (72), Bestial Sanctum portal (73), level warnings on Larval Tear (60) and Darriwil (62). Boc description fixed, redundant Kalé step removed, Whetstone Knife typo, Ranni/Spirit Bell renumbered.
+- **Greyoll path optimization**: `FARM_TARGETS` Greyoll moved from step 1264 to step 73 (portal access via Bestial Sanctum, not geographic walking).
+- **Level-Up Advisor breakpoint scan**: expanded from +1 to +1–5 range with weapon availability gating.
+- **`detectBuildArchetype` removed**: charData.archetype is now explicitly set; inference fallback dropped.
 
 **Weapon Analysis Panel** (renderLoadout): Computes AR for equipped weapons across all affinities in ENG_DATA. Shows single recommendation (best weapon + affinity + upgrade level). Current vs Optimal side-by-side. Hits-to-kill (melee + status DPS) against next boss gate. Collapsible detail for alternatives. Flags locked affinities with instructions to obtain whetstone. Tactical needs displayed below.
 
@@ -215,10 +240,12 @@ Three-tier engine expansion activated data already in ENG_DATA and added curated
 ### v3.x future roadmap
 
 - ~~Enemy resistance awareness in routing (E4)~~ Done v3.6
-- Stat point advisor: account for weapon requirement breakpoints (E3 — e.g., "1 STR unlocks two-handing LGS")
+- ~~Stat point advisor: account for weapon requirement breakpoints (E3)~~ Done v3.4 (initial), expanded v3.9 (+1–5 range, choice eval engine)
 - ~~Talisman damage multipliers applied to effective damage calculations~~ Done v3.7
 - Spirit ash availability flagging (Mimic Tear = 2x DPS gate)
 - ~~Spell availability by walkthrough step~~ Done v3.8
+- ~~Stat allocation optimizer~~ Done v3.9 (greedy marginal-value engine, 3 presets)
+- ~~Rune cost / levels-from-runes math~~ Done v3.9 (datamined RUNE_COST_TABLE)
 - Kill the checklist, build the journey — walkthrough steps become backing data queried by engine, not a scrollable list
 
 ### Known limitations
@@ -321,6 +348,14 @@ tail -3 app.html
   - Spell availability by stat requirements + walkthrough step acquisition (v3.8).
   - Lines: 4,460 → 5,012.
 
+- **v3.9 (April 2026):** Stat allocation optimizer + choice evaluation engine + rune cost correction + early walkthrough fixes.
+  - **Choice evaluation engine** (commit e1959e5): `evaluateChoices`, `rankActions`, `computeStatCostToEquip`, `computeWeaponValue`. Dashboard "Recommended Actions" panel. Level-Up Advisor breakpoint scan expanded to +1–5 range. `detectBuildArchetype` removed (charData.archetype now explicitly set). New data: `WEAPON_STEPS` (30 weapons), `FARM_TARGETS` (4 sources), `runeCostForLevel`/`levelsFromRunes` rune utilities.
+  - **Stale version strings fix** (commit a787133): title, header, About all aligned to v3.9.
+  - **Baseline file rename** (commit e90065e): `Tarnished_Companion_v3.9.html`.
+  - **Early walkthrough fixes + Greyoll path optimization + rune cost correction** (commit 6fc45c1): Map: Limgrave West (33), Map: Limgrave East (46), Lordsworn's Greatsword (34), Flail (35) at Gatefront, Crimson Crystal Tear (72), Bestial Sanctum portal (73). Removed redundant Kalé step 39. Boc description fix. Larval Tear (60) and Darriwil (62) level warnings. Whetstone Knife typo. Ranni/Spirit Bell renumber. STEP_CLASS/STEP_ITEMS updated. FARM_TARGETS Greyoll: step 1264 → 73. WEAPON_STEPS: Flail 35, Lordsworn's Greatsword 34. `runeCostForLevel`: replaced wrong cubic formula with datamined `RUNE_COST_TABLE` — old produced ~40% of actual costs; 80K runes now correctly = 38 levels (was 100).
+  - **Stat allocation optimizer** (commit 7bc7c58): `optimizeStats` greedy coordinate-ascent allocator. Scoring combines weapon damage, status DPS, spell DPS, log(HP) survivability, log(stamina/FP) sustainability. Three presets (Aggressive / Balanced / Tanky). `vigFloorForBoss` survivability floor scales with boss level. Auto-tests top 3 weapon candidates per archetype. Stat Optimizer panel in Character tab — 8-stat grid, projected damage/HP/hits-to-kill, preset toggle, delta from current. ~320 evaluations × 0.025ms ≈ 8ms per optimization.
+  - Lines: 5,325 → 5,846 (+521).
+
 - **v3.8 (April 6, 2026):** Spell availability by step + caster hand placement loadouts.
   - `SPELL_STEP`: 47 spells mapped to earliest walkthrough acquisition step (NPC vendor, scroll, quest reward).
   - `CASTER_LOADOUT`: 9 caster archetypes × {RH melee, LH catalyst, tactical notes} for hand placement guidance.
@@ -361,5 +396,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 6, 2026 (v3.8)*
+*Single project document | March 28, 2026 | Updated April 10, 2026 (v3.9)*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
