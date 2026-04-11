@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.12
+**Version:** v3.13
 **Baseline file:** `Tarnished_Companion_v3.9.html`
 **Lines:** 5,888
-**Last completed task:** B12 — Phase 0 region restructure (dedicated "Phase 0: Forced Prologue" region at top of walkthrough with 44 sequential steps covering R1 + R2 + R3)
-**Next task:** B12 R4 — Post-Greyoll Limgrave cleanup content (Tree Sentinel kill, Stormhill Shack, Agheel Lake content, etc.)
+**Last completed task:** B12 — Phase 0 routing fix: removed Morne Tunnel detour, Limgrave Tunnels only for Smithing Stone [1] farm, Morning Star capped at +3
+**Next task:** B12 R4 — Post-Greyoll Limgrave cleanup content
