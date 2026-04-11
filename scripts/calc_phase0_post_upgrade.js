@@ -33,6 +33,46 @@ var dec3 = engDecodeWAtLevel(ms, 3);
 var ar1h = engCalcAR(dec3, stats, 0, false);
 var ar2h = engCalcAR(dec3, stats, 0, true);
 
+// Deep dump: raw float values and engine internals
+console.log("=== RAW ENGINE INTERNALS (Morning Star +3) ===");
+console.log("Encoded ak (attack keys):", JSON.stringify(ms.ak));
+console.log("Encoded as (scaling keys):", JSON.stringify(ms.as));
+console.log("dec3.attack[0]:", JSON.stringify(dec3.attack[0]));
+console.log("dec3.attributeScaling[0]:", JSON.stringify(dec3.attributeScaling[0]));
+console.log();
+console.log("RAW ar1h.attackPower[0] (physical):", ar1h.attackPower[0]);
+console.log("RAW ar2h.attackPower[0] (physical):", ar2h.attackPower[0]);
+console.log("RAW ar1h.attackPower[7] (bleed):", ar1h.attackPower[7]);
+console.log();
+
+// Manual breakdown of 1H calc
+var base = dec3.attack[0][0]; // physical base after upgrade
+console.log("Base physical (dec3.attack[0][0]):", base);
+var strVal = 12; // 1H
+var strScale = dec3.attributeScaling[0]['str'] || 0;
+var strCurveVal = dec3.calcCorrectGraphs[0][strVal];
+console.log("STR scaling coefficient at +3:", strScale);
+console.log("calcCorrectGraph[0][12] (STR curve at 12):", strCurveVal);
+var strBonus = base * strCurveVal * strScale;
+console.log("STR scaling contribution (1H, 12 STR):", strBonus);
+var dexVal = 10;
+var dexScale = dec3.attributeScaling[0]['dex'] || 0;
+var dexCurveVal = dec3.calcCorrectGraphs[0][dexVal];
+console.log("DEX scaling coefficient at +3:", dexScale);
+console.log("calcCorrectGraph[0][10] (DEX curve at 10):", dexCurveVal);
+var dexBonus = base * dexCurveVal * dexScale;
+console.log("DEX scaling contribution (1H, 10 DEX):", dexBonus);
+console.log("Total 1H = base + strBonus + dexBonus =", base, "+", strBonus, "+", dexBonus, "=", base + strBonus + dexBonus);
+console.log();
+// 2H: str becomes 18
+var strVal2h = 18;
+var strCurveVal2h = dec3.calcCorrectGraphs[0][strVal2h];
+console.log("calcCorrectGraph[0][18] (STR curve at 18, 2H):", strCurveVal2h);
+var strBonus2h = base * strCurveVal2h * strScale;
+console.log("STR scaling contribution (2H, 18 effective STR):", strBonus2h);
+console.log("Total 2H = base + strBonus2h + dexBonus =", base, "+", strBonus2h, "+", dexBonus, "=", base + strBonus2h + dexBonus);
+console.log();
+
 console.log("=== MORNING STAR +3 @ 12 STR / 10 DEX (Wretch level 3 minimum-wield) ===");
 console.log("1H Physical AR:", Math.floor(ar1h.attackPower[0] || 0));
 console.log("1H Bleed buildup:", Math.floor(ar1h.attackPower[7] || 0));
