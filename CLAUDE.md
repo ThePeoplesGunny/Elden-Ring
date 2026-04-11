@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.10
+**Version:** v3.11
 **Baseline file:** `Tarnished_Companion_v3.9.html`
-**Lines:** 5,866
-**Last completed task:** B11 status scaling fix + Wretch beeline walkthrough rewrite (Phase 0 forced prologue → Greyoll bleed loop)
-**Next task:** F8 — Post-Greyoll Stat Allocation Optimizer (per backlog)
+**Lines:** 5,881
+**Last completed task:** B12 R1 — Walkthrough reconstruction Phase 1 (Cave of Knowledge → Gatefront, 35 sequential steps replacing 14 broken/gappy entries)
+**Next task:** B12 R2 — Gatefront → Bridge of Sacrifice → Weeping Peninsula Phase 0 essentials (per `memory/project_walkthrough_reconstruction.md`)
