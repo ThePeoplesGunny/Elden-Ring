@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.11
+**Version:** v3.12
 **Baseline file:** `Tarnished_Companion_v3.9.html`
-**Lines:** 5,882
-**Last completed task:** B12 R1 — Walkthrough reconstruction (Cave of Knowledge → Gatefront)
-**Next task:** B12 R2 — Gatefront → Bridge of Sacrifice → Weeping Peninsula Phase 0 essentials (per `memory/project_walkthrough_reconstruction.md`)
+**Lines:** 5,888
+**Last completed task:** B12 — Phase 0 region restructure (dedicated "Phase 0: Forced Prologue" region at top of walkthrough with 44 sequential steps covering R1 + R2 + R3)
+**Next task:** B12 R4 — Post-Greyoll Limgrave cleanup content (Tree Sentinel kill, Stormhill Shack, Agheel Lake content, etc.)

@@ -408,5 +408,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 10, 2026 (v3.11)*
+*Single project document | March 28, 2026 | Updated April 10, 2026 (v3.9)*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
