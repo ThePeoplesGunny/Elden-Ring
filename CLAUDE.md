@@ -18,8 +18,8 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.9
+**Version:** v3.10
 **Baseline file:** `Tarnished_Companion_v3.9.html`
-**Lines:** 5,846
-**Last completed task:** Stat allocation optimizer — greedy marginal-value engine
-**Next task:** Per roadmap
+**Lines:** 5,866
+**Last completed task:** B11 status scaling fix + Wretch beeline walkthrough rewrite (Phase 0 forced prologue → Greyoll bleed loop)
+**Next task:** F8 — Post-Greyoll Stat Allocation Optimizer (per backlog)

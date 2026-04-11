@@ -7,7 +7,9 @@
       "WebFetch(domain:pureeldenring.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebSearch",
-      "WebFetch(domain:eldenring.wiki.fextralife.com)"
+      "WebFetch(domain:eldenring.wiki.fextralife.com)",
+      "Bash(node scripts/diag_bleed_scaling.js)",
+      "Bash(node scripts/calc_morning_star_greyoll.js)"
     ]
   }
 }

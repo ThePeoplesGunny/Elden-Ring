@@ -120,7 +120,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,846 | **Size:** ~1.5 MB
+**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,866 | **Size:** ~1.5 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -166,9 +166,9 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.9 — current baseline)
+### What's built and working (v3.10 — current baseline)
 
-**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,846
+**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,866
 
 Everything from v2.0 plus:
 
@@ -305,6 +305,7 @@ tail -3 app.html
 - **B8:** Boss data single `df` value vs per-type defense. [CLOSED — verified via Fextralife, PureEldenRing, tarnished.dev that Elden Ring bosses use single scalar defense. Per-type differentiation is handled entirely by negation, which we already have correct.]
 - **B9:** Engine ignores physical damage subtypes (slash/strike/pierce). [DONE v3.4 — PHYS_SUBTYPE map added, engDmgVsBoss accepts weaponType param, all 11 call sites updated. Strike vs standard: 39-55% damage difference on resistant bosses now computable.]
 - **B10:** Colossal weapons unconditionally apply 1.5x STR even when one-handed. [DONE v3.3 — added twoHand guard to engCalcAR line 2050 and meetsRequirements line 2209. Affected: Giant-Crusher and all type 50/51/53/56 weapons.]
+- **B11:** `engDecodeW` / `engDecodeWAtLevel` did not scale status buildup (bleed/frost/poison/rot/sleep/madness) with upgrade level. The encoded reinforcement tables have zero `statusSpEffectId1/2/3` offsets across every row, so `Object.assign(a, sp)` always returned the +0 base value. Diagnostic confirmed flat bleed across +0 → +25 for Morning Star, Uchigatana, Flail, Reduvia, Bloodhound's Fang, Great Knife. [DONE v3.10 — added `engStatusUpgradeMult(level, maxLevel)` helper. Standard rt (26 lvl) reaches +45% at max, Somber rt (11 lvl) reaches +50% at max, linear interpolation. Validated against real-game scaling within ~5%. Both decode functions updated. **Side issue noted:** Bandit's Curved Sword has `sp:undefined` in encoded data — separate data fix, deferred.]
 
 ### FEATURES (new capability)
 - **F1:** Character creation screen. [CLOSED — not needed. Wretch locked (DD37), walkthrough guides first purchases (Step 16), keepsake guidance is implicit. No added value as separate UI.]
@@ -314,6 +315,7 @@ tail -3 app.html
 - **F5:** Ranged utility system. [DONE v3.2 — AMMO_DATA (30 entries) in engine, arrow/bolt slots in loadout UI, ammo auto-filters by weapon type, live AR = weapon + arrow combined, status effects displayed. Shortbow from Coastal Merchant step 145 (B3 corrected v3.3).]
 - **F6:** Dynamic weapon pool. [DONE v3.2 — builds async after first render (~1s). 98 unique weapons, 787 entries (28% of 2,764). 4x globalOptimize speedup (38ms vs 158ms). Same results, no static list to maintain. Header shows pool status indicator.]
 - **F7:** Progression curves — per-archetype optimal weapon at each regional checkpoint. [DONE v3.3 — computeProgressionCurve engine + Progression sub-tab in Character. Archetype selector (13 templates), DLC toggle, weapon curve table with status coloring, weapon transition highlighting, expandable per-boss detail (top 3 1H/2H, stats, affinities, upgrade caps), summary footer.]
+- **F8:** Post-Greyoll Stat Allocation Optimizer. **Scope:** given the player's *committed* archetype (chosen by them, not ranked by the tool) + current rune budget + current level + current weapon + current talismans → produce the optimal per-stat allocation across the affordable levels through the next mandatory boss (typically Margit). **Wraps `optimizeStats`** with a `runeBudget → targetLevel` conversion (`startLevel + levelsFromRunes(startLevel, R)`). **Survivability constraints:** existing `vigFloorForBoss` + new equip-load awareness (medium roll < 70% load), per-weapon-class END floor (colossals need higher stamina recovery), Soreseal-equipped flag (effective stat baseline +5 STR/DEX/INT/FAI). **UI:** Dashboard panel that activates after the player checks off Greyoll on the journey. **Not in scope:** ranking archetypes against each other — the player's archetype choice is INPUT, the optimization is OUTPUT. [PLANNED — queued post-v3.10 walkthrough rewrite per playtest 2026-04-10.]
 
 ### ENHANCEMENTS (improve existing capability)
 - **E1:** Step numbers on walkthrough cards. [DONE v3.2 — #stepnumber in upper right of each card, already implemented.]
@@ -347,6 +349,15 @@ tail -3 app.html
   - Talisman recommender (top 4 per archetype from 41 entries).
   - Spell availability by stat requirements + walkthrough step acquisition (v3.8).
   - Lines: 4,460 → 5,012.
+
+- **v3.10 (April 10, 2026):** B11 status scaling fix + Wretch beeline walkthrough rewrite (Phase 0 forced prologue).
+  - **B11 engine fix**: `engDecodeW` / `engDecodeWAtLevel` now scale status buildup with upgrade level via new `engStatusUpgradeMult(level, maxLevel)` helper. Standard rt (26 lvl) reaches +45% at max; Somber rt (11 lvl) reaches +50% at max; linear interpolation. Validated within ~5% of real-game values for Morning Star, Uchigatana, Flail, Reduvia, Bloodhound's Fang, Great Knife. Diagnostic scripts: `scripts/diag_bleed_scaling.js`, `scripts/calc_morning_star_greyoll.js`. **Side issue noted:** Bandit's Curved Sword has missing `sp` field in encoded data — separate fix deferred.
+  - **Wretch beeline walkthrough rewrite**: Repurposed step 35 (was Flail) as the Phase 0 strategy directive. Inserted step 372 (Morning Star pickup at wrecked carriage) and step 373 (Smithing Stone Farm + upgrade directive) in Weeping Peninsula region. Modified steps 73 (Bestial Sanctum portal — added prerequisite chain), 117 (Limgrave Tunnels — deposits-only Phase 0 use), 118 (Stonedigger Troll — post-commit deferral), 374 (Castle Morne Rampart — post-commit), 410 (Morne Tunnel — deposits-only), 411 (Scaly Misbegotten — post-commit), 1264 (Greyoll — full rewrite with bleed strategy + Torrent reset exploit). Fixed `WEAPON_STEPS["Morning Star"]: 371 → 372`.
+  - **Strategic frame**: The Cave of Knowledge → Greyoll loop is now formalized as the universal **Phase 0 forced prologue** for every archetype. Player makes the archetype commitment AFTER 2 Greyoll kills (level 1 → ~52, +51 levels of stat budget) with full information. The "real game" begins at Fort Faroth post-commit. This is an optimal-stopping problem under resource constraints: defer commitment to maximize information.
+  - **Combat capability ceiling rule** (memory): Wretch + Morning Star +0–6 can engage strike-vulnerable mob enemies and Greyoll-from-behind only. Cannot engage Stonedigger Troll, Scaly Misbegotten, Fort Faroth rats, Black Blade Kindred. Every Phase 0 step must pass this test.
+  - **Calculation results**: Morning Star Greyoll math (engine output post-B11): +0=119 hits, +4=112 hits (first knee), +6=112 hits (Stone 2 cap, +5% physical chip), +8=105 hits (requires Stone 3 — not pre-Greyoll). Two Greyoll kills = level 41 → 52 (+51 total). Third kill yields only +7 levels — diminishing returns confirmed.
+  - **F8 queued**: Post-Greyoll Stat Allocation Optimizer. Scope: input archetype, output optimal allocation. Not a ranking view.
+  - Lines: 5,846 → 5,866.
 
 - **v3.9 (April 2026):** Stat allocation optimizer + choice evaluation engine + rune cost correction + early walkthrough fixes.
   - **Choice evaluation engine** (commit e1959e5): `evaluateChoices`, `rankActions`, `computeStatCostToEquip`, `computeWeaponValue`. Dashboard "Recommended Actions" panel. Level-Up Advisor breakpoint scan expanded to +1–5 range. `detectBuildArchetype` removed (charData.archetype now explicitly set). New data: `WEAPON_STEPS` (30 weapons), `FARM_TARGETS` (4 sources), `runeCostForLevel`/`levelsFromRunes` rune utilities.
