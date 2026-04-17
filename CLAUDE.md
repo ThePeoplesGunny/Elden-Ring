@@ -18,9 +18,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.13 (three fixes applied)
+**Version:** v3.13 (four fixes applied)
 **Baseline file:** `Tarnished_Companion_v3.9.html`
 **Lines:** 5,888
-**Last completed task:** Phase 0 walkthrough validated against Gunny's in-game playthrough through step 39 (Morning Star +3 upgrade + 2 STR at Church of Elleh). AR values corrected to match in-game equipment panel (154 1H / 161 2H). B13 engine AR rounding bug logged.
-**Next task:** Resume at Phase 0 step 40 when Gunny returns (Portal to Bestial Sanctum → Greyoll farm). Development-wise: R4 (post-Greyoll Limgrave cleanup) pending after Phase 0 validation completes. B13 engine fix queued as non-blocking.
-**Playtest checkpoint:** Gunny paused at Church of Elleh, post-step-39. Wretch level 3, Morning Star +3 equipped (12 STR / 10 DEX), next in-game action is warp to Third Church of Marika for the portal. Full state in `memory/project_playtest_state.md`.
+**Last completed task:** v3.13 fix 4 — Step 40 expanded to include Third Church of Marika pickups (Sacred Tear, Flask of Wondrous Physick, Crimson Crystal Tear). Also corrected pre-existing s:72 error ("HP over time" → "instant 50% max HP restore" per Fextralife).
+**Next task:** Resume at Phase 0 step 40 when Gunny returns (collect three pickups → Portal to Bestial Sanctum → Greyoll farm). Development-wise: R4 (post-Greyoll Limgrave cleanup) pending after Phase 0 validation completes. B13 engine fix queued as non-blocking.
+**Playtest checkpoint:** Gunny at Church of Elleh, post-step-39. Wretch level 3, Morning Star +3 equipped (12 STR / 10 DEX), next in-game action is warp to Third Church of Marika — now collects Sacred Tear + Physick Flask + Crimson Crystal Tear before taking the portal. Full state in `memory/project_playtest_state.md`.
