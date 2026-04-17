@@ -18,9 +18,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.13 (four fixes applied)
+**Version:** v3.13 (five fixes applied)
 **Baseline file:** `Tarnished_Companion_v3.9.html`
 **Lines:** 5,888
-**Last completed task:** v3.13 fix 4 — Step 40 expanded to include Third Church of Marika pickups (Sacred Tear, Flask of Wondrous Physick, Crimson Crystal Tear). Also corrected pre-existing s:72 error ("HP over time" → "instant 50% max HP restore" per Fextralife).
-**Next task:** Resume at Phase 0 step 40 when Gunny returns (collect three pickups → Portal to Bestial Sanctum → Greyoll farm). Development-wise: R4 (post-Greyoll Limgrave cleanup) pending after Phase 0 validation completes. B13 engine fix queued as non-blocking.
-**Playtest checkpoint:** Gunny at Church of Elleh, post-step-39. Wretch level 3, Morning Star +3 equipped (12 STR / 10 DEX), next in-game action is warp to Third Church of Marika — now collects Sacred Tear + Physick Flask + Crimson Crystal Tear before taking the portal. Full state in `memory/project_playtest_state.md`.
+**Last completed task:** v3.13 fix 5 — Step 40 Bestial Sanctum arrival geometry corrected. Portal deposits player OUTSIDE the Sanctum (not at SoG). Walkthrough now instructs: avoid Black Blade Kindred along wall, open Sanctum door, rest at SoG immediately inside on the right. Gurranq peaceful on first visit (Fextralife + Gunny in-game confirmation).
+**Next task:** Resume at Phase 0 step 41 (Torrent transit to Greyoll) once Gunny rests at the Bestial Sanctum SoG. Development-wise: R4 (post-Greyoll Limgrave cleanup) pending after Phase 0 validation completes. B13 engine fix queued as non-blocking.
+**Playtest checkpoint:** Gunny has warped to Bestial Sanctum area in Dragonbarrow, standing outside the building. Wretch level 3, Morning Star +3 equipped. Next in-game action is to avoid Black Blade Kindred, open the Sanctum door, and rest at the SoG inside (right-hand side on entry) to register fast travel. Full state in `memory/project_playtest_state.md`.
