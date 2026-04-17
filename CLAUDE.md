@@ -18,9 +18,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.13 (five fixes applied)
+**Version:** v3.13 (six fixes applied)
 **Baseline file:** `Tarnished_Companion_v3.9.html`
 **Lines:** 5,888
-**Last completed task:** v3.13 fix 5 — Step 40 Bestial Sanctum arrival geometry corrected. Portal deposits player OUTSIDE the Sanctum (not at SoG). Walkthrough now instructs: avoid Black Blade Kindred along wall, open Sanctum door, rest at SoG immediately inside on the right. Gurranq peaceful on first visit (Fextralife + Gunny in-game confirmation).
+**Last completed task:** v3.13 fix 6 - Step 40 Bestial Sanctum arrival corrected again per Gunny's in-game observation: portal deposits player RIGHT IN FRONT OF the Sanctum door, no Black Blade Kindred or wall-hugging required. Removed obsolete BBK/stealth instructions from step 40.
 **Next task:** Resume at Phase 0 step 41 (Torrent transit to Greyoll) once Gunny rests at the Bestial Sanctum SoG. Development-wise: R4 (post-Greyoll Limgrave cleanup) pending after Phase 0 validation completes. B13 engine fix queued as non-blocking.
-**Playtest checkpoint:** Gunny has warped to Bestial Sanctum area in Dragonbarrow, standing outside the building. Wretch level 3, Morning Star +3 equipped. Next in-game action is to avoid Black Blade Kindred, open the Sanctum door, and rest at the SoG inside (right-hand side on entry) to register fast travel. Full state in `memory/project_playtest_state.md`.
+**Playtest checkpoint:** Gunny has warped in, standing in front of the Bestial Sanctum door in Dragonbarrow. Wretch level 3, Morning Star +3 equipped. Next in-game action is to open the door and rest at the SoG on the right-hand side to register fast travel. Full state in `memory/project_playtest_state.md`.
