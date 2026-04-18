@@ -18,9 +18,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.13 (six fixes applied)
+**Version:** v3.14
 **Baseline file:** `Tarnished_Companion_v3.9.html`
 **Lines:** 5,888
-**Last completed task:** v3.13 fix 6 - Step 40 Bestial Sanctum arrival corrected again per Gunny's in-game observation: portal deposits player RIGHT IN FRONT OF the Sanctum door, no Black Blade Kindred or wall-hugging required. Removed obsolete BBK/stealth instructions from step 40.
-**Next task:** Resume at Phase 0 step 41 (Torrent transit to Greyoll) once Gunny rests at the Bestial Sanctum SoG. Development-wise: R4 (post-Greyoll Limgrave cleanup) pending after Phase 0 validation completes. B13 engine fix queued as non-blocking.
-**Playtest checkpoint:** Gunny has warped in, standing in front of the Bestial Sanctum door in Dragonbarrow. Wretch level 3, Morning Star +3 equipped. Next in-game action is to open the door and rest at the SoG on the right-hand side to register fast travel. Full state in `memory/project_playtest_state.md`.
+**Last completed task:** v3.14 — Phase 0 steps 40-42 rewritten to match Gunny's live playthrough (Third Church of Marika pickups, Bestial Sanctum geometry, Fort Faroth transit path, mounted Greyoll farm at Fort Faroth SoG). FARM_TARGETS Greyoll reward 80K - 50K (Fextralife verified). Kill count revised 2 - 3 (150K runes at L51 Margit-comfort target). Engine math validated in-game across 12 stat configurations (HP/FP/Stam within plus-minus 1, AR exact at STR 20-plus). B13 scope refined - narrow STR-12 boundary bug, not systemic. Four new locked memory rules (verify game data, engine data suspect, pre-rec checklist, batch playtest commits). Archetype-vs-weapon forecast built and acquisition-verified against Fextralife. TheGamer article protocol test caught 1 false stat + 3 misleading progression claims.
+**Next task:** Gunny to pick archetype commitment (top forecast: Bloodhound's Fang STR/DEX Quality AR 357 vs Margit; safe path Morning Star Pure STR AR 269 already owned). Then in-game Stat Optimizer spend of 150K runes to L51. Then Phase 0 close and R4 (post-commit Limgrave cleanup) begins.
+**Playtest checkpoint:** Gunny at Fort Faroth SoG, Dragonbarrow/Caelid. Wretch level 3, Morning Star +3 equipped, 150,000 runes unspent. Three Greyoll kills complete. Engine calibration sweep complete (in-game reads matched engine within plus-minus 1 at all tested points). Awaiting archetype commit decision. Full state in `memory/project_playtest_state.md`.

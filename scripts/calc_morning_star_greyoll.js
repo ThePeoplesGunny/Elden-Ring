@@ -125,20 +125,21 @@ console.log("Combined cap pre-Greyoll: +6 (without bell bearings)");
 console.log();
 
 // ── 6. Rune cost: Wretch (level 1) → ? after Greyoll kills ──
+// Greyoll drops 50,000 runes per kill (Fextralife verified 2026-04-17).
+// Prior 80,000 figure was incorrect — likely conflated with the 5 lesser
+// dragons (3,470 each, ~17K combined) which are NOT killed by mounted
+// tail-farming. Gunny live-confirmed 100K total after 2 kills.
 console.log("=== RUNE COST CURVE (Wretch starts at level 1) ===");
-console.log("Greyoll reward per kill: 80,000 runes + 5 Dragon Hearts");
+console.log("Greyoll reward per kill: 50,000 runes + 5 Dragon Hearts");
 console.log();
-var runesPerKill = 80000;
+var runesPerKill = 50000;
 var startLevel = 1;
-var lvlAfter1 = startLevel + levelsFromRunes(startLevel, runesPerKill);
-console.log("After 1 Greyoll kill (80,000 runes):");
-console.log("  Level reached:", lvlAfter1, "(+" + (lvlAfter1 - startLevel) + " levels)");
-var lvlAfter2 = lvlAfter1 + levelsFromRunes(lvlAfter1, runesPerKill);
-console.log("After 2 Greyoll kills (160,000 runes total):");
-console.log("  Level reached:", lvlAfter2, "(+" + (lvlAfter2 - startLevel) + " levels total, +" + (lvlAfter2 - lvlAfter1) + " from kill 2)");
-var lvlAfter3 = lvlAfter2 + levelsFromRunes(lvlAfter2, runesPerKill);
-console.log("After 3 Greyoll kills (240,000 runes total):");
-console.log("  Level reached:", lvlAfter3, "(+" + (lvlAfter3 - startLevel) + " levels total, +" + (lvlAfter3 - lvlAfter2) + " from kill 3)");
-console.log();
-console.log("Marginal value of 3rd kill:", (lvlAfter3 - lvlAfter2), "extra levels for 80,000 runes");
-console.log("(Compare: 1st kill =", (lvlAfter1 - startLevel), "levels per 80K; 2nd kill =", (lvlAfter2 - lvlAfter1), "levels per 80K)");
+var lvl = startLevel;
+var totalRunes = 0;
+for (var k = 1; k <= 6; k++) {
+  var prevLvl = lvl;
+  totalRunes += runesPerKill;
+  lvl = lvl + levelsFromRunes(lvl, runesPerKill);
+  console.log("After " + k + " Greyoll kill(s) (" + totalRunes.toLocaleString() + " runes):");
+  console.log("  Level reached: " + lvl + "  (+" + (lvl - prevLvl) + " from this kill,  +" + (lvl - startLevel) + " total)");
+}
