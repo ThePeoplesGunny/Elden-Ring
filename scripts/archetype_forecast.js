@@ -85,9 +85,12 @@ function runForecast(cand) {
 console.log("=== ARCHETYPE × WEAPON FORECAST ===");
 console.log("Wretch → L51 (150K runes from Greyoll farm), 2H grip, vs Margit");
 console.log("Upgrade cap: Standard +3 / Somber +1 (realistic pre-Margit)");
+console.log("");
+console.log("** Engine hits-to-kill = R1-only worst-case floor (B20: no motion value) **");
+console.log("** Realistic mixed-attack play runs ~0.65x the floor (empirical, 2026-04-19) **");
 console.log();
-console.log("Weapon                       | Archetype fit  | vs Margit        | Allocation                                | Acquisition");
-console.log("-----------------------------|----------------|------------------|-------------------------------------------|-------------");
+console.log("Weapon                       | Archetype fit  | R1 floor         | Realistic | Allocation                                | Acquisition");
+console.log("-----------------------------|----------------|------------------|-----------|-------------------------------------------|-------------");
 
 CANDIDATES.forEach(function(cand){
   var r = runForecast(cand);
@@ -96,11 +99,15 @@ CANDIDATES.forEach(function(cand){
     return;
   }
   var arch = classifyArchetype(r.stats);
-  var bossLine = "AR " + (r.dmgPerHit || 0) + " / " + (r.hitsToKill || 0) + " hits";
+  var floor = r.hitsToKill || 0;
+  var real = Math.max(1, Math.round(floor * 0.65));
+  var bossLine = "AR " + (r.dmgPerHit || 0) + " / " + floor + " hits";
+  var realLine = "~" + real + " hits";
   console.log(
     cand.name.padEnd(28) + " | " +
     arch.padEnd(14) + " | " +
     bossLine.padEnd(16) + " | " +
+    realLine.padEnd(9) + " | " +
     formatAlloc(r.stats).padEnd(41) + " | " +
     cand.haz
   );
@@ -119,5 +126,7 @@ console.log("=== INTERPRETATION ===");
 console.log("• 'Allocation' column: stats to push above base 10 (or above Wretch STR 10).");
 console.log("  The remainder of your 48 levels went into VIG for survivability.");
 console.log("• 'Archetype fit' is just a label for the resulting stat shape.");
-console.log("• 'vs Margit' AR is effective damage after his defense curve (engine computed).");
+console.log("• 'R1 floor' is engine's hits-to-kill assuming every attack is R1 (MV=1.0).");
+console.log("• 'Realistic' is R1 floor × 0.65 — calibrated against Gunny's 2026-04-19 empirical kill (3 hits 1H, 2 hits 2H on Soldier of Godrick vs engine floor 5/4).");
+console.log("• B20 is open: engine lacks motion value modeling. Relative rankings are correct; absolute floors under-sell real play.");
 console.log("• Acquisition hazard is Gunny judgment — the numbers assume you HAVE the weapon.");

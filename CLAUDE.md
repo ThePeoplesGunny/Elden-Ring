@@ -20,7 +20,7 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 **Version:** v3.15
 **Baseline file:** `Tarnished_Companion_v3.9.html`
-**Lines:** 5,892
-**Last completed task:** Engine recalibration — fixed B14 (FP table), B15 (EquipLoad table), B16 (rune cost formula), B17 (defense curve shape — 30% damage overestimate), B18 (HP offset), B19 (Discovery off-by-one). All 17 verification points now match Gunny's in-game reads exactly (Δ = 0.0).
-**Next task:** Gunny to direct next items for verification OR authorize archetype commit under the corrected engine. Note: B17 fix drops melee damage predictions ~27% at realistic attack ratios — archetype ranking may shift vs pre-fix forecast (Bloodhound's Fang AR 357 claim was computed under broken defense math).
-**Playtest checkpoint:** Gunny at Fort Faroth SoG, Dragonbarrow/Caelid. Wretch level 3, Morning Star +3 equipped, 150,000 runes unspent. Three Greyoll kills complete. Engine now authoritatively calibrated against Fextralife + Drake Ravenwolf Steam guide + Gunny in-game reads. Archetype decision pending; commitment not yet made.
+**Lines:** 5,893
+**Last completed task:** Engine recalibration (B14-B19 fixed), post-fix archetype forecast, 3 boss defense/negation values verified vs Fextralife (Margit/Godrick/Rennala all match exactly), empirical B17 check at Gatefront (Morning Star vs Soldier of Godrick) surfaced B20 (engine lacks motion value modeling — hits-to-kill output is R1-only worst-case floor; realistic ~0.65x floor). Forecast script updated to display both columns.
+**Next task:** Gunny to authorize archetype commit under corrected engine. Top R1-floor / realistic forecasts vs Margit: Bloodhound's Fang 17 / ~11 hits (MED hazard Darriwil, best damage); Morning Star 21 / ~14 hits (owned, zero hazard, HP 1727); Uchigatana 22 / ~14 hits (LOW hazard, Deathtouched Catacombs). Relative rankings trustworthy; absolute floors under-sell real play due to B20.
+**Playtest checkpoint:** Gunny at Gatefront SoG (temporarily — tested vs soldiers), formerly Fort Faroth. Wretch level 3, Morning Star +3 equipped, 150,000 runes unspent. Three Greyoll kills complete. Engine now authoritatively calibrated; all 17 stat-derived verification points match in-game exactly (delta = 0). Boss data verified. Archetype decision pending; commitment not yet made.

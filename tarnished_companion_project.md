@@ -78,41 +78,41 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 | Function | Line | Purpose |
 |---|---|---|
-| `runeCostForLevel(l)` | 2041 | Rune cost for next level (datamined `RUNE_COST_TABLE`, lvl 1–100; cubic fallback above) |
-| `levelsFromRunes(fromLevel, runes)` | 2043 | Inverse: how many levels a rune budget buys from current level |
-| `engDecodeW(enc)` | 2059 | Decode weapon (all 26 upgrade levels) |
-| `engDecodeWAtLevel(enc, level)` | 2078 | Decode weapon (single level — optimizer use) |
-| `engCalcAR(weapon, attrs, upg, 2h)` | 2098 | Compute attack rating (validated 29/29). Damage types 0–4 + status 5–10. |
-| `resolveStats(cls, tmpl, lvl)` | 2216 | Class + archetype + level → effective stats |
-| `getPlayerBossDmg(bossName, charState)` | 2240 | Single-weapon damage against a specific boss |
-| `meetsRequirements(wEnc, stats, 2h)` | 2262 | Pre-decode stat requirement filter |
-| `globalOptimize(lvl, includeDLC, opts, weaponList)` | 2277 | Exhaustive Wretch × template × weapon search → top results |
-| `bestWeaponForBoss(boss, stats, gate, region, 2h, weaponList)` | 2397 | Top weapons ranked by effective damage (melee + status DPS) |
+| `runeCostForLevel(l)` | 2043 | Rune cost for next level (datamined `RUNE_COST_TABLE`, lvl 1–100; cubic fallback above) |
+| `levelsFromRunes(fromLevel, runes)` | 2045 | Inverse: how many levels a rune budget buys from current level |
+| `engDecodeW(enc)` | 2061 | Decode weapon (all 26 upgrade levels) |
+| `engDecodeWAtLevel(enc, level)` | 2080 | Decode weapon (single level — optimizer use) |
+| `engCalcAR(weapon, attrs, upg, 2h)` | 2100 | Compute attack rating (validated 29/29). Damage types 0–4 + status 5–10. |
+| `resolveStats(cls, tmpl, lvl)` | 2218 | Class + archetype + level → effective stats |
+| `getPlayerBossDmg(bossName, charState)` | 2242 | Single-weapon damage against a specific boss |
+| `meetsRequirements(wEnc, stats, 2h)` | 2264 | Pre-decode stat requirement filter |
+| `globalOptimize(lvl, includeDLC, opts, weaponList)` | 2279 | Exhaustive Wretch × template × weapon search → top results |
+| `bestWeaponForBoss(boss, stats, gate, region, 2h, weaponList)` | 2399 | Top weapons ranked by effective damage (melee + status DPS) |
 | `engHP/engFP/engStam/engEquip` | ~2383–2386 | Derived stat curves |
-| `engDefenseMult(ratio)` | 2472 | Shared piecewise defense multiplier curve (TD-01). |
-| `engDmgVsBoss(arResult, boss, weaponType)` | 2480 | AR through boss defense curve + negation. Physical subtype aware. |
-| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2527 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
-| `bestAshOfWar(template, step)` | 2564 | Top AoW recommendations per archetype and step |
-| `availableBuffs(template, stats, step)` | 2593 | Weapon buffs available at given stats/step |
-| `getBossPoiseInfo(boss)` | 2613 | Boss poise threshold and stagger difficulty |
-| `engStatusVsBoss(arResult, boss)` | 2626 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
-| `availableSpells(stats, type, step)` | 2719 | Filter spells by stat requirements + walkthrough step acquisition (SPELL_STEP) |
-| `computeTalismanBonus(templateId)` | 2844 | Optimal loadout → {statBonus, meleeMult, spellMult} applied in progression |
-| `deriveGateState(ci, atStep)` | 2937 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path. |
-| `getNextMandatoryBoss(ci, includeDLC)` | 2971 | Next undefeated mandatory boss from journey checkoffs |
-| `bestCatalystAtCheckpoint(stats, gate, region, type, isDLC, weaponList)` | 3004 | Top staves/seals ranked by spell scaling |
-| `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 3026 | Shared archetype weapon pool filter (TD-02) |
-| `computeProgressionCurve(template, includeDLC, weaponList)` | 3038 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
-| `computeStatCostToEquip(wEnc, stats, twoHand)` | 3128 | **v3.9** Inverse `meetsRequirements` — stat deltas needed to wield a weapon |
-| `vigFloorForBoss(bossLevel)` | 3166 | **v3.9** Survivability floor (vigor) scaled to boss level — prevents one-shot builds |
-| `optimizeStats(params)` | 3198 | **v3.9** Greedy coordinate-ascent stat allocator. ~320 evals × 0.025ms ≈ 8ms. Three presets. |
-| `computeWeaponValue(wEnc, stats, gateState, target, twoHand)` | 3294 | **v3.9** Generalized damage eval (melee + status + spell DPS) for choice scoring |
-| `evaluateChoices(charData, ci, includeDLC)` | 3340 | **v3.9** Enumerate ranked player actions with costs/outcomes (near-miss equips, farm runs, levels) |
-| `rankActions(actions, nextBoss, stats, level, gateState)` | 3443 | **v3.9** Score and order candidate actions for Recommended Actions panel |
-| `resolveTacticalNeeds(bossName, ci)` | 3524 | Boss + checkoffs → tactical mitigation options |
-| `getEnemyResistWarning(step, charState)` | 3595 | Step + equipped weapon → enemy resist warnings with strike weapon rec (E4) |
-| `isBuildRelevant(itemScaling, archetype)` | 3640 | STAT_TEMPLATES lookup → build-relevance filter (TD-03) |
-| `endingAvailability(ci, qp)` | 3788 | Checkoffs + quest progress → ending status |
+| `engDefenseMult(ratio)` | 2477 | Shared piecewise defense multiplier curve (TD-01). |
+| `engDmgVsBoss(arResult, boss, weaponType)` | 2485 | AR through boss defense curve + negation. Physical subtype aware. |
+| `engSpellDmgVsBoss(spellScaling, spell, boss)` | 2532 | Spell damage through boss defense + element negation. Uses SPELL_DMG motion values. |
+| `bestAshOfWar(template, step)` | 2569 | Top AoW recommendations per archetype and step |
+| `availableBuffs(template, stats, step)` | 2598 | Weapon buffs available at given stats/step |
+| `getBossPoiseInfo(boss)` | 2618 | Boss poise threshold and stagger difficulty |
+| `engStatusVsBoss(arResult, boss)` | 2631 | Status buildup → hits to proc, proc damage. 6 types: poison/rot/bleed/frost/sleep/madness. |
+| `availableSpells(stats, type, step)` | 2724 | Filter spells by stat requirements + walkthrough step acquisition (SPELL_STEP) |
+| `computeTalismanBonus(templateId)` | 2849 | Optimal loadout → {statBonus, meleeMult, spellMult} applied in progression |
+| `deriveGateState(ci, atStep)` | 2942 | Journey checkoffs → unlocked affinities + upgrade caps. Optional atStep for ideal-path. |
+| `getNextMandatoryBoss(ci, includeDLC)` | 2976 | Next undefeated mandatory boss from journey checkoffs |
+| `bestCatalystAtCheckpoint(stats, gate, region, type, isDLC, weaponList)` | 3009 | Top staves/seals ranked by spell scaling |
+| `filterArchPool(weapons, affPref, priStats, excludeDLC)` | 3031 | Shared archetype weapon pool filter (TD-02) |
+| `computeProgressionCurve(template, includeDLC, weaponList)` | 3043 | Per-archetype weapon/spell/catalyst progression through all mandatory bosses |
+| `computeStatCostToEquip(wEnc, stats, twoHand)` | 3133 | **v3.9** Inverse `meetsRequirements` — stat deltas needed to wield a weapon |
+| `vigFloorForBoss(bossLevel)` | 3171 | **v3.9** Survivability floor (vigor) scaled to boss level — prevents one-shot builds |
+| `optimizeStats(params)` | 3203 | **v3.9** Greedy coordinate-ascent stat allocator. ~320 evals × 0.025ms ≈ 8ms. Three presets. |
+| `computeWeaponValue(wEnc, stats, gateState, target, twoHand)` | 3299 | **v3.9** Generalized damage eval (melee + status + spell DPS) for choice scoring |
+| `evaluateChoices(charData, ci, includeDLC)` | 3345 | **v3.9** Enumerate ranked player actions with costs/outcomes (near-miss equips, farm runs, levels) |
+| `rankActions(actions, nextBoss, stats, level, gateState)` | 3448 | **v3.9** Score and order candidate actions for Recommended Actions panel |
+| `resolveTacticalNeeds(bossName, ci)` | 3529 | Boss + checkoffs → tactical mitigation options |
+| `getEnemyResistWarning(step, charState)` | 3600 | Step + equipped weapon → enemy resist warnings with strike weapon rec (E4) |
+| `isBuildRelevant(itemScaling, archetype)` | 3645 | STAT_TEMPLATES lookup → build-relevance filter (TD-03) |
+| `endingAvailability(ci, qp)` | 3793 | Checkoffs + quest progress → ending status |
 
 *Note: `detectBuildArchetype` removed v3.9 — `charData.archetype` is explicitly set, no inference fallback needed.*
 
@@ -120,7 +120,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,888 | **Size:** ~1.4 MB
+**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,893 | **Size:** ~1.4 MB
 
 | Section | Lines | Notes |
 |---|---|---|
@@ -168,7 +168,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ### What's built and working (v3.10 — current baseline)
 
-**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,888
+**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,893
 
 Everything from v2.0 plus:
 
@@ -307,6 +307,7 @@ tail -3 app.html
 - **B10:** Colossal weapons unconditionally apply 1.5x STR even when one-handed. [DONE v3.3 — added twoHand guard to engCalcAR line 2050 and meetsRequirements line 2209. Affected: Giant-Crusher and all type 50/51/53/56 weapons.]
 - **B11:** `engDecodeW` / `engDecodeWAtLevel` did not scale status buildup (bleed/frost/poison/rot/sleep/madness) with upgrade level. The encoded reinforcement tables have zero `statusSpEffectId1/2/3` offsets across every row, so `Object.assign(a, sp)` always returned the +0 base value. Diagnostic confirmed flat bleed across +0 → +25 for Morning Star, Uchigatana, Flail, Reduvia, Bloodhound's Fang, Great Knife. [DONE v3.10 — added `engStatusUpgradeMult(level, maxLevel)` helper. Standard rt (26 lvl) reaches +45% at max, Somber rt (11 lvl) reaches +50% at max, linear interpolation. Validated against real-game scaling within ~5%. Both decode functions updated. **Side issue noted:** Bandit's Curved Sword has `sp:undefined` in encoded data — separate data fix, deferred.]
 - **B12:** **WALKTHROUGH RECONSTRUCTION PROJECT.** Walkthrough has massive content gaps that pre-existed the initial git commit (March 27, 2026). Step IDs 2, 3, 7, 9, 10, 14, 18-25, and many more throughout are missing. Three Claude sessions edited adjacent content without detecting the gaps. Per Gunny: original v2.x project scope was a complete walkthrough — start to finish, every step verified, all 6 endings, every boss, main game, DLC. **Recovery from git/memory is impossible** (gaps existed in initial commit, no memory references). **Fix: full rebuild via external research** from Fextralife + PureEldenRing, applied through the Greyoll-farm lens (Phase 0 forced prologue) and the Palace Approach Ledge-Road farm lens (Phase 3 power-leveling). Decomposed into 23 research phases R1-R23 — see `memory/project_walkthrough_reconstruction.md` for full phase tracking. [IN PROGRESS — Phase 0 region complete as of v3.13, R1-R3 merged into single region. R4+ pending.]
+- **B20:** `engDmgVsBoss` and `engSpellDmgVsBoss` compute attack ratio as `AR / Defense`, omitting motion value. Fextralife authoritative formula is `Attack Ratio = (AR × MV) / Defense`. Real attacks have MV 1.0–1.8+ depending on type (R1 ~1.0, R2 ~1.4, charged/jumping ~1.5–1.8). Engine's hits-to-kill output is therefore an **R1-only worst-case floor**, not an expected-play estimate. Empirical check 2026-04-19: Morning Star +3 vs Soldier of Godrick → engine predicted 5/4 hits (1H/2H), Gunny got 3/2 hits. 2H discrepancy implies Gunny used higher-MV attacks (R2/charge/jump). Relative weapon rankings remain correct; absolute hits-to-kill undersells real play by ~30–40%. Fix would require per-weapon-per-attack MV tables from Fextralife (significant data entry). Medium priority — does not block archetype decisions, does block tight kill-time predictions. [BACKLOGGED 2026-04-19]
 - **B19:** `ENG_DATA.derivedStats.discovery.values` uses formula `100 + (ARC − 1)` when real in-game formula is `100 + ARC`. 2026-04-19 Fextralife cross-reference + Gunny in-game reads (ARC 10 engine 109 vs in-game 110; ARC 20 engine 119 vs in-game 120) confirm off-by-one. Sub-cell fix: replace discovery table with `{ARC: 100+ARC}` for ARC 1–99. [DONE v3.15]
 - **B18:** `ENG_DATA.derivedStats.hp.values` VIG 10 = 415 but real in-game = 414. Fextralife VIG table shows 414; Gunny in-game confirmed 414. Likely minor rounding difference across several VIG values. Fix: replace HP table with Fextralife VIG 1–99 verbatim. [DONE v3.15]
 - **B17:** `engDefenseMult` (line 2472-2478) uses LINEAR piecewise interpolation with multipliers that exceed 100% (caps at 120%). Fextralife authoritative formula is piecewise QUADRATIC, caps at 90% (damage landed, not a multiplier bonus). **Impact: engine overestimates melee damage by ~30% at realistic attack ratios.** Every boss damage prediction, hits-to-kill calc, archetype ranking, and "best weapon for boss" output is affected. Fix: replace with Fextralife's piecewise quadratic — breakpoints 0.125/1/2.5/8, coefficients 2.552/7.5/151.25, clamp 10%/90%. Also: engine upper knee is at ratio 7.0; Fextralife's is 8.0. **Most load-bearing engine bug ever found.** [DONE v3.15]
@@ -431,5 +432,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 17, 2026 (v3.14)*
+*Single project document | March 28, 2026 | Updated April 19, 2026 (v3.15)*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
