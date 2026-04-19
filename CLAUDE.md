@@ -20,7 +20,7 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 **Version:** v3.15
 **Baseline file:** `Tarnished_Companion_v3.9.html`
-**Lines:** 5,893
-**Last completed task:** Corrected archetype_forecast.js target level — hardcoded L51 replaced with `CURRENT_LEVEL + levelsFromRunes(CURRENT_LEVEL, RUNE_BUDGET)`. Gunny caught that 150K runes at L3 reaches L41 (not L51 — prior v3.14 L51 figure was derived from broken B16 rune cost math). Allocations re-derived with correct 40 spendable points.
-**Next task:** Gunny to authorize archetype commit at L41. Realistic forecasts vs Margit (~0.65x R1 floor): Morning Star VIG 44/END 12/STR 14 → HP 1555, ~14 hits, zero hazard; Bloodhound's Fang VIG 39/END 12/STR 12/DEX 17 → HP 1402, ~11 hits, MED hazard (Darriwil); Uchigatana VIG 42/END 12/DEX 16 → HP 1503, ~14 hits, LOW hazard. Pre-committed 2 STR points from L1→L3 are locked until Rennala respec — wasted on pure-DEX builds (Flail/Uchigatana/Reduvia).
-**Playtest checkpoint:** Gunny at Gatefront SoG (temporarily — tested vs soldiers), formerly Fort Faroth. Wretch level 3, Morning Star +3 equipped, 150,000 runes unspent. Three Greyoll kills complete. Engine now authoritatively calibrated; all 17 stat-derived verification points match in-game exactly (delta = 0). Boss data verified. Archetype decision pending; commitment not yet made.
+**Lines:** 5,892
+**Last completed task:** **PHASE 0 CLOSED.** Archetype committed (Pure STR / Morning Star). L41 Wretch: VIG 44, END 12, STR 14, rest 10. All 5 in-game readouts match engine exactly (HP 1555, FP 78, Stam 99, EL 51.4, Discovery 110). B21 (stamina off-by-one at intermediate END values) caught post-commit by Gunny and patched with Fextralife verbatim table.
+**Next task:** R4 begins — post-commit Limgrave cleanup. Push Morning Star to +6 with Smithing Stones available at Limgrave Tunnels + merchants. Engage Stonedigger Troll, Scaly Misbegotten, Castle Morne, Murkwater Cave, Coastal Merchant ranged utility, Deathtouched Catacombs (Uchigatana optional), Stormfoot cleanup, Stormhill approach. Target: Margit fight at realistic ~10-12 hits with Morning Star +6 at L41.
+**Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). All calibration verified at current stats. Ready for R4 Limgrave cleanup. Full state in memory/project_playtest_state.md.
