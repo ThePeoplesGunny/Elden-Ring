@@ -18,9 +18,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v3.14
+**Version:** v3.15
 **Baseline file:** `Tarnished_Companion_v3.9.html`
-**Lines:** 5,888
-**Last completed task:** v3.14 — Phase 0 steps 40-42 rewritten to match Gunny's live playthrough (Third Church of Marika pickups, Bestial Sanctum geometry, Fort Faroth transit path, mounted Greyoll farm at Fort Faroth SoG). FARM_TARGETS Greyoll reward 80K - 50K (Fextralife verified). Kill count revised 2 - 3 (150K runes at L51 Margit-comfort target). Engine math validated in-game across 12 stat configurations (HP/FP/Stam within plus-minus 1, AR exact at STR 20-plus). B13 scope refined - narrow STR-12 boundary bug, not systemic. Four new locked memory rules (verify game data, engine data suspect, pre-rec checklist, batch playtest commits). Archetype-vs-weapon forecast built and acquisition-verified against Fextralife. TheGamer article protocol test caught 1 false stat + 3 misleading progression claims.
-**Next task:** Gunny to pick archetype commitment (top forecast: Bloodhound's Fang STR/DEX Quality AR 357 vs Margit; safe path Morning Star Pure STR AR 269 already owned). Then in-game Stat Optimizer spend of 150K runes to L51. Then Phase 0 close and R4 (post-commit Limgrave cleanup) begins.
-**Playtest checkpoint:** Gunny at Fort Faroth SoG, Dragonbarrow/Caelid. Wretch level 3, Morning Star +3 equipped, 150,000 runes unspent. Three Greyoll kills complete. Engine calibration sweep complete (in-game reads matched engine within plus-minus 1 at all tested points). Awaiting archetype commit decision. Full state in `memory/project_playtest_state.md`.
+**Lines:** 5,892
+**Last completed task:** Engine recalibration — fixed B14 (FP table), B15 (EquipLoad table), B16 (rune cost formula), B17 (defense curve shape — 30% damage overestimate), B18 (HP offset), B19 (Discovery off-by-one). All 17 verification points now match Gunny's in-game reads exactly (Δ = 0.0).
+**Next task:** Gunny to direct next items for verification OR authorize archetype commit under the corrected engine. Note: B17 fix drops melee damage predictions ~27% at realistic attack ratios — archetype ranking may shift vs pre-fix forecast (Bloodhound's Fang AR 357 claim was computed under broken defense math).
+**Playtest checkpoint:** Gunny at Fort Faroth SoG, Dragonbarrow/Caelid. Wretch level 3, Morning Star +3 equipped, 150,000 runes unspent. Three Greyoll kills complete. Engine now authoritatively calibrated against Fextralife + Drake Ravenwolf Steam guide + Gunny in-game reads. Archetype decision pending; commitment not yet made.
