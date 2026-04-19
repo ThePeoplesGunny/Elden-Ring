@@ -60,12 +60,19 @@ function classifyArchetype(stats) {
   return "None";
 }
 
+// Computed from Gunny's actual state (L3 Wretch, 150K unspent runes)
+// Under corrected B16 rune cost table, 150K from L3 = +38 levels = L41.
+// Prior v3.14 hardcoded L51 was based on broken rune cost math.
+var CURRENT_LEVEL = 3;
+var RUNE_BUDGET = 150000;
+var TARGET_LEVEL = CURRENT_LEVEL + levelsFromRunes(CURRENT_LEVEL, RUNE_BUDGET);
+
 function runForecast(cand) {
   var wEnc = ENG_DATA.reg.w.find(function(w){ return w.w === cand.name && w.a === cand.aff; });
   if (!wEnc) return { error: "weapon not found: " + cand.name + " aff=" + cand.aff };
   var params = {
     bossIdx: margitIdx,
-    targetLevel: 51,
+    targetLevel: TARGET_LEVEL,
     cls: WRETCH,
     wEnc: wEnc,
     twoHand: true,
@@ -83,7 +90,7 @@ function runForecast(cand) {
 }
 
 console.log("=== ARCHETYPE × WEAPON FORECAST ===");
-console.log("Wretch → L51 (150K runes from Greyoll farm), 2H grip, vs Margit");
+console.log("Wretch L" + CURRENT_LEVEL + " + " + RUNE_BUDGET.toLocaleString() + " runes → L" + TARGET_LEVEL + " (corrected B16 rune cost), 2H grip, vs Margit");
 console.log("Upgrade cap: Standard +3 / Somber +1 (realistic pre-Margit)");
 console.log("");
 console.log("** Engine hits-to-kill = R1-only worst-case floor (B20: no motion value) **");
@@ -124,7 +131,7 @@ CANDIDATES.forEach(function(cand){
 console.log();
 console.log("=== INTERPRETATION ===");
 console.log("• 'Allocation' column: stats to push above base 10 (or above Wretch STR 10).");
-console.log("  The remainder of your 48 levels went into VIG for survivability.");
+console.log("  The remainder of your " + (TARGET_LEVEL - 1) + " allocated points went into VIG for survivability.");
 console.log("• 'Archetype fit' is just a label for the resulting stat shape.");
 console.log("• 'R1 floor' is engine's hits-to-kill assuming every attack is R1 (MV=1.0).");
 console.log("• 'Realistic' is R1 floor × 0.65 — calibrated against Gunny's 2026-04-19 empirical kill (3 hits 1H, 2 hits 2H on Soldier of Godrick vs engine floor 5/4).");
