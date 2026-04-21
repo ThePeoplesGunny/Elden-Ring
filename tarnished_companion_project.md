@@ -31,7 +31,7 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 **Cookbooks are not progression gates.** All tactical needs have non-craft alternatives. Decision final.
 
-**Single-file offline architecture.** One HTML file, React UI, localStorage persistence, no server dependency.
+**Portable local-first architecture.** Runs entirely on the player's machine. Bundle fits within ~700MB (CD-sized). Small embedded stacks acceptable (SQLite, minimal local file-server, Leaflet + static tiles) when they meaningfully improve maintainability. Criteria: portable (runs from a folder), low maintenance (single-command startup), offline (no cloud/APIs at runtime), cross-platform. Legacy: `Tarnished_Companion_v3.9.html` is the current monolith being migrated to this architecture.
 
 ---
 
@@ -433,5 +433,5 @@ tail -3 app.html
 
 ---
 
-*Single project document | March 28, 2026 | Updated April 19, 2026 (v3.9)*
+*Single project document | March 28, 2026 | Updated April 20, 2026 (v3.9)*
 *Replaces: v2_0_baseline.md, v2_0_design_spec.md, dev_operations_guide.md*
