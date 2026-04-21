@@ -10,9 +10,17 @@
   <div id="root">
     <div style="padding:2rem;font-family:monospace;color:#888">Loading...</div>
   </div>
-  <!-- React via CDN not used at runtime (offline principle); ships bundled in app/vendor -->
+
+  <!-- React bundled locally (no CDN at runtime) -->
   <script src="app/vendor/react.production.min.js"></script>
   <script src="app/vendor/react-dom.production.min.js"></script>
-  <script src="app/main.js" type="module"></script>
+
+  <!-- Legacy inline script content (engine + data + App) extracted verbatim
+       from Tarnished_Companion_v3.9.html via scripts/phase_a_extract_app.js.
+       Defines the App component plus all engine functions and data as globals. -->
+  <script src="app/legacy_inline.js"></script>
+
+  <!-- Mount -->
+  <script src="app/main.js"></script>
 </body>
 </html>
