@@ -9,7 +9,17 @@
       "WebSearch",
       "WebFetch(domain:eldenring.wiki.fextralife.com)",
       "Bash(node scripts/diag_bleed_scaling.js)",
-      "Bash(node scripts/calc_morning_star_greyoll.js)"
+      "Bash(node scripts/calc_morning_star_greyoll.js)",
+      "Bash(ls -d data/)",
+      "Bash(mkdir -p data)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(python start.py 8765 --no-open)",
+      "Bash(curl -s -o /dev/null -w \"index.html: %{http_code}\\\\n\" http://127.0.0.1:8765/)",
+      "Bash(curl -s -o /dev/null -w \"main.js: %{http_code}\\\\n\" http://127.0.0.1:8765/app/main.js)",
+      "Bash(curl -s -o /dev/null -w \"README: %{http_code}\\\\n\" http://127.0.0.1:8765/README.md)",
+      "Bash(curl -s -o /dev/null -w \"missing: %{http_code}\\\\n\" http://127.0.0.1:8765/does-not-exist)",
+      "Bash(node scripts/phase_a_extract_data.js)",
+      "Bash(node scripts/phase_a_extract_engine.js)"
     ]
   }
 }

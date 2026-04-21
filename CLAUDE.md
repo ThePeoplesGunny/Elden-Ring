@@ -26,6 +26,6 @@ Every delivery updates these three artifacts (per global §VI.5):
 **Version:** v4.0.0-alpha (Phase A complete — architecture migration)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Phase A complete. tc_next/ scaffold + cross-platform launcher (A.1), ENG_DATA to 72 JSON files (A.2), 46 engine functions to tc_next/engine/legacy_bundle.js (A.3), UI extraction + React vendor bundle (A.4), parity verification 93/93 pass (A.5). Legacy HTML and tc_next bundle are behaviorally identical across every tested engine call.
+**Last completed task:** Session close 2026-04-20: Phase A complete, docs aligned for clean pickup
 **Next task:** Phase B — data population. Ingest deliton/Kaggle JSON into normalized data/*.json per REWRITE_PLAN §5. Merge verified Fextralife harvest (data/weapon_acquisition.json, data/talisman_acquisition.json) as acquisition source-of-truth. Begin weapons-first.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.

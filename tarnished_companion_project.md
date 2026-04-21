@@ -177,9 +177,9 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (v3.10 — current baseline)
+### What's built and working (engine v3.15 + architecture v4.0.0-alpha, Phase A complete)
 
-**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,893
+**Active:** `tc_next/` portable bundle | **Legacy preserved:** `Tarnished_Companion_v3.9.html` (5,893 lines)
 
 Everything from v2.0 plus:
 
