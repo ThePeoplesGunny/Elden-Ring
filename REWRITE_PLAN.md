@@ -1,5 +1,9 @@
 # Tarnished's Companion — Comprehensive Rewrite Plan
-**Date:** 2026-04-20 | **Status:** Draft for Gunny review
+**Date:** 2026-04-20 | **Status:** Phase A complete — active through Phase B onward
+
+## Status log (latest first)
+
+- **2026-04-20 session close** — Phase A (architecture migration) shipped end-to-end. 5 commits (b54408b → d2d800e). 93/93 parity pass between legacy HTML and `tc_next/` bundle. Session closed at Phase B starting gate.
 
 ---
 
@@ -191,15 +195,27 @@ deliton JSON → schema normalizer → data/*.json
 
 ## 5. Phasing — order of work
 
-### Phase A: Architecture migration (no data changes, no feature loss)
-1. Split current monolithic HTML:
-   - Extract engine functions → `engine/*.js`
-   - Extract ENG_DATA inline JSON → `data/*.json` (by category)
-   - Extract React UI → `app/*.js`
-2. Add `server.py` single-command startup
-3. Verify feature parity with current HTML
-4. Smoke-test: existing Stat Optimizer, AR Estimator, etc., produce identical results
-5. Commit as `v4.0.0` baseline
+### Phase A: Architecture migration (no data changes, no feature loss)  ✓ DONE 2026-04-20
+1. ✓ A.1 Split current monolithic HTML scaffold + launcher (`b54408b`)
+   - `tc_next/` directory structure established
+   - `start.py` / `start.js` / `start.bat` / `start.sh` cross-platform launchers
+   - Smoke-tested: Python http.server serves all assets 200
+2. ✓ A.2 Extract ENG_DATA inline JSON → `tc_next/data/*.json` (`ed03735` + extended in `9f35ae0`)
+   - 72 JSON files, 2.35MB total
+   - All v3.15 fixes preserved (HP 414, FP 78, Stam 99, EL 51.4, Discovery 110)
+3. ✓ A.3 Extract engine functions → `tc_next/engine/legacy_bundle.js` (`9f35ae0`)
+   - 46 functions extracted via Function.prototype.toString()
+   - Single module loads data from sibling JSON files via require()
+   - 55.9KB file size
+4. ✓ A.4 Extract React UI → `tc_next/app/` (`6dff2f9`)
+   - `legacy_inline.js` (1.3MB, 5823 lines) — verbatim port of legacy inline script
+   - React 18.2.0 UMD bundled locally in `app/vendor/`
+   - New `index.html` + `main.js` mount shim with error boundaries
+   - All assets served 200 in smoke test
+5. ✓ A.5 Parity verification (`d2d800e`)
+   - `scripts/phase_a_parity.js` runs legacy and new engine side-by-side
+   - 93/93 pass across HP/FP/Stam/EL, rune cost, defense curve, AR, Margit damage, Discovery
+   - Legacy HTML and tc_next bundle are behaviorally identical
 
 ### Phase B: Data population (per item class)
 6. Ingest deliton JSON → normalized `data/*.json` with `acquisition: null` flags
@@ -288,11 +304,35 @@ deliton JSON → schema normalizer → data/*.json
 
 ---
 
-## 9. Proposed immediate next actions
+## 9. Pickup point for next session
 
-If this plan is approved, I'd start with **Phase A step 1** — split the monolithic HTML into engine + data + app directories, verify parity via existing calibration scripts, commit as v4.0.0 baseline. This is a large-ish change but purely mechanical (no new features, no new data), and it unblocks everything downstream.
+**Phase A is complete. Phase B (data population) is the next starting gate.**
 
-Estimated effort: 1–2 working sessions, most of it automated extraction + validation.
+Immediate next action when resuming: **Phase B.1 — ingest deliton/Kaggle JSON into `tc_next/data/*.json`**. Concrete first steps:
+
+1. Choose canonical filenames for merged data: likely `tc_next/data/weapons.json`, `talismans.json`, `armors.json`, `ashes_of_war.json`, `spirits.json`, `sorceries.json`, `incantations.json`, `spells.json`, `keys.json`, `tears.json`, `misc.json`. These REPLACE the engine-subset files (`weapons_encoded.json`, `talismans_engine.json`, etc.) but only once the merge validates.
+2. Write ingest script (`scripts/phase_b_ingest_deliton.js`) that:
+   - Reads `data/deliton_json/*.json` (already downloaded) and `data/kaggle/*.csv` (already present)
+   - Normalizes each record into the project schema (see `data/weapon_acquisition.json` for field pattern)
+   - Cross-validates against the engine's existing values for items that exist in both tables
+   - Marks `acquisition: null` for every entry not covered by boss/creature drops
+3. Merge our existing Fextralife-verified harvests:
+   - `data/weapon_acquisition.json` (56 pre-Margit weapons with full schema) — SACRED, must preserve
+   - `data/talisman_acquisition.json` (21 pre-Margit talismans) — SACRED, must preserve
+4. Emit a gap report: which items need Fextralife acquisition follow-up (targeted narrow-prompt agents per item class)
+5. Once weapons ship, repeat for talismans/armors/spirits/AoW/spells/keys
+
+Reference files:
+- `data/deliton_json/*.json` — upstream source (4 files downloaded, 11 more available from `raw.githubusercontent.com/deliton/eldenring-api/main/api/public/data/`)
+- `data/kaggle/*.csv` — same content as deliton in CSV form (15 files, already local)
+- `data/weapon_acquisition.json` — gold-standard schema + 56 verified pre-Margit weapons
+- `data/talisman_acquisition.json` — gold-standard schema + 21 verified pre-Margit talismans
+- `tc_next/engine/legacy_bundle.js` — engine module, reads whichever data files we canonicalize
+
+State continuity:
+- L41 Wretch Pure STR playthrough is paused; resume R4 Limgrave cleanup once tc_next has a usable Journey view (Phase D)
+- Memory files current in `memory/project_playtest_state.md`
+- Engine is v3.15-calibrated; nothing in Phase B changes engine math
 
 ---
 

@@ -120,7 +120,18 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ## FILE STRUCTURE
 
-**File:** `Tarnished_Companion_v3.9.html` | **Lines:** 5,893 | **Size:** ~1.4 MB
+**Active baseline (v4.0.0-alpha, Phase A complete 2026-04-20):** `tc_next/` portable bundle
+  - `tc_next/index.html` — shell, loads React vendor + legacy_inline + main
+  - `tc_next/app/legacy_inline.js` — 1.3MB verbatim port of legacy inline script (split into views in Phase D)
+  - `tc_next/app/main.js` — mount shim with error boundaries
+  - `tc_next/app/vendor/react.production.min.js` + `react-dom.production.min.js` — React 18.2.0 UMD bundled locally
+  - `tc_next/engine/legacy_bundle.js` — 55.9KB, 46 engine functions + 66 data constants, node-loadable via `require()`
+  - `tc_next/data/*.json` — 72 files (2.35MB) engine-subset canonical data (to be expanded in Phase B)
+  - `tc_next/start.{py,js,bat,sh}` — cross-platform launchers (Python preferred, Node fallback)
+  - Runs via `python start.py` (or double-click `start.bat`) → http://127.0.0.1:8000
+  - Parity with legacy HTML: 93/93 PASS (`scripts/phase_a_parity.js`)
+
+**Legacy baseline (preserved for reference):** `Tarnished_Companion_v3.9.html` | **Lines:** 5,893 | **Size:** ~1.4 MB
 
 | Section | Lines | Notes |
 |---|---|---|
