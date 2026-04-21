@@ -104,6 +104,35 @@ const EXTRACT = [
   { name: 'ACHIEVEMENTS',          file: 'achievements.json' },
   { name: 'ENDING_DATA',           file: 'ending_data.json' },
   { name: 'QUESTS',                file: 'quests.json' },
+  { name: 'ENDINGS',               file: 'endings.json' },
+
+  // Engine auxiliary lookup tables (referenced by engine functions)
+  { name: 'ENG_WEAPON_NAMES',      file: 'eng_weapon_names.json' },
+  { name: 'WEAPON_INDEX',          file: 'weapon_index.json' },
+  { name: 'ENG_AFFINITY_NAMES',    file: 'eng_affinity_names.json' },
+  { name: 'ENG_DMG_NAMES',         file: 'eng_dmg_names.json' },
+  { name: 'ENG_DMG_COLORS',        file: 'eng_dmg_colors.json' },
+  { name: 'ENG_BOSS_LIST',         file: 'eng_boss_list.json' },
+  { name: 'BOSS_ENG_MAP',          file: 'boss_eng_map.json' },
+  { name: 'BOSSES_BASE',           file: 'bosses_base.json' },
+  { name: 'BOSSES_DLC',            file: 'bosses_dlc.json' },
+  { name: 'SCALE_MULT',            file: 'scale_mult.json' },
+
+  // Ammunition
+  { name: 'AMMO_ARROWS',           file: 'ammo_arrows.json' },
+  { name: 'AMMO_BOLTS',            file: 'ammo_bolts.json' },
+  { name: 'AMMO_GREAT_ARROWS',     file: 'ammo_great_arrows.json' },
+  { name: 'AMMO_GREAT_BOLTS',      file: 'ammo_great_bolts.json' },
+  { name: 'AMMO_FOR_WEAPON',       file: 'ammo_for_weapon.json' },
+
+  // UI-adjacent but referenced by engine/UI helpers
+  { name: 'STAGGER_COLORS',        file: 'stagger_colors.json' },
+  { name: 'STATUS_NAMES',          file: 'status_names.json' },
+  { name: 'STATUS_COLORS',         file: 'status_colors.json' },
+  { name: 'CLASS_COLORS',          file: 'class_colors.json' },
+  { name: 'CLASS_DESCS',           file: 'class_descs.json' },
+  { name: 'CATEGORIES',            file: 'categories.json' },
+  { name: 'DASH_CATS',             file: 'dash_cats.json' },
 ];
 
 const summary = [];
