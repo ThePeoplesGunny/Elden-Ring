@@ -1,0 +1,11 @@
+/* Placeholder — styles will be ported from legacy HTML in Phase A.4.
+   Keeping this minimal so the shell loads cleanly during migration. */
+:root {
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: #111;
+  color: #ddd;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
