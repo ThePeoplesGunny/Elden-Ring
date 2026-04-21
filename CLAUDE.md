@@ -23,9 +23,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v4.0.0-alpha (Phase A complete — architecture migration)
+**Version:** v4.0.0-alpha (Phase B.1 weapons ingested)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Session close 2026-04-20: Phase A complete, docs aligned for clean pickup
-**Next task:** Phase B — data population. Ingest deliton/Kaggle JSON into normalized data/*.json per REWRITE_PLAN §5. Merge verified Fextralife harvest (data/weapon_acquisition.json, data/talisman_acquisition.json) as acquisition source-of-truth. Begin weapons-first.
+**Last completed task:** Phase B.1 — weapons ingestion. `data/weapons.json` canonical: 306 weapons (307 deliton − 1 Erdtree Seal duplicate), Fextralife harvest 56/56 merged via name-match (with 19 case-only + 1 punctuation name normalizations to engine canonical). Engine cross-validation: 238/306 clean, 20 requirement-drift cases reported (mostly deliton empty-name slot drops where engine is authoritative — Siluria's Tree Fai=20, Sword of St. Trina Int=14, etc.), 48 unmatched (17 no base-variant in encoded pool, 31 fully absent from engine — Glintstone staves x10, Hand of Malenia, Serpentbone Blade, Shotel, Cane Sword, Winged Spear, etc. — real engine coverage gaps to backfill).
+**Next task:** Phase B.2 — talismans ingestion (same pattern: deliton → data/talismans.json + merge data/talisman_acquisition.json). Parallel: expand Fextralife weapon harvest from 56 → remaining 250 via targeted sub-agent batches. Engine coverage backfill (48 weapons) deferred until Phase B.2–B.3 reveal whether the same pattern holds for other item classes.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.
