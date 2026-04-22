@@ -175,9 +175,95 @@ Every recommendation is computed from datamined game data. The tool makes no cla
 
 ---
 
+## PHASE B DATA INGESTION
+
+Per REWRITE_PLAN §5 Phase B. Canonical DB-of-record files at `data/*.json`.
+These are the source-of-truth, independent of `tc_next/data/*.json` (engine
+runtime, Phase A output, parity-verified untouched).
+
+**Status as of 2026-04-21:** B.1–B.6 complete (6 of 7 phases). B.7 items remains.
+
+### Canonical data files
+
+| File | Rows | Source | Engine overlay | Fextralife harvest | Commit |
+|---|---|---|---|---|---|
+| `data/weapons.json` | 306 | deliton (307 − 1 dup) | 238/306 in engine | 56/306 | `69bb4eb` |
+| `data/talismans.json` | 98 | deliton (87) ∪ engine (+11 stubs) | 41/98 | 21/98 | `54f5fe6` |
+| `data/armors.json` | 570 | Kaggle (566) ∪ engine (+4 Verdigris stubs) | 71/570 | 0/570 | `af356bf` |
+| `data/sorceries.json` | 72 | Kaggle (71) ∪ engine (+1 stub: Terra Magica) | 14/72 | 0/72 | `4900c51` |
+| `data/incantations.json` | 110 | Kaggle (98) ∪ engine (+12 stubs incl. Golden Vow, Catch Flame) | 33/110 | 0/110 | `4900c51` |
+| `data/ashes_of_war.json` | 90 | Kaggle (89, 1 excluded) ∪ engine (+1 stub) | 15/90 | 0/90 | `f47d590` |
+| `data/spirits.json` | 64 | Kaggle (64) | none | 0/64 | `9e1c5c1` |
+
+**Totals:** 7 files, 1,310 canonical items, ~1MB. Fextralife acquisition: 77/1,310 (6%).
+
+### Ingestion pipeline pattern (generalized across B.1–B.6)
+
+Per-phase: `scripts/phase_bN_ingest_<class>.js` → optional `_merge_acquisition.js`
+→ optional `_validate_<class>.js`. Two or three scripts per class.
+
+Cross-cutting conventions established:
+- **Canonical = source ∪ engine** — when engine has a curated subset with unique
+  fields deliton/Kaggle lack (weight, parsed effect enums, set linkage, etc.),
+  add engine-only entries as stubs (`kaggleId: null` / `delitonId: null`) so
+  canonical is a proper union, not an intersection.
+- **Name normalization** — case-insensitive match against engine canonical form;
+  manual `NAME_CORRECTIONS` map for punctuation-only drift (e.g., "Sword Of St
+  Trina" → "Sword of St. Trina").
+- **Fextralife wins on overlap** — harvested entries (verified) override deliton
+  and engine values for requirements, scaling, weight, etc.
+- **Positional assignment for dirty structured fields** — armor dmgNegation and
+  resistance arrays had corrupted slot names (StrEldenike, 6.1, VS, Pose,
+  Vitality26, Death) but consistent array order; fix by position, not by key.
+- **Report drift, don't auto-fix** — validation scripts log mismatches between
+  Kaggle/deliton and engine (poise, weight, requirements) without mutating
+  data. Fextralife harvest arbitrates.
+
+### Known data-quality issues surfaced by ingestion
+
+**Kaggle/deliton source corruption (not Claude's bugs — source data issues):**
+- Weapons: `Sword Of St Trina` missing period; `Bandit's Curved Sword` has
+  `sp:undefined` (still open from B11 era)
+- Weapons: 20 requirement drifts where deliton dropped `{name:"",amount:X}`
+  malformed empty-name entries (Siluria's Tree Fai=20, Sword of St. Trina
+  Int=14, Marika's Hammer dex=12/fai=19, etc.) — engine authoritative
+- Armors: 52 poise drifts + 58 weight drifts between Kaggle and engine —
+  looks like two game-patch snapshots disagreeing (Black Knife Armor:
+  kaggle poise 14 vs engine 10)
+- Incantations: Ancient Dragons' Lightning Spear kaggle fai=0 (impossible);
+  5 incantations with all-zero requirements (data error)
+- Ashes: `Lost Ashes of War` miscategorized — it's a crafting consumable,
+  not an AoW; excluded from B.5, will re-home to `data/items.json` in B.7
+- AoW: 88/90 rows needed `Ash Of War` → `Ash of War` case fix
+
+**Engine coverage gaps (canonical has rows, engine doesn't):**
+- 31 weapons truly absent from `tc_next/data/weapons_encoded.json`
+  (10 Glintstone staves, Hand of Malenia, Serpentbone Blade, Shotel, Cane
+  Sword, Winged Spear, Rotten Greataxe, Golden Order Seal, Giant's Seal, etc.)
+- 17 weapons in engine name list but no base-variant (affinity -1 or 0)
+  in encoded pool — edge cases in affinity encoding
+- 499 armors not in engine (engine only curates 19 sets × ~4 pieces = 71)
+
+**Fextralife harvest priority list (to unblock drift arbitration):**
+1. Weapons expansion: 56 → 306 (all post-Limgrave regions)
+2. Talismans expansion: 21 → 98
+3. **Armors first-ever harvest: 0 → 570** (highest value — resolves 52+58 drift cases)
+4. Spells first-ever harvest: 0 → 182
+5. AoW first-ever harvest: 0 → 90
+6. Spirits first-ever harvest: 0 → 64
+
+### Phase B remaining
+
+**B.7 — items** (462 Kaggle rows + `data/deliton_json/items.json`). Heterogeneous:
+keys, tears, consumables, crafting tokens, misc. Likely needs sub-categorization
+(`itemType` discriminator). `Lost Ashes of War` re-homes here. Largest single
+class and schema is fuzziest — deserves fresh context to design cleanly.
+
+---
+
 ## IMPLEMENTATION STATE
 
-### What's built and working (engine v3.15 + architecture v4.0.0-alpha, Phase A complete)
+### What's built and working (engine v3.15 + architecture v4.0.0-alpha, Phase A–B.6)
 
 **Active:** `tc_next/` portable bundle | **Legacy preserved:** `Tarnished_Companion_v3.9.html` (5,893 lines)
 

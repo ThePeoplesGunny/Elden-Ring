@@ -26,6 +26,6 @@ Every delivery updates these three artifacts (per global §VI.5):
 **Version:** v4.0.0-alpha (Phase B.1–B.6 ingested: weapons, talismans, armors, spells, AoW, spirits)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** v4.0.0-alpha: Phase B.5 — ashes of war ingestion (90 canonical)
+**Last completed task:** v4.0.0-alpha: Phase B.6 — spirits ingestion (64 canonical)
 **Next task:** Phase B.7 — items (462 Kaggle rows + deliton items.json, heterogeneous: keys/tears/consumables/misc — largest and messiest class, likely needs sub-categorization). Parallel: Fextralife harvest expansion across all classes remains the critical-path unblocker.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.
