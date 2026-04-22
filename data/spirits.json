@@ -1,0 +1,578 @@
+[
+  {
+    "name": "Albinauric Ashes",
+    "kaggleId": "17f698bf108l0i2rc1o532xfaytwzl",
+    "fpCost": 53,
+    "hpCost": 0,
+    "effect": "Summons two Albinauric spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two Albinaurics.",
+    "acquisition": null
+  },
+  {
+    "name": "Ancestral Follower Ashes",
+    "kaggleId": "17f69c5e05fl0i2rc2ni1ozwjqbtm",
+    "fpCost": 63,
+    "hpCost": 0,
+    "effect": "Summons ancestral follower spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of an ancestral follower.",
+    "acquisition": null
+  },
+  {
+    "name": "Archer Ashes",
+    "kaggleId": "17f69857498l0i2rc3b57qyly3sydo",
+    "fpCost": 57,
+    "hpCost": 0,
+    "effect": "Summons three archer spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon three archer spirits.",
+    "acquisition": null
+  },
+  {
+    "name": "Avionette Soldier Ashes",
+    "kaggleId": "17f69962123l0i2rc3wxphqaa3codo",
+    "fpCost": 67,
+    "hpCost": 0,
+    "effect": "Summon the spirits of two avionette soldiers",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two avionette soldiers. Spirits of marionette soldiers with avian features that were created to serve a sorcerer. Equipped with long-hafted scythes, they also attack from the skies by lobbing fire pots. Can sometimes malfunction when damaged.",
+    "acquisition": null
+  },
+  {
+    "name": "Banished Knight Oleg",
+    "kaggleId": "17f69ac4bd0l0i2rc618tsrggfp3kh",
+    "fpCost": 100,
+    "hpCost": 0,
+    "effect": "Summons Banished Knight Oleg spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Oleg, the Banished Knight.",
+    "acquisition": null
+  },
+  {
+    "name": "Demi-human Ashes",
+    "kaggleId": "17f69beb243l0i2rcptdnjy0wl2nxj",
+    "fpCost": 69,
+    "hpCost": 0,
+    "effect": "Summons five demi-human spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of five demi-humans.",
+    "acquisition": null
+  },
+  {
+    "name": "Fanged Imp Ashes",
+    "kaggleId": "17f6984b305l0i2rcqq95m4bqpnb0t",
+    "fpCost": 50,
+    "hpCost": 0,
+    "effect": "Summons two fanged imp spirits",
+    "description": "Ashes remains in which spirits yet dwell. Use to summon two fanged imp spirits.",
+    "acquisition": null
+  },
+  {
+    "name": "Finger Maiden Therolina Puppet",
+    "kaggleId": "17f69776c1dl0i2rcsqvsjrwpwre1p",
+    "fpCost": 82,
+    "hpCost": 0,
+    "effect": "Summons spirit of Finger Maiden Therolina",
+    "description": "One of Seluvis's puppets.",
+    "acquisition": null
+  },
+  {
+    "name": "Giant Rat Ashes",
+    "kaggleId": "17f69f4e16bl0i2rctgy4eba6y1dq",
+    "fpCost": 0,
+    "hpCost": 0,
+    "effect": "Summons three giant rat spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of three giant rats.",
+    "acquisition": null
+  },
+  {
+    "name": "Black Knife Tiche",
+    "kaggleId": "17f6970a4e0l0i2rcxy5mhe8469uy7",
+    "fpCost": 132,
+    "hpCost": 0,
+    "effect": "Summons spirit of Black Knife Tiche",
+    "description": "Legendary ashen remains. Use to summon the spirit of Black Knife Tiche.",
+    "acquisition": null
+  },
+  {
+    "name": "Glintstone Sorcerer Ashes",
+    "kaggleId": "17f69e84114l0i2rdbhn73i6cz73tm",
+    "fpCost": 49,
+    "hpCost": 0,
+    "effect": "Summons glintstone sorcerer spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a glintstone sorcerer.",
+    "acquisition": null
+  },
+  {
+    "name": "Godrick Soldier Ashes",
+    "kaggleId": "17f69d490f4l0i2rdevcj5cyogvhec",
+    "fpCost": 54,
+    "hpCost": 0,
+    "effect": "Summons two Godrick soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two of Godrick's soldiers.",
+    "acquisition": null
+  },
+  {
+    "name": "Jarwight Puppet",
+    "kaggleId": "17f69b77adbl0i2rdg8c9ycaad36y5",
+    "fpCost": 60,
+    "hpCost": 0,
+    "effect": "Summons Jarwight spirit",
+    "description": "One of Seluvis' puppets. Use to summon the spirit of a jarwight.",
+    "acquisition": null
+  },
+  {
+    "name": "Kaiden Sellsword Ashes",
+    "kaggleId": "17f69dc6c64l0i2rdkqrx6suz8t4k",
+    "fpCost": 88,
+    "hpCost": 0,
+    "effect": "Summons Kaiden Sellsword spirit.",
+    "description": "Ashen remains in which spirits yet dwell.Use to summon the spirit of a Kaiden sellsword.",
+    "acquisition": null
+  },
+  {
+    "name": "Greatshield Soldier Ashes",
+    "kaggleId": "17f69f56843l0i2rdofm9tav197rzq",
+    "fpCost": 74,
+    "hpCost": 0,
+    "effect": "Summons five greatshield soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon five greatshield soldier spirits.",
+    "acquisition": null
+  },
+  {
+    "name": "Lhutel The Headless",
+    "kaggleId": "17f696cd1c3l0i2rdwfiwxjblacnad",
+    "fpCost": 104,
+    "hpCost": 0,
+    "effect": "Summons spirit of Lhutel the Headless",
+    "description": "Legendary ashen remains. Use to summon the spirit of Lhutel the Headless.",
+    "acquisition": null
+  },
+  {
+    "name": "Mad Pumpkin Head Ashes",
+    "kaggleId": "17f698ab785l0i2re2gfjekyqwlm8j",
+    "fpCost": 110,
+    "hpCost": 0,
+    "effect": "Summon the spirit of a mad pumpkin head",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a mad pumpkin head. Spirit of a mad soldier with a large, brawny physique. Though he has stifled his panic within the dark confines of his helmet, he rampages as if driven mad when agitated by bloodshed or the humming of insects. This mad soldier is all that is left of a broken gladiator.",
+    "acquisition": null
+  },
+  {
+    "name": "Marionette Soldier Ashes",
+    "kaggleId": "17f69c24d62l0i2re6lrc9a3zopybr",
+    "fpCost": 67,
+    "hpCost": 0,
+    "effect": "Summons two marionette soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two marionette soldiers.",
+    "acquisition": null
+  },
+  {
+    "name": "Lone Wolf Ashes",
+    "kaggleId": "17f69718dccl0i2rebxuwsfendz6e",
+    "fpCost": 55,
+    "hpCost": 0,
+    "effect": "Summons three lone wolf spirits.",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of three lone wolves.",
+    "acquisition": null
+  },
+  {
+    "name": "Mimic Tear Ashes",
+    "kaggleId": "17f69b5bc8dl0i2redg5p2ojmuksvu",
+    "fpCost": 0,
+    "hpCost": 660,
+    "effect": "Summons mimic tear spirit",
+    "description": "Legendary ashen remains. Use to summon the spirit of a mimic tear. Summoning consumes HP rather than FP.",
+    "acquisition": null
+  },
+  {
+    "name": "Nightmaiden & Swordtress Puppets",
+    "kaggleId": "17f69a3cc86l0i2rej3i1ddya1oiq9",
+    "fpCost": 97,
+    "hpCost": 0,
+    "effect": "Summons nightmaiden & swordstress spirits",
+    "description": "An old puppet crafted in the Eternal City.",
+    "acquisition": null
+  },
+  {
+    "name": "Noble Sorcerer Ashes",
+    "kaggleId": "17f69a2890el0i2renh0xht1xcqkfe",
+    "fpCost": 11,
+    "hpCost": 0,
+    "effect": "Summons noble sorcerer spirit.",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a noble sorcerer. Spirit of a nobleman who once asked to be given a place at Raya Lucaria to learn glintstone sorceries. His talents were insufficient to be worthy of donning the stone crown, however, and he is only capable ofusing the most rudimentary sorcery.",
+    "acquisition": null
+  },
+  {
+    "name": "Nomad Ashes",
+    "kaggleId": "17f69cba9a9l0i2reprf9ja1xfjpg",
+    "fpCost": 61,
+    "hpCost": 0,
+    "effect": "Summons nomad spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a nomad.",
+    "acquisition": null
+  },
+  {
+    "name": "Omenkiller Rollo",
+    "kaggleId": "17f69b8b45cl0i2revtxehcf0mla2c",
+    "fpCost": 113,
+    "hpCost": 0,
+    "effect": "Summons spirit of Omenkiller Rollo",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Omenkiller Rollo.",
+    "acquisition": null
+  },
+  {
+    "name": "Raya Lucaria Soldier Ashes",
+    "kaggleId": "17f69adba9el0i2rf0sm2c9jcpc2m",
+    "fpCost": 59,
+    "hpCost": 1,
+    "effect": "Summons three Raya Lucaria soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of three Raya Lucaria soldiers.",
+    "acquisition": null
+  },
+  {
+    "name": "Page Ashes",
+    "kaggleId": "17f69f00316l0i2rf7rq3l4lzz67b",
+    "fpCost": 81,
+    "hpCost": 0,
+    "effect": "Summons page spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a page.",
+    "acquisition": null
+  },
+  {
+    "name": "Skeletal Militiaman Ashes",
+    "kaggleId": "17f69a1eaddl0i2rfd40p6zlanz41sf",
+    "fpCost": 44,
+    "hpCost": 0,
+    "effect": "Summons two skeletal militiaman spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two skeletal militiamen.",
+    "acquisition": null
+  },
+  {
+    "name": "Spirit Jellyfish Ashes",
+    "kaggleId": "17f697066c0l0i2rfjc7ykblsby5ox",
+    "fpCost": 31,
+    "hpCost": 0,
+    "effect": "Summons spirit jellyfish.",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon a spirit jellyfish.",
+    "acquisition": null
+  },
+  {
+    "name": "Skeletal Bandit Ashes",
+    "kaggleId": "17f69c7c032l0i2rfjqjylurrvvo1l",
+    "fpCost": 22,
+    "hpCost": 0,
+    "effect": "Summons skeletal bandit spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of a skeletal bandit.",
+    "acquisition": null
+  },
+  {
+    "name": "Stormhawk Deenh",
+    "kaggleId": "17f69ecd388l0i2rfmox0cljjuuri",
+    "fpCost": 47,
+    "hpCost": 0,
+    "effect": "Summons spirit of Stormhawk Dreenh",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Deenh the Stormhawk.",
+    "acquisition": null
+  },
+  {
+    "name": "Twinsage Sorcerer Ashes",
+    "kaggleId": "17f69bf3136l0i2rfs0407qepaxpho",
+    "fpCost": 89,
+    "hpCost": 0,
+    "effect": "Summons Twinsage sorcerer spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a Twinsage sorcerer.",
+    "acquisition": null
+  },
+  {
+    "name": "Wandering Noble Ashes",
+    "kaggleId": "17f69871c91l0i2rfwnjft8senytx",
+    "fpCost": 28,
+    "hpCost": 0,
+    "effect": "Summons five wandering noble spirits.",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of five wandering nobles.",
+    "acquisition": null
+  },
+  {
+    "name": "Rotten Stray Ashes",
+    "kaggleId": "17f69732716l0i2rg3m2el64hvaq0m",
+    "fpCost": 35,
+    "hpCost": 0,
+    "effect": "Summon rotten stray spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a rotten stray. Spirit of a stray dog corrupted by the scarlet rot.  Through it is only a small creature, it is as violent as it is nimble, and its fangs fester with poisonous rot",
+    "acquisition": null
+  },
+  {
+    "name": "Warhawk Ashes",
+    "kaggleId": "17f69e64c4al0i2rg6ksmiwxmcgad",
+    "fpCost": 52,
+    "hpCost": 0,
+    "effect": "Summons warhawk spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a warhawk. Spirit of a Stormveil warhawk, the talons of which have been sliced off so that razor-fine swords could be grafted in their place. With its lord vanquished, and its wings wounded, the hawk perished as it solemnly gazed at its former home. The storm is a warhawk's cradle.",
+    "acquisition": null
+  },
+  {
+    "name": "Latenna The Albinauric",
+    "kaggleId": "17f6978cd87l0i2rgbupusbrmdqmhl",
+    "fpCost": 74,
+    "hpCost": 0,
+    "effect": "Summons the spirit of Latenna the Albinauric",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Latenna the Albinauric.",
+    "acquisition": null
+  },
+  {
+    "name": "Winged Misbegotten Ashes",
+    "kaggleId": "17f69ba4ffal0i2rgd5rdlvueh3v0q",
+    "fpCost": 37,
+    "hpCost": 0,
+    "effect": "Summons winged misbegotten spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a winged misbegotten.",
+    "acquisition": null
+  },
+  {
+    "name": "Bloodhound Knight Floh",
+    "kaggleId": "17f69c882dal0i2rgmqlt6en3tjlqm",
+    "fpCost": 95,
+    "hpCost": 0,
+    "effect": "Summons spirit of Bloodhound Knight Floh",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Floh, the Bloodhound Knight.",
+    "acquisition": null
+  },
+  {
+    "name": "Perfumer Tricia",
+    "kaggleId": "17f69b927b9l0i2rgoqeiknjm21fba",
+    "fpCost": 78,
+    "hpCost": 0,
+    "effect": "Summons spirit of Perfumer Tricia",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Tricia, the perfumer.",
+    "acquisition": null
+  },
+  {
+    "name": "Leyndell Soldier Ashes",
+    "kaggleId": "17f69d471b4l0i2rgvwohtrk19bpy",
+    "fpCost": 64,
+    "hpCost": 0,
+    "effect": "Summons two Leyndell soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two Leyndell soldiers. Spirits of soldiers each equipped with a spear and greatshield. The soldiers of Leyndell fight their battles defensively. During the Shattering, they were the ramparts that fortified the royal capital.",
+    "acquisition": null
+  },
+  {
+    "name": "Miranda Sprout Ashes",
+    "kaggleId": "17f69c6b7d1l0i2rgxuyvekun2pas",
+    "fpCost": 0,
+    "hpCost": 185,
+    "effect": "Summons five miranda sprouts",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of five miranda sprouts. Summoning consumes HP rather than FP. Spirits of sweet little miranda flowers, carnivorous blossoms that feed upon human flesh. They creep slowly, scattering toxic pollen. Vulnerable to fire—do take care of the little darlings",
+    "acquisition": null
+  },
+  {
+    "name": "Vulgar Militia Ashes",
+    "kaggleId": "17f6987842cl0i2rh0v17nw2hyrdslh",
+    "fpCost": 70,
+    "hpCost": 0,
+    "effect": "Summons three vulgar Militia spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of three vulgar militiamen. Spirits of the vulgar militia who wield long-hafted, serrated hatchets. These brutal weapons are particularly effective at causing blood loss to opponents. In the Lands Between, the small were scorned, and so they formed their vulgar militia as a means to make a living, albeit in ignominy.",
+    "acquisition": null
+  },
+  {
+    "name": "Land Squirt Ashes",
+    "kaggleId": "17f69be5a2fl0i2rh6qmlpa2s0tpao",
+    "fpCost": 0,
+    "hpCost": 240,
+    "effect": "Summons three land squirts",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of three land squirts Summoning consumes HP rather than FP. These spirits appear some distance from the summoner. The firm, fleshy tubes of the creatures remain rooted to the spot, spraying poisonous liquid over their surroundings",
+    "acquisition": null
+  },
+  {
+    "name": "Kindred Of Rot Ashes",
+    "kaggleId": "17f69a4c036l0i2rhgqvv4avdj310g",
+    "fpCost": 73,
+    "hpCost": 0,
+    "effect": "Summons Kindred of Rot spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon a spirit of the Kindred of Rot. This spirit takes the form of a crawling pest, its chitinous body making a dry rustling sound. Attacks enemies by secreting sticky threads. The Kindred of Rot are the servants of the Goddess of Rot—servants that have been forsaken.",
+    "acquisition": null
+  },
+  {
+    "name": "Ancient Dragon Knight Kristoff Ashes",
+    "kaggleId": "17f69f84b01l0i2rhicosayr42hna",
+    "fpCost": 108,
+    "hpCost": 0,
+    "effect": "Summons spirit of Ancient Dragon Knight Kristoff",
+    "description": "Legendary ashen remains. Use to summon the spirit of Kristoff, the Ancient Dragon Knight. Spirit of Kristoff, an honorable knight of Leyndell who was also a devout worshipper of the ancient dragons. His skills strike down foes with thunderbolts, the dragons' weapon of choice. After the First Defense of Leyndell, Kristoff earned the hero's honor of Erdtree Burial for the feat of capturing Godefroy the Grafted.",
+    "acquisition": null
+  },
+  {
+    "name": "Azula Beastman Ashes",
+    "kaggleId": "17f69c1b5ebl0i2rhm76pm5x3fs02f",
+    "fpCost": 102,
+    "hpCost": 0,
+    "effect": "Summons two Azula beastman spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two Azula beastmen. Spirits of beastmen from doomed Farum Azula, the slowly crumbling ruins in the skies. These ruins are said to be the remains of a giant mausoleum enshrining an ancient dragon, guarded by chosen beastmen who wield weapons clad in lightning.",
+    "acquisition": null
+  },
+  {
+    "name": "Banished Knight Engvall Ashes",
+    "kaggleId": "17f69bc440el0i2rho6izbci2my7fi",
+    "fpCost": 100,
+    "hpCost": 0,
+    "effect": "Summons spirit of Banished Knight Engvall",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Engvall, the Banished Knight. One of the two knights dubbed the Wings of the Storm. Despite his banishment, he rejected the invitation of the Grace-Given Lord, instead keeping watch over a masterless castle for many years, gaining renown as a hero of the fringes.",
+    "acquisition": null
+  },
+  {
+    "name": "Battlemage Hugues Ashes",
+    "kaggleId": "17f698e5162l0i2rhsg27fvvcchhh8",
+    "fpCost": 122,
+    "hpCost": 0,
+    "effect": "Summons spirit of Battlemage Hugues",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Battlemage Hugues. Hugues came from Sellia to study the Haima Conspectus at the academy, where he became a battlemage. Haima scholars seek to quell conflict with cannon fire and the gavel, but Hugues developed a longing for it.",
+    "acquisition": null
+  },
+  {
+    "name": "Blackflame Monk Amon Ashes",
+    "kaggleId": "17f69de3343l0i2ri02qpv643ynu3",
+    "fpCost": 115,
+    "hpCost": 0,
+    "effect": "Summons spirit of Blackflame Monk Amon",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Amon, the Blackflame Monk. Amon swore fealty to the god-slaying black flame, and so became the first fire monk to turn traitor. Or perhaps it is better said that he fled from the Giants' Flame—out of cowardice.",
+    "acquisition": null
+  },
+  {
+    "name": "Clayman Ashes",
+    "kaggleId": "17f69cb98c7l0i2ri0lmguxpofwvp",
+    "fpCost": 77,
+    "hpCost": 0,
+    "effect": "Summons two clayman spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two claymen. Bowed with age, these spirits are sluggish but hard to stagger. The warped remains of priests who searched for revelation in service of the ancient dynasty, they employ two sorceries that produce smaller and larger bubbles.",
+    "acquisition": null
+  },
+  {
+    "name": "Crystalian Ashes",
+    "kaggleId": "17f69c7c8b5l0i2ri969yh285riaw5",
+    "fpCost": 101,
+    "hpCost": 0,
+    "effect": "Summons Crystalian spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a Crystalian. Spirit that wields round crystalline blades, both big and small. Its sturdy body, itself hewn from crystal long ago, is hard enough to blunt its opponent's blades, but blows from bludgeoning weapons can shatter it easily.",
+    "acquisition": null
+  },
+  {
+    "name": "Depraved Perfumer Carmaan Ashes",
+    "kaggleId": "17f69c971e5l0i2ricvamdlfi9hd4e",
+    "fpCost": 124,
+    "hpCost": 0,
+    "effect": "Summons spirit of Depraved Perfumer Carmaan",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of Carmaan, the depraved perfumer. Depraved perfumers practice their art for themselves alone. Carmaan was a notably formidable perfumer whose strength rivaled that of heroes, and it is said that he was in search of a secret physick of revivification.",
+    "acquisition": null
+  },
+  {
+    "name": "Cleanrot Knight Finlay Ashes",
+    "kaggleId": "17f699877aal0i2rifkvslfle9b9ha",
+    "fpCost": 127,
+    "hpCost": 0,
+    "effect": "Summons spirit of Cleanrot Knight Finlay",
+    "description": "Legendary ashen remains. Use to summon the spirit of the Cleanrot Knight Finlay. Finlay was one of the few survivors of the Battle of Aeonia, who in an unimaginable act of heroism carried the slumbering demigod Malenia all the way back to the Haligtree. She managed the feat alone, fending off all manner of foes along the way.",
+    "acquisition": null
+  },
+  {
+    "name": "Dung Eater Puppet",
+    "kaggleId": "17f699d3e8fl0i2rijbhqroryzjjtm",
+    "fpCost": 118,
+    "hpCost": 0,
+    "effect": "Summons spirit of the Dung Eater",
+    "description": "One of Seluvis's puppets. Use to summon the spirit of the Dung Eater. Spirit of a man who murdered thousands and defiled their corpses with the Seedbed Curse. Wields a spine greatsword and hurls curses. The Dung Eater despaired at how he met his end. How hideous and sinister this puppet is, and yet, its utter despair invites one to care for it.",
+    "acquisition": null
+  },
+  {
+    "name": "Fire Monk Ashes",
+    "kaggleId": "17f69bd2cd3l0i2riv19z68urypaam",
+    "fpCost": 85,
+    "hpCost": 0,
+    "effect": "Summons Fire Monk spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a Fire Monk. Spirit of a stout monk who monitored the Giants' Flame. Versed in fire incantations, and himself steeled against fire. Though he was charged with keeping watch over the Flame, after many years of solemn duty, he has succumbed to its allure.",
+    "acquisition": null
+  },
+  {
+    "name": "Dolores The Sleeping Arrow Puppet",
+    "kaggleId": "17f69f7b11fl0i2rix87eagayvg5or",
+    "fpCost": 87,
+    "hpCost": 0,
+    "effect": "Summons spirit of Solores the Sleeping Arrow",
+    "description": "One of Seluvis's favorite puppets. Use to summon the spirit of Dolores the Sleeping Arrow Spirit of a handsome archer who dressed in the style of a man. Called the Silent Hunter by some, she fires St. Trina's arrows from her shortbow. Dolores once belonged to the Roundtable Hold, where she was both a critic and a friend of Gideon the All-Knowing. It was because of her that he and Seluvis went their separate ways.",
+    "acquisition": null
+  },
+  {
+    "name": "Haligtree Soldier Ashes",
+    "kaggleId": "17f69b464d7l0i2riyiocraa9z2guc",
+    "fpCost": 66,
+    "hpCost": 0,
+    "effect": "Summons four Haligtree soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of four Haligtree soldiers. Spirits of common soldiers who carry the sacred light. When weakened, they explode to deliver a last-ditch attack. This was the bitter revelation discovered by the desperate soldiers who awaited the return of their lord to the rotted Haligtree. May the flash of our deaths guide Miquella's return.",
+    "acquisition": null
+  },
+  {
+    "name": "Man-serpent Ashes",
+    "kaggleId": "17f69bda110l0i2rj2fpyaeegsbkdn",
+    "fpCost": 62,
+    "hpCost": 0,
+    "effect": "Summons man-serpent spirit",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirit of a man-serpent. Spirit of a deformed man-serpent that wields a whip of magma. It is said that long ago, the elder serpent that dwelled on Mt. Gelmir devoured a demigod, and the birth of the man-serpents followed.",
+    "acquisition": null
+  },
+  {
+    "name": "Mausoleum Soldier Ashes",
+    "kaggleId": "17f69ab4977l0i2rj50c2ffeu71unu",
+    "fpCost": 75,
+    "hpCost": 0,
+    "effect": "Summons five mausoleum soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of five mausoleum soldiers. Spirits of five headless soldiers who confound foes by disappearing and reappearing at will. The mausoleum is where the bodies of soulless demigods are lain to rest, and these soldiers followed their masters into Death by severing their own heads from their bodies.",
+    "acquisition": null
+  },
+  {
+    "name": "Oracle Envoy Ashes",
+    "kaggleId": "17f69663925l0i2rjhexap3mp9otq",
+    "fpCost": 72,
+    "hpCost": 0,
+    "effect": "Summons four Oracle Envoy spirits",
+    "description": "Ashen Remains in which spirits yet dwell.",
+    "acquisition": null
+  },
+  {
+    "name": "Putrid Corpse Ashes",
+    "kaggleId": "17f69b254ffl0i2rjlmj6dtmbbwve",
+    "fpCost": 40,
+    "hpCost": 0,
+    "effect": "Summons four putrid corpse spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of four putrid corpses.",
+    "acquisition": null
+  },
+  {
+    "name": "Radahn Soldier Ashes",
+    "kaggleId": "17f69ce3ebfl0i2rjo4bbtu73ia5tu",
+    "fpCost": 71,
+    "hpCost": 0,
+    "effect": "Summons two Radahn Soldier spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of two of Radahn's soldiers.",
+    "acquisition": null
+  },
+  {
+    "name": "Redmane Knight Ogha",
+    "kaggleId": "17f69eb8a3dl0i2rjqdm5kzaa1sd9k",
+    "fpCost": 106,
+    "hpCost": 0,
+    "effect": "Summons spirit of Redmane Knight Ogha",
+    "description": "Legendary ashen remains. Use to summon the spirit of Ogha, the Redmane Knight. Spirit of a mighty knight versed in the use of a greatbow. A valiant warrior who will attack immediately after being summoned. The longest-serving member of the Redmane Knights, Ogha studied techniques to manipulate gravity alongside Radahn. May use a rain of gravitational arrows in response to a war cry, but only once.",
+    "acquisition": null
+  },
+  {
+    "name": "Nepheli Loux Puppet",
+    "kaggleId": "17f69abc3b9l0i2rjr6m5bbrtexdp",
+    "fpCost": 90,
+    "hpCost": 0,
+    "effect": "Summons spirit of Nepheli Loux",
+    "description": "One of Seluvis's favorite puppets. Use to summon the spirit of Nepheli Loux. Puppet of a warrior who was betrayed by her pure heart. Wields a Stormhawk Axe in both hands and uses the Thunderstorm skill. A diamond in the rough, deserving of special care lest its potential be squandered. Nepheli Loux truly was a warrior.",
+    "acquisition": null
+  },
+  {
+    "name": "Soldjars Of Fortune Ashes",
+    "kaggleId": "17f69ddaf0fl0i2rjyrykqzpcxfre",
+    "fpCost": 0,
+    "hpCost": 135,
+    "effect": "Summons three little living jar spirits",
+    "description": "Ashen remains in which spirits yet dwell. Use to summon the spirits of three little living jars. Summoning consumes HP rather than FP. These reckless spirits sacrifice themselves to vanquish their summoner's foes, and explode upon death. Though their bravery is admirable, their explosions can harm friend as well as foe, and they will also immediately explode on contact with fire. \"Tell the others—tell them how brightly a fire jar burns.\"",
+    "acquisition": null
+  }
+]
