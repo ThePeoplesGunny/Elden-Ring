@@ -11,24 +11,114 @@
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9",
       "complete": true,
       "inventory": [
-        { "name": "Throwing Dagger", "runes": 40, "stock": "infinite", "category": "consumable" },
-        { "name": "Telescope", "runes": 500, "stock": 1, "category": "key_item" },
-        { "name": "Furlcalling Finger Remedy", "runes": 1000, "stock": 5, "category": "multiplayer" },
-        { "name": "Cracked Pot", "runes": 300, "stock": 3, "category": "crafting_material" },
-        { "name": "Crafting Kit", "runes": 300, "stock": 1, "category": "key_item" },
-        { "name": "Nomadic Warrior's Cookbook [1]", "runes": 500, "stock": 1, "category": "cookbook" },
-        { "name": "Nomadic Warrior's Cookbook [2]", "runes": 500, "stock": 1, "category": "cookbook" },
-        { "name": "Missionary's Cookbook [1]", "runes": 1000, "stock": 1, "category": "cookbook" },
-        { "name": "Arrow", "runes": 20, "stock": "infinite", "category": "ammo" },
-        { "name": "Bolt", "runes": 40, "stock": "infinite", "category": "ammo" },
-        { "name": "Torch", "runes": 200, "stock": 1, "category": "weapon" },
-        { "name": "Large Leather Shield", "runes": 600, "stock": 1, "category": "shield" },
-        { "name": "Chain Coif", "runes": 1000, "stock": 1, "category": "armor" },
-        { "name": "Chain Armor", "runes": 1500, "stock": 1, "category": "armor" },
-        { "name": "Chain Gauntlets", "runes": 1000, "stock": 1, "category": "armor" },
-        { "name": "Chain Leggings", "runes": 1000, "stock": 1, "category": "armor" },
-        { "name": "Note: Flask of Wondrous Physick", "runes": 200, "stock": 1, "category": "note" },
-        { "name": "Note: Waypoint Ruins", "runes": 200, "stock": 1, "category": "note" }
+        {
+          "name": "Throwing Dagger",
+          "runes": 40,
+          "stock": "infinite",
+          "category": "consumable"
+        },
+        {
+          "name": "Telescope",
+          "runes": 500,
+          "stock": 1,
+          "category": "key_item"
+        },
+        {
+          "name": "Furlcalling Finger Remedy",
+          "runes": 1000,
+          "stock": 5,
+          "category": "multiplayer"
+        },
+        {
+          "name": "Cracked Pot",
+          "runes": 300,
+          "stock": 3,
+          "category": "crafting_material"
+        },
+        {
+          "name": "Crafting Kit",
+          "runes": 300,
+          "stock": 1,
+          "category": "key_item"
+        },
+        {
+          "name": "Nomadic Warrior's Cookbook [1]",
+          "runes": 500,
+          "stock": 1,
+          "category": "cookbook"
+        },
+        {
+          "name": "Nomadic Warrior's Cookbook [2]",
+          "runes": 500,
+          "stock": 1,
+          "category": "cookbook"
+        },
+        {
+          "name": "Missionary's Cookbook [1]",
+          "runes": 1000,
+          "stock": 1,
+          "category": "cookbook"
+        },
+        {
+          "name": "Arrow",
+          "runes": 20,
+          "stock": "infinite",
+          "category": "ammo"
+        },
+        {
+          "name": "Bolt",
+          "runes": 40,
+          "stock": "infinite",
+          "category": "ammo"
+        },
+        {
+          "name": "Torch",
+          "runes": 200,
+          "stock": 1,
+          "category": "weapon"
+        },
+        {
+          "name": "Large Leather Shield",
+          "runes": 600,
+          "stock": 1,
+          "category": "shield"
+        },
+        {
+          "name": "Chain Coif",
+          "runes": 1000,
+          "stock": 1,
+          "category": "armor"
+        },
+        {
+          "name": "Chain Armor",
+          "runes": 1500,
+          "stock": 1,
+          "category": "armor"
+        },
+        {
+          "name": "Chain Gauntlets",
+          "runes": 1000,
+          "stock": 1,
+          "category": "armor"
+        },
+        {
+          "name": "Chain Leggings",
+          "runes": 1000,
+          "stock": 1,
+          "category": "armor"
+        },
+        {
+          "name": "Note: Flask of Wondrous Physick",
+          "runes": 200,
+          "stock": 1,
+          "category": "note"
+        },
+        {
+          "name": "Note: Waypoint Ruins",
+          "runes": 200,
+          "stock": 1,
+          "category": "note"
+        }
       ]
     },
     {
@@ -40,12 +130,48 @@
       "complete": false,
       "completeness_note": "Bell-bearing-gated inventory with ~300+ items. Each bell bearing (Nomadic Merchant's [1-3], Smithing-Stone Miner's [1-4], Somberstone Miner's [1-5], Rogier's, etc.) unlocks a vendor subset. Sample entries only; full breakdown requires per-bell-bearing harvest.",
       "inventory": [
-        { "name": "Arrow", "runes": 20, "stock": "infinite", "category": "ammo", "prereq": null },
-        { "name": "Rune Arc", "runes": 4000, "stock": 5, "category": "consumable", "prereq": null },
-        { "name": "Ash of War: Carian Greatsword", "runes": 2500, "stock": 1, "category": "ash_of_war", "prereq": "Rogier's Bell Bearing" },
-        { "name": "Armorer's Cookbook (2)", "runes": 600, "stock": 1, "category": "cookbook", "prereq": "Nomadic Merchant's Bell Bearing [3]" },
-        { "name": "Smithing Stone (1)", "runes": 200, "stock": "infinite", "category": "upgrade_material", "prereq": "Smithing-Stone Miner's Bell Bearing (1)" },
-        { "name": "Somber Smithing Stone (9)", "runes": 25000, "stock": "infinite", "category": "upgrade_material", "prereq": "Somberstone Miner's Bell Bearing (5)" }
+        {
+          "name": "Arrow",
+          "runes": 20,
+          "stock": "infinite",
+          "category": "ammo",
+          "prereq": null
+        },
+        {
+          "name": "Rune Arc",
+          "runes": 4000,
+          "stock": 5,
+          "category": "consumable",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Carian Greatsword",
+          "runes": 2500,
+          "stock": 1,
+          "category": "ash_of_war",
+          "prereq": "Rogier's Bell Bearing"
+        },
+        {
+          "name": "Armorer's Cookbook (2)",
+          "runes": 600,
+          "stock": 1,
+          "category": "cookbook",
+          "prereq": "Nomadic Merchant's Bell Bearing [3]"
+        },
+        {
+          "name": "Smithing Stone (1)",
+          "runes": 200,
+          "stock": "infinite",
+          "category": "upgrade_material",
+          "prereq": "Smithing-Stone Miner's Bell Bearing (1)"
+        },
+        {
+          "name": "Somber Smithing Stone (9)",
+          "runes": 25000,
+          "stock": "infinite",
+          "category": "upgrade_material",
+          "prereq": "Somberstone Miner's Bell Bearing (5)"
+        }
       ]
     },
     {
@@ -56,32 +182,162 @@
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows",
       "complete": true,
       "inventory": [
-        { "name": "Magic Glintblade", "runes": 3000, "category": "sorcery", "prereq": null },
-        { "name": "Carian Greatsword", "runes": 10000, "category": "sorcery", "prereq": null },
-        { "name": "Blessing's Boon", "runes": 4000, "category": "incantation", "prereq": null },
-        { "name": "Swift Glintstone Shard", "runes": 600, "category": "sorcery", "prereq": "Academy Scroll" },
-        { "name": "Great Glintstone Shard", "runes": 2000, "category": "sorcery", "prereq": "Academy Scroll" },
-        { "name": "Glintstone Cometshard", "runes": 12000, "category": "sorcery", "prereq": "Conspectus Scroll" },
-        { "name": "Star Shower", "runes": 10000, "category": "sorcery", "prereq": "Conspectus Scroll" },
-        { "name": "Glintblade Phalanx", "runes": 2500, "category": "sorcery", "prereq": "Royal House Scroll" },
-        { "name": "Carian Slicer", "runes": 1500, "category": "sorcery", "prereq": "Royal House Scroll" },
-        { "name": "Lord's Heal", "runes": 8000, "category": "incantation", "prereq": "Two Fingers' Prayerbook" },
-        { "name": "Lord's Aid", "runes": 2500, "category": "incantation", "prereq": "Two Fingers' Prayerbook" },
-        { "name": "O, Flame!", "runes": 6000, "category": "incantation", "prereq": "Fire Monks' Prayerbook" },
-        { "name": "Surge, O Flame!", "runes": 5500, "category": "incantation", "prereq": "Fire Monks' Prayerbook" },
-        { "name": "Ancient Dragons' Lightning Spear", "runes": 8500, "category": "incantation", "prereq": "Ancient Dragon Prayerbook" },
-        { "name": "Ancient Dragons' Lightning Strike", "runes": 10000, "category": "incantation", "prereq": "Ancient Dragon Prayerbook" },
-        { "name": "Black Flame", "runes": 7500, "category": "incantation", "prereq": "Godskin Prayerbook" },
-        { "name": "Black Flame Blade", "runes": 6000, "category": "incantation", "prereq": "Godskin Prayerbook" },
-        { "name": "Assassin's Approach", "runes": 2000, "category": "incantation", "prereq": "Assassin's Prayerbook" },
-        { "name": "Darkness", "runes": 3500, "category": "incantation", "prereq": "Assassin's Prayerbook" },
-        { "name": "Giantsflame Take Thee", "runes": 13000, "category": "incantation", "prereq": "Giant's Prayerbook" },
-        { "name": "Flame, Fall Upon Them", "runes": 10000, "category": "incantation", "prereq": "Giant's Prayerbook" },
-        { "name": "Electrify Armament", "runes": 4000, "category": "incantation", "prereq": "Dragon Cult Prayerbook" },
-        { "name": "Honed Bolt", "runes": 7000, "category": "incantation", "prereq": "Dragon Cult Prayerbook" },
-        { "name": "Lightning Spear", "runes": 6000, "category": "incantation", "prereq": "Dragon Cult Prayerbook" },
-        { "name": "Law of Regression", "runes": 10000, "category": "incantation", "prereq": "Golden Order Principia" },
-        { "name": "Radagon's Rings of Light", "runes": 7500, "category": "incantation", "prereq": "Golden Order Principia" }
+        {
+          "name": "Magic Glintblade",
+          "runes": 3000,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Carian Greatsword",
+          "runes": 10000,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Blessing's Boon",
+          "runes": 4000,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Swift Glintstone Shard",
+          "runes": 600,
+          "category": "sorcery",
+          "prereq": "Academy Scroll"
+        },
+        {
+          "name": "Great Glintstone Shard",
+          "runes": 2000,
+          "category": "sorcery",
+          "prereq": "Academy Scroll"
+        },
+        {
+          "name": "Glintstone Cometshard",
+          "runes": 12000,
+          "category": "sorcery",
+          "prereq": "Conspectus Scroll"
+        },
+        {
+          "name": "Star Shower",
+          "runes": 10000,
+          "category": "sorcery",
+          "prereq": "Conspectus Scroll"
+        },
+        {
+          "name": "Glintblade Phalanx",
+          "runes": 2500,
+          "category": "sorcery",
+          "prereq": "Royal House Scroll"
+        },
+        {
+          "name": "Carian Slicer",
+          "runes": 1500,
+          "category": "sorcery",
+          "prereq": "Royal House Scroll"
+        },
+        {
+          "name": "Lord's Heal",
+          "runes": 8000,
+          "category": "incantation",
+          "prereq": "Two Fingers' Prayerbook"
+        },
+        {
+          "name": "Lord's Aid",
+          "runes": 2500,
+          "category": "incantation",
+          "prereq": "Two Fingers' Prayerbook"
+        },
+        {
+          "name": "O, Flame!",
+          "runes": 6000,
+          "category": "incantation",
+          "prereq": "Fire Monks' Prayerbook"
+        },
+        {
+          "name": "Surge, O Flame!",
+          "runes": 5500,
+          "category": "incantation",
+          "prereq": "Fire Monks' Prayerbook"
+        },
+        {
+          "name": "Ancient Dragons' Lightning Spear",
+          "runes": 8500,
+          "category": "incantation",
+          "prereq": "Ancient Dragon Prayerbook"
+        },
+        {
+          "name": "Ancient Dragons' Lightning Strike",
+          "runes": 10000,
+          "category": "incantation",
+          "prereq": "Ancient Dragon Prayerbook"
+        },
+        {
+          "name": "Black Flame",
+          "runes": 7500,
+          "category": "incantation",
+          "prereq": "Godskin Prayerbook"
+        },
+        {
+          "name": "Black Flame Blade",
+          "runes": 6000,
+          "category": "incantation",
+          "prereq": "Godskin Prayerbook"
+        },
+        {
+          "name": "Assassin's Approach",
+          "runes": 2000,
+          "category": "incantation",
+          "prereq": "Assassin's Prayerbook"
+        },
+        {
+          "name": "Darkness",
+          "runes": 3500,
+          "category": "incantation",
+          "prereq": "Assassin's Prayerbook"
+        },
+        {
+          "name": "Giantsflame Take Thee",
+          "runes": 13000,
+          "category": "incantation",
+          "prereq": "Giant's Prayerbook"
+        },
+        {
+          "name": "Flame, Fall Upon Them",
+          "runes": 10000,
+          "category": "incantation",
+          "prereq": "Giant's Prayerbook"
+        },
+        {
+          "name": "Electrify Armament",
+          "runes": 4000,
+          "category": "incantation",
+          "prereq": "Dragon Cult Prayerbook"
+        },
+        {
+          "name": "Honed Bolt",
+          "runes": 7000,
+          "category": "incantation",
+          "prereq": "Dragon Cult Prayerbook"
+        },
+        {
+          "name": "Lightning Spear",
+          "runes": 6000,
+          "category": "incantation",
+          "prereq": "Dragon Cult Prayerbook"
+        },
+        {
+          "name": "Law of Regression",
+          "runes": 10000,
+          "category": "incantation",
+          "prereq": "Golden Order Principia"
+        },
+        {
+          "name": "Radagon's Rings of Light",
+          "runes": 7500,
+          "category": "incantation",
+          "prereq": "Golden Order Principia"
+        }
       ]
     },
     {
@@ -92,26 +348,126 @@
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn",
       "complete": true,
       "inventory": [
-        { "name": "Urgent Heal", "runes": 1000, "category": "incantation", "prereq": null },
-        { "name": "Heal", "runes": 1500, "category": "incantation", "prereq": null },
-        { "name": "Great Heal", "runes": 9000, "category": "incantation", "prereq": null },
-        { "name": "Cure Poison", "runes": 1000, "category": "incantation", "prereq": null },
-        { "name": "Magic Fortification", "runes": 3500, "category": "incantation", "prereq": null },
-        { "name": "Flame Fortification", "runes": 3000, "category": "incantation", "prereq": null },
-        { "name": "Lightning Fortification", "runes": 7500, "category": "incantation", "prereq": null },
-        { "name": "Discus of Light", "runes": 11000, "category": "incantation", "prereq": null },
-        { "name": "Immutable Shield", "runes": 13000, "category": "incantation", "prereq": "Golden Order Principia" },
-        { "name": "Rejection", "runes": 1500, "category": "incantation", "prereq": null },
-        { "name": "Catch Flame", "runes": 600, "category": "incantation", "prereq": null },
-        { "name": "Flame Sling", "runes": 800, "category": "incantation", "prereq": null },
-        { "name": "O, Flame!", "runes": 6000, "category": "incantation", "prereq": "Fire Monks' Prayerbook" },
-        { "name": "Surge, O Flame!", "runes": 5500, "category": "incantation", "prereq": "Fire Monks' Prayerbook" },
-        { "name": "Black Flame", "runes": 7500, "category": "incantation", "prereq": "Godskin Prayerbook" },
-        { "name": "Black Flame Blade", "runes": 6000, "category": "incantation", "prereq": "Godskin Prayerbook" },
-        { "name": "Assassin's Approach", "runes": 2000, "category": "incantation", "prereq": "Assassin's Prayerbook" },
-        { "name": "Darkness", "runes": 3500, "category": "incantation", "prereq": "Assassin's Prayerbook" },
-        { "name": "Law of Regression", "runes": 10000, "category": "incantation", "prereq": "Golden Order Principia" },
-        { "name": "Radagon's Rings of Light", "runes": 7500, "category": "incantation", "prereq": "Golden Order Principia" }
+        {
+          "name": "Urgent Heal",
+          "runes": 1000,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Heal",
+          "runes": 1500,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Great Heal",
+          "runes": 9000,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Cure Poison",
+          "runes": 1000,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Magic Fortification",
+          "runes": 3500,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Flame Fortification",
+          "runes": 3000,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Lightning Fortification",
+          "runes": 7500,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Discus of Light",
+          "runes": 11000,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Immutable Shield",
+          "runes": 13000,
+          "category": "incantation",
+          "prereq": "Golden Order Principia"
+        },
+        {
+          "name": "Rejection",
+          "runes": 1500,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Catch Flame",
+          "runes": 600,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "Flame Sling",
+          "runes": 800,
+          "category": "incantation",
+          "prereq": null
+        },
+        {
+          "name": "O, Flame!",
+          "runes": 6000,
+          "category": "incantation",
+          "prereq": "Fire Monks' Prayerbook"
+        },
+        {
+          "name": "Surge, O Flame!",
+          "runes": 5500,
+          "category": "incantation",
+          "prereq": "Fire Monks' Prayerbook"
+        },
+        {
+          "name": "Black Flame",
+          "runes": 7500,
+          "category": "incantation",
+          "prereq": "Godskin Prayerbook"
+        },
+        {
+          "name": "Black Flame Blade",
+          "runes": 6000,
+          "category": "incantation",
+          "prereq": "Godskin Prayerbook"
+        },
+        {
+          "name": "Assassin's Approach",
+          "runes": 2000,
+          "category": "incantation",
+          "prereq": "Assassin's Prayerbook"
+        },
+        {
+          "name": "Darkness",
+          "runes": 3500,
+          "category": "incantation",
+          "prereq": "Assassin's Prayerbook"
+        },
+        {
+          "name": "Law of Regression",
+          "runes": 10000,
+          "category": "incantation",
+          "prereq": "Golden Order Principia"
+        },
+        {
+          "name": "Radagon's Rings of Light",
+          "runes": 7500,
+          "category": "incantation",
+          "prereq": "Golden Order Principia"
+        }
       ]
     },
     {
@@ -122,19 +478,84 @@
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen",
       "complete": true,
       "inventory": [
-        { "name": "Glintstone Pebble", "runes": 1000, "category": "sorcery", "prereq": null },
-        { "name": "Glintstone Stars", "runes": 3000, "category": "sorcery", "prereq": null },
-        { "name": "Glintstone Arc", "runes": 1500, "category": "sorcery", "prereq": null },
-        { "name": "Crystal Barrage", "runes": 1500, "category": "sorcery", "prereq": null },
-        { "name": "Scholar's Armament", "runes": 3000, "category": "sorcery", "prereq": null },
-        { "name": "Scholar's Shield", "runes": 2500, "category": "sorcery", "prereq": null },
-        { "name": "Glintblade Phalanx", "runes": 2500, "category": "sorcery", "prereq": "Royal House Scroll" },
-        { "name": "Carian Slicer", "runes": 1500, "category": "sorcery", "prereq": "Royal House Scroll" },
-        { "name": "Great Glintstone Shard", "runes": 2000, "category": "sorcery", "prereq": "Academy Scroll" },
-        { "name": "Swift Glintstone Shard", "runes": 600, "category": "sorcery", "prereq": "Academy Scroll" },
-        { "name": "Glintstone Cometshard", "runes": 12000, "category": "sorcery", "prereq": "Conspectus Scroll" },
-        { "name": "Star Shower", "runes": 10000, "category": "sorcery", "prereq": "Conspectus Scroll" },
-        { "name": "Shard Spiral", "runes": 8000, "category": "sorcery", "prereq": "Sellen questline completion" }
+        {
+          "name": "Glintstone Pebble",
+          "runes": 1000,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Glintstone Stars",
+          "runes": 3000,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Glintstone Arc",
+          "runes": 1500,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Crystal Barrage",
+          "runes": 1500,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Scholar's Armament",
+          "runes": 3000,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Scholar's Shield",
+          "runes": 2500,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Glintblade Phalanx",
+          "runes": 2500,
+          "category": "sorcery",
+          "prereq": "Royal House Scroll"
+        },
+        {
+          "name": "Carian Slicer",
+          "runes": 1500,
+          "category": "sorcery",
+          "prereq": "Royal House Scroll"
+        },
+        {
+          "name": "Great Glintstone Shard",
+          "runes": 2000,
+          "category": "sorcery",
+          "prereq": "Academy Scroll"
+        },
+        {
+          "name": "Swift Glintstone Shard",
+          "runes": 600,
+          "category": "sorcery",
+          "prereq": "Academy Scroll"
+        },
+        {
+          "name": "Glintstone Cometshard",
+          "runes": 12000,
+          "category": "sorcery",
+          "prereq": "Conspectus Scroll"
+        },
+        {
+          "name": "Star Shower",
+          "runes": 10000,
+          "category": "sorcery",
+          "prereq": "Conspectus Scroll"
+        },
+        {
+          "name": "Shard Spiral",
+          "runes": 8000,
+          "category": "sorcery",
+          "prereq": "Sellen questline completion"
+        }
       ]
     },
     {
@@ -146,9 +567,24 @@
       "complete": false,
       "completeness_note": "Fextralife wiki table extraction returned only 3 sorceries; needs verification pass.",
       "inventory": [
-        { "name": "Glintstone Pebble", "runes": 1000, "category": "sorcery", "prereq": null },
-        { "name": "Glintstone Arc", "runes": 1500, "category": "sorcery", "prereq": null },
-        { "name": "Starlight", "runes": 2500, "category": "sorcery", "prereq": null }
+        {
+          "name": "Glintstone Pebble",
+          "runes": 1000,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Glintstone Arc",
+          "runes": 1500,
+          "category": "sorcery",
+          "prereq": null
+        },
+        {
+          "name": "Starlight",
+          "runes": 2500,
+          "category": "sorcery",
+          "prereq": null
+        }
       ]
     },
     {
@@ -159,18 +595,78 @@
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl",
       "complete": true,
       "inventory": [
-        { "name": "Ash of War: Stamp (Upward Cut)", "runes": 1500, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Kick", "runes": 800, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Endure", "runes": 600, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: War Cry", "runes": 800, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Spinning Slash", "runes": 1200, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Impaling Thrust", "runes": 1000, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Quickstep", "runes": 800, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Storm Blade", "runes": 1800, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Parry", "runes": 600, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: No Skill", "runes": 600, "category": "ash_of_war", "prereq": null },
-        { "name": "Ash of War: Eruption", "runes": 8000, "category": "ash_of_war", "prereq": "Joined Volcano Manor" },
-        { "name": "Ash of War: Assassin's Gambit", "runes": 6500, "category": "ash_of_war", "prereq": "Joined Volcano Manor" }
+        {
+          "name": "Ash of War: Stamp (Upward Cut)",
+          "runes": 1500,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Kick",
+          "runes": 800,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Endure",
+          "runes": 600,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: War Cry",
+          "runes": 800,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Spinning Slash",
+          "runes": 1200,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Impaling Thrust",
+          "runes": 1000,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Quickstep",
+          "runes": 800,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Storm Blade",
+          "runes": 1800,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Parry",
+          "runes": 600,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: No Skill",
+          "runes": 600,
+          "category": "ash_of_war",
+          "prereq": null
+        },
+        {
+          "name": "Ash of War: Eruption",
+          "runes": 8000,
+          "category": "ash_of_war",
+          "prereq": "Joined Volcano Manor"
+        },
+        {
+          "name": "Ash of War: Assassin's Gambit",
+          "runes": 6500,
+          "category": "ash_of_war",
+          "prereq": "Joined Volcano Manor"
+        }
       ]
     },
     {
@@ -182,21 +678,111 @@
       "complete": true,
       "completeness_note": "Inventory consistent across all his shop locations after peace is made.",
       "inventory": [
-        { "name": "Gold-Pickled Fowl Foot", "runes": 600, "stock": 3, "category": "consumable", "prereq": "Peace made with Patches" },
-        { "name": "Fan Daggers", "runes": 160, "stock": "infinite", "category": "consumable", "prereq": "Peace made with Patches" },
-        { "name": "Margit's Shackle", "runes": 5000, "stock": 1, "category": "key_item", "prereq": "Peace made with Patches" },
-        { "name": "Grace Mimic", "runes": 100, "stock": 15, "category": "consumable", "prereq": "Peace made with Patches" },
-        { "name": "Glass Shard", "runes": 100, "stock": "infinite", "category": "consumable", "prereq": "Peace made with Patches" },
-        { "name": "Parrying Dagger", "runes": 1600, "stock": 1, "category": "weapon", "prereq": "Peace made with Patches" },
-        { "name": "Missionary's Cookbook (2)", "runes": 800, "stock": 1, "category": "cookbook", "prereq": "Peace made with Patches" },
-        { "name": "Stonesword Key", "runes": 5000, "stock": 1, "category": "key_item", "prereq": "Peace made with Patches" },
-        { "name": "Festering Bloody Finger", "runes": 1000, "stock": 5, "category": "multiplayer", "prereq": "Peace made with Patches" },
-        { "name": "Furlcalling Finger Remedy", "runes": 1000, "stock": 3, "category": "multiplayer", "prereq": "Peace made with Patches" },
-        { "name": "Great Arrow", "runes": 300, "stock": 10, "category": "ammo", "prereq": "Peace made with Patches" },
-        { "name": "Ballista Bolt", "runes": 300, "stock": 5, "category": "ammo", "prereq": "Peace made with Patches" },
-        { "name": "Horse Crest Wooden Shield", "runes": 1000, "stock": 1, "category": "shield", "prereq": "Peace made with Patches" },
-        { "name": "Sacrificial Twig", "runes": 5000, "stock": 1, "category": "consumable", "prereq": "Peace made with Patches" },
-        { "name": "Estoc", "runes": 3000, "stock": 1, "category": "weapon", "prereq": "Peace made with Patches" }
+        {
+          "name": "Gold-Pickled Fowl Foot",
+          "runes": 600,
+          "stock": 3,
+          "category": "consumable",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Fan Daggers",
+          "runes": 160,
+          "stock": "infinite",
+          "category": "consumable",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Margit's Shackle",
+          "runes": 5000,
+          "stock": 1,
+          "category": "key_item",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Grace Mimic",
+          "runes": 100,
+          "stock": 15,
+          "category": "consumable",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Glass Shard",
+          "runes": 100,
+          "stock": "infinite",
+          "category": "consumable",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Parrying Dagger",
+          "runes": 1600,
+          "stock": 1,
+          "category": "weapon",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Missionary's Cookbook (2)",
+          "runes": 800,
+          "stock": 1,
+          "category": "cookbook",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Stonesword Key",
+          "runes": 5000,
+          "stock": 1,
+          "category": "key_item",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Festering Bloody Finger",
+          "runes": 1000,
+          "stock": 5,
+          "category": "multiplayer",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Furlcalling Finger Remedy",
+          "runes": 1000,
+          "stock": 3,
+          "category": "multiplayer",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Great Arrow",
+          "runes": 300,
+          "stock": 10,
+          "category": "ammo",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Ballista Bolt",
+          "runes": 300,
+          "stock": 5,
+          "category": "ammo",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Horse Crest Wooden Shield",
+          "runes": 1000,
+          "stock": 1,
+          "category": "shield",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Sacrificial Twig",
+          "runes": 3000,
+          "stock": 1,
+          "category": "consumable",
+          "prereq": "Peace made with Patches"
+        },
+        {
+          "name": "Estoc",
+          "runes": 3000,
+          "stock": 1,
+          "category": "weapon",
+          "prereq": "Peace made with Patches"
+        }
       ]
     }
   ]

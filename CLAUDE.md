@@ -26,6 +26,6 @@ Every delivery updates these three artifacts (per global §VI.5):
 **Version:** v4.0.0-alpha (Phase B.1–B.7 + B-Overlay fanapis snapshot)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Merchant overlay — 102/113 matched (90%), 86 canonical items carry merchants[] attribution, reverse index + missing-canonical reports written
-**Next task:** Fill canonical gaps (ammo/shields fanapis snapshots + 3 item-level stragglers), OR extend merchants (Nomadic/Isolated + specialists), OR chest/world pickups per region, OR quest rewards, OR Phase C/D. Gunny to direct.
+**Last completed task:** Canonical gaps closed — shields.json (69) + ammos.json (53) + 3 item additions + price fix; merchant overlay now 113/113 (100%), 95 canonical items carry merchants[]
+**Next task:** Extend merchants (Nomadic/Isolated + specialists), OR chest/world pickups per region, OR quest rewards, OR Phase C/D. Gunny to direct.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.

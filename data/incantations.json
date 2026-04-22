@@ -3038,5 +3038,53 @@
     "effect": null,
     "engineNote": "Tail sweep — physical",
     "acquisition": null
+  },
+  {
+    "name": "Assassin's Approach",
+    "kaggleId": null,
+    "catalog": "Incantation",
+    "school": "Assassin",
+    "damageType": null,
+    "fp": 15,
+    "slots": 1,
+    "requirements": {
+      "str": 0,
+      "dex": 0,
+      "int": 0,
+      "fai": 10,
+      "arc": 0
+    },
+    "chargeAble": false,
+    "motionValue": null,
+    "castTime": null,
+    "walkthroughStep": null,
+    "description": "Incantation of the assassins who carried out the Night of the Black Knives.",
+    "effect": "Silences footsteps and reduces fall damage for ~30 seconds",
+    "engineNote": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Assassin%27s+Approach"
+    },
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Assassin's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Assassin's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ]
   }
 ]

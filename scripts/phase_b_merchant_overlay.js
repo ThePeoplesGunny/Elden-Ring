@@ -21,6 +21,7 @@ const DATA = path.join(ROOT, 'data');
 // parens, "of"/"Of" case).
 const NORMALIZATIONS = {
   "Armorer's Cookbook (2)": "Armorer's Cookbook [2]",
+  "Missionary's Cookbook (2)": "Missionary's Cookbook [2]",
   "Smithing Stone (1)": "Smithing Stone [1]",
   "Somber Smithing Stone (9)": "Somber Smithing Stone [9]",
   "Note: Flask of Wondrous Physick": "Note (flask Of Wondrous Physick)",
@@ -34,6 +35,8 @@ const CANON_FILES = [
   'items.json',
   'weapons.json',
   'armors.json',
+  'shields.json',
+  'ammos.json',
   'sorceries.json',
   'incantations.json',
   'ashes_of_war.json',

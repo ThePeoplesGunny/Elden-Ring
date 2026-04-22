@@ -22,6 +22,8 @@ const PAGE_DELAY_MS = 150;
 const ENDPOINTS = [
   { slug: 'weapons', file: 'weapons.json' },
   { slug: 'armors', file: 'armors.json' },
+  { slug: 'shields', file: 'shields.json' },
+  { slug: 'ammos', file: 'ammos.json' },
   { slug: 'talismans', file: 'talismans.json' },
   { slug: 'sorceries', file: 'sorceries.json' },
   { slug: 'incantations', file: 'incantations.json' },

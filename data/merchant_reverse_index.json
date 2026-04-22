@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T23:49:13.285Z",
+  "generatedAt": "2026-04-22T23:57:06.957Z",
   "note": "item name -> [{merchant, location, region, runes, stock, prereq, sourceUrl}, ...]",
   "index": {
     "Throwing Dagger": [
@@ -99,12 +99,54 @@
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
       }
     ],
+    "Arrow": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ],
+    "Bolt": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
     "Torch": [
       {
         "merchant": "Merchant Kalé",
         "location": "Limgrave, Church of Elleh",
         "region": "Limgrave",
         "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Large Leather Shield": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 600,
         "stock": 1,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
@@ -505,6 +547,26 @@
         "runes": 6000,
         "stock": null,
         "prereq": "Godskin Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Assassin's Approach": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Assassin's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Assassin's Prayerbook",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
       }
     ],
@@ -1059,6 +1121,17 @@
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
       }
     ],
+    "Missionary's Cookbook [2]": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 800,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
     "Stonesword Key": [
       {
         "merchant": "Patches",
@@ -1077,6 +1150,50 @@
         "region": "Limgrave",
         "runes": 1000,
         "stock": 5,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Great Arrow": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 10,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Ballista Bolt": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 5,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Horse Crest Wooden Shield": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Sacrificial Twig": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
       }

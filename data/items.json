@@ -4708,5 +4708,55 @@
     "description": "A feather from a hawk that lived as one with the storms. Material used for crafting items. These feathers, enveloped in swirling winds, are often used for arrow fletching.",
     "obtainedFrom": null,
     "acquisition": null
+  },
+  {
+    "name": "Missionary's Cookbook [2]",
+    "kaggleId": null,
+    "itemType": "cookbook",
+    "sourceType": "Cookbook",
+    "effect": "Teaches crafting: Scriptstone, Grace Mimic, Gold-Pickled Fowl Foot",
+    "description": "A missionary's cookbook from the Roundtable Hold era.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Missionary%27s+Cookbook+%5B2%5D"
+    },
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 800,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
+  },
+  {
+    "name": "Sacrificial Twig",
+    "kaggleId": null,
+    "itemType": "consumable",
+    "sourceType": "Consumable",
+    "effect": "Prevents rune loss upon death (consumed on use)",
+    "description": "A dried-out talismanic twig. Sacrifices itself to protect accumulated runes on death.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Sacrificial+Twig"
+    },
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   }
 ]

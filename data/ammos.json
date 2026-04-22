@@ -1,0 +1,903 @@
+[
+  {
+    "name": "Firebone Arrow",
+    "fanapisId": "17f69448ceel0i0a57bokoqz409yb",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 90,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones. The tip is set alight before firing",
+    "acquisition": null
+  },
+  {
+    "name": "Bloodbone Arrow Fletched",
+    "fanapisId": "17f695dc715l0i0a59pf1x5fb5112r",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes blood loss build up (55)",
+    "description": "Arrow whittled from animal bones. The tip is daubed with a golden tincture. Deals holy damage. Craftable item. The fletching adds distance to the arrow's flight.",
+    "acquisition": null
+  },
+  {
+    "name": "Bolt",
+    "fanapisId": "17f6955e0efl0i0a5a8q72a9vip51",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 50,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Ammunition used for crossbows. A widespread, common type of bolt.",
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
+  },
+  {
+    "name": "Bloodbone Bolt",
+    "fanapisId": "17f699c4de5l0i0a5a69f9ja6l52sm",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes blood loss buildup (50)",
+    "description": "Bolt carved from animal bone. The tip is daubed with a blood tincture. Afflicts targets with blood loss. Craftable item. ",
+    "acquisition": null
+  },
+  {
+    "name": "Ballista Bolt",
+    "fanapisId": "17f69af93d3l0i0a5b5c6u7e58dev5",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 160,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Greatbolt as large as a pear for use with Hand Ballista",
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 5,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
+  },
+  {
+    "name": "Black-key Bolt",
+    "fanapisId": "17f6924048dl0i0a5bddy4vjs3e5s",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 30,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes scarlet rot buildup (60)",
+    "description": "Bolts used in Crepus' Black-Key Crossbow, an assassin's tool of exquisite craftmanship.",
+    "acquisition": null
+  },
+  {
+    "name": "Bloodbone Arrow",
+    "fanapisId": "17f6973ce6al0i0a5g8kku0ago9dtr",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes blood loss build up (55)",
+    "description": "Arrow whittled from animal bones. The tip is daubed with a blood tincture. Afflicts targets with blood loss.",
+    "acquisition": null
+  },
+  {
+    "name": "Arrow",
+    "fanapisId": "17f6994469al0i0a5kro3q7srgm3ic",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 45,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrows used with small and long bows. Unremarkable in any way, shape or form.",
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ]
+  },
+  {
+    "name": "Bone Arrow",
+    "fanapisId": "17f699f2bf9l0i0a62bo1pm64y13t",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 35,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from thin animal bones. Though the arrowhead is sharp indeed, it doesn't fly particularly true.",
+    "acquisition": null
+  },
+  {
+    "name": "Bone Arrow Fletched",
+    "fanapisId": "17f6988c728l0i0a6dz732w8pes2a5",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 35,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from thin animal bones. The feather fletchings add distance and accuracy to the standard bone arrow.",
+    "acquisition": null
+  },
+  {
+    "name": "Bone Bolt",
+    "fanapisId": "17f697685ffl0i0a6ejx68qb20d9e",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 40,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt carved from a thin animal bone. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Bone Ballista Bolt",
+    "fanapisId": "17f693d91c2l0i0a6evjmmx3oa7qf",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 150,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "- ",
+    "description": "Greatbolt as large as a spear carved from stout animal bones. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Burred Bolt",
+    "fanapisId": "17f6956b383l0i0a6hqo084990dji",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 30,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes blood loss buildup (65)",
+    "description": "Bolt covered in thorns. One of the most horrific weapons used in the Shattering. Afflicts with blood loss.",
+    "acquisition": null
+  },
+  {
+    "name": "Dwelling Arrow",
+    "fanapisId": "17f6997ebfel0i0a6idqxeuva67nsk",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 95,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow in which the spirits of small animals are thought to dwell.",
+    "acquisition": null
+  },
+  {
+    "name": "Explosive Greatbolt",
+    "fanapisId": "17f6935eb21l0i0a6ntkl0li8p6xkg",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 50,
+      "magic": 0,
+      "fire": 150,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Greatbolt tipped with a clump of Explosive Stone shards.",
+    "acquisition": null
+  },
+  {
+    "name": "Explosive Bolt",
+    "fanapisId": "17f697796f8l0i0a6nunhop3qk25xg",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": 70,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "None",
+    "description": "Bolt tipped with a shard of Explosive Stone. Explodes on impact, dealing fire damage.",
+    "acquisition": null
+  },
+  {
+    "name": "Fire Arrow",
+    "fanapisId": "17f693d14cfl0i0a6xwx7n1y3jowc9",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": 95,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow with the tip set alight.Deals fire damage. ",
+    "acquisition": null
+  },
+  {
+    "name": "Firebone Arrow Fletched",
+    "fanapisId": "17f699870acl0i0a73wa3jmaf1ax4j",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 90,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones. The tip is set alight before firing. Deals fire damage to foes.",
+    "acquisition": null
+  },
+  {
+    "name": "Firebone Bolt",
+    "fanapisId": "17f6992419cl0i0a7gx5d666jdb9q7",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": 75,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt carved from animal bone. The tip is set alight before firing. Deals fire damage.",
+    "acquisition": null
+  },
+  {
+    "name": "Flaming Bolt",
+    "fanapisId": "17f697bf804l0i0a7j8awlq1z4g9u6",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 20,
+      "magic": 0,
+      "fire": 80,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt with a fiercely burned tip. Deals powerful fire damage.",
+    "acquisition": null
+  },
+  {
+    "name": "Golden Bolt",
+    "fanapisId": "17f69914f7dl0i0a7oebu55m1twr75",
+    "type": null,
+    "attackPower": {
+      "phy20": null,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 80,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt blessed with an incantation of the Erdtree. Deals powerful holy damage ",
+    "acquisition": null
+  },
+  {
+    "name": "Golden Arrow",
+    "fanapisId": "17f69992e40l0i0a7oo1s1bq93kal7",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 95,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Carved arrows made in tandem with the Erdtree Bow. Deals holy damage. ",
+    "acquisition": null
+  },
+  {
+    "name": "Golden Great Arrow",
+    "fanapisId": "17f696b53c0l0i0a7qtqyrwtbtoq7",
+    "type": "Pierce",
+    "attackPower": {
+      "phy40": null,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 110,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Carved greatarrows made together with the Erdtree Greatbow. Deals holy damage. ",
+    "acquisition": null
+  },
+  {
+    "name": "Golem's Great Arrow",
+    "fanapisId": "17f69469b06l0i0a7sg2a8ces4w9x",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 105,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Greatarrow of black stone crafted by a civilization now gone to ruin. Used by the Guardian Golem.This hefty arrow is enrobed in tempestuous winds, allowing it to break enemy stances and guards with ease.",
+    "acquisition": null
+  },
+  {
+    "name": "Great Arrow",
+    "fanapisId": "17f69af00fal0i0a7uu2qhpuftxzv",
+    "type": null,
+    "attackPower": {
+      "phy100": null,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "A greatarrow as large as a spear for use with greatbows. Used by archers of monstrous strength employed by a lord's army.",
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 10,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
+  },
+  {
+    "name": "Haligbone Arrow",
+    "fanapisId": "17f69b8ce34l0i0a7zih8qfea4dvka",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 90,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled From animal bones. The tip is daubed with a golden tincture. Deals holy damage. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Haligbone Arrow Fletched",
+    "fanapisId": "17f69b16cb6l0i0a8r058km513nvw7",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 90,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones. The tip is daubed with a golden tincture. Deals holy damage. Craftable item. The fletching adds distance to the arrow's flight. ",
+    "acquisition": null
+  },
+  {
+    "name": "Lightning Greabolt",
+    "fanapisId": "17f6945f9cal0i0a8wtc9cmxtd7rnn",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 50,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 150,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Greatbolt tipped with a climp of Gravel Stone shards. ",
+    "acquisition": null
+  },
+  {
+    "name": "Haligbone Bolt",
+    "fanapisId": "17f693c3e3el0i0a8wy8f2xnxro75k",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": null,
+      "lightning": 0,
+      "holy": 75,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt carved from animal bone. The tip is daubed with a golden tincture. Deals holy damage. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Lightning Greabolt",
+    "fanapisId": "17f69b0f8ebl0i0a8xtaw8i78q9o",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 50,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 150,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Greatbolt tipped with a climp of Gravel Stone shards.Deals powerful lightning damage. ",
+    "acquisition": null
+  },
+  {
+    "name": "Lightningbone Arrow Fletched",
+    "fanapisId": "17f69789d70l0i0a8zc8rtag3dspv4",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 90,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones with a lightning-infused tip. Deals lightning damage.Craftable item. The fletching adds distance to the arrow's flight. ",
+    "acquisition": null
+  },
+  {
+    "name": "Lightningbone Arrow",
+    "fanapisId": "17f69635263l0i0a8ze3afj4nohfva",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 90,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones with a lightning-infused tip. Deals lightning damage.Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Lightningbone Bolt",
+    "fanapisId": "17f6994982el0i0a92geml5aal9gy6",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 75,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt crafted from animal bone with a lightning-infused tip. Deals lightning damage. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Lordsworn's Bolt",
+    "fanapisId": "17f69b5a80el0i0a93rl97dubpwddn",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 65,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Well-crafted bolt with an illustrious design, wielded by regulars of a lord's army.",
+    "acquisition": null
+  },
+  {
+    "name": "Magicbone Bolt",
+    "fanapisId": "17f6937df3bl0i0a9qwoh0sfdx9ih",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 75,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt carved from animal bone. The tip is daubed with a glintstone tincture. Deals magic damage. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Poisonbone Arrow",
+    "fanapisId": "17f6977d26el0i0a9t6xhw1vwy7z5e",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Confers Poison status ailment",
+    "description": "Arrow whittled from animal bones. The tip is daubed with venom. Afflicts targets with poison. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Poisonbone Bolt",
+    "fanapisId": "17f696e5e94l0i0aa0jso6bhzrwcsg",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes poison buildup (66)",
+    "description": "Bolt carved from animal bone. The tip is daubed with venom. Afflicts targets with poison. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Poisonbone Arrow Fletched",
+    "fanapisId": "17f69541e1el0i0aa1v5xyb7xygmaa",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Confers Poison status ailment",
+    "description": "Arrow whittled from animal bones. The tip is daubed with venom. Afflicts targets with poison. Craftable item. The addition of fletching enables more precise shots that can travel farther.",
+    "acquisition": null
+  },
+  {
+    "name": "Perfumer's Bolt",
+    "fanapisId": "17f69251e6al0i0aa1x6q566kjp786",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 15,
+      "magic": 0,
+      "fire": 65,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt created with perfumer techniques. Used by nobles' guards and the like.",
+    "acquisition": null
+  },
+  {
+    "name": "Magicbone Arrow Fletched",
+    "fanapisId": "17f699a2487l0i0aa4vpxysfgpaem",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 90,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones. The tip is daubed with a glintstone tincture. Deals magic damage.Craftable item. The Retching adds distance to the arrow's flight.",
+    "acquisition": null
+  },
+  {
+    "name": "Meteor Bolt",
+    "fanapisId": "17f695efd8fl0i0aa79m4cnuhuw36g",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 80,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Enchanted work of craft made in tandem with Full Moon Crossbow. The tip is embedded with glintstone.",
+    "acquisition": null
+  },
+  {
+    "name": "Magicbone Arrow",
+    "fanapisId": "17f697e9935l0i0aa7wy8c60t8z11",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 10,
+      "magic": 90,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones. The tip is daubed with a glintstone tincture. Deals magic damage. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Radahn's Spear",
+    "fanapisId": "17f69681f23l0i0aahxnk8hmk4asl",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 100,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Greatarrows used by the General Radahns during the festival of combat. These are in fact the many spears with which he was stabbed by the Cleanrot Knights.Imbued with Radahn's gravitational power.",
+    "acquisition": null
+  },
+  {
+    "name": "Rainbow Stone Arrow",
+    "fanapisId": "17f6948e462l0i0aajv98butqkk57r",
+    "type": null,
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones tipped with chips of Rainbow Stone. Colored lights shine at the point of impact. ",
+    "acquisition": null
+  },
+  {
+    "name": "Rotbone Arrow",
+    "fanapisId": "17f696f613bl0i0ab2gzfybs6xv4m",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes scarlet rot buildup (50)",
+    "description": "Arrow whittled from animal bones. The tip is daubed with rot. Afflicts targets with scarlet rot. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Rotbone Arrow Fletched",
+    "fanapisId": "17f6999ab25l0i0ab4wbrb3l2bbiwn",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes scarlet rot buildup (50)",
+    "description": "Arrow whittled from animal bones. The tip is daubed with rot. Afflicts targets with scarlet rot. Craftable item. The fletching adds distance to the arrow's flight.",
+    "acquisition": null
+  },
+  {
+    "name": "Shattershard Arrow Fletched",
+    "fanapisId": "17f698609f1l0i0ab5qhcgdj349ejv",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrow whittled from animal bones tipped with a shard of crystal. Creates a resonating noise at the point of impact.",
+    "acquisition": null
+  },
+  {
+    "name": "Serpent Arrow",
+    "fanapisId": "17f69aaa491l0i0ab7upr3t0arnja",
+    "type": null,
+    "attackPower": {
+      "physical": 30,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes heavy poison buildup (78)",
+    "description": "Arrow carved to resemble a flying snake. Used in tandem with the Serpent Bow.",
+    "acquisition": null
+  },
+  {
+    "name": "Shattershard Arrow",
+    "fanapisId": "17f69657954l0i0ab817nv558hszgs",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Arrows whittled from animal bones tipped with a shard of crystal. Creates a resonating noise at the point of impact.",
+    "acquisition": null
+  },
+  {
+    "name": "Rotbone Bolt",
+    "fanapisId": "17f695c24afl0i0ab8ndzenywdxan",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 25,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes scarlet rot buildup (55)",
+    "description": "Bolt carved from animal bone. The tip is daubed with rot. Afflicts targets with scarlet rot. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Sleepbone Arrow Fletched",
+    "fanapisId": "17f69558d42l0i0abcowa3xytt0hzd",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 20,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Confers Sleep status ailment",
+    "description": "Arrow whittled from animal bones. The tip is daubed with a water lily tincture. Afflicts targets with drowsiness. Craftable item. The addition of fletching enables more precise shots that can travel farther.",
+    "acquisition": null
+  },
+  {
+    "name": "Sleepbone Arrow",
+    "fanapisId": "17f696a05b4l0i0abdatq6y5puk5v",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 20,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Confers Sleep status ailment",
+    "description": "Arrow whittled from animal bones. The tip is daubed with a water lily tincture. Afflicts targets with drowsiness. Craftable item.",
+    "acquisition": null
+  },
+  {
+    "name": "Spiritflame Arrow",
+    "fanapisId": "17f69b10b35l0i0abn77r17fy19pon",
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 30,
+      "magic": 40,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Causes frost build up (65)",
+    "description": "Arrow set alight with ghostflame before firing.Deals magic damage while also afflictingfoes with frost.",
+    "acquisition": null
+  }
+]

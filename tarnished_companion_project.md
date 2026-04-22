@@ -198,9 +198,11 @@ runtime, Phase A output, parity-verified untouched).
 | `data/bosses.json` | 105 | fanapis (106 − 1 bad dup) | — | 207 drop mappings | `07e460b` |
 | `data/npcs.json` | 55 | fanapis | — | location+role only | `07e460b` |
 | `data/locations.json` | 177 | fanapis | — | descriptive only | `07e460b` |
-| `data/merchants.json` | 8 merchants / 113 items | Fextralife per-merchant | — | merchant inventories | pending |
+| `data/merchants.json` | 8 merchants / 113 items | Fextralife per-merchant | — | merchant inventories | `5bbd0e9` |
+| `data/shields.json` | 69 | fanapis | — | — | pending |
+| `data/ammos.json` | 53 | fanapis | — | — | pending |
 
-**Totals:** 12 files, 2,094 canonical rows + 113 merchant inventory items, ~1.4MB. Fanapis snapshot carries 207 boss→item acquisition mappings; merchants.json adds 93 cross-matched item-to-merchant mappings (82% first-pass match rate).
+**Totals:** 14 files, 2,219 canonical rows + 113 merchant inventory items, ~1.5MB. Merchant overlay now 113/113 (100%) — 95 unique canonical items carry `merchants[]` attribution; 0 canonical gaps remaining.
 
 ### Ingestion pipeline pattern (generalized across B.1–B.6)
 
@@ -421,6 +423,22 @@ merchants, 113 inventory items):
   - **duplicate merchant attributions (2)**: 2nd mention of
     Assassin's Approach + 2nd mention of Law Of Regression — same
     missing canonical entries, multiple merchants.
+
+**Canonical gaps closed 2026-04-22** (`scripts/phase_b_overlay_ingest_shields.js`,
+`phase_b_overlay_ingest_ammos.js`, `phase_b_fextralife_canonical_add.js`):
+- `data/shields.json` (69) — straight fanapis ingest, first shield catalog
+  ever (canonical `weapons.json` excluded shields entirely).
+- `data/ammos.json` (53) — straight fanapis ingest, superset of engine's
+  30-entry `ammo_data.json`.
+- Added 3 item-level entries: Assassin's Approach (incantations.json),
+  Missionary's Cookbook [2] (items.json), Sacrificial Twig (items.json),
+  each with `fextralife: {verifiedAt, sourceUrl}` audit.
+- Corrected Patches' Sacrificial Twig price 5000→3000 in merchants.json
+  (Fextralife per-item page is authoritative over per-merchant table).
+- Extended `phase_b_merchant_overlay.js` to include shields + ammos
+  canonicals in its index, added Missionary's Cookbook normalization.
+- **Post-patch merchant overlay: 113/113 matched (100%)**, 95 unique
+  canonical items carry `merchants[]`, 0 canonical gaps.
 - **Out of scope for this pass:** Nomadic Merchants (~11 region-scattered),
   Isolated Merchants (~6), Hermit Merchant, Pidia, Imprisoned Merchant,
   Gatekeeper Gostoc, Gowry, D, Preceptor Seluvis, Rogier, Gurranq,
