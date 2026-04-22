@@ -128,10 +128,8 @@
     "fp": 32,
     "slots": 1,
     "requirements": {
-      "str": 0,
-      "dex": 0,
       "int": 0,
-      "fai": 0,
+      "fai": 32,
       "arc": 0
     },
     "chargeAble": true,
@@ -141,7 +139,12 @@
     "description": "A secret incantation of the capital's ancient dragon cult.",
     "effect": "Stabs with red lightning spear from above",
     "engineNote": "Efficient thrown bolt",
-    "acquisition": null
+    "acquisition": null,
+    "fpCost": 25,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Ancient+Dragons%27+Lightning+Spear"
+    }
   },
   {
     "name": "Beast Claw",
@@ -1113,11 +1116,9 @@
     "fp": 36,
     "slots": 1,
     "requirements": {
-      "str": 0,
-      "dex": 0,
       "int": 0,
-      "fai": 0,
-      "arc": 0
+      "fai": 15,
+      "arc": 12
     },
     "chargeAble": null,
     "motionValue": null,
@@ -1126,7 +1127,12 @@
     "description": "One of the incantations of Dragon Communion.",
     "effect": "Channels dragon to spew icy breath.",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "fpCost": 28,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Glintstone+Breath"
+    }
   },
   {
     "name": "Golden Lightning Fortification",
@@ -1521,9 +1527,7 @@
     "fp": 22,
     "slots": 1,
     "requirements": {
-      "str": 0,
-      "dex": 0,
-      "int": 0,
+      "int": 29,
       "fai": 0,
       "arc": 0
     },
@@ -1534,7 +1538,12 @@
     "description": "One of the incantations of the Golden Order fundamentalists.",
     "effect": "Retaliates upon receiving a number of blows",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "fpCost": 22,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Law+of+Causality"
+    }
   },
   {
     "name": "Litany Of Proper Death",
@@ -1665,10 +1674,8 @@
     "fp": 15,
     "slots": 1,
     "requirements": {
-      "str": 0,
-      "dex": 0,
-      "int": 0,
-      "fai": 0,
+      "int": 11,
+      "fai": 11,
       "arc": 0
     },
     "chargeAble": null,
@@ -1678,7 +1685,12 @@
     "description": "One of the incantations of the Golden Order fundamentalists.",
     "effect": "Alleviates death blight buildup",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "fpCost": 15,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Order+Healing"
+    }
   },
   {
     "name": "Noble Presence",
@@ -2291,10 +2303,8 @@
     "fp": 27,
     "slots": 1,
     "requirements": {
-      "str": 0,
-      "dex": 0,
       "int": 0,
-      "fai": 0,
+      "fai": 23,
       "arc": 0
     },
     "chargeAble": null,
@@ -2304,7 +2314,12 @@
     "description": "Incantation of Vyke, knight of the Roundtable Hold.",
     "effect": "Enchants right-hand armament with lightning damage",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "fpCost": 35,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Vyke%27s+Dragonbolt"
+    }
   },
   {
     "name": "Urgent Heal",

@@ -6410,9 +6410,7 @@
     "requirements": {
       "str": 27,
       "dex": 13,
-      "int": 0,
-      "fai": 0,
-      "arc": 0
+      "fai": 20
     },
     "scaling": {
       "str": "D",
@@ -6442,7 +6440,11 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Siluria's Tree, weapon of one of the two honored as foremost among the Crucible Knights. The primordial form of the Erdtree is close in nature to life itself, and this spear, modeled on its crucible, is imbued with ancient holy essence. "
+    "description": "Siluria's Tree, weapon of one of the two honored as foremost among the Crucible Knights. The primordial form of the Erdtree is close in nature to life itself, and this spear, modeled on its crucible, is imbued with ancient holy essence. ",
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Siluria%27s+Tree"
+    }
   },
   {
     "name": "Vyke's War Spear",
@@ -6589,9 +6591,7 @@
     "requirements": {
       "str": 15,
       "dex": 22,
-      "int": 0,
-      "fai": 0,
-      "arc": 0
+      "fai": 18
     },
     "scaling": {
       "str": "D",
@@ -6621,7 +6621,11 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Golden spear with tree-like design. Wielded by knights employed as palace guards in the Royal Capital of Leyndell. Deals only holy damage.  Requiring superior dexterity to wield, this greatspear can perform consecutive thrust attacks despite its larger size.  "
+    "description": "Golden spear with tree-like design. Wielded by knights employed as palace guards in the Royal Capital of Leyndell. Deals only holy damage.  Requiring superior dexterity to wield, this greatspear can perform consecutive thrust attacks despite its larger size.  ",
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Treespear"
+    }
   },
   {
     "name": "Bastard Sword",
@@ -9687,10 +9691,7 @@
     "weight": 9.5,
     "requirements": {
       "str": 17,
-      "dex": 13,
-      "int": 0,
-      "fai": 0,
-      "arc": 0
+      "dex": 13
     },
     "scaling": {
       "str": "D",
@@ -9730,7 +9731,11 @@
       "merchantCost": null,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Grave+Scythe"
     },
-    "description": "Greatscythe comprised of a large blade affixed to a crooked stick. Weapon wielded by the aged grave keepers who tend the forgotten graveyards throughout the Lands Between. This weapon is said to have served as a charm against evil spirits in times of old."
+    "description": "Greatscythe comprised of a large blade affixed to a crooked stick. Weapon wielded by the aged grave keepers who tend the forgotten graveyards throughout the Lands Between. This weapon is said to have served as a charm against evil spirits in times of old.",
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Grave+Scythe"
+    }
   },
   {
     "name": "Halo Scythe",
@@ -10752,10 +10757,7 @@
     "weight": 6,
     "requirements": {
       "str": 14,
-      "dex": 16,
-      "int": 0,
-      "fai": 0,
-      "arc": 0
+      "dex": 16
     },
     "scaling": {
       "str": "D",
@@ -10796,7 +10798,11 @@
       "merchantCost": null,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Spiked+Spear"
     },
-    "description": "Weapon comprised of a spiked cylinder attached to a long pole. Capaable of dealing strike damage when swung. The spikes induce blood loss. Weapon of the Marionette Soliders employed by sorcerers."
+    "description": "Weapon comprised of a spiked cylinder attached to a long pole. Capaable of dealing strike damage when swung. The spikes induce blood loss. Weapon of the Marionette Soliders employed by sorcerers.",
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Spiked+Spear"
+    }
   },
   {
     "name": "Rotten Crystal Spear",
@@ -11606,10 +11612,7 @@
     "weight": 3.5,
     "requirements": {
       "str": 8,
-      "dex": 11,
-      "int": 0,
-      "fai": 0,
-      "arc": 0
+      "dex": 11
     },
     "scaling": {
       "str": "E",
@@ -11649,7 +11652,11 @@
       "merchantCost": null,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Noble's+Slender+Sword"
     },
-    "description": "Narrow blade carried by wandering nobles. Made to be easy to wield. Daubed with gold from tip to tail, it should fetch a good sum."
+    "description": "Narrow blade carried by wandering nobles. Made to be easy to wield. Daubed with gold from tip to tail, it should fetch a good sum.",
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Noble%27s+Slender+Sword"
+    }
   },
   {
     "name": "Warhawk's Talon",

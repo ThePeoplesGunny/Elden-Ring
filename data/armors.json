@@ -8155,7 +8155,7 @@
     "kaggleId": "17f693ced0bl0i0oh402gmm7bjbdty",
     "category": "Gauntlets",
     "slot": "arms",
-    "weight": 3.9,
+    "weight": 5.1,
     "dmgNegation": {
       "phy": 3,
       "strike": 2,
@@ -8171,13 +8171,17 @@
       "robustness": 18,
       "focus": 8,
       "vitality": 8,
-      "poise": 4
+      "poise": 8
     },
     "setName": null,
     "setTier": null,
     "enginePoise": null,
     "description": null,
-    "acquisition": null
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Redmane+Knight+Helm"
+    }
   },
   {
     "name": "Queen's Bracelets",

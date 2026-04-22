@@ -361,10 +361,28 @@ from B.3 was canonical-Kaggle vs engine-stored `enginePoise` field — a
 drift between two snapshots in the same canonical file, not a blocker
 between canonical and authoritative truth. Fanapis confirms Kaggle/canonical
 side is correct; engine's `enginePoise` overlay is stale (older game patch).
-No canonical overrides applied — the handful of flagged cases (Redmane
-Knight Helm, Siluria's Tree/Treespear empty-key reqs, Grave Scythe/Spiked
-Spear/Noble's Slender Sword canon-extra dex reqs) require individual
-Fextralife review if we want to resolve them. Most are low-impact.
+
+**Fextralife drift patch shipped 2026-04-22** (`scripts/phase_b_fextralife_drift_patch.js`):
+Applied 11 targeted corrections from Fextralife wiki pages:
+
+- **5 incantations with all-zero requirement bugs** (B.4 data error):
+  - Ancient Dragons' Lightning Spear (fai 0→32), Glintstone Breath
+    (fai 0→15, arc 0→12), Law of Causality (int 0→29 — flagged for
+    in-game verification, unusual for incantation), Order Healing
+    (int 0→11, fai 0→11), Vyke's Dragonbolt (fai 0→23).
+- **1 armor poise/weight** — Redmane Knight Helm: canon/fanapis/Fextralife
+  all three disagreed; Fextralife poise=8, weight=5.1 authoritative.
+- **5 weapon req corrections**: Siluria's Tree (+fai=20), Treespear
+  (+fai=18) resolved the deliton empty-name source corruption; Grave
+  Scythe, Spiked Spear, Noble's Slender Sword had canon values correct
+  but fanapis missing dex — no canon change, just Fextralife confirmation
+  logged.
+
+Each patched entry now carries a `fextralife: {verifiedAt, sourceUrl}`
+audit trail. Post-patch drift report still shows ~6 cases — these are
+now canon-right/fanapis-wrong inversions (fanapis's `requiredAttributes[]`
+has empty-name or missing-dex source bugs). Canonical is authoritative
+for all 11 patched entries.
 
 ### Phase B remaining
 

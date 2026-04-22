@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T23:21:50.379Z",
+  "generatedAt": "2026-04-22T23:31:24.804Z",
   "reports": {
     "armors": {
       "canonCount": 570,
@@ -13,17 +13,11 @@
       "poiseDrift": [
         {
           "name": "Redmane Knight Helm",
-          "canon": 4,
+          "canon": 8,
           "fanapis": 6
         }
       ],
-      "weightDrift": [
-        {
-          "name": "Redmane Knight Helm",
-          "canon": 3.9,
-          "fanapis": 5.1
-        }
-      ]
+      "weightDrift": []
     },
     "weapons": {
       "canonCount": 306,
@@ -54,6 +48,10 @@
         {
           "name": "Siluria's Tree",
           "diffs": {
+            "fai": {
+              "canon": 20,
+              "fanapis": 0
+            },
             "": {
               "fanapis": 20
             }
@@ -62,6 +60,10 @@
         {
           "name": "Treespear",
           "diffs": {
+            "fai": {
+              "canon": 18,
+              "fanapis": 0
+            },
             "": {
               "fanapis": 18
             }
@@ -111,7 +113,58 @@
         "Radagon's Rings of Light",
         "The Flame of Frenzy"
       ],
-      "reqDrift": []
+      "reqDrift": [
+        {
+          "name": "Ancient Dragons' Lightning Spear",
+          "diffs": {
+            "fai": {
+              "canon": 32,
+              "fanapis": 0
+            }
+          }
+        },
+        {
+          "name": "Glintstone Breath",
+          "diffs": {
+            "fai": {
+              "canon": 15
+            },
+            "arc": {
+              "canon": 12
+            }
+          }
+        },
+        {
+          "name": "Law Of Causality",
+          "diffs": {
+            "int": {
+              "canon": 29,
+              "fanapis": 0
+            }
+          }
+        },
+        {
+          "name": "Order Healing",
+          "diffs": {
+            "int": {
+              "canon": 11,
+              "fanapis": 0
+            },
+            "fai": {
+              "canon": 11,
+              "fanapis": 0
+            }
+          }
+        },
+        {
+          "name": "Vyke's Dragonbolt",
+          "diffs": {
+            "fai": {
+              "canon": 23
+            }
+          }
+        }
+      ]
     },
     "talismans": {
       "canonCount": 98,
