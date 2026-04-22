@@ -1,0 +1,140 @@
+{
+  "generatedAt": "2026-04-22T23:21:50.379Z",
+  "reports": {
+    "armors": {
+      "canonCount": 570,
+      "fanCount": 568,
+      "notFound": [
+        "Bull-Goat Armor",
+        "Bull-Goat Gauntlets",
+        "Bull-Goat Helm",
+        "Bull-Goat Greaves"
+      ],
+      "poiseDrift": [
+        {
+          "name": "Redmane Knight Helm",
+          "canon": 4,
+          "fanapis": 6
+        }
+      ],
+      "weightDrift": [
+        {
+          "name": "Redmane Knight Helm",
+          "canon": 3.9,
+          "fanapis": 5.1
+        }
+      ]
+    },
+    "weapons": {
+      "canonCount": 306,
+      "fanCount": 307,
+      "notFound": [
+        "Staff of the Avatar",
+        "Giant-Crusher",
+        "Wing of Astel",
+        "Serpent-God's Curved Sword",
+        "Blade of Calling",
+        "Demi-Human Queen's Staff",
+        "Staff of the Guilty",
+        "Axe of Godrick",
+        "Serpent-Hunter",
+        "Sword of Milos",
+        "Scepter of the All-Knowing",
+        "Rivers of Blood",
+        "Celebrant's Rib-Rake",
+        "Bolt of Gransax",
+        "Cross-Naginata",
+        "Sword of Night and Flame",
+        "Sword of St. Trina",
+        "Regalia of Eochaid",
+        "Steel-Wire Torch",
+        "Beast-Repellent Torch"
+      ],
+      "reqDrift": [
+        {
+          "name": "Siluria's Tree",
+          "diffs": {
+            "": {
+              "fanapis": 20
+            }
+          }
+        },
+        {
+          "name": "Treespear",
+          "diffs": {
+            "": {
+              "fanapis": 18
+            }
+          }
+        },
+        {
+          "name": "Grave Scythe",
+          "diffs": {
+            "dex": {
+              "canon": 13
+            }
+          }
+        },
+        {
+          "name": "Spiked Spear",
+          "diffs": {
+            "dex": {
+              "canon": 16
+            }
+          }
+        },
+        {
+          "name": "Noble's Slender Sword",
+          "diffs": {
+            "dex": {
+              "canon": 11
+            }
+          }
+        }
+      ]
+    },
+    "sorceries": {
+      "canonCount": 72,
+      "fanCount": 71,
+      "notFound": [
+        "Cannon of Haima",
+        "Meteorite of Astel",
+        "Stars of Ruin"
+      ],
+      "reqDrift": []
+    },
+    "incantations": {
+      "canonCount": 110,
+      "fanCount": 98,
+      "notFound": [
+        "Discus of Light",
+        "Radagon's Rings of Light",
+        "The Flame of Frenzy"
+      ],
+      "reqDrift": []
+    },
+    "talismans": {
+      "canonCount": 98,
+      "fanCount": 87,
+      "notFound": [
+        "Bull-Goat's Talisman",
+        "Great-Jar's Arsenal",
+        "Moon of Nokstella",
+        "Graven-School Talisman",
+        "Graven-Mass Talisman",
+        "Shard of Alexander",
+        "Red-Feathered Branchsword"
+      ],
+      "effectDrift": []
+    },
+    "ashes_of_war": {
+      "canonCount": 90,
+      "fanCount": 90,
+      "notFound": [
+        "Ash of War: Golden Vow",
+        "Ash of War: Through and Through"
+      ],
+      "affinityDrift": []
+    }
+  }
+}

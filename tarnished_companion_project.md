@@ -343,25 +343,43 @@ Three brand-new canonical entities created from the fanapis snapshot:
   Mountaintops 17, Dragonbarrow 6). Description-only, no joins. Script:
   `scripts/phase_b_overlay_ingest_locations.js`.
 
-**Still open under Phase B-Overlay-Merge:**
-- **Validate existing canonicals vs fanapis** — report drift for armors
-  (poise/weight), weapons (reqs), spells (reqs). Not yet run.
-- **Apply fanapis-wins overrides** where validation surfaces canonical errors.
-  Per cross-cutting convention "Fextralife wins on overlap," fanapis plays
-  the same role as Fextralife for non-acquisition fields.
+**Validation shipped** (2026-04-22, `scripts/phase_b_overlay_validate.js` +
+`data/fanapis/drift_report.json`). Canonical is already aligned with fanapis
+across all classes — drift is near-zero:
+
+| Class | Matched | Drift | notFound (engine stubs) |
+|---|---|---|---|
+| armors | 568/568 | poise=1, weight=1 (Redmane Knight Helm only) | 4 |
+| weapons | 287/306 | req=5 (2 empty-key fanapis-wins, 3 canon-has-extra) | 20 |
+| sorceries | 69/72 | 0 | 3 |
+| incantations | 107/110 | 0 | 3 |
+| talismans | 91/98 | 0 (effect text identical) | 7 |
+| ashes_of_war | 88/90 | 0 (case-insensitive match bridges canonical's `Of`→`of` normalization) | 2 |
+
+**Interpretation:** The originally-feared "52 poise + 58 weight" armor drift
+from B.3 was canonical-Kaggle vs engine-stored `enginePoise` field — a
+drift between two snapshots in the same canonical file, not a blocker
+between canonical and authoritative truth. Fanapis confirms Kaggle/canonical
+side is correct; engine's `enginePoise` overlay is stale (older game patch).
+No canonical overrides applied — the handful of flagged cases (Redmane
+Knight Helm, Siluria's Tree/Treespear empty-key reqs, Grave Scythe/Spiked
+Spear/Noble's Slender Sword canon-extra dex reqs) require individual
+Fextralife review if we want to resolve them. Most are low-impact.
 
 ### Phase B remaining
 
-**None from B.1–B.7.** Phase B-Overlay snapshot + new canonicals shipped
-2026-04-22. Validation + per-class overrides still open.
+**None.** B.1–B.7 + B-Overlay (snapshot + new canonicals + validate) all
+shipped 2026-04-22. Canonical data baseline is stable and cross-validated
+against fanapis source family.
 
 Next work options:
-- **B-Overlay-Merge validate** — run drift reports for armors/weapons/spells
-  against fanapis, apply overrides where clearly correct.
 - **Fextralife (scoped)** — only for what fanapis can't provide: merchant
-  inventories, chest/world pickups, quest rewards, incantation req bug fixes.
-  Much smaller scope than the original 570-page harvest.
-- **Phase C/D** per `REWRITE_PLAN.md` (unblocks live playtest).
+  inventories, chest/world pickups, quest rewards, incantation req bug
+  fixes (5 all-zero-req spells), plus the ~6 individual drift cases
+  flagged in the validate report. Much smaller scope than the original
+  570-page harvest.
+- **Phase C/D** per `REWRITE_PLAN.md` (unblocks live playtest — tc_next
+  journey view is the current blocker on resuming R4 Limgrave playtest).
 
 ---
 

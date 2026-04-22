@@ -26,6 +26,6 @@ Every delivery updates these three artifacts (per global §VI.5):
 **Version:** v4.0.0-alpha (Phase B.1–B.7 + B-Overlay fanapis snapshot)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Phase B-Overlay-Merge (new canonicals): bosses.json (105, 207 drops), npcs.json (55), locations.json (177)
-**Next task:** B-Overlay-Merge validate (drift reports armors/weapons/spells vs fanapis, apply fanapis-wins overrides) OR scoped Fextralife (merchants/chests/quest rewards) OR Phase C/D. Gunny to direct.
+**Last completed task:** Phase B-Overlay validate — drift near-zero across all classes, 6 individual cases flagged, no overrides needed
+**Next task:** Scoped Fextralife (merchants/chests/quest rewards + 5 spell req bug fixes + 6 flagged drift cases) OR Phase C/D (tc_next journey view, unblocks playtest). Gunny to direct.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.
