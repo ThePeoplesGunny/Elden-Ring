@@ -3787,7 +3787,18 @@
       "merchantCost": 1600,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Parrying+Dagger"
     },
-    "description": "A knife with curved handguards. Designed to parry, turning foes' attacks against them.  For master of combat who anticipate every enemy strike and counter accordingly, this weapon is all they need. "
+    "description": "A knife with curved handguards. Designed to parry, turning foes' attacks against them.  For master of combat who anticipate every enemy strike and counter accordingly, this weapon is all they need. ",
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1600,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Miséricorde",
@@ -11837,7 +11848,18 @@
       "merchantCost": 3000,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Estoc"
     },
-    "description": "Large piercing sword with a long, hard bladed edge which is also capable of slashing attacks.  For its large size, it can be wirleded rather nimbly, leaving little opportunity for the enemy to counter."
+    "description": "Large piercing sword with a long, hard bladed edge which is also capable of slashing attacks.  For its large size, it can be wirleded rather nimbly, leaving little opportunity for the enemy to counter.",
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Rapier",
@@ -12100,7 +12122,18 @@
       "merchantCost": 200,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Torch"
     },
-    "description": "This torch's tip is wrapped in oil-soaked rags and set on fire. The flame can illuminate dark locales, or used to attack enemies. Can be raised up when equipped in the left hand, illuminating more of the surrounding area."
+    "description": "This torch's tip is wrapped in oil-soaked rags and set on fire. The flame can illuminate dark locales, or used to attack enemies. Can be raised up when equipped in the left hand, illuminating more of the surrounding area.",
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Noble's Estoc",

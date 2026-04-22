@@ -27,7 +27,27 @@
     "effect": "Reveals co-op and hostile summoning signs",
     "description": "Item for online play. Craftable item. Reveals cooperative and competitive multiplayer signs. Co-op summoning signs will be shown in gold, while hostile summoning signs will be shown in red. Multiplayer begins when you summon a player from another world through their sign.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 3,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Tarnished's Furled Finger",
@@ -127,7 +147,18 @@
     "effect": "Attempts invasion of other player's world",
     "description": "Item for online play.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Smithing Stone [3]",
@@ -287,7 +318,18 @@
     "effect": "Reinforce special armaments to +9.",
     "description": "Ancient smithing stone drained of color",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 25000,
+        "stock": "infinite",
+        "prereq": "Somberstone Miner's Bell Bearing (5)",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ]
   },
   {
     "name": "Somber Ancient Dragon Smithing Stone",
@@ -317,7 +359,18 @@
     "effect": "Reinforce armaments up to +3.",
     "description": "Stone used to smith a variety of armaments. A shard found in plenty.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 200,
+        "stock": "infinite",
+        "prereq": "Smithing-Stone Miner's Bell Bearing (1)",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ]
   },
   {
     "name": "Grave Glovewort [1]",
@@ -527,7 +580,18 @@
     "effect": "Expands crafting repertoire",
     "description": "Record of crafting techniques left by an armorer who served the great general Radahn. Contains knowledge of dealing with decay; the application of fire in particular.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 600,
+        "stock": 1,
+        "prereq": "Nomadic Merchant's Bell Bearing [3]",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ]
   },
   {
     "name": "Armorer's Cookbook [3]",
@@ -617,7 +681,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by a man who, unable to become a Finger Maiden, instead became a missionary, and went forth to spread holy teachings.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Missionary's Cookbook [3]",
@@ -697,7 +772,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [2]",
@@ -707,7 +793,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [3]",
@@ -1317,7 +1414,18 @@
     "effect": "Boosts rune acquisition for a time (30%)",
     "description": "Four-toed foot of a fowl, pickled in a golden medicinal solution. Craftable item. Boosts the amount of runes obtained from defeating enemies for a certain duration Since old times, the needy would scrape the meat clean even from a fowl's claw.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 3,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Dragon Heart",
@@ -1337,7 +1445,18 @@
     "effect": "Throw at enemies to inflict damage",
     "description": "Short dagger for throwing.",
     "obtainedFrom": "Str B Dex A",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Stimulating Boluses",
@@ -1507,7 +1626,18 @@
     "effect": "Shard of filthy glass. Worthless rubbish",
     "description": "Glass shard covered in dirt.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 100,
+        "stock": "infinite",
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Fan Daggers",
@@ -1517,7 +1647,18 @@
     "effect": "Thrown fanned-out knives at enemies to inflict damage",
     "description": "A set of five throwing knives bundled together.",
     "obtainedFrom": "Str B Dex S",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 160,
+        "stock": "infinite",
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Grace Mimic",
@@ -1527,7 +1668,18 @@
     "effect": "Light shows the path, but without order",
     "description": "A fetish indicating the guidance of grace.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 100,
+        "stock": 15,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Roped Holy Water Pot",
@@ -1657,7 +1809,18 @@
     "effect": "Grants the blessing of an equipped rune upon use",
     "description": " A shard of the shattered Elden Ring.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 4000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ]
   },
   {
     "name": "Silver-pickled Fowl Foot",
@@ -2277,7 +2440,18 @@
     "effect": "Binds Margit and Morgott two times per battle",
     "description": "A fetish bathed in golden magic. Shackles were used to bind the accursed people called the Omen, and these ones were made to keep a particular Omen under strictest confinement. Though faint, the shackles still retain vestiges of power — enough to trap the once-bound Margit on earth, if only for a short time.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Numen'srune",
@@ -2567,7 +2741,18 @@
     "effect": "Enables the practice of item Crafting",
     "description": "Leather bag containing a pestle and mortar, small blade, and various other tools. Enables item crafting from the main menu. Provides both means to fight and means to survive.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Telescope",
@@ -2577,7 +2762,18 @@
     "effect": "Allows viewer to see faraway things",
     "description": "Astrology tool used by members of the Carian royal family. Part of a larger instrument, removed and stolen away. Allows the viewer to better see faraway things. During the age of the Erdtree, Carian astrology withered on the vine. The fate once writ in the night skies had been fettered by the Golden Order.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Torch",
@@ -2697,7 +2893,18 @@
     "effect": "Use to break one imp statue seal",
     "description": "A sword-shaped stone key.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
   },
   {
     "name": "Academy Glintstone Key",
@@ -3417,7 +3624,18 @@
     "effect": "Note imparting knowledge in brief",
     "description": "A note sold by a nomadic merchant.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Note (waypoint Ruins)",
@@ -3427,7 +3645,18 @@
     "effect": "Note imparting knowledge in brief",
     "description": "A note sold by a nomadic merchant.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Ruptured Crystal Tear",
@@ -3877,7 +4106,18 @@
     "effect": "Container required for crafting cracked pot items",
     "description": "This empty pot somehow mends itself when broken.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Ritual Pot",

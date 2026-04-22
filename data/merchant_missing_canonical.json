@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-04-22T23:49:13.284Z",
+  "note": "Items sold by merchants that have no matching canonical entry. Ammo/shields are structural gaps (not in canonical scope); others are missing-data stragglers worth adding to canonical.",
+  "missing": [
+    {
+      "merchantItemName": "Arrow",
+      "normalizedAttempt": null,
+      "merchant": "Merchant Kalé",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Bolt",
+      "normalizedAttempt": null,
+      "merchant": "Merchant Kalé",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Large Leather Shield",
+      "normalizedAttempt": null,
+      "merchant": "Merchant Kalé",
+      "category": "shield"
+    },
+    {
+      "merchantItemName": "Arrow",
+      "normalizedAttempt": null,
+      "merchant": "Twin Maiden Husks",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Assassin's Approach",
+      "normalizedAttempt": null,
+      "merchant": "Miriel, Pastor of Vows",
+      "category": "incantation"
+    },
+    {
+      "merchantItemName": "Assassin's Approach",
+      "normalizedAttempt": null,
+      "merchant": "Brother Corhyn",
+      "category": "incantation"
+    },
+    {
+      "merchantItemName": "Missionary's Cookbook (2)",
+      "normalizedAttempt": null,
+      "merchant": "Patches",
+      "category": "cookbook"
+    },
+    {
+      "merchantItemName": "Great Arrow",
+      "normalizedAttempt": null,
+      "merchant": "Patches",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Ballista Bolt",
+      "normalizedAttempt": null,
+      "merchant": "Patches",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Horse Crest Wooden Shield",
+      "normalizedAttempt": null,
+      "merchant": "Patches",
+      "category": "shield"
+    },
+    {
+      "merchantItemName": "Sacrificial Twig",
+      "normalizedAttempt": null,
+      "merchant": "Patches",
+      "category": "consumable"
+    }
+  ]
+}

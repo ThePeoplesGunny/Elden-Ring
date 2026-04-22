@@ -1,0 +1,1096 @@
+{
+  "generatedAt": "2026-04-22T23:49:13.285Z",
+  "note": "item name -> [{merchant, location, region, runes, stock, prereq, sourceUrl}, ...]",
+  "index": {
+    "Throwing Dagger": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Telescope": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Furlcalling Finger Remedy": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 3,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Cracked Pot": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Crafting Kit": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [1]": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [2]": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Missionary's Cookbook [1]": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Torch": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Chain Coif": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Chain Armor": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Chain Gauntlets": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Chain Leggings": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Note (flask Of Wondrous Physick)": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Note (waypoint Ruins)": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ],
+    "Rune Arc": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 4000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ],
+    "Ash of War: Carian Greatsword": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": "Rogier's Bell Bearing",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ],
+    "Armorer's Cookbook [2]": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 600,
+        "stock": 1,
+        "prereq": "Nomadic Merchant's Bell Bearing [3]",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ],
+    "Smithing Stone [1]": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 200,
+        "stock": "infinite",
+        "prereq": "Smithing-Stone Miner's Bell Bearing (1)",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ],
+    "Somber Smithing Stone [9]": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 25000,
+        "stock": "infinite",
+        "prereq": "Somberstone Miner's Bell Bearing (5)",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ],
+    "Magic Glintblade": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Carian Greatsword": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Blessing's Boon": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 4000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Swift Glintstone Shard": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 600,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Great Glintstone Shard": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Glintstone Cometshard": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 12000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 12000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Star Shower": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Glintblade Phalanx": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Carian Slicer": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Lord's Heal": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 8000,
+        "stock": null,
+        "prereq": "Two Fingers' Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Lord's Aid": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Two Fingers' Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "O, Flame!": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 6000,
+        "stock": null,
+        "prereq": "Fire Monks' Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 6000,
+        "stock": null,
+        "prereq": "Fire Monks' Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Surge, O Flame!": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 5500,
+        "stock": null,
+        "prereq": "Fire Monks' Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 5500,
+        "stock": null,
+        "prereq": "Fire Monks' Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Ancient Dragons' Lightning Spear": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 8500,
+        "stock": null,
+        "prereq": "Ancient Dragon Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Ancient Dragons' Lightning Strike": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Ancient Dragon Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Black Flame": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 7500,
+        "stock": null,
+        "prereq": "Godskin Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 7500,
+        "stock": null,
+        "prereq": "Godskin Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Black Flame Blade": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 6000,
+        "stock": null,
+        "prereq": "Godskin Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 6000,
+        "stock": null,
+        "prereq": "Godskin Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Darkness": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 3500,
+        "stock": null,
+        "prereq": "Assassin's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 3500,
+        "stock": null,
+        "prereq": "Assassin's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Giantsflame Take Thee": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 13000,
+        "stock": null,
+        "prereq": "Giant's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Flame, Fall Upon Them": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Giant's Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Electrify Armament": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 4000,
+        "stock": null,
+        "prereq": "Dragon Cult Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Honed Bolt": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 7000,
+        "stock": null,
+        "prereq": "Dragon Cult Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Lightning Spear": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 6000,
+        "stock": null,
+        "prereq": "Dragon Cult Prayerbook",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ],
+    "Law Of Regression": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Golden Order Principia",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Golden Order Principia",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Radagon's Rings of Light": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 7500,
+        "stock": null,
+        "prereq": "Golden Order Principia",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 7500,
+        "stock": null,
+        "prereq": "Golden Order Principia",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Urgent Heal": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Heal": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Great Heal": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 9000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Cure Poison": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Magic Fortification": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 3500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Flame Fortification": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Lightning Fortification": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 7500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Discus of Light": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 11000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Immutable Shield": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 13000,
+        "stock": null,
+        "prereq": "Golden Order Principia",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Rejection": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Catch Flame": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Flame Sling": [
+      {
+        "merchant": "Brother Corhyn",
+        "location": "Roundtable Hold (initial), then Altus Plateau",
+        "region": "Roundtable Hold / Altus Plateau",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Brother+Corhyn"
+      }
+    ],
+    "Glintstone Pebble": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Thops",
+        "location": "Church of Irith, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Thops"
+      }
+    ],
+    "Glintstone Stars": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Glintstone Arc": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Thops",
+        "location": "Church of Irith, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Thops"
+      }
+    ],
+    "Crystal Barrage": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Scholar's Armament": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Scholar's Shield": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 2500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Shard Spiral": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 8000,
+        "stock": null,
+        "prereq": "Sellen questline completion",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ],
+    "Starlight": [
+      {
+        "merchant": "Thops",
+        "location": "Church of Irith, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Thops"
+      }
+    ],
+    "Ash of War: Stamp (upward Cut)": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Kick": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Endure": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: War Cry": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Spinning Slash": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1200,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Impaling Thrust": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Quickstep": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Storm Blade": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Parry": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: No Skill": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Eruption": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 8000,
+        "stock": null,
+        "prereq": "Joined Volcano Manor",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Ash of War: Assassin's Gambit": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 6500,
+        "stock": null,
+        "prereq": "Joined Volcano Manor",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ],
+    "Gold-pickled Fowl Foot": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 3,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Fan Daggers": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 160,
+        "stock": "infinite",
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Margit's Shackle": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Grace Mimic": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 100,
+        "stock": 15,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Glass Shard": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 100,
+        "stock": "infinite",
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Parrying Dagger": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1600,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Stonesword Key": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Festering Bloody Finger": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Estoc": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ]
+  }
+}

@@ -1099,7 +1099,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Armor made of woven chain. Standard issue for ordinary soldiers. Though plain in appearance, it offers dependable protection.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Champion Pauldron",
@@ -6495,7 +6506,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Gauntlets made of woven chain. Standard issue for ordinary soldiers. Though plain in appearance, they offer dependable protection.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Cuckoo Knight Gauntlets",
@@ -9370,7 +9392,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Coif made of woven chain. Standard issue for ordinary soldiers. Though plain in appearance, it offers dependable protection.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Bull-Goat Helm",
@@ -13953,7 +13986,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Leggings made of woven chain. Standard issue for ordinary soldiers. Though plain in appearance, they offer dependable protection.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Merchant Kalé",
+        "location": "Limgrave, Church of Elleh",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      }
+    ]
   },
   {
     "name": "Bloodhound Knight Greaves",

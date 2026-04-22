@@ -190,7 +190,18 @@
     "description": "One of the sorceries of the Carian royal family. Conjures a magic greatsword and then delivers a sweeping blow. This sorcery can be cast repeatedly. Armed with this spell, sorcerers gain the strength of knights, their loyalty sworn to the moon.",
     "effect": "Performs sweeping slash using magical greatsword",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ]
   },
   {
     "name": "Carian Piercer",
@@ -262,7 +273,27 @@
     "description": "One of the sorceries of the Carian royal family.",
     "effect": "Performs swift sweeping slash using magical sword",
     "engineNote": "Fast melee-range — best DPS per FP",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Crystal Barrage",
@@ -286,7 +317,18 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria.",
     "effect": "Fires a volley of glintstone crystal shards",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Collapsing Stars",
@@ -646,7 +688,27 @@
     "description": "Fires a horizontal arc of magic that spreads outward. This sorcery can be cast repeteadly and while in motion.",
     "effect": "Fires a horizontally-widening magic arc",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Thops",
+        "location": "Church of Irith, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Thops"
+      }
+    ]
   },
   {
     "name": "Glintstone Cometshard",
@@ -670,7 +732,27 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria. Fires a magical comet with a trailing tail. This sorcery can be cast repeatedly and while in motion. Charging enhances potency. A sorcery of the Karolos Conspectus, the most venerable of the academy.",
     "effect": "Fires a magic comet with a trailing tail",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 12000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 12000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Glintstone Pebble",
@@ -694,7 +776,27 @@
     "description": "The most basic glintstone sorcery of the Academy of Raya Lucaria.",
     "effect": "Fires magic projectiles from glintstone",
     "engineNote": "Basic spam sorcery",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Thops",
+        "location": "Church of Irith, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Thops"
+      }
+    ]
   },
   {
     "name": "Glintstone Stars",
@@ -718,7 +820,18 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria.",
     "effect": "Fires three shooting stars that pursue foes",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Glintstone Icecrag",
@@ -766,7 +879,27 @@
     "description": "One of the sorceries of the Carian royal family.",
     "effect": "Forms a defensive arch of magic glintblades",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Gravity Well",
@@ -814,7 +947,27 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria. The glintstone serves as a conduit, launching large magical projectiles at foes. This sorcery can be cast repeatedly and while in motion. Those unworthy of the stone crown typically end their brief journey into sorcery here.",
     "effect": "Fires larger magic projectiles from glintstone",
     "engineNote": "Bigger pebble",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Lucidity",
@@ -1006,7 +1159,18 @@
     "description": "An old sorcery of the Carian Royal Family.",
     "effect": "Creates sigil that forms a projectile glintblade after delay",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      }
+    ]
   },
   {
     "name": "Magma Shot",
@@ -1367,7 +1531,18 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria.",
     "effect": "Enchants right-hand armament with magic damage",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Scholar's Shield",
@@ -1391,7 +1566,18 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria.",
     "effect": "Enhances left-handed shield damage negation",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 2500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Shard Spiral",
@@ -1415,7 +1601,18 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria.",
     "effect": "Fire twin spiraling projectiles",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 8000,
+        "stock": null,
+        "prereq": "Sellen questline completion",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Shatter Earth",
@@ -1463,7 +1660,18 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria.",
     "effect": "Creates star light to illuminate surroundings",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Thops",
+        "location": "Church of Irith, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Thops"
+      }
+    ]
   },
   {
     "name": "Star Shower",
@@ -1487,7 +1695,27 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria. Fires six magic shooting stars that pursue the target. This sorcery can be cast while in motion. Charging enhances potency. The most difficult to master of the Olivinus Conspectus sorceries.",
     "effect": "Fires six shooting stars that pursue foes",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Stars of Ruin",
@@ -1560,7 +1788,27 @@
     "description": "One of the glintstone sorceries of the Academy of Raya Lucaria. The glintstone serves as a conduit, launching swift magical projectiles at foes. This sorcery can be used without delay after performing another action. Those unworthy of the stone crown typically end their brief journey into sorcery here.",
     "effect": "Swiftly fires magic projectiles from glintstone",
     "engineNote": "Very fast, lower damage",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Miriel, Pastor of Vows",
+        "location": "Church of Vows, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 600,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Miriel%2C+Pastor+of+Vows"
+      },
+      {
+        "merchant": "Sorceress Sellen",
+        "location": "Waypoint Ruins (initial), Raya Lucaria Academy (later)",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      }
+    ]
   },
   {
     "name": "Terra Magicus",

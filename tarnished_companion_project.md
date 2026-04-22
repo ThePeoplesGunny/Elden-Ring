@@ -393,14 +393,34 @@ merchants, 113 inventory items):
   Thops (3, partial — wiki table returned incomplete), Knight Bernahl
   (12), Patches (15).
 - First-pass cross-reference to canonical: 93/113 matched (82%) by
-  exact name. 20 unmatched fall into clear normalization categories:
-  ammo (Arrow/Bolt/Great Arrow — not in items.json, lives in engine's
-  ammo_data.json), cookbook bracket format (`[1]` vs `(1)` drift between
-  Fextralife merchant pages), AoW label variants (`Stamp (Upward Cut)`
-  vs canonical `Stamp - Upward Cut` TBD), and a handful of edge cases.
-- Next work: normalization overlay script to bridge the 20 unmatched
-  names and emit reverse index (item → merchants selling it) consumable
-  by the engine's acquisition lookup.
+  exact name. 20 unmatched fell into 9 normalizable and 11 canonical-gap
+  categories.
+- **Merchant overlay shipped 2026-04-22** (`scripts/phase_b_merchant_overlay.js`):
+  9 name normalizations (bracket style `(N)`→`[N]`, colon-to-parens
+  for `Note:` prefix items, `of`→`Of` casing for Law of Regression /
+  Gold-Pickled Fowl Foot / Ash of War: Stamp (upward Cut)) bridged the
+  fixable gaps. Now 102/113 merchant items attributed to canonical
+  (86 unique items — 16 items sold by 2+ merchants). Each matched
+  canonical entry carries `merchants[]` array with full attribution
+  (merchant, location, region, runes, stock, prereq, sourceUrl).
+- `data/merchant_reverse_index.json` — item→merchants lookup for
+  direct engine consumption.
+- `data/merchant_missing_canonical.json` — 11 items sold by merchants
+  but absent from canonical:
+  - **ammo (4)**: Arrow, Bolt, Great Arrow, Ballista Bolt — canonical
+    gap; ammo lives only in engine's `ammo_data.json`. Fanapis has
+    `/api/ammos` endpoint not yet snapshotted.
+  - **shields (2)**: Large Leather Shield, Horse Crest Wooden Shield —
+    canonical has zero shields. Fanapis has `/api/shields` endpoint
+    not yet snapshotted.
+  - **incantation (1)**: Assassin's Approach — real Kaggle/deliton/engine
+    gap.
+  - **cookbook (1)**: Missionary's Cookbook (2) — real items.json gap
+    (canonical has [1], [3], [4], [5], [7] but not [2]).
+  - **consumable (1)**: Sacrificial Twig — real items.json gap.
+  - **duplicate merchant attributions (2)**: 2nd mention of
+    Assassin's Approach + 2nd mention of Law Of Regression — same
+    missing canonical entries, multiple merchants.
 - **Out of scope for this pass:** Nomadic Merchants (~11 region-scattered),
   Isolated Merchants (~6), Hermit Merchant, Pidia, Imprisoned Merchant,
   Gatekeeper Gostoc, Gowry, D, Preceptor Seluvis, Rogier, Gurranq,

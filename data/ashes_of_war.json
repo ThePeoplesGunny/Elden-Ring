@@ -77,7 +77,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Occult affinity and the following skill:\"Assassin's Gambit: Skill that masks the user's presence at the cost of a self-inflicted wound. Grants near-invisibility and silences footsteps.\"Usable on small and medium straight swords and thrusting swords.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 6500,
+        "stock": null,
+        "prereq": "Joined Volcano Manor",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Black Flame Tornado",
@@ -189,7 +200,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Magic affinity and the following skill:\"Carian Greatsword: Carian royal prestige embodied in a skill. Transform blade into a magical greatsword and swing it down. Can be charged to increase its power.\"Usable on swords (colossal weapons excepted).",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Twin Maiden Husks",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": "Rogier's Bell Bearing",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      }
+    ]
   },
   {
     "name": "Ash of War: Carian Grandeur",
@@ -365,7 +387,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Heavy affinity and the following skill:\"Endure: Assume an anchored stance to brace for incoming attacks, briefly boosting poise. Damage taken while using this skill is reduced.\"Usable on all melee armaments.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Eruption",
@@ -381,7 +414,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Fire affinity and the following skill:\"Eruption: Skill of the knights who serve at Volcano Manor. Slam armament into the ground, spawning roiling lava which spouts up upon release.\"Usable on large and colossal swords, axes, and hammers.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 8000,
+        "stock": null,
+        "prereq": "Joined Volcano Manor",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Flame Of The Redmanes",
@@ -637,7 +681,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Keen affinity and the following skill:\"Impaling Thrust: Skill that lets piercing armaments overcome enemy shields. Build power, then lunge forward for a strong thrust that pierces an enemy's guard.\"Usable on armaments capable of thrusting (colossal weapons excepted).",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Kick",
@@ -653,7 +708,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Heavy affinity and the following skill:\"Kick: Push an enemy back with a high kick. Effective against enemies who are guarding, and can break a foe's stance. Sometimes a simple tool is the most effective.\"Usable on all melee armaments.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Lightning Ram",
@@ -765,7 +831,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants no affinity to an armament and replaces any skill present with the following:\"No skill: This armament has no skill. If the armament in the other hand has a skill, that skill will be used instead.\"Usable on shields and torches.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Piercing Fang",
@@ -797,7 +874,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants no affinity to an armament, but imparts the following skill:\"Parry: Use this skill in time with a foe's melee attack to deflect it and break that foe's stance. This provides an opening to perform a critical hit.\"Usable on daggers, curved swords, thrusting swords, fists, claws, and small and medium shields.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 600,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Poisonous Mist",
@@ -877,7 +965,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Keen affinity and the following skill:\"Quickstep: Skill prized by the crafty and fleet of foot.Perform a quickstep maneuver that allows for circling around lock-on targets.\"Usable on all melee armaments.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Raptor Of The Mists",
@@ -1053,7 +1152,18 @@
     "walkthroughStep": 0,
     "engineNote": "Multi-hit. Good status proc rate.",
     "description": "This Ash of War grants an armament the Keen affinity and the following skill:\"Spinning Slash: Skill favored by dexterous warriors. Slash foes as your body spins. Additional input allows for a follow-up attack.\"Usable on swords, axes, and polearms (colossal weapons excepted).",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1200,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Spectral Lance",
@@ -1149,7 +1259,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Heavy affinity and the following skill:\"Stamp (Upward Cut): Brace armament and step into a low stance that prevents recoil from most enemy attacks. Follow up with a strong attack for an upward strike.\"Usable on swords, axes, and hammers, (small and medium swords excepted).",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Stormcaller",
@@ -1245,7 +1366,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Quality affinity and the following skill:\"Storm Blade: Lost skill of Stormveil. Surround armament with shearing storm winds that can be fired forward. Can be fired in rapid succession.\"Usable on swords (colossal weapons and twinblades excepted).",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 1800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Sword Dance",
@@ -1357,7 +1489,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Heavy affinity and the following skill:\"War Cry: Give a war cry to rally the spirit and increase attack power. While active, strong attacks change to charging attacks.\"Usable on melee armaments (daggers, thrusting swords, and whips excepted).",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Knight Bernahl",
+        "location": "Warmaster's Shack, Stormhill (initial), Volcano Manor (later)",
+        "region": "Stormhill / Volcano Manor",
+        "runes": 800,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Knight+Bernahl"
+      }
+    ]
   },
   {
     "name": "Ash of War: Vow Of The Indomitable",
