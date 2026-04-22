@@ -194,9 +194,12 @@ runtime, Phase A output, parity-verified untouched).
 | `data/incantations.json` | 110 | Kaggle (98) ∪ engine (+12 stubs incl. Golden Vow, Catch Flame) | 33/110 | 0/110 | `4900c51` |
 | `data/ashes_of_war.json` | 90 | Kaggle (89, 1 excluded) ∪ engine (+1 stub) | 15/90 | 0/90 | `f47d590` |
 | `data/spirits.json` | 64 | Kaggle (64) | none | 0/64 | `9e1c5c1` |
-| `data/items.json` | 447 | Kaggle (462 − 15 dup) | none | 0/447 (42 Kaggle hints) | pending |
+| `data/items.json` | 447 | Kaggle (462 − 15 dup) | none | 0/447 (42 Kaggle hints) | `803416c` |
+| `data/bosses.json` | 105 | fanapis (106 − 1 bad dup) | — | 207 drop mappings | pending |
+| `data/npcs.json` | 55 | fanapis | — | location+role only | pending |
+| `data/locations.json` | 177 | fanapis | — | descriptive only | pending |
 
-**Totals:** 8 files, 1,757 canonical items, ~1.2MB. Fextralife acquisition: 77/1,757 (4.4%).
+**Totals:** 11 files, 2,094 canonical rows, ~1.4MB. Fanapis snapshot carries 207 boss→item acquisition mappings.
 
 ### Ingestion pipeline pattern (generalized across B.1–B.6)
 
@@ -320,14 +323,41 @@ not game-file-authoritative. It's "Kaggle done right" — structurally clean,
 same underlying data. Snapshot lives locally; API dependency is one-shot,
 not runtime.
 
+### Phase B-Overlay-Merge — new canonicals from fanapis (2026-04-22)
+
+Three brand-new canonical entities created from the fanapis snapshot:
+
+- `data/bosses.json` — 105 bosses (1 dup blacklisted: "Alecto Black Knife
+  Ringleader" non-comma variant had wrong location/runes), 207 item drop
+  mappings, 97 rune values. Normalizes fanapis stringly-typed `drops[]`:
+  parses rune formats (`10.000` / `5,400` / `6000` → integer), splits
+  comma-concatenated multi-drops (Ancient Hero of Zamor: 6 items in one
+  source string), filters garbage (`Other Drops`, `???`, `N/A`, bare
+  numbers from mangled rune splits). Script:
+  `scripts/phase_b_overlay_ingest_bosses.js`.
+- `data/npcs.json` — 55 NPCs, 53 with roles, 7 merchant-like. No inventory
+  data (fanapis doesn't carry it). Script:
+  `scripts/phase_b_overlay_ingest_npcs.js`.
+- `data/locations.json` — 177 locations across 7 regions (Liurnia of the
+  Lakes 46, Limgrave 37, Altus Plateau 30, Caelid 24, Weeping Peninsula 17,
+  Mountaintops 17, Dragonbarrow 6). Description-only, no joins. Script:
+  `scripts/phase_b_overlay_ingest_locations.js`.
+
+**Still open under Phase B-Overlay-Merge:**
+- **Validate existing canonicals vs fanapis** — report drift for armors
+  (poise/weight), weapons (reqs), spells (reqs). Not yet run.
+- **Apply fanapis-wins overrides** where validation surfaces canonical errors.
+  Per cross-cutting convention "Fextralife wins on overlap," fanapis plays
+  the same role as Fextralife for non-acquisition fields.
+
 ### Phase B remaining
 
-**None from B.1–B.7.** Phase B-Overlay (fanapis snapshot) shipped 2026-04-22.
+**None from B.1–B.7.** Phase B-Overlay snapshot + new canonicals shipped
+2026-04-22. Validation + per-class overrides still open.
 
 Next work options:
-- **Phase B-Overlay-Merge** — write overlay scripts that apply fanapis data
-  to canonical (poise/weight for armors, reqs for weapons, drops for bosses).
-  Resolves ~110 drift cases and ingests ~200 boss-drop acquisitions.
+- **B-Overlay-Merge validate** — run drift reports for armors/weapons/spells
+  against fanapis, apply overrides where clearly correct.
 - **Fextralife (scoped)** — only for what fanapis can't provide: merchant
   inventories, chest/world pickups, quest rewards, incantation req bug fixes.
   Much smaller scope than the original 570-page harvest.

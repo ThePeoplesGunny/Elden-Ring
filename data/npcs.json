@@ -1,0 +1,387 @@
+[
+  {
+    "name": "Merchant Kalé",
+    "fanapisId": "17f69a221c9l0i2ojlqe4t4u5lk6pc",
+    "location": "Limgrave, Church of Elleh",
+    "role": "General Goods Shop",
+    "quote": null
+  },
+  {
+    "name": "Sorceress Sellen",
+    "fanapisId": "17f69ddf39dl0i2ojm1riku8s6qxfs",
+    "location": "Limgrave, Waypoint Ruins",
+    "role": "Sorceries Shop",
+    "quote": null
+  },
+  {
+    "name": "Smithing Master Hewg",
+    "fanapisId": "17f69f1be7cl0i2ojly1jcpn4j09p3",
+    "location": "Roundtable Hold",
+    "role": "Blacksmith",
+    "quote": "I'm a prisoner, and these are my chains. I'm trapped by the Hold, undying, smithing for you fools. That's all there is to it."
+  },
+  {
+    "name": "Roderika",
+    "fanapisId": "17f69af3e48l0i2ojme5z01n0gziz",
+    "location": "Stormhill Shack, Roundtable Hold",
+    "role": "Spirit-Tuner",
+    "quote": "Everyone who came with me. They crossed the sea for me. They fought, for me. Heh... Only to have their arms taken. Their legs taken. Even their heads...taken. Taken and stuck to the spider. "
+  },
+  {
+    "name": "Thops",
+    "fanapisId": "17f69b266a8l0i2okbqoh1wxlp59l",
+    "location": "Church of Irith in Liurnia of the Lakes",
+    "role": "Sorcery Student",
+    "quote": "For a small donation, I'd be happy to share my knowledge."
+  },
+  {
+    "name": "Enia",
+    "fanapisId": "17f698fa9a6l0i2oki2yjnuz5pqjrh",
+    "location": "Roundtable Hold",
+    "role": "Finger Reader",
+    "quote": "The Fingers guide us all. And you Tarnished, you are here to take, are you not?"
+  },
+  {
+    "name": "Miriel, Pastor Of Vows",
+    "fanapisId": "17f69b2abd8l0i2oki2301lpwzqbe8",
+    "location": "Church of Vows",
+    "role": "Steward of the Church of Vows",
+    "quote": "I Welcome you, to the Church of Vows. I am Miriel, steward of this sacred chamber. My apologies, for the unseemly state of affairs. Do you know the origin of this place?"
+  },
+  {
+    "name": "War Counselor Iji",
+    "fanapisId": "17f69f7be15l0i2oki48thaky6x3tg",
+    "location": "Kingsrealm Ruins, Western Liurnia of the Lakes",
+    "role": "Blacksmith & Quest NPC",
+    "quote": "Well, look at you. We don't receive many visitors"
+  },
+  {
+    "name": "Sorcerer Rogier",
+    "fanapisId": "17f69b259e2l0i2ol1q157ho9f89ia",
+    "location": "Stormveil Castle",
+    "role": "Merchant",
+    "quote": "The pleasure's mine. Rogier's the name. A sorcerer, as you might have guessed."
+  },
+  {
+    "name": "Gurranq, Beast Clergyman",
+    "fanapisId": "17f69cd42f7l0i2ol82u1cg8l2ia3d",
+    "location": "Bestial Sanctum, Caelid",
+    "role": "Special Trader",
+    "quote": "I feel it's stench on you... death. Feed it to me."
+  },
+  {
+    "name": "Boc The Seamster",
+    "fanapisId": "17f69de1218l0i2olc1m799deyzbgj",
+    "location": "Limgrave",
+    "role": "Garments Adjuster",
+    "quote": "Hm? Oh, yes I remember. Some clod turned me into a tree."
+  },
+  {
+    "name": "Brother Corhyn",
+    "fanapisId": "17f69ddef68l0i2olcp6li59r4nce2",
+    "location": "Roundtable Hold",
+    "role": "Holy Practitioner",
+    "quote": "I teach incantations, the strength granted us by the Two Fingers, and explore the secrets of the Golden Order. So that one day, if a Tarnished of the Roundtable Hold should become Elden Lord, I might counsel them, ensuring order regains its proper form, righting rule over men."
+  },
+  {
+    "name": "D, Hunter Of The Dead",
+    "fanapisId": "17f699a4f38l0i2olkl6gze7y5zrp8",
+    "location": "Roundtable Hold",
+    "role": "Undead Hunter",
+    "quote": "Insert NPC quote here."
+  },
+  {
+    "name": "Knight Bernahl",
+    "fanapisId": "17f69768ff6l0i2olppqo9yb2ltjcb",
+    "location": "Warmaster's Shack, Volcano Manor",
+    "role": "Ash of War Merchant",
+    "quote": "Let me ask you something Are you here in the Lands Between to take up the fight? Does your faith in the guidance of grace hold firm, despite the collapse of the Golden Order?"
+  },
+  {
+    "name": "Pidia, Carian Servant",
+    "fanapisId": "17f69b2925el0i2olviqhconjh7a7i",
+    "location": "Caria Manor",
+    "role": "Merchant",
+    "quote": "But please, can you offer poor ill-starred Pidia..."
+  },
+  {
+    "name": "Imprisoned Merchant",
+    "fanapisId": "17f69c203c0l0i2oly55scrrz3xpp",
+    "location": "Mohgwyn Dynasty Mausoleum",
+    "role": "General Goods Shop",
+    "quote": null
+  },
+  {
+    "name": "Melina",
+    "fanapisId": "17f699a9d79l0i2olzmep3owqdj2z6",
+    "location": "The beginning of the Tarnished's journey.",
+    "role": "Maiden",
+    "quote": "Have you heard of the finger maidens? They serve the Two Fingers, offering guidance, and aid, to the Tarnished. But you, I am afraid, are maidenless. I can play the role of maiden."
+  },
+  {
+    "name": "Bloody Finger Hunter Yura",
+    "fanapisId": "17f69998867l0i2ommc4k9yu9xtixv",
+    "location": "Limgrave: near Seaside Ruins",
+    "role": "Bloody Finger Hunter Guide",
+    "quote": "Be on your way. Perhaps we will meet again, if fate permits"
+  },
+  {
+    "name": "Iron Fist Alexander",
+    "fanapisId": "17f69b68561l0i2omq2dgwdcu8vtr",
+    "location": "Kevin Howarth",
+    "role": null,
+    "quote": "I am Alexander, also known as the Iron Fist. And as you can see, I'm stuck here."
+  },
+  {
+    "name": "White-faced Varré",
+    "fanapisId": "17f69929146l0i2omt69yecqm01d4k",
+    "location": "Various Locations",
+    "role": "Player Guidance",
+    "quote": "Are you familiar with grace? The golden light that gives life to you Tarnished You may also behold its golden rays pointing in a particular direction at times That is the guidance of grace. The path that a Tarnished must travel."
+  },
+  {
+    "name": "Renna",
+    "fanapisId": "17f6998a6eel0i2omw40wiu6ms1t9nd",
+    "location": "Limgrave",
+    "role": "The Storyteller",
+    "quote": "Unless thou should take the crown?\""
+  },
+  {
+    "name": "Fia",
+    "fanapisId": "17f69a4d1del0i2omxljdmymj6gaho",
+    "location": "Roundtable Hold",
+    "role": "Deathbed Companion",
+    "quote": "Great champion, would you allow me to hold you, but briefly?"
+  },
+  {
+    "name": "Edgar",
+    "fanapisId": "17f69b242a4l0i2onfyowzjcqnhqab",
+    "location": "Castle Morne, Weeping Peninsula",
+    "role": "Role goes here.",
+    "quote": "Even if the castle should fall, as commander, I must remain."
+  },
+  {
+    "name": "Irina",
+    "fanapisId": "17f69b22fd9l0i2ono62dded63kgv",
+    "location": "Bridge of Sacrifice, Weeping Peninsula",
+    "role": "Citizen in need of help.",
+    "quote": "My good father secreted me out the castle, but decided himself to stay. He says it's his duty, as commander. I... I fear for father's life."
+  },
+  {
+    "name": "Kenneth Haight",
+    "fanapisId": "17f69c93f4al0i2onohm0srozqz4mq",
+    "location": "Limgrave",
+    "role": "Next Rightful Ruler of Limgrave",
+    "quote": "Hello? Is anybody there? Someone who might be interested on rescuing the great Kenneth Haight? Servant of the true Order, and celebrated repudiator of the false!, O Erdtree! Grant me succour!"
+  },
+  {
+    "name": "Queen Marika",
+    "fanapisId": "17f69bd66dfl0i2onozxtj8yo2qu5",
+    "location": "???",
+    "role": "Ruler of The Lands Between",
+    "quote": "Now, Queen Marika the Eternal is nowhere to be found, and in the Night of the Black Knives Godwyn the Golden was first to perish. Soon, Marika's offspring, demigods all, claimed the shards of the Elden Ring. The mad taint of their newfound strength triggered the Shattering."
+  },
+  {
+    "name": "Knight Diallos",
+    "fanapisId": "17f69a1444fl0i2onsit6ui4qbh37",
+    "location": "Roundtable Hold",
+    "role": "Noble",
+    "quote": "The tale of House Hoslow is told in blood. I, Diallos, swear to deliver that promise."
+  },
+  {
+    "name": "Frustrated Spirit",
+    "fanapisId": "17f69b62be6l0i2oob07ui5payf2ua",
+    "location": "Northernmost part of Limgrave",
+    "role": "Benevolent",
+    "quote": "All I wanted was to fight. To fight, as a warrior, to the last... So, Why? Why, O guidance of grace, will this door not open?"
+  },
+  {
+    "name": "Twin Maiden Husks",
+    "fanapisId": "17f699ebb1fl0i2oobc8fbwg1v80tt",
+    "location": "Roundtable Hold",
+    "role": "Merchant",
+    "quote": "..."
+  },
+  {
+    "name": "Frustrated Spirit",
+    "fanapisId": "17f698c6f91l0i2oocga05vyun858c",
+    "location": "Northernmost part of Limgrave",
+    "role": "Benevolent",
+    "quote": "All I wanted was to fight. To fight, as a warrior, to the last... So, Why? Why, O guidance of grace, will this door not open?"
+  },
+  {
+    "name": "Gideon Ofnir",
+    "fanapisId": "17f6996fdcdl0i2oog5491c2w2vvca",
+    "location": "Roundtable Hold",
+    "role": "Lore",
+    "quote": "As a Tarnished who wishes to stand before the Elden Ring and become Elden Lord, I am accumulating knowledge. To be all-knowing."
+  },
+  {
+    "name": "Patches",
+    "fanapisId": "17f69a53534l0i2ooknu8c8fgegqyk",
+    "location": "Murkwater Cave",
+    "role": "x2 Golden Rune (1), Grovel for Mercy",
+    "quote": "I'm Patches. Patches the Untethered."
+  },
+  {
+    "name": "Hyetta",
+    "fanapisId": "17f699bcb3bl0i2oow8kivoxqcuy",
+    "location": "Various Locations",
+    "role": "Finger Maiden",
+    "quote": "Hello? Is someone there? My name is Hyetta, and I'm journeying in search of the distant light. If I might be so bold as to ask... would you donate any Shabriri grapes in your possession to me? My eyesight has been weak since birth, you see. I can't tell which way I'm supposed to go next."
+  },
+  {
+    "name": "Palm Reader",
+    "fanapisId": "17f698554e5l0i2oowdg1ris9og1e7",
+    "location": "Multiple Locations",
+    "role": "Palm Reader",
+    "quote": "You, please, I can read them. Your fingers, please, your fingers..."
+  },
+  {
+    "name": "Nepheli Loux",
+    "fanapisId": "17f69af9513l0i2oowjvkhmdl5ivl",
+    "location": "Stormveil Castle",
+    "role": "Companion",
+    "quote": "Be proud. You were a fine warrior. Your only mistake was your choice of master."
+  },
+  {
+    "name": "Rya",
+    "fanapisId": "17f69cd292cl0i2op4nttt4k4nvxs",
+    "location": "Volcano Manor",
+    "role": "Scout",
+    "quote": "A pleasure to meet you, Brave Tarnished."
+  },
+  {
+    "name": "Tanith",
+    "fanapisId": "17f69e0ee62l0i2op8mg1tq4mnfjjb",
+    "location": "Volcano Manor",
+    "role": "Head of Volcano Manor",
+    "quote": "I am Tanith, the proprietress of this house. An honour to have you."
+  },
+  {
+    "name": "Ranni The Witch",
+    "fanapisId": "17f69f5e08al0i2opgccucgwqfl6n6",
+    "location": "Ranni's Rise, Three Sisters",
+    "role": null,
+    "quote": "I am the witch Ranni. I stole Death long ago, and search now for the dark path."
+  },
+  {
+    "name": "Gatekeeper Gostoc",
+    "fanapisId": "17f69c47999l0i2opsy0tzdm0h1sa5o",
+    "location": "Stormveil Castle Entrance",
+    "role": "Castle Gatekeeper",
+    "quote": null
+  },
+  {
+    "name": "Primeval Sorcerer Azur",
+    "fanapisId": "17f69cd5735l0i2opwywnh7fxq5rof",
+    "location": "Hermit Village, Mt. Gelmir",
+    "role": "Unknown",
+    "quote": "A mysterious and silent figure residing near the Hermit Village."
+  },
+  {
+    "name": "Dung Eater",
+    "fanapisId": "17f69c760bdl0i2opziqz256a85vp",
+    "location": "Roundtable Hold",
+    "role": "Tarnished",
+    "quote": "I told you not to disturb me"
+  },
+  {
+    "name": "Preceptor Seluvis",
+    "fanapisId": "17f696fdac2l0i2oq2molwm1a5hu8i",
+    "location": "Seluvis's Rise, Three Sisters",
+    "role": "Preceptor of Sorcerous Arts (Quest NPC)",
+    "quote": "I don't know what it is the mistress sees in a provincial Tarnished like you, but since we have the misfortune of serving the same Lady, I ask that you kindly try not to drag us all down with you."
+  },
+  {
+    "name": "Blaidd",
+    "fanapisId": "17f6974b8aal0i2oq6qbzsegb120iw",
+    "location": "Mistwood Ruins",
+    "role": "Wolfman",
+    "quote": "The name's Blaidd. I'm looking for a man who goes by \"Darriwil.\""
+  },
+  {
+    "name": "Gowry",
+    "fanapisId": "17f69b6a938l0i2oqf3un7j999hkw",
+    "location": "Gowry's Shack, Caelid",
+    "role": "Elder Sage",
+    "quote": "The rotting sickness that afflicts Millicent has no cure. When the Erdtree flourished, even the demigods could not stave off its effects, despite their nigh godhood."
+  },
+  {
+    "name": "Millicent",
+    "fanapisId": "17f69eff01al0i2oqjvfu73rchcwbv",
+    "location": "Church of the Plague",
+    "role": "NPC",
+    "quote": "I would rather trust you than simply continue to spoil from within. "
+  },
+  {
+    "name": "Bloodhunter Raz",
+    "fanapisId": "17f69958b0al0i2oqm9ou8yw1ogg8",
+    "location": "Seaside Ruins, Stormhill , Stormveil Castle",
+    "role": "Companion",
+    "quote": "...I've still my pride. I'm not going out like a complete monster."
+  },
+  {
+    "name": "Latenna",
+    "fanapisId": "17f699524dal0i2oqpa3288ofa2qpo",
+    "location": "Liurnia of the Lakes, Slumbering Wolf's Shack",
+    "role": "Quest NPC",
+    "quote": "Foul tarnished, what do you want?"
+  },
+  {
+    "name": "Albus",
+    "fanapisId": "17f69719075l0i2oqs9tcpu9et7pj",
+    "location": "Village of the Albinaurics, Liurnia of the Lakes",
+    "role": "Gives Key Item",
+    "quote": "Please, no. Dear me!. I haven't a clue. No secrets lie with me, not a one."
+  },
+  {
+    "name": "Ensha Of The Royal Remains",
+    "fanapisId": "17f697ea1d2l0i2or0eyxansf8mnh",
+    "location": "Roundtable Hold",
+    "role": "Lore",
+    "quote": null
+  },
+  {
+    "name": "Shabriri",
+    "fanapisId": "17f6990f111l0i2or5bdgg2tnr0u3g",
+    "location": "Mountaintops of the Giants",
+    "role": "???",
+    "quote": "May chaos take the world! May chaos take the world!"
+  },
+  {
+    "name": "Witch-hunter Jerren",
+    "fanapisId": "17f69e76b78l0i2or85s9z9chrhhg8",
+    "location": "Redmane Castle plaza Church",
+    "role": "Witch-Hunter",
+    "quote": "Brave champion, you have our gratitude"
+  },
+  {
+    "name": "Goldmask",
+    "fanapisId": "17f69d9a072l0i2org49ab76ad6ehn",
+    "location": "Altus Plateau,",
+    "role": "Unknown",
+    "quote": "....."
+  },
+  {
+    "name": "Blackguard Big Boggart",
+    "fanapisId": "17f699f1b44l0i2orwujvu4mfw544",
+    "location": "Boilprawn Shack",
+    "role": "Blackguard",
+    "quote": " Never met someone with a taste for prawns I couldn't trust. "
+  },
+  {
+    "name": "Three Fingers",
+    "fanapisId": "17f6985df0bl0i2os10gas1pv9n5r",
+    "location": "Cathedral of, the Forsaken",
+    "role": "???",
+    "quote": "???"
+  },
+  {
+    "name": "The Great-jar",
+    "fanapisId": "17f69c35597l0i2osam7pab26jygzi",
+    "location": "Caelid",
+    "role": "NPC",
+    "quote": "..."
+  }
+]
