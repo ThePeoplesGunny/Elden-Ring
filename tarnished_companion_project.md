@@ -181,7 +181,7 @@ Per REWRITE_PLAN §5 Phase B. Canonical DB-of-record files at `data/*.json`.
 These are the source-of-truth, independent of `tc_next/data/*.json` (engine
 runtime, Phase A output, parity-verified untouched).
 
-**Status as of 2026-04-21:** B.1–B.6 complete (6 of 7 phases). B.7 items remains.
+**Status as of 2026-04-21:** B.1–B.7 complete — all 7 phases shipped.
 
 ### Canonical data files
 
@@ -194,8 +194,9 @@ runtime, Phase A output, parity-verified untouched).
 | `data/incantations.json` | 110 | Kaggle (98) ∪ engine (+12 stubs incl. Golden Vow, Catch Flame) | 33/110 | 0/110 | `4900c51` |
 | `data/ashes_of_war.json` | 90 | Kaggle (89, 1 excluded) ∪ engine (+1 stub) | 15/90 | 0/90 | `f47d590` |
 | `data/spirits.json` | 64 | Kaggle (64) | none | 0/64 | `9e1c5c1` |
+| `data/items.json` | 447 | Kaggle (462 − 15 dup) | none | 0/447 (42 Kaggle hints) | pending |
 
-**Totals:** 7 files, 1,310 canonical items, ~1MB. Fextralife acquisition: 77/1,310 (6%).
+**Totals:** 8 files, 1,757 canonical items, ~1.2MB. Fextralife acquisition: 77/1,757 (4.4%).
 
 ### Ingestion pipeline pattern (generalized across B.1–B.6)
 
@@ -218,6 +219,15 @@ Cross-cutting conventions established:
 - **Report drift, don't auto-fix** — validation scripts log mismatches between
   Kaggle/deliton and engine (poise, weight, requirements) without mutating
   data. Fextralife harvest arbitrates.
+- **Derived discriminators when source categorisation is unreliable** — B.7
+  items source `type` was corrupted by column bleed (scaling letters, weights,
+  shield guard strings) across ~21 rows plus 178 blank/dash values. Rather
+  than trust source, a 14-value `itemType` discriminator is derived from
+  name + effect + description patterns: `flask`, `crystal_tear`, `key`,
+  `throwable`, `consumable`, `crafting_material`, `cookbook`, `rune`, `grease`,
+  `remembrance`, `online`, `reusable`, `note`, `misc`. Source `type` preserved
+  as `sourceType` for audit trail. Final misc bucket: 4.0% (18/447) — genuine
+  outliers (Torch misfile, Grace Mimic, Margit's Shackle, etc.).
 
 ### Known data-quality issues surfaced by ingestion
 
@@ -233,8 +243,21 @@ Cross-cutting conventions established:
 - Incantations: Ancient Dragons' Lightning Spear kaggle fai=0 (impossible);
   5 incantations with all-zero requirements (data error)
 - Ashes: `Lost Ashes of War` miscategorized — it's a crafting consumable,
-  not an AoW; excluded from B.5, will re-home to `data/items.json` in B.7
+  not an AoW; excluded from B.5, re-homed to `data/items.json` in B.7
+  (name-corrected `Lost Ashes Of War` → `Lost Ashes of War`, `itemType: misc`)
 - AoW: 88/90 rows needed `Ash Of War` → `Ash of War` case fix
+- Items: `type` column in Kaggle `items.csv` is dirty — 27 distinct values
+  including scaling-letter strings (`Str A Dex C`), weight values (`0.7`),
+  and shield guard-stat strings (`Guard Phy 21 Mag 15…`) leaking from other
+  columns. 178 blank/dash values, 1 `n/a`, 1 empty. Worked around by deriving
+  an `itemType` discriminator from name + effect + description patterns rather
+  than trusting source `type`. Source `type` preserved as `sourceType` for audit.
+- Items: 15 Kaggle source duplicates (same name, two IDs) for
+  Furlcalling Finger Remedy, Memory of Grace, Remembrance of the Black Blade,
+  Spirit Calling Bell, Tailoring Tools, Memory Stone, Furled Finger's Trick-mirror,
+  Irina's Letter, Chrysalids' Memento, Dragon Heart, Prattling Pate "apologies",
+  Wraith Calling Bell, Whetstone Knife, Map (Weeping Peninsula), Glintstone Scrap.
+  Each is a single in-game item; first-seen kept.
 
 **Engine coverage gaps (canonical has rows, engine doesn't):**
 - 31 weapons truly absent from `tc_next/data/weapons_encoded.json`
@@ -251,19 +274,18 @@ Cross-cutting conventions established:
 4. Spells first-ever harvest: 0 → 182
 5. AoW first-ever harvest: 0 → 90
 6. Spirits first-ever harvest: 0 → 64
+7. Items first-ever harvest: 0 → 447 (42 Kaggle `obtainedFrom` hints available as head-start)
 
 ### Phase B remaining
 
-**B.7 — items** (462 Kaggle rows + `data/deliton_json/items.json`). Heterogeneous:
-keys, tears, consumables, crafting tokens, misc. Likely needs sub-categorization
-(`itemType` discriminator). `Lost Ashes of War` re-homes here. Largest single
-class and schema is fuzziest — deserves fresh context to design cleanly.
+**None.** B.1–B.7 all shipped. Next work is Fextralife acquisition harvest
+(priority list above) and Phase C/D per `REWRITE_PLAN.md`.
 
 ---
 
 ## IMPLEMENTATION STATE
 
-### What's built and working (engine v3.15 + architecture v4.0.0-alpha, Phase A–B.6)
+### What's built and working (engine v3.15 + architecture v4.0.0-alpha, Phase A–B.7)
 
 **Active:** `tc_next/` portable bundle | **Legacy preserved:** `Tarnished_Companion_v3.9.html` (5,893 lines)
 
