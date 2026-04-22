@@ -23,9 +23,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v4.0.0-alpha (Phase B.1–B.4 ingested: weapons, talismans, armors, spells)
+**Version:** v4.0.0-alpha (Phase B.1–B.5 ingested: weapons, talismans, armors, spells, AoW)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Phase B.4 — sorceries + incantations ingestion. `data/sorceries.json` (72) + `data/incantations.json` (110). Engine overlay contributes school, damageType, chargeAble, engineNote + normalized requirements. spell_dmg.json + spell_step.json overlay motionValue/castTime/walkthroughStep. 6 case-only name normalizations. 13 engine-only stubs (1 sorcery: Terra Magica; 12 incantations including Golden Vow, Catch Flame, Flame Sling — common base-game incantations missing from Kaggle). 5 requirement drifts flagged where Kaggle vs engine disagree (Ancient Dragons' Lightning Spear kaggle fai=0 is clearly broken; engine 32 authoritative).
-**Next task:** Phase B.5 — ashes of war (90 Kaggle rows, 15 engine-curated). Phase B.6 — spirits (64 Kaggle, no engine coverage). Phase B.7 — items (462 Kaggle + deliton items.json, heterogeneous — keys/tears/consumables). Parallel: Fextralife harvest expansion remains the critical-path unblocker for all downstream arbitration.
+**Last completed task:** v4.0.0-alpha: Phase B.4 — sorceries + incantations ingestion
+**Next task:** Phase B.6 — spirits (64 Kaggle, no engine coverage — simplest class). Phase B.7 — items (462 Kaggle + deliton items.json, heterogeneous — keys/tears/consumables). Parallel: Fextralife harvest expansion remains the critical-path unblocker for all downstream arbitration.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.
