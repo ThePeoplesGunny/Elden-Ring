@@ -195,11 +195,12 @@ runtime, Phase A output, parity-verified untouched).
 | `data/ashes_of_war.json` | 90 | Kaggle (89, 1 excluded) ∪ engine (+1 stub) | 15/90 | 0/90 | `f47d590` |
 | `data/spirits.json` | 64 | Kaggle (64) | none | 0/64 | `9e1c5c1` |
 | `data/items.json` | 447 | Kaggle (462 − 15 dup) | none | 0/447 (42 Kaggle hints) | `803416c` |
-| `data/bosses.json` | 105 | fanapis (106 − 1 bad dup) | — | 207 drop mappings | pending |
-| `data/npcs.json` | 55 | fanapis | — | location+role only | pending |
-| `data/locations.json` | 177 | fanapis | — | descriptive only | pending |
+| `data/bosses.json` | 105 | fanapis (106 − 1 bad dup) | — | 207 drop mappings | `07e460b` |
+| `data/npcs.json` | 55 | fanapis | — | location+role only | `07e460b` |
+| `data/locations.json` | 177 | fanapis | — | descriptive only | `07e460b` |
+| `data/merchants.json` | 8 merchants / 113 items | Fextralife per-merchant | — | merchant inventories | pending |
 
-**Totals:** 11 files, 2,094 canonical rows, ~1.4MB. Fanapis snapshot carries 207 boss→item acquisition mappings.
+**Totals:** 12 files, 2,094 canonical rows + 113 merchant inventory items, ~1.4MB. Fanapis snapshot carries 207 boss→item acquisition mappings; merchants.json adds 93 cross-matched item-to-merchant mappings (82% first-pass match rate).
 
 ### Ingestion pipeline pattern (generalized across B.1–B.6)
 
@@ -383,6 +384,28 @@ audit trail. Post-patch drift report still shows ~6 cases — these are
 now canon-right/fanapis-wrong inversions (fanapis's `requiredAttributes[]`
 has empty-name or missing-dex source bugs). Canonical is authoritative
 for all 11 patched entries.
+
+**Merchant inventories harvested 2026-04-22** (`data/merchants.json`, 8
+merchants, 113 inventory items):
+
+- Kalé (18), Twin Maiden Husks (6 sample, bell-bearing-gated full
+  inventory is ~300+), Miriel (26), Brother Corhyn (20), Sellen (13),
+  Thops (3, partial — wiki table returned incomplete), Knight Bernahl
+  (12), Patches (15).
+- First-pass cross-reference to canonical: 93/113 matched (82%) by
+  exact name. 20 unmatched fall into clear normalization categories:
+  ammo (Arrow/Bolt/Great Arrow — not in items.json, lives in engine's
+  ammo_data.json), cookbook bracket format (`[1]` vs `(1)` drift between
+  Fextralife merchant pages), AoW label variants (`Stamp (Upward Cut)`
+  vs canonical `Stamp - Upward Cut` TBD), and a handful of edge cases.
+- Next work: normalization overlay script to bridge the 20 unmatched
+  names and emit reverse index (item → merchants selling it) consumable
+  by the engine's acquisition lookup.
+- **Out of scope for this pass:** Nomadic Merchants (~11 region-scattered),
+  Isolated Merchants (~6), Hermit Merchant, Pidia, Imprisoned Merchant,
+  Gatekeeper Gostoc, Gowry, D, Preceptor Seluvis, Rogier, Gurranq,
+  Roderika, Boc, Enia, Smithing masters. Most of these overlap with
+  per-region chest/pickup harvest or have trivial one-item inventories.
 
 ### Phase B remaining
 
