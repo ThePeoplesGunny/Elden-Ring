@@ -23,9 +23,9 @@ Every delivery updates these three artifacts (per global §VI.5):
 
 ## Current State
 
-**Version:** v4.0.0-alpha (Phase B.1–B.7 ingested: weapons, talismans, armors, spells, AoW, spirits, items — all 7 phases shipped)
+**Version:** v4.0.0-alpha (Phase B.1–B.7 + B-Overlay fanapis snapshot)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** v4.0.0-alpha: Phase B.7 — items ingestion (447 canonical)
-**Next task:** Fextralife acquisition harvest (priority: armors 0→570, spells 0→182, weapons expansion 56→306, items 0→447) OR Phase C/D per REWRITE_PLAN. Gunny to direct.
+**Last completed task:** Phase B-Overlay — fanapis.com snapshot (2,085 rows across 11 endpoints, `data/fanapis/*.json`)
+**Next task:** Phase B-Overlay-Merge (apply fanapis stats + boss drops[] to canonical) OR scoped Fextralife (merchants/chests/quest rewards only) OR Phase C/D per REWRITE_PLAN. Gunny to direct.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.

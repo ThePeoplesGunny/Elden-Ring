@@ -19,7 +19,14 @@
       "Bash(curl -s -o /dev/null -w \"README: %{http_code}\\\\n\" http://127.0.0.1:8765/README.md)",
       "Bash(curl -s -o /dev/null -w \"missing: %{http_code}\\\\n\" http://127.0.0.1:8765/does-not-exist)",
       "Bash(node scripts/phase_a_extract_data.js)",
-      "Bash(node scripts/phase_a_extract_engine.js)"
+      "Bash(node scripts/phase_a_extract_engine.js)",
+      "WebFetch(domain:www.tarnished.dev)",
+      "WebFetch(domain:eip.gg)",
+      "Bash(gh api *)",
+      "Bash(curl -sI https://api.erdb.wiki/v1/docs --max-time 5)",
+      "Bash(curl -sI https://erdb.wiki --max-time 5)",
+      "WebFetch(domain:docs.eldenring.fanapis.com)",
+      "WebFetch(domain:eldenring.fanapis.com)"
     ]
   }
 }

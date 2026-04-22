@@ -267,7 +267,7 @@ Cross-cutting conventions established:
   in encoded pool — edge cases in affinity encoding
 - 499 armors not in engine (engine only curates 19 sets × ~4 pieces = 71)
 
-**Fextralife harvest priority list (to unblock drift arbitration):**
+**Fextralife harvest priority list (original — largely obsoleted by Phase B-Overlay):**
 1. Weapons expansion: 56 → 306 (all post-Limgrave regions)
 2. Talismans expansion: 21 → 98
 3. **Armors first-ever harvest: 0 → 570** (highest value — resolves 52+58 drift cases)
@@ -276,10 +276,62 @@ Cross-cutting conventions established:
 6. Spirits first-ever harvest: 0 → 64
 7. Items first-ever harvest: 0 → 447 (42 Kaggle `obtainedFrom` hints available as head-start)
 
+### Phase B-Overlay (fanapis snapshot, 2026-04-22)
+
+**Shipped.** `scripts/phase_b_overlay_fanapis_snapshot.js` pulls
+https://eldenring.fanapis.com (deliton/eldenring-api backing) across 11
+endpoints → `data/fanapis/*.json`. One script, one run, 2,085 rows, 1.9MB.
+
+| Endpoint | Rows | File |
+|---|---|---|
+| weapons | 307 | `data/fanapis/weapons.json` |
+| armors | 568 | `data/fanapis/armors.json` |
+| talismans | 87 | `data/fanapis/talismans.json` |
+| sorceries | 71 | `data/fanapis/sorceries.json` |
+| incantations | 98 | `data/fanapis/incantations.json` |
+| ashes_of_war | 90 | `data/fanapis/ashes_of_war.json` (endpoint: `/api/ashes`) |
+| spirits | 64 | `data/fanapis/spirits.json` |
+| items | 462 | `data/fanapis/items.json` |
+| bosses | 106 | `data/fanapis/bosses.json` (**carries `drops[]`**) |
+| npcs | 55 | `data/fanapis/npcs.json` (location + role, no inventory) |
+| locations | 177 | `data/fanapis/locations.json` |
+
+**Schema findings (pilot-verified before bulk ingest):**
+- Armors have clean `Poise` in `resistance[]` — resolves 52 poise + 58 weight
+  drift cases (Black Knife Armor poise=14 in fanapis, matches Kaggle, not engine).
+- Weapons expose `requiredAttributes[]`, `scalesWith[]`, `attack[]`, `defence[]`,
+  `weight` — resolves the 20 empty-name req drifts from deliton.
+- **Bosses carry `drops[]`** — `~106 bosses × ~2 drops = ~200 item-to-boss
+  acquisition mappings`, free. This is the single biggest acquisition payload
+  we've ever ingested in one shot.
+- NPCs only carry `location` + `role` — merchant inventories NOT included.
+  What Kalé/Twin Maiden Husks sell still needs a separate source.
+- Locations are descriptive only — no join to items/bosses/NPCs.
+
+**What fanapis does NOT solve (still needs Fextralife or equivalent):**
+- Incantation requirement bugs — fanapis inherits the same source errors
+  (Ancient Dragons' Lightning Spear fai=0 confirmed identical to Kaggle).
+- Merchant inventory, chest pickups, quest rewards, world-pickup map coords.
+- Any case where Kaggle/deliton/engine all disagree and none is right —
+  would need the ThomasJClark `regulation-vanilla-v1.14.js` game-file drop.
+
+**Meta-caveat:** fanapis is community-run (same source family as Kaggle/deliton),
+not game-file-authoritative. It's "Kaggle done right" — structurally clean,
+same underlying data. Snapshot lives locally; API dependency is one-shot,
+not runtime.
+
 ### Phase B remaining
 
-**None.** B.1–B.7 all shipped. Next work is Fextralife acquisition harvest
-(priority list above) and Phase C/D per `REWRITE_PLAN.md`.
+**None from B.1–B.7.** Phase B-Overlay (fanapis snapshot) shipped 2026-04-22.
+
+Next work options:
+- **Phase B-Overlay-Merge** — write overlay scripts that apply fanapis data
+  to canonical (poise/weight for armors, reqs for weapons, drops for bosses).
+  Resolves ~110 drift cases and ingests ~200 boss-drop acquisitions.
+- **Fextralife (scoped)** — only for what fanapis can't provide: merchant
+  inventories, chest/world pickups, quest rewards, incantation req bug fixes.
+  Much smaller scope than the original 570-page harvest.
+- **Phase C/D** per `REWRITE_PLAN.md` (unblocks live playtest).
 
 ---
 
