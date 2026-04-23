@@ -26,6 +26,6 @@ Every delivery updates these three artifacts (per global §VI.5):
 **Version:** v4.0.0-alpha (Phase B.1–B.7 + B-Overlay fanapis snapshot)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Session close 2026-04-22: Phase B-Overlay + Merchant pipeline shipped (8 commits, 14 merchants, 153/153 attributed, 124 canonical items carry merchants[])
+**Last completed task:** Session close 2026-04-22: Phase B-Overlay + Merchant pipeline shipped
 **Next task:** Nomadic/Isolated merchants (region-scattered, best paired with per-region pickups), OR chest/world pickups per region, OR quest rewards, OR Phase C/D (tc_next journey view, unblocks playtest). Gunny to direct.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.
