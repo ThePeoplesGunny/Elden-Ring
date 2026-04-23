@@ -32,6 +32,20 @@ const NORMALIZATIONS = {
   "Ash of War: Stamp (Upward Cut)": "Ash of War: Stamp (upward Cut)",
   "Gold-Pickled Fowl Foot": "Gold-pickled Fowl Foot",
   "Dolores the Sleeping Arrow Puppet": "Dolores The Sleeping Arrow Puppet",
+  // Nomadic/Isolated pass additions (2026-04-22): canonical uses lowercase
+  // first word after hyphen and title-cased "Of" for prepositions.
+  "Blue-Gold Kite Shield": "Blue-gold Kite Shield",
+  "Crossed-Tree Towershield": "Crossed-tree Towershield",
+  "Upper-Class Robe": "Upper-class Robe",
+  "Land of Reeds Helm": "Land Of Reeds Helm",
+  "Land of Reeds Armor": "Land Of Reeds Armor",
+  "Land of Reeds Gauntlets": "Land Of Reeds Gauntlets",
+  "Land of Reeds Greaves": "Land Of Reeds Greaves",
+  "Sliver of Meat": "Sliver Of Meat",
+  "Lump of Flesh": "Lump Of Flesh",
+  "Eye of Yelough": "Eye Of Yelough",
+  "Note: Land Squirts": "Note (land Squirts)",
+  "Note: Stonedigger Trolls": "Note (stonedigger Trolls)",
 };
 
 const CANON_FILES = [
@@ -44,6 +58,7 @@ const CANON_FILES = [
   'incantations.json',
   'ashes_of_war.json',
   'spirits.json',
+  'talismans.json',
 ];
 
 function load(f) { return JSON.parse(fs.readFileSync(path.join(DATA, f), 'utf8')); }

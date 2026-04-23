@@ -403,7 +403,18 @@
     "setTier": "light",
     "enginePoise": 4,
     "description": "Robe fashioned from supple cloth. Worn by those who look to the cosmos above. They read fate in the stars, and are said to be heirs of the glintstone sorcerers. But alas, the night sky no longer cradles fate.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Bandit Garb",
@@ -867,7 +878,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Vest of a nomadic warrior. The blue color of its fabric symbolizes brisk waters, as fluid and flowing as the sword in the hand of its wearer. Just as still waters turn foul, stagnation leads to decay. Warriors must remain ever drifting. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Blue Silver Mail Armor",
@@ -1139,7 +1161,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Pauldron reserved for the badlands' bravest. Proof that the wearer has slaughtered countless foes. Following the example of their chieftain Hoarah Loux, the brave warriors of the badlands shun excess adornment.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
   },
   {
     "name": "Bull-Goat Armor",
@@ -1401,7 +1434,18 @@
     "setTier": "medium-light",
     "enginePoise": 13,
     "description": "Black leather armor for blending in with the darkness. Worn by church confessors. The churches outside the Lands Between, dedicated to the teachings of the Two Fingers, send confessors out to follow the guidance of grace. The confessors are loyal servants to the Two Fingers, ready to hunt down and quietly dispose of their enemies.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ]
   },
   {
     "name": "Commoner's Simple Garb",
@@ -3170,7 +3214,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Armor made from strips of iron fastened together. Worn by warriors of the Land of Reeds. The Land of Reeds has long been locked in a miserable civil war, during which time it has remained alienated from the cultures of its neighbors. Little wonder that the entire nation has succumbed to blood-soaked madness, or so it is said.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Hoslow's Armor (altered)",
@@ -4533,7 +4588,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Robe of exiled prophets who foresaw that their faith would end in flames — and were persecuted and driven from their homes as a result. Its fabric scrapes against their skin like a file, and the rickety cart wheel around the neck warns passers-by not to lend an ear to their meandering sermons.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Prisoner Clothing",
@@ -4562,7 +4628,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Tattered clothing. Worn by a prisoner convicted of an appalling crime. Never once washed, every fiber is filthy.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Ragged Armor",
@@ -5258,7 +5335,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Armor reinforced with small metal scales. The cape covering the shoulders is made with treated rock lizard skin, and provides ample protection against fire.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 2400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Traveling Maiden Robe (altered)",
@@ -5664,7 +5752,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Chest piece of a knight banished from their motherland.  Dirty and battered after enduring a lengthy vagabond journey.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ]
   },
   {
     "name": "Veteran's Armor",
@@ -5780,7 +5879,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Blue surcoat draped over chainmail. The tree insignia emblazoned on the front depicts the Erdtree, and is a design beloved throughout the Lands Between.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
   },
   {
     "name": "Upper-class Robe",
@@ -5809,7 +5919,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Embroidered, bright green robe worn by noble children. Donning such a robe is traditionally the child's first show of burgeoning independence. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 2400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Tree-and-beast Surcoat",
@@ -6041,7 +6162,18 @@
     "setTier": "light",
     "enginePoise": 1,
     "description": "Gloves fashioned from fine, supple cloth. Worn by those who look to the cosmos above. They read fate in the stars, and are said to be heirs of the glintstone sorcerers. But alas, the night sky no longer cradles fate.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Bandit Manchettes",
@@ -6575,7 +6707,18 @@
     "setTier": "medium-light",
     "enginePoise": 3,
     "description": "Black leather gloves of the church confessors. The churches outside the Lands Between, dedicated to the teachings of the Two Fingers, send confessors out to follow the guidance of grace. The confessors are loyal servants to the Two Fingers, ready to hunt down and quietly dispose of their enemies.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ]
   },
   {
     "name": "Cleanrot Gauntlets",
@@ -6633,7 +6776,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Bracers reserved for the bandlands' bravest.  Proof that the wearer has slaughtered countless foes.  Following the example of their chieftain Hoarah Loux, the brave warriors of the badlands shun excess adornment. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
   },
   {
     "name": "Depraved Perfumer Gloves",
@@ -7300,7 +7454,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Ordinary iron gauntlets.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Gold Bracelets",
@@ -7445,7 +7610,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Gauntlets wrapped in tough leather. Worn by the warriors of the Land of Reeds",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Lusat's Manchettes",
@@ -8464,7 +8640,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Gauntlets of a knight banished form their motherland. Dirty and battered after enduring a lengthy vagabond journey. Metal armor is heavy, but also sturdy, offering significant damage negation. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ]
   },
   {
     "name": "Veteran's Gauntlets",
@@ -8638,7 +8825,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Gauntlets of a nomadic warrior. Crafted from sturdy leather.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Aristocrat Headband",
@@ -8841,7 +9039,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Mask of black cloth that covers the mouth. Favored by bandits for hiding their faces, it also provides some protection against poison. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ]
   },
   {
     "name": "Black Dumpling",
@@ -8957,7 +9166,18 @@
     "setTier": "light",
     "enginePoise": 2,
     "description": "Hood fashioned from supple cloth. Worn by those who look to the cosmos above. They read fate in the stars, and are said to be heirs of the glintstone sorcerers. But alas, the night sky no longer cradles fate.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Black Hood",
@@ -9334,7 +9554,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Cowl of a nomadic warrior. The blue color of its fabric symbolizes brisk waters, as fluid and flowing as the sword in the hand of its wearer. Just as still waters turn foul, stagnation leads to decay. Warriors must remain ever-drifting.  ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Champion Headband",
@@ -9363,7 +9594,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Headband reserved for the badlands' bravest. Proof that the wearer has slaughtered countless foes. Following the example of their chieftain Hoarah Loux, the brave warriors of the badlands shun excess adornment.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
   },
   {
     "name": "Chain Coif",
@@ -9665,7 +9907,18 @@
     "setTier": "medium-light",
     "enginePoise": 3,
     "description": "Black hood for blending in with the darkness. Worn by church confessors. The churches outside the Lands Between, dedicated to the teachings of the Two Fingers, send confessors out to follow the guidance of grace. The confessors are loyal servants to the Two Fingers, ready to hunt down and quietly dispose of their enemies. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ]
   },
   {
     "name": "Commoner's Headband (altered)",
@@ -10825,7 +11078,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Coarse hooded cloak of olive brown. The garb of those accused of lesser crimes, indicated by the collar of sharpened branches.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ]
   },
   {
     "name": "Haima Glintstone Crown",
@@ -10912,7 +11176,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Sturdy greathelm made from iron. Though it is uncomfortably heavy and obstructs the vision of the wearer, it provides considerable damage negation.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
   },
   {
     "name": "Haligtree Helm",
@@ -11376,7 +11651,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "An iron helmet showing rust on its edges. Cloth covering the mouth and neck provides some resistance to poison and other irritants. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Jar",
@@ -11492,7 +11778,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Helm made from strips of iron fastened together. Worn by warriors of the Land of Reeds. The Land of Reeds has long been locked in a miserable civil war, during which time it has remained alienated from the cultures of its neighbors. Little wonder that the entire nation has succumbed to blood-soaked madness, or so it is said.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Kaiden Helm",
@@ -12478,7 +12775,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Iron mask forced on a prisoner convicted of an appalling crime. Thick, heavy, and utterly stifling. A foul creation designed to torment the wearer, either slowly fermenting hatred within their heart, or a spiritual fervor that is near indistinguishable from it. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Queen's Crescent Crown",
@@ -12594,7 +12902,18 @@
     "setTier": "light",
     "enginePoise": 1,
     "description": "Blindfold of exiled prophets who foretold misfortune — and were persecuted and driven from their homes as a result. Why hesitate, if the path leading to the future is clear? Just close your eyes, and walk. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Pumpkin Helm",
@@ -13435,7 +13754,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Helm of a knight banished from their motherland. Dirty and battered after enduring a lengthy vagabond journey. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ]
   },
   {
     "name": "Zamor Mask",
@@ -13493,7 +13823,18 @@
     "setTier": "light",
     "enginePoise": 3,
     "description": "Trousers worn inside a robe. Worn by those who look to the cosmos above. They read fate in the stars, and are said to be heirs of the glintstone sorcerers. But alas, the night sky no longer cradles fate. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Bandit Boots",
@@ -14143,7 +14484,18 @@
     "setTier": "medium-light",
     "enginePoise": 9,
     "description": "Leather boots of the church confessors. The churches outside the Lands Between, dedicated to the teachings of the Two Fingers, send confessors out to follow the guidance of grace. The confessors are loyal servants to the Two Fingers, ready to hunt down and quietly dispose of their enemies.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ]
   },
   {
     "name": "Drake Knight Greaves",
@@ -14201,7 +14553,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Fine white trousers, perfectly suited for wearing beneath a silk robe. ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Deathbed Smalls",
@@ -14955,7 +15318,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Greaves wrapped in tough leather.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Leather Boots",
@@ -15013,7 +15387,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Well-made leather trousers. The lower legs are each bound in cord for ease of movement.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Leyndell Knight Greaves",
@@ -15651,7 +16036,18 @@
     "setTier": "light",
     "enginePoise": 5,
     "description": "Trousers of the exiled prophets who foresaw that their faith would end in flames — and were persecuted and driven from their homes as a result. Its fabric scrapes against their skin like a file, and the rickety cart wheel around the neck warns passers-by not to lend an ear to their meandering sermons.  ",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Queen's Leggings",
@@ -15738,7 +16134,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Tattered trousers. Worn by a prisoner convicted of an appalling crime. Never once washed, every fiber is filthy. The smell is beyond belief.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Redmane Knight Greaves",
@@ -16376,7 +16783,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Greaves of a nomadic warrior. Crafted from sturdy leather.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Vagabond Knight Greaves",
@@ -16405,7 +16823,18 @@
     "setTier": null,
     "enginePoise": null,
     "description": "Greaves of a knight banished from their motherland. Dirty and battered after enduring a lengthy vagabond journey.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ]
   },
   {
     "name": "White Reed Greaves",

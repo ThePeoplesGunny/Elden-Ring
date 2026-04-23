@@ -49,7 +49,18 @@
       "merchantCost": 600,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Hand+Axe"
     },
-    "description": "Commonly known as a hatchet, this smaller variety of axe is an everyday work tool. Despite its short reach, it is easy to handle, exceling in successive attacks."
+    "description": "Commonly known as a hatchet, this smaller variety of axe is an everyday work tool. Despite its short reach, it is easy to handle, exceling in successive attacks.",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Jawbone Axe",
@@ -1394,7 +1405,18 @@
       "merchantCost": 3500,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Zweihander"
     },
-    "description": "Just about the largest sword a mere man is capable of swinging. True to its name, it is designed to be wielded in both hands, but those of merely ordinary strength will still struggle to do so. The long blade is heavy and sharp, sending foes reeling back with its broader strokes, while also capable of a devastating piercing thrust."
+    "description": "Just about the largest sword a mere man is capable of swinging. True to its name, it is designed to be wielded in both hands, but those of merely ordinary strength will still struggle to do so. The long blade is heavy and sharp, sending foes reeling back with its broader strokes, while also capable of a devastating piercing thrust.",
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ]
   },
   {
     "name": "Royal Greatsword",
@@ -2395,7 +2417,18 @@
       "merchantCost": 1500,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Light+Crossbow"
     },
-    "description": "Ranged weapoon made from a bow fixed to a stock. Deals good damage and is simple to use, but requires reloading after firing. Bolts must be equipped to use a crossbow."
+    "description": "Ranged weapoon made from a bow fixed to a stock. Deals good damage and is simple to use, but requires reloading after firing. Bolts must be equipped to use a crossbow.",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Heavy Crossbow",
@@ -3205,7 +3238,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Curved sword with a severely hooked blade. Its attacks can slip through an enemy's guard.  Made to hunt down humans, this weapon requires high dexterity to wield efficiently. "
+    "description": "Curved sword with a severely hooked blade. Its attacks can slip through an enemy's guard.  Made to hunt down humans, this weapon requires high dexterity to wield efficiently. ",
+    "merchants": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ]
   },
   {
     "name": "Magma Blade",
@@ -4413,7 +4457,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "A Caestus with the rivets replaced by blood loss-inducing spikes. Fists weapons come in pairs, and two-handing this weapon will it to both hands."
+    "description": "A Caestus with the rivets replaced by blood loss-inducing spikes. Fists weapons come in pairs, and two-handing this weapon will it to both hands.",
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Caestus",
@@ -5236,7 +5291,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Staff of the astrologers. A glintsone is embedded in the tip, enabling it to be used as a catalyst for sorceries.  Sorceries must be memorized first at a site of lost grace, and a staff must be equipped to cast them. "
+    "description": "Staff of the astrologers. A glintsone is embedded in the tip, enabling it to be used as a catalyst for sorceries.  Sorceries must be memorized first at a site of lost grace, and a staff must be equipped to cast them. ",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Digger's Staff",
@@ -6689,7 +6755,18 @@
       "merchantCost": 3000,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Bastard+Sword"
     },
-    "description": "A large sword with a straight blade. This heavy sword is normally wielded with two hands, but those with sufficient strength can wield it in one alone. The hefty blade can be swung into multiple foes at once thanks to the broad, sweeping attack, making fending off crowds all the easier."
+    "description": "A large sword with a straight blade. This heavy sword is normally wielded with two hands, but those with sufficient strength can wield it in one alone. The hefty blade can be swung into multiple foes at once thanks to the broad, sweeping attack, making fending off crowds all the easier.",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Forked Greatsword",
@@ -7617,7 +7694,18 @@
       "merchantCost": 1200,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Halberd"
     },
-    "description": "A long-handed polearm that combines the functions of both axe and spear.  Can be used to press a single enemy with continuous thrusting attacks or swept at groups, taking advantage of its great reach and cleaving blade. A versatile weapon for any situation. "
+    "description": "A long-handed polearm that combines the functions of both axe and spear.  Can be used to press a single enemy with continuous thrusting attacks or swept at groups, taking advantage of its great reach and cleaving blade. A versatile weapon for any situation. ",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ]
   },
   {
     "name": "Lucerne",
@@ -8407,7 +8495,18 @@
       "merchantCost": 600,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Club"
     },
-    "description": "A thick, solid lump of wood. Wielding this striking weapon requires no skill. A simple, primitive weapon that requires only brute strength and persistence to hammer your foe into the ground."
+    "description": "A thick, solid lump of wood. Wielding this striking weapon requires no skill. A simple, primitive weapon that requires only brute strength and persistence to hammer your foe into the ground.",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Spiked Club",
@@ -9473,7 +9572,18 @@
       "merchantCost": 600,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Shortbow"
     },
-    "description": "Small bow made to fire arrows over great distances. Other than its ability to fire off arrows in rapid succession, it is also well-suited for use on horseback. To use a bow, arrows must also be equipped."
+    "description": "Small bow made to fire arrows over great distances. Other than its ability to fire off arrows in rapid succession, it is also well-suited for use on horseback. To use a bow, arrows must also be equipped.",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Misbegotten Shortbow",
@@ -9651,7 +9761,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Bow composited from a mix of Materials.  Demands high attributes, and is tricky to wield, but is a fearsome tool when mastered."
+    "description": "Bow composited from a mix of Materials.  Demands high attributes, and is tricky to wield, but is a fearsome tool when mastered.",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Scythe",
@@ -11044,7 +11165,18 @@
       "merchantCost": 600,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Short+Sword"
     },
-    "description": "A short straight sword with a short blade.  In addition to its reliable standard damage, this weapon also boasts powerful piercing attacks.  Lightweight amongst straight swords, this weapon is easy to wield, requiring only humble attributes. "
+    "description": "A short straight sword with a short blade.  In addition to its reliable standard damage, this weapon also boasts powerful piercing attacks.  Lightweight amongst straight swords, this weapon is easy to wield, requiring only humble attributes. ",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ]
   },
   {
     "name": "Broadsword",
@@ -11097,7 +11229,18 @@
       "merchantCost": 1800,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Broadsword"
     },
-    "description": "A straight sword with a wide blade, suited to slashing attacks. Horizontal swings boast wide attack range, making it easier to connect with foes. "
+    "description": "A straight sword with a wide blade, suited to slashing attacks. Horizontal swings boast wide attack range, making it easier to connect with foes. ",
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Lordsworn's Straight Sword",
@@ -11869,6 +12012,15 @@
         "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
       }
     ]
   },
@@ -12379,7 +12531,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "A torch which burns oil infused with a special incense. The aroma pacifies wild beasts. Torches such as these were used to keep unwelcome beasts away from treasure troves hidden in caves."
+    "description": "A torch which burns oil infused with a special incense. The aroma pacifies wild beasts. Torches such as these were used to keep unwelcome beasts away from treasure troves hidden in caves.",
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Sentry's Torch",
@@ -12421,7 +12584,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Torch Given to protectors of the Erdtree. Its flames are bestowed with a special incantation which allows the bearer to see assassins cloaked in veils. Furnished on behalf of the Erdtree and the Grace-Given Lord such that a Night of Black Knives will never come again. "
+    "description": "Torch Given to protectors of the Erdtree. Its flames are bestowed with a special incantation which allows the bearer to see assassins cloaked in veils. Furnished on behalf of the Erdtree and the Grace-Given Lord such that a Night of Black Knives will never come again. ",
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 7000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Godskin Peeler",

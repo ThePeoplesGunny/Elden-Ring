@@ -209,7 +209,18 @@
       "str": 8
     },
     "description": "A small, wooden roundshield. It is light and easy to use, but cannot offer the damage negation of a metal shield. Its emblem is an ancient red thorn design. Though it isn't much, it boosts fire damage negation.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Riveted Wooden Shield",
@@ -239,7 +250,18 @@
       "str": 8
     },
     "description": "Small wooden roundshield that has been reinforced with metal. It is light and easy to handle, but cannot offer the damage negation of a true metal shield. The design riveted to the center represents both sword and tree.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Scripture Wooden Shield",
@@ -329,7 +351,18 @@
       "str": 8
     },
     "description": "Small metal roundshiled depicting a sinister rift. An antiquated charm that glares back at an enemy, it boosts focus.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Iron Roundshield",
@@ -359,7 +392,18 @@
       "str": 8
     },
     "description": "An ordinary small roundshield made of metal. Heavier than a wooden shield, but boasts higher damage negation. Finely balanced, this shield is easy to use.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 900,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Smoldering Shield",
@@ -599,7 +643,18 @@
       "str": 12
     },
     "description": "A standard medium-sized metal shield. Metal shields reliably negate physical damage when guarding, a trait which made them highly trusted on the battlefield.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Banished Knight's Shield",
@@ -753,7 +808,18 @@
       "str": 8
     },
     "description": "A wooden roundshield that has been reinforced with metal. Comparatively light for its size, this shield is easy to handle but lacks a true metal shield's ability to negate damage.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Scorpion Kite Shield",
@@ -783,7 +849,18 @@
       "str": 11
     },
     "description": "A standard medium-sized metal shield. Highly reputed for its solid build and reliability. Emblazoned with a yellow scorpion, a warning of surprise attacks and sudden strikes.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
   },
   {
     "name": "Twinbird Kite Shield",
@@ -843,7 +920,18 @@
       "str": 12
     },
     "description": "A standard medium-sized shield. Highly reputed for its solid build and reliability. The design represents the Erdtree foreground against a blue sky.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Brass Shield",
@@ -1197,7 +1285,18 @@
       "str": 10
     },
     "description": "A medium-sized metal shield. Easier to handle than a kite shield. The crest symbolizes red wings.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
   },
   {
     "name": "Eclipse Crest Heater Shield",
@@ -1251,7 +1350,18 @@
       "str": 10
     },
     "description": "A medium-sized metal shield. Easier to handle than a kite shield. The crest represents a forest and river.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Inverted Hawk Heater Shield",
@@ -1431,7 +1541,18 @@
       "str": 32
     },
     "description": "Greatshield featuring sumptuous ornamentation used by the scions of great families. Due to their excessive size, these shields were at times seen as the hallmark of little lordlings who were too timid to earn a few nicks and scratches.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 5500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Dragonclaw Shield",
@@ -1797,7 +1918,18 @@
       "str": 30
     },
     "description": "An iron greatshield large enough to cover the entire body. Emblazoned with an old, interleaving tree. Greatshields boast high damage negation and guard capacity, making enemy attacks easy to repel",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 3800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
   },
   {
     "name": "Redmane Greatshield",

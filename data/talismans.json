@@ -318,7 +318,18 @@
       "notes": "Also available as starting Keepsake. +3 variant weighs 0.6.",
       "flagged": false,
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Crimson+Amber+Medallion"
-    }
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Crucible Scale Talisman",
@@ -828,7 +839,45 @@
     "effectPrecise": null,
     "effectCategory": null,
     "stackingRule": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Patches",
+        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
+        "region": "Limgrave",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": "Peace made with Patches",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Shabriri's Woe",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-23T00:03:17.478Z",
+  "generatedAt": "2026-04-23T01:14:57.982Z",
   "note": "item name -> [{merchant, location, region, runes, stock, prereq, sourceUrl}, ...]",
   "index": {
     "Throwing Dagger": [
@@ -53,6 +53,33 @@
         "stock": 3,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
       }
     ],
     "Crafting Kit": [
@@ -117,6 +144,141 @@
         "stock": "infinite",
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      },
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      },
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      },
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      },
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 20,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
       }
     ],
     "Bolt": [
@@ -128,6 +290,141 @@
         "stock": "infinite",
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      },
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      },
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 30,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      },
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      },
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 40,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
       }
     ],
     "Torch": [
@@ -236,6 +533,33 @@
         "stock": 3,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 4000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 4000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 8000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
       }
     ],
     "Ash of War: Carian Greatsword": [
@@ -267,6 +591,15 @@
         "stock": 1,
         "prereq": "Nomadic Merchant's Bell Bearing [3]",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
       }
     ],
     "Smithing Stone [1]": [
@@ -278,6 +611,51 @@
         "stock": "infinite",
         "prereq": "Smithing-Stone Miner's Bell Bearing (1)",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 200,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
       }
     ],
     "Somber Smithing Stone [9]": [
@@ -1231,6 +1609,78 @@
         "stock": 5,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      },
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      },
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 4000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      },
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 5000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
       }
     ],
     "Festering Bloody Finger": [
@@ -1251,6 +1701,33 @@
         "stock": 10,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 8,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
       }
     ],
     "Great Arrow": [
@@ -1262,6 +1739,51 @@
         "stock": 10,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 300,
+        "stock": 8,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 300,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      },
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 300,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 300,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 300,
+        "stock": 15,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
       }
     ],
     "Ballista Bolt": [
@@ -1273,6 +1795,51 @@
         "stock": 5,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 300,
+        "stock": 8,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 300,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      },
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 300,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 300,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 300,
+        "stock": 15,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
       }
     ],
     "Horse Crest Wooden Shield": [
@@ -1295,6 +1862,33 @@
         "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
       }
     ],
     "Estoc": [
@@ -1306,6 +1900,15 @@
         "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
       }
     ],
     "Ash of War: Glintstone Pebble": [
@@ -1581,6 +2184,15 @@
         "stock": 3,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
       }
     ],
     "Bloodrose": [
@@ -1603,6 +2215,42 @@
         "stock": 1,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 5000,
+        "stock": 2,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
       }
     ],
     "Dwelling Arrow": [
@@ -1614,6 +2262,15 @@
         "stock": "infinite",
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 160,
+        "stock": 30,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
       }
     ],
     "Burred Bolt": [
@@ -1625,6 +2282,1459 @@
         "stock": "infinite",
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ],
+    "Neutralizing Boluses": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Stimulating Boluses": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 2,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Broadsword": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Iron Roundshield": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 900,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Shortbow": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Club": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Note (land Squirts)": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Note (stonedigger Trolls)": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ],
+    "Sliver Of Meat": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Beast Liver": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Lump Of Flesh": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 800,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Trina's Lily": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [5]": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Armorer's Cookbook [3]": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Hand Axe": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Riveted Wooden Shield": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Blue-gold Kite Shield": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ],
+    "Pickled Turtle Neck": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 800,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [3]": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ],
+    "Short Sword": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ],
+    "Halberd": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ],
+    "Bandit Mask": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ],
+    "Lantern": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ],
+    "Smithing Stone [2]": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 400,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 400,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [11]": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Astrologer's Staff": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Kite Shield": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Astrologer Hood": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Astrologer Robe": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Astrologer Gloves": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Astrologer Trousers": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Immunizing Cured Meat": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Invigorating White Cured Meat": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Clarifying White Cured Meat": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Bewitching Branch": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 1600,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [13]": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Composite Bow": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Rift Shield": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Blue Crest Heater Shield": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ],
+    "Kukri": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 60,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Bastard Sword": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Light Crossbow": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Red Thorn Roundshield": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Round Shield": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Iron Helmet": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Scale Armor": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 2400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Iron Gauntlets": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Leather Trousers": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Crimson Amber Medallion": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Note: Demi-human Mobs": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [15]": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ],
+    "Flaming Bolt": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ],
+    "Champion Headband": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ],
+    "Greathelm": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ],
+    "Champion Pauldron": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ],
+    "Champion Bracers": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ],
+    "Preserving Boluses": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 2500,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ],
+    "Poisonbone Dart": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ],
+    "Poisoned Stone": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 150,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ],
+    "Poisoned Stone Clump": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 250,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ],
+    "Aeonian Butterfly": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 1500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ],
+    "Fire Arrow": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [20]": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Explosive Bolt": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 160,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Explosive Greatbolt": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 800,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Guilty Hood": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Confessor Hood": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Confessor Armor": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Confessor Gloves": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Confessor Boots": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ],
+    "Gravel Stone": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2000,
+        "stock": 8,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 2000,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Ancient Dragon Apostle's Cookbook [2]": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 4500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ],
+    "Red Crest Heater Shield": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ],
+    "Scorpion Kite Shield": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ],
+    "Crossed-tree Towershield": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 3800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ],
+    "Tree Surcoat": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ],
+    "Soap": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 400,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ],
+    "Nascent Butterfly": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 1500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ],
+    "Larval Tear": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [17]": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [18]": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 6000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ],
+    "Shotel": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ],
+    "Gravity Stone Fan": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 200,
+        "stock": 20,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Gravity Stone Chunk": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 300,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Celestial Dew": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 7500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Nomadic Warrior's Cookbook [16]": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Perfumer's Cookbook [4]": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Prisoner Iron Mask": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Prisoner Clothing": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Prisoner Trousers": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ],
+    "Golden Sunflower": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 300,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Perfume Bottle": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Sentry's Torch": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 7000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Distinguished Greatshield": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 5500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Prophet Blindfold": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Prophet Robe": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Upper-class Robe": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 2400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Prophet Trousers": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Consort's Trousers": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Golden Arrow": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Golden Great Arrow": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 500,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Golden Bolt": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ],
+    "Thawfrost Boluses": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1200,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Missionary's Cookbook [7]": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 7500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Lightning Greatbolt": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 500,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Vagabond Knight Helm": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Vagabond Knight Armor": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Vagabond Knight Gauntlets": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Vagabond Knight Greaves": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ],
+    "Arteria Leaf": [
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ],
+    "Zweihander": [
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ],
+    "Fanged Imp Ashes": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Eye Of Yelough": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Fevor's Cookbook [2]": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Meteor Bolt": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Blue Cloth Cowl": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Blue Cloth Vest": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Warrior Gauntlets": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Warrior Greaves": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ],
+    "Dragonwound Grease": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 3000,
+        "stock": 2,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Ritual Pot": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Spiked Caestus": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Serpent Arrow": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Beast-Repellent Torch": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Land Of Reeds Helm": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Land Of Reeds Armor": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Land Of Reeds Gauntlets": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ],
+    "Land Of Reeds Greaves": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
       }
     ]
   }

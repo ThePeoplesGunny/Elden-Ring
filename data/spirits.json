@@ -60,7 +60,18 @@
     "hpCost": 0,
     "effect": "Summons two fanged imp spirits",
     "description": "Ashes remains in which spirits yet dwell. Use to summon two fanged imp spirits.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Finger Maiden Therolina Puppet",

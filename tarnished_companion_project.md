@@ -198,11 +198,11 @@ runtime, Phase A output, parity-verified untouched).
 | `data/bosses.json` | 105 | fanapis (106 − 1 bad dup) | — | 207 drop mappings | `07e460b` |
 | `data/npcs.json` | 55 | fanapis | — | location+role only | `07e460b` |
 | `data/locations.json` | 177 | fanapis | — | descriptive only | `07e460b` |
-| `data/merchants.json` | 14 merchants / 153 items | Fextralife per-merchant | — | merchant inventories + specialists | `5bbd0e9` / pending |
-| `data/shields.json` | 69 | fanapis | — | — | pending |
-| `data/ammos.json` | 53 | fanapis | — | — | pending |
+| `data/merchants.json` | 31 merchants / 374 items | Fextralife per-merchant | — | stationary + specialists + nomadic/isolated | `5bbd0e9` → `d01d2f6` → pending |
+| `data/shields.json` | 69 | fanapis | — | — | `cc78232` |
+| `data/ammos.json` | 53 | fanapis | — | — | `cc78232` |
 
-**Totals:** 14 files, 2,219 canonical rows + 113 merchant inventory items, ~1.5MB. Merchant overlay now 113/113 (100%) — 95 unique canonical items carry `merchants[]` attribution; 0 canonical gaps remaining.
+**Totals:** 14 files, 2,219 canonical rows + 374 merchant inventory items, ~1.6MB. Merchant overlay 359/374 (95.9%) — 252 unique canonical items carry `merchants[]` attribution; 15 item-occurrences tracked in `data/merchant_missing_canonical.json` as genuine canonical gaps (11 Notes, 2 ammos, 1 armor piece) for separate canonical-gap pass.
 
 ### Ingestion pipeline pattern (generalized across B.1–B.6)
 
@@ -462,23 +462,64 @@ added to overlay: `Litany of Proper Death`/`Stone of Gurranq`/
 **Canonical typo fixed**: `Gurrang's Beast Claw` → `Gurranq's Beast Claw`
 in `incantations.json` (source data had missing second `r`).
 
-**Post-extension merchant overlay: 153/153 matched (100%)**, 124
+**Post-specialist merchant overlay: 153/153 matched (100%)**, 124
 canonical items carry `merchants[]`, 0 canonical gaps. Schema now
 covers 14 merchants across general/spell/AoW/spirit/special-trader
 types.
 
-**Out of scope**: Nomadic Merchants (~11 region-scattered), Isolated
-Merchants (~6), Hermit Merchant (Altus), Patches at satellite
-locations (same inventory), Smithing masters (no shop), Enia (boss-
-remembrance trades — separate mechanic), Boc (cosmetic alterations —
-no inventory), Roderika (spirit tuning service — no shop), Hyetta
-(maiden — no shop). Most are either tiny inventories or region/service
-mechanics best covered by per-region harvest.
-- **Out of scope for this pass:** Nomadic Merchants (~11 region-scattered),
-  Isolated Merchants (~6), Hermit Merchant, Pidia, Imprisoned Merchant,
-  Gatekeeper Gostoc, Gowry, D, Preceptor Seluvis, Rogier, Gurranq,
-  Roderika, Boc, Enia, Smithing masters. Most of these overlap with
-  per-region chest/pickup harvest or have trivial one-item inventories.
+**Nomadic + Isolated merchants shipped 2026-04-22** (`scripts/phase_b_merchant_extend_nomadic.js`):
+17 additional merchants from Fextralife's Nomadic (14) and Isolated (3)
+taxonomy:
+- **Nomadic (14)**: West/East/North Limgrave, West/North Liurnia,
+  Castle Morne Rampart, Caelid South, Caelid Highway North,
+  Mt. Gelmir, West Altus Plateau, Abandoned (Siofra River), Hermit
+  Ainsel River, Hermit Leyndell, Hermit Mountaintops East.
+- **Isolated (3)**: Weeping Peninsula, Raya Lucaria, Dragonbarrow.
+
+Categories extended: `info_item` (13 merchant-sold Notes), `talisman`
+(Crimson Amber Medallion, Sacrificial Twig). **Structural overlay bug
+fixed**: `phase_b_merchant_overlay.js` CANON_FILES did not include
+`talismans.json`, missing talisman-merchant attributions entirely.
+Added in this pass; 1 existing talisman (Crimson Amber Medallion) plus
+future talisman merchants now covered.
+
+**12 new name normalizations** added to overlay map: case drift
+(`Blue-Gold`→`Blue-gold`, `Crossed-Tree`→`Crossed-tree`,
+`Upper-Class`→`Upper-class`, `of`→`Of` for Land Of Reeds ×4 /
+Sliver Of Meat / Lump Of Flesh / Eye Of Yelough) plus Note format
+(`Note: X`→`Note (x Y)` for Land Squirts + Stonedigger Trolls).
+
+**Canonical typo fix in `data/ammos.json`**: "Lightning Greabolt"
+(2 duplicate entries, Kaggle source bug — missing 't') renamed to
+"Lightning Greatbolt" per Fextralife authoritative spelling. Entries
+are still duplicates with distinct `fanapisId`s and near-identical
+descriptions — dedup deferred to a canonical-quality pass.
+
+**Post-extension merchant overlay: 359/374 matched (95.9%)**, 252
+canonical items carry `merchants[]`, 15 item-occurrences tracked in
+`data/merchant_missing_canonical.json` as genuine canonical gaps:
+- **11 info-item Notes** (Flame Chariots, Gravity's Advantage,
+  Unseen Assassins, Imp Shades, Below the Capital, Wandering
+  Mausoleum, The Preceptor's Secret, Revenants, Frenzied Flame
+  Village, Gateway, Hidden Cave) — `items.json` does not carry these
+  bestiary/crafting hint entries.
+- **2 ammos**: St. Trina's Arrow (3 merchant occurrences),
+  Lightning Bolt (1 occurrence) — real in-game ammo types, missing
+  from `ammos.json`.
+- **1 armor**: Champion Gaiters — missing from `armors.json`
+  (Champion set otherwise present: Headband, Pauldron, Bracers,
+  Armor, Gaiters-position piece gone; Fextralife verification
+  needed).
+
+**Out of scope (confirmed-final)**:
+- Pidia, Carian Servant — separate Fextralife category (neither
+  Nomadic nor Isolated); small inventory, defer to canonical-gap
+  closing pass.
+- Patches at satellite locations (Volcano Manor, Scenic Isle) —
+  inventory identical to main entry.
+- Boc, Roderika, Hyetta, Smithing Masters — no shop (service NPCs).
+- Enia — Finger Reader remembrance trades, separate mechanic not
+  rune-based, needs separate schema.
 
 ### Phase B remaining
 
@@ -487,11 +528,14 @@ shipped 2026-04-22. Canonical data baseline is stable and cross-validated
 against fanapis source family.
 
 Next work options:
-- **Fextralife (scoped)** — only for what fanapis can't provide: merchant
-  inventories, chest/world pickups, quest rewards, incantation req bug
-  fixes (5 all-zero-req spells), plus the ~6 individual drift cases
-  flagged in the validate report. Much smaller scope than the original
-  570-page harvest.
+- **Canonical gap closing** — 15 Nomadic/Isolated surfaced gaps
+  (11 Notes, St. Trina's Arrow, Lightning Bolt, Champion Gaiters)
+  plus dedup of the two `Lightning Greatbolt` duplicates. Small
+  scoped pass.
+- **Chest/world pickups per region** — largest remaining acquisition
+  dimension; multi-session, region-by-region (Limgrave first pairs
+  with already-shipped Nomadic East/West/North Limgrave coverage).
+- **Quest rewards** — ~20 NPC questlines with ~50-100 rewards.
 - **Phase C/D** per `REWRITE_PLAN.md` (unblocks live playtest — tc_next
   journey view is the current blocker on resuming R4 Limgrave playtest).
 
@@ -672,6 +716,8 @@ tail -3 app.html
 ---
 
 ## COMPLETED DELIVERIES (this session)
+
+- **Nomadic + Isolated merchant extension 2026-04-22:** Closes the merchant attribution dimension. 17 new merchants harvested from Fextralife's Nomadic (14) and Isolated (3) taxonomy via `scripts/phase_b_merchant_extend_nomadic.js`. `data/merchants.json` extended 14 → 31 merchants, 153 → 374 inventory items. Merchant overlay script (`scripts/phase_b_merchant_overlay.js`) gained: (a) `talismans.json` added to CANON_FILES — structural bug fix that had excluded talisman attributions; (b) 12 new name normalizations for case drift (`Blue-Gold`→`Blue-gold`, `of`→`Of` in Land Of Reeds ×4 / Sliver Of Meat / Lump Of Flesh / Eye Of Yelough, plus `Note: X`→`Note (x Y)` for 2 Notes). Canonical typo fixed: 2 duplicate `Lightning Greabolt` → `Lightning Greatbolt` entries in `ammos.json` per Fextralife-authoritative spelling. Post-pass overlay: **359/374 matched (95.9%)**, 252 unique canonical items carry `merchants[]`. Remaining 15 item-occurrences surface genuine canonical gaps (11 info-item Notes missing from `items.json`, 2 ammos — St. Trina's Arrow + Lightning Bolt — missing from `ammos.json`, 1 armor — Champion Gaiters — missing from `armors.json`). Hook fix applied same session: `~/.claude/hooks/auto_update_state.py` stopped auto-updating CLAUDE.md `Last completed task` (was creating permanent 1-commit dirty lag; field is now hand-curated at delivery close per project rule). Documented in `feedback_hook_last_task_excluded.md`.
 
 - **Session close 2026-04-22:** Phase B-Overlay shipped end-to-end + Merchant pipeline built from scratch. 8 commits (`704623a` → `d01d2f6`).
   - **Phase B-Overlay snapshot** (`704623a`): `scripts/phase_b_overlay_fanapis_snapshot.js` paginates eldenring.fanapis.com across 13 endpoints (added ammos+shields in bite 1). 2,207 rows, ~2.1MB, `data/fanapis/*.json`. Endpoint path gotcha: ashes of war is `/api/ashes`.

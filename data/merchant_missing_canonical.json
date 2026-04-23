@@ -1,5 +1,96 @@
 {
-  "generatedAt": "2026-04-23T00:03:17.477Z",
+  "generatedAt": "2026-04-23T01:14:57.981Z",
   "note": "Items sold by merchants that have no matching canonical entry. Ammo/shields are structural gaps (not in canonical scope); others are missing-data stragglers worth adding to canonical.",
-  "missing": []
+  "missing": [
+    {
+      "merchantItemName": "St. Trina's Arrow",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant East Limgrave",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Note: Flame Chariots",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant North Limgrave",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Champion Gaiters",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant Caelid South",
+      "category": "armor"
+    },
+    {
+      "merchantItemName": "Note: Gravity's Advantage",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant Caelid South",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Lightning Bolt",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant West Altus Plateau",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Note: Unseen Assassins",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant West Altus Plateau",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Imp Shades",
+      "normalizedAttempt": null,
+      "merchant": "Nomadic Merchant West Altus Plateau",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Below the Capital",
+      "normalizedAttempt": null,
+      "merchant": "Hermit Merchant Leyndell",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Wandering Mausoleum",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Weeping Peninsula",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "St. Trina's Arrow",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Raya Lucaria",
+      "category": "ammo"
+    },
+    {
+      "merchantItemName": "Note: The Preceptor's Secret",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Raya Lucaria",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Revenants",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Raya Lucaria",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Frenzied Flame Village",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Raya Lucaria",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Gateway",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Dragonbarrow",
+      "category": "info_item"
+    },
+    {
+      "merchantItemName": "Note: Hidden Cave",
+      "normalizedAttempt": null,
+      "merchant": "Isolated Merchant Dragonbarrow",
+      "category": "info_item"
+    }
+  ]
 }

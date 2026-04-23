@@ -166,6 +166,33 @@
         "stock": 10,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 8,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
       }
     ]
   },
@@ -187,7 +214,36 @@
     "effect": "Reinforce armaments up to +6.",
     "description": "Stone used to smith a variety of armaments. A large shard found in plenty. Strengthens armaments up to +6. Smithing stone is found throughout the Lands Between, and mining galleries built to excavate it can be found everywhere",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 400,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 400,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ]
   },
   {
     "name": "Smithing Stone [4]",
@@ -389,6 +445,51 @@
         "stock": "infinite",
         "prereq": "Smithing-Stone Miner's Bell Bearing (1)",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 200,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
       }
     ]
   },
@@ -610,6 +711,15 @@
         "stock": 1,
         "prereq": "Nomadic Merchant's Bell Bearing [3]",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
       }
     ]
   },
@@ -621,7 +731,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by an armorer who served the great general Radahn. Contains knowledge of dealing with rot; the application of fire in particular.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Armorer's Cookbook [4]",
@@ -691,7 +812,18 @@
     "effect": "Expands crafting repertoire",
     "description": "Record of crafting techniques left by a man who was denied the path of becoming a Finger Maiden. He instead became a missionary, spreading holy teachings.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Missionary's Cookbook [1]",
@@ -762,7 +894,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by a man who, unable to become a Finger Maiden, instead became a missionary, and went forth to spread holy teachings. Acquire the knowledge to craft the following: -Rejuvenating Boluces",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 7500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ]
   },
   {
     "name": "Deserter's Cookbook [1]",
@@ -834,7 +977,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [5]",
@@ -844,7 +998,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [4]",
@@ -904,7 +1069,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook (12)",
@@ -924,7 +1100,18 @@
     "effect": "Expands crafting repertiore",
     "description": "A record of crafting techniques left by roaming nomad warriors. Contains knowledge for surviving in the face of utter scarcity.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [14]",
@@ -954,7 +1141,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 2500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [15]",
@@ -964,7 +1162,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by nomad warriors. Contains knowledge for surviving in the face of utter scarcity.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [17]",
@@ -974,7 +1183,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [8]",
@@ -994,7 +1214,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by roaming nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 6000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook (19)",
@@ -1014,7 +1245,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by nomad warriors.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      }
+    ]
   },
   {
     "name": "Nomadic Warrior's Cookbook [21]",
@@ -1194,7 +1436,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques left by a depraved perfumer. Contains perilous techniques no ordinary physician would attempt.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Ancient Dragon Apostle's Cookbook [1]",
@@ -1214,7 +1467,18 @@
     "effect": "Expands crafting repertoire",
     "description": "A record of crafting techniques taught by the capital's ancient dragon cult. Details techniques that harness lightning, the weapon of the ancient dragons. Acquire the knowledge to craft the following: -Lightning Pots -Roped Lightning Pots",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 4500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
   },
   {
     "name": "Ancient Dragon Apostle's Cookbook [3]",
@@ -1344,7 +1608,18 @@
     "effect": "Temporarily boosts Immunity",
     "description": "Cured strip of meat, dried out after pickling in a green medicinal solution. Craftable item. Temporarily boosts immunity Higher immunity helps to mitigate the buildup of various poisons and scarlet rot",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Pickled Turtle Neck",
@@ -1354,7 +1629,18 @@
     "effect": "Temporarily boosts Stamina recovery",
     "description": "Turtle neck meat, pickled in a bitter medicinal solution.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 800,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ]
   },
   {
     "name": "Fireproof Dried Liver",
@@ -1404,7 +1690,18 @@
     "effect": "Alleviates poison buildup and cures poison",
     "description": "Green boluses made from cave moss. Craftable item. Alleviates poison buildup and cures poison ailment. Poison accumulates gradually, coming into effect once the threshold is reached. Poison ailment lowers HP in steady increments for a period.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Exalted Flesh",
@@ -1486,7 +1783,18 @@
     "effect": "Alleviates buildup of sleep",
     "description": "Light-purple boluses made from cave moss. Craftable item. Alleviates buildup of sleep. Sleep accumulates gradually, causing sudden fogginess and loss of FP once the threshold is reached, even if it does not force the afflicted into true slumber. Take one of these into timely fashion to avoid such events.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 1500,
+        "stock": 2,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Stanching Boluses",
@@ -1506,6 +1814,15 @@
         "stock": 3,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
       }
     ]
   },
@@ -1537,7 +1854,18 @@
     "effect": "Uses FP to charm pierced enemy",
     "description": "Tree branch blessed with an incantation of unalloyed gold. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 1600,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Boiled Prawn",
@@ -1740,7 +2068,18 @@
     "effect": "Uses FP to cause a gravitational explosion",
     "description": "Shard of rock found in the wake of a meteorite strike.",
     "obtainedFrom": "Str C Int B",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 300,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Gravity Stone Fan",
@@ -1750,7 +2089,18 @@
     "effect": "Uses FP to emit fan-shaped gravitational shockwave",
     "description": "Shard of rock found in the wake of a meteorite strike.",
     "obtainedFrom": "Str C Int B",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 200,
+        "stock": 20,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Invigorating Cured Meat",
@@ -1770,7 +2120,18 @@
     "effect": "Temporarily boosts Robustness",
     "description": "A white sliced meat, dried out after pickling in a red medicinal solution. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Kukri",
@@ -1780,7 +2141,18 @@
     "effect": "Throw at enemies to inflict damage and build up onset of blood loss",
     "description": "A large knife used for throwing.",
     "obtainedFrom": "Str A Dex S",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 60,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Glintstone Scrap",
@@ -1859,6 +2231,33 @@
         "stock": 3,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 4000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 4000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 8000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
       }
     ]
   },
@@ -1950,7 +2349,18 @@
     "effect": "Alleviates scarlet rot buildup and cures rot",
     "description": "Scarlet boluses made of cave moss. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 2500,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ]
   },
   {
     "name": "Golden Rune [5]",
@@ -2000,7 +2410,18 @@
     "effect": "Temporarily boosts focus",
     "description": "A white sliced meat, dried out after pickling in a purple medicinal solution. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Liurnia of the Lakes",
+        "location": "Past Bellum Church hole, beneath rock arch",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Liurnia+of+the+Lakes"
+      }
+    ]
   },
   {
     "name": "Immunizing White Cured Meat",
@@ -2040,7 +2461,18 @@
     "effect": "Throw at enemies to inflict damage and build up poison",
     "description": "Animal bone sharpened into a knife for throwing, with a poison-laced tip. Craftable item.",
     "obtainedFrom": "Str D Dex C",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 120,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ]
   },
   {
     "name": "Poisoned Stone",
@@ -2050,7 +2482,18 @@
     "effect": "Throw at enemies to cause buildup of poison",
     "description": "A small stone with a poisoned core.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 150,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ]
   },
   {
     "name": "Poisoned Stone Clump",
@@ -2060,7 +2503,18 @@
     "effect": "Throw together to cause buildup of poison",
     "description": "A clump of small stones with poison cores.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 250,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ]
   },
   {
     "name": "Dragonwound Grease",
@@ -2070,7 +2524,18 @@
     "effect": "Coats armament, granting special dragon attacks",
     "description": "Solidified grease made from a mixture of gravels stones. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 3000,
+        "stock": 2,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Prattling Pate \"apologies\"",
@@ -2190,7 +2655,18 @@
     "effect": "Removes filth and accumulations on the body",
     "description": "A plant-based soap made from mushroom juice. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 400,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ]
   },
   {
     "name": "Frenzyflame Stone",
@@ -2450,7 +2926,18 @@
     "effect": "Alleviates buildup of frost",
     "description": "Ice-hued boluses made from cave moss. Craftable item.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 1200,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      }
+    ]
   },
   {
     "name": "Remembrance Of The Naturalborn",
@@ -2833,7 +3320,27 @@
     "effect": "Attach to waist to illuminate surroundings",
     "description": "A small waist-worn lantern that illuminates surroundings. Use once to turn on, and again to turn off. While its light is dimmer than that of a torch, it has the advantage of freeing up the user's hands.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Liurnia of the Lakes",
+        "location": "Campfire directly north of Liurnia Lake Shore Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Liurnia+of+the+Lakes"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ]
   },
   {
     "name": "Spectral Steed Whistle",
@@ -2952,6 +3459,78 @@
         "stock": 5,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      },
+      {
+        "merchant": "Nomadic Merchant Mt. Gelmir",
+        "location": "Ledge halfway up Mt. Gelmir, via ladders from Primeval Sorcerer Azur or Ninth Mt. Gelmir Campsite",
+        "region": "Mt. Gelmir",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Mt.+Gelmir"
+      },
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 4000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      },
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      },
+      {
+        "merchant": "Hermit Merchant Mountaintops East",
+        "location": "South of Stargazers' Ruins, Mountaintops of the Giants",
+        "region": "Mountaintops of the Giants",
+        "runes": 5000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant+Mountaintops+East"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 2000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 3000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
       }
     ]
   },
@@ -3093,7 +3672,18 @@
     "effect": "Carry out Absolution at the Church of Vows",
     "description": "A hidden Tear found in the Eternal City. Also known as a Night Tear.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 7500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      }
+    ]
   },
   {
     "name": "Seedbed Curse",
@@ -3153,7 +3743,18 @@
     "effect": "Material needed by Rennala to grant rebirth",
     "description": "Core of a creature of mimicry known as a silver tear.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ]
   },
   {
     "name": "Seluvis's Potion",
@@ -3223,6 +3824,42 @@
         "stock": 1,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      },
+      {
+        "merchant": "Hermit Merchant Ainsel River",
+        "location": "Stone ruins in southwestern Ainsel River, by campfire",
+        "region": "Ainsel River",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Ainsel+River"
+      },
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 4000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 5000,
+        "stock": 2,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
       }
     ]
   },
@@ -3654,7 +4291,18 @@
     "effect": "Note imparting knowledge in brief",
     "description": "A note sold by a nomadic merchant. Contains information about land squirts.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Map (deeproot Depths)",
@@ -3674,7 +4322,18 @@
     "effect": "Note imparting knowledge in brief",
     "description": "A note sold by a nomadic merchant. Contains information about stonedigger trolls.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Limgrave",
+        "location": "Southeast of Coastal Cave entrance, under collapsed stone structure",
+        "region": "Limgrave",
+        "runes": 400,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Limgrave"
+      }
+    ]
   },
   {
     "name": "Note (flask Of Wondrous Physick)",
@@ -3736,7 +4395,18 @@
     "effect": "Note imparting knowledge in brief.",
     "description": null,
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      }
+    ]
   },
   {
     "name": "Greenspill Crystal Tear",
@@ -4016,7 +4686,18 @@
     "effect": "Material used for crafting items",
     "description": "A butterfly with withered, scarlet wings found in the swamp of Aeonia. Material used for crafting items.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid Highway North",
+        "location": "East of Caelid Highway North Site of Grace, campfire",
+        "region": "Caelid",
+        "runes": 1500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Wandering+Merchant+Caelid+Highway+North"
+      }
+    ]
   },
   {
     "name": "Albinauric Bloodclot",
@@ -4056,7 +4737,18 @@
     "effect": "Material used for crafting items",
     "description": "Dark red leaves with thick, swollen veins. Material used for crafting items. Exceedingly rare to find. A faint pulse can be felt in the veins. Stirs the blood, providing an enlivening effect.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 1000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ]
   },
   {
     "name": "Beast Liver",
@@ -4066,7 +4758,18 @@
     "effect": "Material used for crafting items",
     "description": "The fresh liver of a beast; a luscious fruit of life. Material used for crating items. Found by hunting herbivorous beast. Dried liver boost damage negation.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Beast Blood",
@@ -4187,6 +4890,33 @@
         "stock": 3,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Merchant+Kal%C3%A9"
+      },
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      },
+      {
+        "merchant": "Nomadic Merchant Castle Morne Rampart",
+        "location": "Next to Castle Morne Rampart Site of Grace, Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Castle+Morne+Rampart"
+      },
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
       }
     ]
   },
@@ -4198,7 +4928,18 @@
     "effect": "Container required for crafting ritual pot items",
     "description": "This empty pot somehow mends itself when broken. Special item with greater durability than a cracked pot.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 3000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Crystal Bud",
@@ -4228,7 +4969,18 @@
     "effect": "Material used for crafting items",
     "description": "A shrub fruit bursting with ripened pulp. Material used for crafting items.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Erdleaf Flower",
@@ -4368,7 +5120,18 @@
     "effect": "Material used for crafting items",
     "description": "A golden sunflower that grows facing the Erdtree. Material used for crafting items. Found near Minor Erdtrees.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 300,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Grave Violet",
@@ -4388,7 +5151,27 @@
     "effect": "Material used for crafting items",
     "description": "A small clump of sharp, pointed stones. Material used for crafting items.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2000,
+        "stock": 8,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      },
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 2000,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   },
   {
     "name": "Great Dragonfly Head",
@@ -4448,7 +5231,18 @@
     "effect": "Material used for crafting items",
     "description": "A lump of beast flesh filled with rich juices. Material used for crafting items. Found by hunting carnivorous beast. Meat suitable for a rustic feast.",
     "obtainedFrom": "Found by hunting carnivorous beast.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 800,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Land Octopus Ovary",
@@ -4528,7 +5322,18 @@
     "effect": "Container required for crafting perfume items",
     "description": "Glass bottles used by perfumers. Used to seal various scent compounds.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
   },
   {
     "name": "Poisonbloom",
@@ -4548,7 +5353,18 @@
     "effect": "Material used for crafting items",
     "description": "An arcane butterfly with translucent wings. Material used for crafting items. Exceedingly rare to find.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Abandoned Merchant Siofra River",
+        "location": "Ruins in Central Siofra River, accessible via eastern wooden scaffolding",
+        "region": "Siofra River",
+        "runes": 1500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Siofra+River"
+      }
+    ]
   },
   {
     "name": "Rimed Crystal Bud",
@@ -4668,7 +5484,18 @@
     "effect": "Material used for crafting items",
     "description": "A slice of thinly carved beast flesh. Material used for crating items. Found by hunting herbivorous beast. The dried meat toughens the constitution.",
     "obtainedFrom": "Found by hunting herbivorous bests",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 500,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      }
+    ]
   },
   {
     "name": "Strip Of White Flesh",
@@ -4708,7 +5535,27 @@
     "effect": "Material used for crafting items",
     "description": "A pale purple water lily that is on the verge of wilting. Material used for crafting items. Exceedingly rare to find. A symbol of faith in St. Trina. Dulls the senses, preventing agitation.",
     "obtainedFrom": "Exceedingly rare to find",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 1000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
   },
   {
     "name": "Thin Beast Bones",
@@ -4817,17 +5664,6 @@
     "fextralife": {
       "verifiedAt": "2026-04-22",
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Sacrificial+Twig"
-    },
-    "merchants": [
-      {
-        "merchant": "Patches",
-        "location": "Murkwater Cave (primary), plus Liurnia / Volcano Manor appearances",
-        "region": "Limgrave",
-        "runes": 3000,
-        "stock": 1,
-        "prereq": "Peace made with Patches",
-        "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
-      }
-    ]
+    }
   }
 ]
