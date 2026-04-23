@@ -27,8 +27,11 @@ const NORMALIZATIONS = {
   "Note: Flask of Wondrous Physick": "Note (flask Of Wondrous Physick)",
   "Note: Waypoint Ruins": "Note (waypoint Ruins)",
   "Law of Regression": "Law Of Regression",
+  "Litany of Proper Death": "Litany Of Proper Death",
+  "Stone of Gurranq": "Stone Of Gurranq",
   "Ash of War: Stamp (Upward Cut)": "Ash of War: Stamp (upward Cut)",
   "Gold-Pickled Fowl Foot": "Gold-pickled Fowl Foot",
+  "Dolores the Sleeping Arrow Puppet": "Dolores The Sleeping Arrow Puppet",
 };
 
 const CANON_FILES = [
@@ -40,6 +43,7 @@ const CANON_FILES = [
   'sorceries.json',
   'incantations.json',
   'ashes_of_war.json',
+  'spirits.json',
 ];
 
 function load(f) { return JSON.parse(fs.readFileSync(path.join(DATA, f), 'utf8')); }

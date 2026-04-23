@@ -247,7 +247,18 @@
     },
     "passive": "Causes blood loss buildup (65)",
     "description": "Bolt covered in thorns. One of the most horrific weapons used in the Shattering. Afflicts with blood loss.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 200,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ]
   },
   {
     "name": "Dwelling Arrow",
@@ -263,7 +274,18 @@
     },
     "passive": null,
     "description": "Arrow in which the spirits of small animals are thought to dwell.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 160,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ]
   },
   {
     "name": "Explosive Greatbolt",

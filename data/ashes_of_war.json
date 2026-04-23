@@ -136,7 +136,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Keen affinity and the following skill:\"Beast's Roar: Unleash a beastly roar, rending the air as a forward-travelling projectile.\"Usable on all melee armaments.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Ash of War: Bloodhound's Step",
@@ -210,6 +221,15 @@
         "stock": 1,
         "prereq": "Rogier's Bell Bearing",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Sorcerer Rogier",
+        "location": "Stormveil Castle (initial), Roundtable Hold (post-Godrick)",
+        "region": "Roundtable Hold",
+        "runes": 2500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorcerer+Rogier"
       }
     ]
   },
@@ -1195,7 +1215,18 @@
     "walkthroughStep": null,
     "engineNote": null,
     "description": "This Ash of War grants an armament the Magic affinity and the following skill:\"Spinning Weapon: Defensive skill employed by Carian princesses. Lifts armament into mid-air, then makes it spin violently. Those it touches will suffer successive attacks.\"Usable on small and medium swords, axes, and hammers, as well as polearms and staves (great spears excepted)",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorcerer Rogier",
+        "location": "Stormveil Castle (initial), Roundtable Hold (post-Godrick)",
+        "region": "Roundtable Hold",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorcerer+Rogier"
+      }
+    ]
   },
   {
     "name": "Ash of War: Square Off",
@@ -1579,6 +1610,17 @@
     "walkthroughStep": 1500,
     "engineNote": "Pebble + thrust combo. Great on thrusting swords.",
     "description": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Sorcerer Rogier",
+        "location": "Stormveil Castle (initial), Roundtable Hold (post-Godrick)",
+        "region": "Roundtable Hold",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorcerer+Rogier"
+      }
+    ]
   }
 ]

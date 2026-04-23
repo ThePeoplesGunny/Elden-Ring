@@ -10009,7 +10009,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "A sacred seal given by Gurranq, the Beast Clergyman. A rare trinket which allows incantations to be scaled with strength.  The claw mark represents Gurranq's wrath. Enhances bestial incantations learned from Gurranq."
+    "description": "A sacred seal given by Gurranq, the Beast Clergyman. A rare trinket which allows incantations to be scaled with strength.  The claw mark represents Gurranq's wrath. Enhances bestial incantations learned from Gurranq.",
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Golden Order Seal",
@@ -12924,7 +12935,18 @@
     "canInfuse": null,
     "uniqueWeapon": null,
     "acquisition": null,
-    "description": "Greathammer with a striking end modelled to resemble five beastly claws. The black nails protruding from golden fur are said to represent Serosh, Lord of Beasts, who went to become King Godfrey's Regent."
+    "description": "Greathammer with a striking end modelled to resemble five beastly claws. The black nails protruding from golden fur are said to represent Serosh, Lord of Beasts, who went to become King Godfrey's Regent.",
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Twinblade",

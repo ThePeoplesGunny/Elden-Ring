@@ -157,6 +157,15 @@
         "stock": 5,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 2000,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ]
   },
@@ -238,7 +247,18 @@
     "effect": "Reinforce armamanets to +25",
     "description": "Smithing stone made polishing a golden Gravel Stone. A scale of the Ancient Dragonlord, and hidden treasure of Farum Azula",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Somber Smithing Stone [1]",
@@ -1476,7 +1496,18 @@
     "effect": "Alleviates impending blood loss",
     "description": "Red boluses made from cave moss Craftable item. Alleviates impending blood loss Blood loss escalates gradually, causing great damage once the threshold is reached. Take one of these in timely fashion to avoid such an event.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 1200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ]
   },
   {
     "name": "Lands Between Rune",
@@ -1819,6 +1850,15 @@
         "stock": 5,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 8000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ]
   },
@@ -2903,6 +2943,15 @@
         "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 5000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ]
   },
@@ -3164,7 +3213,18 @@
     "effect": null,
     "description": "Empty ashes of war, devoid of any memories of battle.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ]
   },
   {
     "name": "Fingerslayer Blade",
@@ -4026,7 +4086,18 @@
     "effect": "Material used for crafting items",
     "description": "Blood-slick roses that bloom in festering blood. Material used for crafting items.",
     "obtainedFrom": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 800,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ]
   },
   {
     "name": "Blood-tainted Excrement",

@@ -198,7 +198,7 @@ runtime, Phase A output, parity-verified untouched).
 | `data/bosses.json` | 105 | fanapis (106 − 1 bad dup) | — | 207 drop mappings | `07e460b` |
 | `data/npcs.json` | 55 | fanapis | — | location+role only | `07e460b` |
 | `data/locations.json` | 177 | fanapis | — | descriptive only | `07e460b` |
-| `data/merchants.json` | 8 merchants / 113 items | Fextralife per-merchant | — | merchant inventories | `5bbd0e9` |
+| `data/merchants.json` | 14 merchants / 153 items | Fextralife per-merchant | — | merchant inventories + specialists | `5bbd0e9` / pending |
 | `data/shields.json` | 69 | fanapis | — | — | pending |
 | `data/ammos.json` | 53 | fanapis | — | — | pending |
 
@@ -439,6 +439,41 @@ merchants, 113 inventory items):
   canonicals in its index, added Missionary's Cookbook normalization.
 - **Post-patch merchant overlay: 113/113 matched (100%)**, 95 unique
   canonical items carry `merchants[]`, 0 canonical gaps.
+
+**Merchants extended to specialists 2026-04-22** (`scripts/phase_b_merchant_extend_specialists.js`):
+Added 6 merchants completing stationary-vendor coverage:
+- Sorcerer Rogier (Roundtable Hold, AoW vendor, 3 items — questline-limited)
+- Gowry (Caelid, sorcery vendor, 4 items — Millicent-quest-gated)
+- Preceptor Seluvis (Three Sisters, sorcery vendor 10 + **spirit-ash
+  puppet shop 4** — puppets use Starlight Shards currency, not runes)
+- D, Hunter of the Dead (Roundtable Hold, 2 incantations — unlocks after
+  visiting Gurranq)
+- Gurranq, Beast Clergyman (Bestial Sanctum, 9 **Deathroot trades** —
+  cumulative counter, Clawmark Seal at 1 Deathroot through Ancient
+  Dragon Smithing Stone at 9)
+- Imprisoned Merchant (Mohgwyn Dynasty Mausoleum, 8 items)
+
+Schema extended with `specialCost: {amount, currency}` for non-rune
+currencies (Starlight Shards, Deathroot). Four new normalizations
+added to overlay: `Litany of Proper Death`/`Stone of Gurranq`/
+`Dolores the Sleeping Arrow Puppet` case drifts, plus
+`Ash of War: Beast's Roar` variant.
+
+**Canonical typo fixed**: `Gurrang's Beast Claw` → `Gurranq's Beast Claw`
+in `incantations.json` (source data had missing second `r`).
+
+**Post-extension merchant overlay: 153/153 matched (100%)**, 124
+canonical items carry `merchants[]`, 0 canonical gaps. Schema now
+covers 14 merchants across general/spell/AoW/spirit/special-trader
+types.
+
+**Out of scope**: Nomadic Merchants (~11 region-scattered), Isolated
+Merchants (~6), Hermit Merchant (Altus), Patches at satellite
+locations (same inventory), Smithing masters (no shop), Enia (boss-
+remembrance trades — separate mechanic), Boc (cosmetic alterations —
+no inventory), Roderika (spirit tuning service — no shop), Hyetta
+(maiden — no shop). Most are either tiny inventories or region/service
+mechanics best covered by per-region harvest.
 - **Out of scope for this pass:** Nomadic Merchants (~11 region-scattered),
   Isolated Merchants (~6), Hermit Merchant, Pidia, Imprisoned Merchant,
   Gatekeeper Gostoc, Gowry, D, Preceptor Seluvis, Rogier, Gurranq,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T23:57:06.957Z",
+  "generatedAt": "2026-04-23T00:03:17.478Z",
   "note": "item name -> [{merchant, location, region, runes, stock, prereq, sourceUrl}, ...]",
   "index": {
     "Throwing Dagger": [
@@ -227,6 +227,15 @@
         "stock": 5,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 8000,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ],
     "Ash of War: Carian Greatsword": [
@@ -238,6 +247,15 @@
         "stock": 1,
         "prereq": "Rogier's Bell Bearing",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Twin+Maiden+Husks"
+      },
+      {
+        "merchant": "Sorcerer Rogier",
+        "location": "Stormveil Castle (initial), Roundtable Hold (post-Godrick)",
+        "region": "Roundtable Hold",
+        "runes": 2500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorcerer+Rogier"
       }
     ],
     "Armorer's Cookbook [2]": [
@@ -324,6 +342,15 @@
         "stock": null,
         "prereq": "Academy Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 600,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ],
     "Great Glintstone Shard": [
@@ -344,6 +371,15 @@
         "stock": null,
         "prereq": "Academy Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ],
     "Glintstone Cometshard": [
@@ -364,6 +400,15 @@
         "stock": null,
         "prereq": "Conspectus Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 12000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ],
     "Star Shower": [
@@ -384,6 +429,15 @@
         "stock": null,
         "prereq": "Conspectus Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ],
     "Glintblade Phalanx": [
@@ -404,6 +458,15 @@
         "stock": null,
         "prereq": "Royal House Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ],
     "Carian Slicer": [
@@ -424,6 +487,15 @@
         "stock": null,
         "prereq": "Royal House Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ],
     "Lord's Heal": [
@@ -846,6 +918,15 @@
         "stock": null,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 3000,
+        "stock": null,
+        "prereq": "After Millicent leaves Gowry's Shack",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
       }
     ],
     "Glintstone Arc": [
@@ -1141,6 +1222,15 @@
         "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 5000,
+        "stock": 5,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ],
     "Festering Bloody Finger": [
@@ -1152,6 +1242,15 @@
         "stock": 5,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      },
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 2000,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ],
     "Great Arrow": [
@@ -1207,6 +1306,325 @@
         "stock": 1,
         "prereq": "Peace made with Patches",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Patches"
+      }
+    ],
+    "Ash of War: Glintstone Pebble": [
+      {
+        "merchant": "Sorcerer Rogier",
+        "location": "Stormveil Castle (initial), Roundtable Hold (post-Godrick)",
+        "region": "Roundtable Hold",
+        "runes": 1500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorcerer+Rogier"
+      }
+    ],
+    "Ash of War: Spinning Weapon": [
+      {
+        "merchant": "Sorcerer Rogier",
+        "location": "Stormveil Castle (initial), Roundtable Hold (post-Godrick)",
+        "region": "Roundtable Hold",
+        "runes": 1000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorcerer+Rogier"
+      }
+    ],
+    "Night Shard": [
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 4000,
+        "stock": null,
+        "prereq": "After Millicent leaves Gowry's Shack",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
+      }
+    ],
+    "Night Maiden's Mist": [
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 5000,
+        "stock": null,
+        "prereq": "After Millicent leaves Gowry's Shack",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
+      }
+    ],
+    "Pest Threads": [
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 7500,
+        "stock": null,
+        "prereq": "After giving Millicent the Valkyrie's Prosthesis",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
+      }
+    ],
+    "Carian Phalanx": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 12000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Carian Retaliation": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 9000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Glintstone Icecrag": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 7500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Freezing Mist": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 6000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Finger Maiden Therolina Puppet": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Puppet shop unlocked via quest",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Jarwight Puppet": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Puppet shop unlocked via quest",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Dolores The Sleeping Arrow Puppet": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Give potion to Nepheli",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Dung Eater Puppet": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Give potion to Dung Eater",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ],
+    "Litany Of Proper Death": [
+      {
+        "merchant": "D, Hunter of the Dead",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Visited Gurranq",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/D%2C+Hunter+of+the+Dead"
+      }
+    ],
+    "Order's Blade": [
+      {
+        "merchant": "D, Hunter of the Dead",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 3000,
+        "stock": null,
+        "prereq": "Visited Gurranq",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/D%2C+Hunter+of+the+Dead"
+      }
+    ],
+    "Clawmark Seal": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Bestial Sling": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Bestial Vitality": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Ash of War: Beast's Roar": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Beast Claw": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Stone Of Gurranq": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Beastclaw Greathammer": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Gurranq's Beast Claw": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Ancient Dragon Smithing Stone": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ],
+    "Stanching Boluses": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 1200,
+        "stock": 3,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ],
+    "Bloodrose": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 800,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ],
+    "Lost Ashes of War": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 5000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ],
+    "Dwelling Arrow": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 160,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
+      }
+    ],
+    "Burred Bolt": [
+      {
+        "merchant": "Imprisoned Merchant (Mohgwyn)",
+        "location": "Mohgwyn Dynasty Mausoleum",
+        "region": "Mohgwyn Palace",
+        "runes": 200,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Imprisoned+Merchant"
       }
     ]
   }

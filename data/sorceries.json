@@ -142,7 +142,18 @@
     "description": "One of the sorceries of the Carian royal family.",
     "effect": "Forms a defensive arch of numerous magic glintblades",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 12000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Adula's Moonblade",
@@ -249,7 +260,18 @@
     "description": "One of the sorceries of the Carian royal family.",
     "effect": "Dispels enemy spells and retaliates with glintblades",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 9000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Carian Slicer",
@@ -292,6 +314,15 @@
         "stock": null,
         "prereq": "Royal House Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 1500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ]
   },
@@ -616,7 +647,18 @@
     "description": "Sorcery said to have been used by the old snow witch.",
     "effect": "Releases cold mist before caster",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 6000,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Gelmir's Fury",
@@ -751,6 +793,15 @@
         "stock": null,
         "prereq": "Conspectus Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 12000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ]
   },
@@ -830,6 +881,15 @@
         "stock": null,
         "prereq": null,
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 3000,
+        "stock": null,
+        "prereq": "After Millicent leaves Gowry's Shack",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
       }
     ]
   },
@@ -855,7 +915,18 @@
     "description": "Sorcery said to have been used by the old snow witch.",
     "effect": "Fires mass of cold magic from glintstone",
     "engineNote": "Magic damage + frost buildup",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 7500,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Glintblade Phalanx",
@@ -898,6 +969,15 @@
         "stock": null,
         "prereq": "Royal House Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Royal House Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ]
   },
@@ -966,6 +1046,15 @@
         "stock": null,
         "prereq": "Academy Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 2000,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ]
   },
@@ -1291,7 +1380,18 @@
     "description": "One of the night sorceries of Sellia, Town of Sorcery. ",
     "effect": "Swiftly fires a semi-invisible",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 4000,
+        "stock": null,
+        "prereq": "After Millicent leaves Gowry's Shack",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
+      }
+    ]
   },
   {
     "name": "Night Maiden's Mist",
@@ -1315,7 +1415,18 @@
     "description": "One of the night sorceries of Sellia, Town of Sorcery.",
     "effect": "Releases life-sapping silver mist before caster",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 5000,
+        "stock": null,
+        "prereq": "After Millicent leaves Gowry's Shack",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
+      }
+    ]
   },
   {
     "name": "Rancorcall",
@@ -1714,6 +1825,15 @@
         "stock": null,
         "prereq": "Conspectus Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 10000,
+        "stock": null,
+        "prereq": "Conspectus Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ]
   },
@@ -1807,6 +1927,15 @@
         "stock": null,
         "prereq": "Academy Scroll",
         "sourceUrl": "https://eldenring.wiki.fextralife.com/Sorceress+Sellen"
+      },
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": 600,
+        "stock": null,
+        "prereq": "Academy Scroll",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
       }
     ]
   },

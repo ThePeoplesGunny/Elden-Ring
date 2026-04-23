@@ -190,7 +190,18 @@
     "description": "Incantation taught by Gurranq, the Beast Clergyman.",
     "effect": "Creates claws that tear through the land.",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Aspect Of The Crucible: Breath",
@@ -262,7 +273,18 @@
     "description": "Incantation taught by Gurranq, the Beast Clergyman. Swiftly flings a number of sharp rock shards. This incantation can be cast without delay after performing another action. It is said that in the time before the Erdtree, stones were the first weapons of the beasts who had gained intelligence.",
     "effect": "Swiftly flings numerous sharp rock shards",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Black Blade",
@@ -422,7 +444,18 @@
     "description": "Incantation taught by Gurranq, the Beast Clergyman.",
     "effect": "Heals HP over a period of time",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Black Flame's Protection",
@@ -1390,7 +1423,7 @@
     "acquisition": null
   },
   {
-    "name": "Gurrang's Beast Claw",
+    "name": "Gurranq's Beast Claw",
     "kaggleId": "17f69535c25l0hyo1gmmkqtdazls9",
     "catalog": "Incantation",
     "school": null,
@@ -1411,7 +1444,23 @@
     "description": "Superior incantation taught by Gurranq, the Beast Clergyman. ",
     "effect": "Creates beast claws to rend surroundings with shockwaves",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-04-22",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq%27s+Beast+Claw",
+      "typoFix": "Source had Gurrang (missing second r)"
+    },
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Immutable Shield",
@@ -1803,7 +1852,18 @@
     "description": "One of the incantations of the Golden Order fundamentalists. ",
     "effect": "Creates image of Order to deal holy damage",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "D, Hunter of the Dead",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 2500,
+        "stock": null,
+        "prereq": "Visited Gurranq",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/D%2C+Hunter+of+the+Dead"
+      }
+    ]
   },
   {
     "name": "Law Of Regression",
@@ -2005,7 +2065,18 @@
     "description": "One of the incantations of the Golden Order fundamentalists. Used by hunters of Those Who Live in Death. Enchants armament held in the right hand with holy-affinity attacks. This incantation is especially damaging to Those Who Live in Death. Any felled by this incantation cannot be revived. The role of the hunters is to stamp out defiled reason - all for the perfection of the Golden Order.",
     "effect": "Enchanted right-hand armament with holy damage",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "D, Hunter of the Dead",
+        "location": "Roundtable Hold",
+        "region": "Roundtable Hold",
+        "runes": 3000,
+        "stock": null,
+        "prereq": "Visited Gurranq",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/D%2C+Hunter+of+the+Dead"
+      }
+    ]
   },
   {
     "name": "Magic Fortification",
@@ -2132,7 +2203,18 @@
     "description": "Incantation of the servants of rot.",
     "effect": "Launches countless sticky threads before caster",
     "engineNote": "Multi-hit physical — devastates large bosses",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gowry",
+        "location": "Gowry's Shack, Caelid",
+        "region": "Caelid",
+        "runes": 7500,
+        "stock": null,
+        "prereq": "After giving Millicent the Valkyrie's Prosthesis",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gowry"
+      }
+    ]
   },
   {
     "name": "Protection Of The Erdtree",
@@ -2380,7 +2462,18 @@
     "description": "Superior incantation taught by Gurranq, the Beast Clergyman. ",
     "effect": "Hurls a boulder before the caster",
     "engineNote": null,
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Gurranq, Beast Clergyman",
+        "location": "Bestial Sanctum, Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": null,
+        "stock": null,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Gurranq+Beast+Clergyman"
+      }
+    ]
   },
   {
     "name": "Surge, O Flame!",

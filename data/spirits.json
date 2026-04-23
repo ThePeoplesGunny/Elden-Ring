@@ -69,7 +69,18 @@
     "hpCost": 0,
     "effect": "Summons spirit of Finger Maiden Therolina",
     "description": "One of Seluvis's puppets.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Puppet shop unlocked via quest",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Giant Rat Ashes",
@@ -114,7 +125,18 @@
     "hpCost": 0,
     "effect": "Summons Jarwight spirit",
     "description": "One of Seluvis' puppets. Use to summon the spirit of a jarwight.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Puppet shop unlocked via quest",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Kaiden Sellsword Ashes",
@@ -474,7 +496,18 @@
     "hpCost": 0,
     "effect": "Summons spirit of the Dung Eater",
     "description": "One of Seluvis's puppets. Use to summon the spirit of the Dung Eater. Spirit of a man who murdered thousands and defiled their corpses with the Seedbed Curse. Wields a spine greatsword and hurls curses. The Dung Eater despaired at how he met his end. How hideous and sinister this puppet is, and yet, its utter despair invites one to care for it.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Give potion to Dung Eater",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Fire Monk Ashes",
@@ -492,7 +525,18 @@
     "hpCost": 0,
     "effect": "Summons spirit of Solores the Sleeping Arrow",
     "description": "One of Seluvis's favorite puppets. Use to summon the spirit of Dolores the Sleeping Arrow Spirit of a handsome archer who dressed in the style of a man. Called the Silent Hunter by some, she fires St. Trina's arrows from her shortbow. Dolores once belonged to the Roundtable Hold, where she was both a critic and a friend of Gideon the All-Knowing. It was because of her that he and Seluvis went their separate ways.",
-    "acquisition": null
+    "acquisition": null,
+    "merchants": [
+      {
+        "merchant": "Preceptor Seluvis",
+        "location": "Seluvis's Rise, Three Sisters, Liurnia of the Lakes",
+        "region": "Liurnia of the Lakes",
+        "runes": null,
+        "stock": null,
+        "prereq": "Give potion to Nepheli",
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Preceptor+Seluvis"
+      }
+    ]
   },
   {
     "name": "Haligtree Soldier Ashes",
