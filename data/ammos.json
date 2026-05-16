@@ -953,22 +953,6 @@
     "acquisition": null
   },
   {
-    "name": "Lightning Greatbolt",
-    "fanapisId": "17f6945f9cal0i0a8wtc9cmxtd7rnn",
-    "type": "Pierce",
-    "attackPower": {
-      "physical": 50,
-      "magic": 0,
-      "fire": 0,
-      "lightning": 150,
-      "holy": 0,
-      "critical": 100
-    },
-    "passive": null,
-    "description": "Greatbolt tipped with a climp of Gravel Stone shards. ",
-    "acquisition": null
-  },
-  {
     "name": "Haligbone Bolt",
     "fanapisId": "17f693c3e3el0i0a8wy8f2xnxro75k",
     "type": "Pierce",
@@ -1400,5 +1384,76 @@
     "passive": "Causes frost build up (65)",
     "description": "Arrow set alight with ghostflame before firing.Deals magic damage while also afflictingfoes with frost.",
     "acquisition": null
+  },
+  {
+    "name": "St. Trina's Arrow",
+    "fanapisId": null,
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 30,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 0,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": "Sleep (96)",
+    "description": "Arrow carved to resemble a withered water lily. Afflicts targets with a powerful sleep effect. Priests of St. Trina use these arrows to spread their teachings. The sweet oblivion of sleep can become quite the habit.",
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/St.+Trina's+Arrow"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant East Limgrave",
+        "location": "Mistwood campfire, between Mistwood Ruins and Fort Haight",
+        "region": "Limgrave",
+        "runes": 160,
+        "stock": 10,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+East+Limgrave"
+      },
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 160,
+        "stock": 20,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
+  },
+  {
+    "name": "Lightning Bolt",
+    "fanapisId": null,
+    "type": "Pierce",
+    "attackPower": {
+      "physical": 20,
+      "magic": 0,
+      "fire": 0,
+      "lightning": 80,
+      "holy": 0,
+      "critical": 100
+    },
+    "passive": null,
+    "description": "Bolt tipped with a shard of Gravel Stone. Deals powerful lightning damage. Used by worshippers of the ancient dragons.",
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Lightning+Bolt"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 160,
+        "stock": "infinite",
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
   }
 ]

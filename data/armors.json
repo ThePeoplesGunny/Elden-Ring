@@ -17009,5 +17009,49 @@
     "enginePoise": 24,
     "description": null,
     "acquisition": null
+  },
+  {
+    "name": "Champion Gaiters",
+    "kaggleId": null,
+    "category": "Leg Armor",
+    "slot": "legs",
+    "weight": 3.9,
+    "dmgNegation": {
+      "phy": 3.8,
+      "strike": 5,
+      "slash": 4,
+      "pierce": 4.5,
+      "magic": 4.5,
+      "fire": 5.4,
+      "ligt": 5.8,
+      "holy": 5.4
+    },
+    "resistance": {
+      "immunity": 31,
+      "robustness": 20,
+      "focus": 26,
+      "vitality": 24,
+      "poise": 4
+    },
+    "setName": "Champion Set",
+    "setTier": "light",
+    "enginePoise": 4,
+    "description": "Gaiters formed only with leather straps. Common wear in the badlands.",
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Champion+Gaiters"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 1000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
   }
 ]

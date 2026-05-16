@@ -528,10 +528,10 @@ shipped 2026-04-22. Canonical data baseline is stable and cross-validated
 against fanapis source family.
 
 Next work options:
-- **Canonical gap closing** — 15 Nomadic/Isolated surfaced gaps
-  (11 Notes, St. Trina's Arrow, Lightning Bolt, Champion Gaiters)
-  plus dedup of the two `Lightning Greatbolt` duplicates. Small
-  scoped pass.
+- ~~**Canonical gap closing** — 15 Nomadic/Isolated surfaced gaps~~
+  **DONE 2026-05-16** (`phase_b_canonical_gap_close.js`): 14 entries
+  added Fextralife-verified, Lightning Greatbolt deduped, overlay
+  374/374 100% / 0 missing / 266 carry merchants[].
 - **Chest/world pickups per region** — largest remaining acquisition
   dimension; multi-session, region-by-region (Limgrave first pairs
   with already-shipped Nomadic East/West/North Limgrave coverage).
@@ -716,6 +716,8 @@ tail -3 app.html
 ---
 
 ## COMPLETED DELIVERIES (this session)
+
+- **Canonical gap close 2026-05-16:** Closes the 15 merchant-attribution item-occurrences (14 distinct) the Nomadic+Isolated pass surfaced. `scripts/phase_b_canonical_gap_close.js` adds, all Fextralife-verified with per-entry `fextralife:{verifiedAt,sourceUrl}` provenance: **11 info-item Notes** → `items.json` (Flame Chariots, Gravity's Advantage, Unseen Assassins, Imp Shades, Below the Capital, Wandering Mausoleum, The Preceptor's Secret, Revenants, Frenzied Flame Village, Gateway, Hidden Cave — verbatim descriptions; named with straight-apostrophe colon form per the working `Note: Demi-human Mobs` direct-match precedent, no normalization entries needed); **St. Trina's Arrow** (Pierce, phys 30, Sleep 96) + **Lightning Bolt** (Pierce, phys 20 / lightning 80) → `ammos.json`; **Champion Gaiters** (Champion Set, legs, wt 3.9, poise 4) → `armors.json`. **Lightning Greatbolt dedup:** two identical-stat fanapis-collision entries collapsed to the one with the fuller description (`ammos.json` 53→54 net after +2/−1). Counts: `items.json` 449→460, `ammos.json` 53→54, `armors.json` 570→571. Overlay re-run: **374/374 matched (100%), 0 missing, 266 canonical items carry `merchants[]`** (was 359/374 95.9% / 252). Merchant attribution dimension is now complete with zero canonical gaps. Same session: governance scaffold committed (`9cb3cbd` — CLAUDE.md intent/boundaries/locked-decisions + 2 agents) and the file-based memory system rebuilt from v3.14 prose (7 memories: user-gunny + 5 feedback rules + walkthrough-reconstruction-b12; the granular R1–R23 tracker `memory/project_walkthrough_reconstruction.md` was confirmed lost and is not recoverable from git).
 
 - **Nomadic + Isolated merchant extension 2026-04-22:** Closes the merchant attribution dimension. 17 new merchants harvested from Fextralife's Nomadic (14) and Isolated (3) taxonomy via `scripts/phase_b_merchant_extend_nomadic.js`. `data/merchants.json` extended 14 → 31 merchants, 153 → 374 inventory items. Merchant overlay script (`scripts/phase_b_merchant_overlay.js`) gained: (a) `talismans.json` added to CANON_FILES — structural bug fix that had excluded talisman attributions; (b) 12 new name normalizations for case drift (`Blue-Gold`→`Blue-gold`, `of`→`Of` in Land Of Reeds ×4 / Sliver Of Meat / Lump Of Flesh / Eye Of Yelough, plus `Note: X`→`Note (x Y)` for 2 Notes). Canonical typo fixed: 2 duplicate `Lightning Greabolt` → `Lightning Greatbolt` entries in `ammos.json` per Fextralife-authoritative spelling. Post-pass overlay: **359/374 matched (95.9%)**, 252 unique canonical items carry `merchants[]`. Remaining 15 item-occurrences surface genuine canonical gaps (11 info-item Notes missing from `items.json`, 2 ammos — St. Trina's Arrow + Lightning Bolt — missing from `ammos.json`, 1 armor — Champion Gaiters — missing from `armors.json`). Hook fix applied same session: `~/.claude/hooks/auto_update_state.py` stopped auto-updating CLAUDE.md `Last completed task` (was creating permanent 1-commit dirty lag; field is now hand-curated at delivery close per project rule). Documented in `feedback_hook_last_task_excluded.md`.
 

@@ -5665,5 +5665,280 @@
       "verifiedAt": "2026-04-22",
       "sourceUrl": "https://eldenring.wiki.fextralife.com/Sacrificial+Twig"
     }
+  },
+  {
+    "name": "Note: Flame Chariots",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Beware the Fire Monks' chariots bearing the faces of giants. A well-aimed blow to the chimney on top may prove effective, but opportunities for a plunging attack will be rare indeed.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Flame+Chariots"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant North Limgrave",
+        "location": "East of Saintsbridge, campfire by road in Stormhill",
+        "region": "Limgrave",
+        "runes": 300,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+North+Limgrave"
+      }
+    ]
+  },
+  {
+    "name": "Note: Gravity's Advantage",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Gravitational power that pulls can bring flying foes low.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Gravity's+Advantage"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant Caelid South",
+        "location": "Southern Caelid Highway campfire junction",
+        "region": "Caelid",
+        "runes": 800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+Caelid+South"
+      }
+    ]
+  },
+  {
+    "name": "Note: Unseen Assassins",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Some assassins cannot be seen with the naked eye. Seems the Erdtree sentries once carried torches that could cast light on these prowlers.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Unseen+Assassins"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 2000,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
+  },
+  {
+    "name": "Note: Imp Shades",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Nothing can touch the shades of imps in the heroes' graveyard. Only Rosus's light can give them form.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Imp+Shades"
+    },
+    "merchants": [
+      {
+        "merchant": "Nomadic Merchant West Altus Plateau",
+        "location": "Next to Forest-Spanning Greatbridge Site of Grace",
+        "region": "Altus Plateau",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Nomadic+Merchant+West+Altus+Plateau"
+      }
+    ]
+  },
+  {
+    "name": "Note: Below the Capital",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Below the royal capital of Leyndell is a vast network of sewers. The well in the city below reaches deep into its tunnels.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Below+the+Capital"
+    },
+    "merchants": [
+      {
+        "merchant": "Hermit Merchant Leyndell",
+        "location": "Hermit Merchant's Shack, Capital Outskirts north of Leyndell",
+        "region": "Leyndell, Royal Capital",
+        "runes": 800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Hermit+Merchant"
+      }
+    ]
+  },
+  {
+    "name": "Note: Wandering Mausoleum",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "To stop the mausoleum's stride, you'll need to clean up around its feet first.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Wandering+Mausoleum"
+    },
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Weeping Peninsula",
+        "location": "Isolated Merchant's Shack, far west of Weeping Peninsula",
+        "region": "Weeping Peninsula",
+        "runes": 600,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Weeping+Peninsula"
+      }
+    ]
+  },
+  {
+    "name": "Note: The Preceptor's Secret",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Preceptor Seluvis is hiding a dirty secret in a cellar among the ruins not far from the sisters three. The vile Graven Witch seems to be a frequent visitor to that place.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+The+Preceptor's+Secret"
+    },
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
+  },
+  {
+    "name": "Note: Revenants",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "The crawling royal revenants and their followers are all cursed. Healing powers will harm rather than mend.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Revenants"
+    },
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
+  },
+  {
+    "name": "Note: Frenzied Flame Village",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "South of the Grand Lift of Dectus lies the Frenzied Flame Village, inhabited by the sick. Stay well away.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Frenzied+Flame+Village"
+    },
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Raya Lucaria",
+        "location": "Southeast bridge past Main Academy Gate Site of Grace",
+        "region": "Liurnia of the Lakes",
+        "runes": 800,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Raya+Lucaria"
+      }
+    ]
+  },
+  {
+    "name": "Note: Gateway",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "Fort Gael in Caelid houses a gateway that leads to Redmane Castle.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Gateway"
+    },
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
+  },
+  {
+    "name": "Note: Hidden Cave",
+    "kaggleId": null,
+    "itemType": "info",
+    "sourceType": "Info Item",
+    "effect": "Hint scroll. Reveals a strategy or location tip; no in-game effect when used.",
+    "description": "There is a hidden cave in the town of Sellia. Look beyond the graveyard at the precipice.",
+    "obtainedFrom": null,
+    "acquisition": null,
+    "fextralife": {
+      "verifiedAt": "2026-05-16",
+      "sourceUrl": "https://eldenring.wiki.fextralife.com/Note:+Hidden+Cave"
+    },
+    "merchants": [
+      {
+        "merchant": "Isolated Merchant Dragonbarrow",
+        "location": "Isolated Merchant's Shack, western Dragonbarrow",
+        "region": "Dragonbarrow",
+        "runes": 1200,
+        "stock": 1,
+        "prereq": null,
+        "sourceUrl": "https://eldenring.wiki.fextralife.com/Isolated+Merchant+Dragonbarrow"
+      }
+    ]
   }
 ]
