@@ -1,5 +1,38 @@
 # CLAUDE.md — Tarnished's Companion
 
+## Project Intent & Boundaries
+
+**IS:** Journey-aware progression planner — computes optimal moment-to-moment choices from character creation through every boss gate for any archetype. For one player (Gunny). Portable, offline, local-first.
+
+**IS NOT:** A wiki. A build optimizer (optimizes progression, not final builds). A multiplayer coordinator. A guide (computes, doesn't narrate). Not a mobile app.
+
+## Locked Decisions
+
+Do not relitigate without new evidence (per global P6).
+
+| # | Decision | Rationale | Date |
+|---|----------|-----------|------|
+| 1 | Portable local-first architecture | Runs from a folder, no install, no cloud, cross-platform, CD-sized upper bound ≤700MB. | 2026-03 |
+| 2 | All useState hooks in App component only | Pre-existing violation in Compare tab. Do not add more. | 2026-03 |
+| 3 | One backlog item per conversation | Flexible when items are interconnected. Gunny may direct multiple. | 2026-03 |
+| 4 | All structural reference in tarnished_companion_project.md | Single source of truth for file map, functions, data counts, backlog. Do not duplicate in CLAUDE.md. | 2026-03 |
+| 5 | Legacy inline JSON (lines 69-2003) never loaded into context | Becomes moot when data migrates to external files during rewrite. | 2026-04 |
+
+## Agents & Skills
+
+Two agents in `.claude/agents/` evaluate from specialized perspectives:
+- **engine-verifier** — numerical correctness of AR/damage computations vs community data
+- **progression-analyst** — archetype viability across regional boss gates
+
+Five skills in `.claude/commands/`:
+- **/session-start** — state verification (version alignment, line counts, uncommitted work)
+- **/deliver** — delivery close (3-artifact update + commit + push)
+- **/verify** — change-type verification matrix
+- **/game-data-verify** — cross-reference engine output against community data
+- **/progression-engine** — compute archetype progression curves
+
+Agents provide evaluation perspective. Commands provide execution sequences. Both coexist.
+
 ## Project-Specific Delivery Close
 
 Every delivery updates these three artifacts (per global §VI.5):
