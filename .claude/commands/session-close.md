@@ -1,11 +1,11 @@
-# /deliver — Delivery Close Checklist
+# /session-close — Session Close Checklist
 
 Execute the delivery close checklist for a completed backlog item. This skill enforces the three-step close protocol from the project workflow.
 
 ## Required argument
 
 $ARGUMENTS should contain: `<backlog_id> <version> <summary>`
-Example: `/deliver F6 v3.2 dynamic weapon pool with async build and status indicator`
+Example: `/session-close F6 v3.2 dynamic weapon pool with async build and status indicator`
 
 If $ARGUMENTS is empty, check git diff and recent work to infer the delivery context, then confirm with the user before proceeding.
 

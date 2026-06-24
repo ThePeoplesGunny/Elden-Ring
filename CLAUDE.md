@@ -26,7 +26,7 @@ Two agents in `.claude/agents/` evaluate from specialized perspectives:
 
 Five skills in `.claude/commands/`:
 - **/session-start** — state verification (version alignment, line counts, uncommitted work)
-- **/deliver** — delivery close (3-artifact update + commit + push)
+- **/session-close** — session close (3-artifact update + commit + push)
 - **/verify** — change-type verification matrix
 - **/game-data-verify** — cross-reference engine output against community data
 - **/progression-engine** — compute archetype progression curves
@@ -59,6 +59,6 @@ Every delivery updates these three artifacts (per global §VI.5):
 **Version:** v4.0.0-alpha (Phase B.1–B.7 + B-Overlay fanapis snapshot)
 **Baseline:** `tc_next/` portable bundle (legacy `Tarnished_Companion_v3.9.html` preserved)
 **Legacy lines:** 5,893
-**Last completed task:** Canonical gap closing — 14 distinct entries added (11 info-item Notes → items.json, St. Trina's Arrow + Lightning Bolt → ammos.json, Champion Gaiters → armors.json), Lightning Greatbolt dedup. Merchant overlay now **374/374 matched (100%), 0 missing, 266 canonical items carry merchants[]**. All entries Fextralife-verified with provenance. Also: governance scaffold committed + memory system rebuilt (7 memories).
+**Last completed task:** Governance command rename finalized - deliver -> session-close (canonical per framework P5); removed stray root deliver.md duplicate; repaired truncated Playtest-checkpoint line. Memory triage (user-level, outside repo): corpus 32 -> 17 surviving, 16 stashed, 1 P14 contradiction resolved (walkthrough R1-R23 tracker was NOT lost - detailed file present on disk).
 **Next task:** Chest/world pickups per region, OR quest rewards, OR Phase C/D (tc_next journey view, unblocks playtest). Gunny to direct.
 **Playtest checkpoint:** L41 Wretch Pure STR committed. Morning Star +3 equipped (targeting +6). Engine v3.15-calibrated. Live playthrough paused while rewrite phases land; resume R4 Limgrave cleanup once tc_next journey view ships.
